@@ -2,10 +2,10 @@
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
+    <div className="min-h-[60vh] flex items-center justify-center">
       <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+        <h1 className="text-4xl font-bold mb-2">Aurora Admin</h1>
+        <p className="text-lg text-muted-foreground">Sol menüden sayfalara geçiş yapabilirsin.</p>
       </div>
     </div>
   );
