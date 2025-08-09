@@ -14,7 +14,7 @@ export default function UsersPage() {
   return (
     <div>
       <Helmet>
-        <title>Kullanıcılar | Aurora Admin</title>
+        <title>Kullanıcılar | CodeMaze Admin</title>
         <meta name="description" content="Kullanıcı yönetimi ve rol atama örnek sayfası." />
         {canonical && <link rel="canonical" href={canonical} />}
       </Helmet>
