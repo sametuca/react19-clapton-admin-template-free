@@ -1,59 +1,92 @@
 import { NavLink, useLocation } from "react-router-dom";
-import { LayoutDashboard, Table2, FileInput, Users, Shield } from "lucide-react";
+import { LayoutDashboard, Table2, FileInput, Users, Shield, BarChart3, Settings, User, Bell } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
+  SidebarHeader,
+  SidebarInset,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  useSidebar,
+  SidebarProvider,
+  SidebarTrigger,
 } from "@/components/ui/sidebar";
+import { useLanguage } from "@/contexts/LanguageContext";
 
-const items = [
-  { title: "Dashboard", url: "/", icon: LayoutDashboard },
-  { title: "Tables", url: "/tables", icon: Table2 },
-  { title: "Forms Wizard", url: "/forms", icon: FileInput },
-  { title: "Users", url: "/users", icon: Users },
-  { title: "Roles", url: "/roles", icon: Shield },
-];
-
-export function AppSidebar() {
-  const { collapsed } = useSidebar();
+export default function AppSidebar() {
   const location = useLocation();
-  const currentPath = location.pathname;
+  const { t } = useLanguage();
 
-  const isActive = (path: string) => currentPath === path;
-  const isExpanded = items.some((i) => isActive(i.url));
-
-  const getNavCls = ({ isActive }: { isActive: boolean }) =>
-    isActive ? "bg-muted text-primary font-medium" : "hover:bg-muted/50";
+  const items = [
+    { title: t('nav.dashboard'), url: "/", icon: LayoutDashboard },
+    { title: t('nav.analytics'), url: "/analytics", icon: BarChart3 },
+    { title: t('nav.tables'), url: "/tables", icon: Table2 },
+    { title: t('nav.forms'), url: "/forms", icon: FileInput },
+    { title: t('nav.users'), url: "/users", icon: Users },
+    { title: t('nav.roles'), url: "/roles", icon: Shield },
+    { title: t('nav.profile'), url: "/profile", icon: User },
+    { title: t('nav.notifications'), url: "/notifications", icon: Bell },
+    { title: t('nav.settings'), url: "/settings", icon: Settings },
+  ];
 
   return (
-    <Sidebar className={collapsed ? "w-14" : "w-60"} collapsible>
+    <Sidebar>
+      <SidebarHeader>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton asChild>
+              <NavLink to="/" className="flex items-center gap-2 px-2 py-1.5 text-lg font-semibold">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+                  A
+                </div>
+                <span className="hidden lg:inline">CodeMaze Admin</span>
+              </NavLink>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarHeader>
       <SidebarContent>
-        <SidebarGroup open={isExpanded}>
-          <SidebarGroupLabel>Navigation</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <NavLink to={item.url} end className={getNavCls}>
-                      <item.icon className="mr-2 h-4 w-4" />
-                      {!collapsed && <span>{item.title}</span>}
-                    </NavLink>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
+        <SidebarInset>
+          <SidebarGroup>
+            <SidebarGroupLabel>Ana Menü</SidebarGroupLabel>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                {items.map((item) => (
+                  <SidebarMenuItem key={item.url}>
+                    <SidebarMenuButton asChild isActive={location.pathname === item.url}>
+                      <NavLink to={item.url} className="flex items-center gap-2">
+                        <item.icon className="h-4 w-4" />
+                        <span className="hidden lg:inline">{item.title}</span>
+                      </NavLink>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))}
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        </SidebarInset>
       </SidebarContent>
+      <SidebarFooter>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton asChild>
+              <NavLink to="/profile" className="flex items-center gap-2 px-2 py-1.5">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-muted">
+                  <User className="h-4 w-4" />
+                </div>
+                <div className="hidden lg:block">
+                  <div className="text-sm font-medium">Samet UCA</div>
+                  <div className="text-xs text-muted-foreground">ahmet@example.com</div>
+                </div>
+              </NavLink>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarFooter>
     </Sidebar>
   );
 }
-
-export default AppSidebar;
