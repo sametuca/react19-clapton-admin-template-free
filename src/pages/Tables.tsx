@@ -27,7 +27,7 @@ export default function TablesPage() {
   return (
     <div>
       <Helmet>
-        <title>Tablolar | Aurora Admin</title>
+        <title>Tablolar | CodeMaze Admin</title>
         <meta name="description" content="Filtreleme ve arama destekli tablo örneği." />
         {canonical && <link rel="canonical" href={canonical} />}
       </Helmet>
