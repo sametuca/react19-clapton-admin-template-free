@@ -20,7 +20,7 @@ export default function FormsWizard() {
   return (
     <div>
       <Helmet>
-        <title>Form Sihirbazı | Aurora Admin</title>
+        <title>Form Sihirbazı | CodeMaze Admin</title>
         <meta name="description" content="Çok adımlı form sihirbazı örneği." />
         {canonical && <link rel="canonical" href={canonical} />}
       </Helmet>
