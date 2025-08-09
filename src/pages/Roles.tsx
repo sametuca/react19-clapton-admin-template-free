@@ -14,7 +14,7 @@ export default function RolesPage() {
   return (
     <div>
       <Helmet>
-        <title>Roller | Aurora Admin</title>
+        <title>Roller | CodeMaze Admin</title>
         <meta name="description" content="Rol ve izinlerin listelendiği örnek sayfa." />
         {canonical && <link rel="canonical" href={canonical} />}
       </Helmet>
