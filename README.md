@@ -1,73 +1,190 @@
-# Welcome to your Lovable project
+# React19 Admin Template
 
-## Project info
+A modern, responsive admin dashboard template built with React 19, TypeScript, and Tailwind CSS. This template provides a comprehensive foundation for building admin applications with a beautiful UI and extensive functionality.
 
-**URL**: https://lovable.dev/projects/5fbc61db-a7d0-4703-899d-0e91790f6a17
+## ✨ Features
 
-## How can I edit this code?
+### 🎨 Modern Design
+- **Responsive Layout**: Mobile-first design that works on all devices
+- **Dark/Light Theme**: Built-in theme switching with system preference detection
+- **Beautiful UI**: Built with Shadcn/ui components and Tailwind CSS
+- **Smooth Animations**: Elegant transitions and hover effects
 
-There are several ways of editing your application.
+### 🌍 Internationalization
+- **Multi-language Support**: Turkish (TR) and English (EN) language support
+- **Dynamic Translations**: Context-based language switching
+- **Persistent Preferences**: Language choice saved in localStorage
 
-**Use Lovable**
+### 📱 Core Pages
+- **Dashboard**: Overview with KPIs, charts, and analytics
+- **Analytics**: Detailed reports and data visualization
+- **Users**: User management interface
+- **Tables**: Data table examples
+- **Forms Wizard**: Multi-step form implementation
+- **Roles**: Role-based access control
+- **Settings**: Comprehensive application settings
+- **Profile**: User profile management
+- **Notifications**: System notifications center
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/5fbc61db-a7d0-4703-899d-0e91790f6a17) and start prompting.
+### 🔐 Authentication
+- **Login Page**: Modern login interface with social login options
+- **Register Page**: Multi-step registration process
+- **Form Validation**: Built-in form validation and error handling
 
-Changes made via Lovable will be committed automatically to this repo.
+### 📊 Data Visualization
+- **Charts**: Line, Bar, Pie, and Area charts using Recharts
+- **KPIs**: Key Performance Indicators with trend indicators
+- **Statistics**: Comprehensive data analytics and reporting
 
-**Use your preferred IDE**
+### ⚙️ Configuration
+- **Theme Management**: Light, Dark, and System theme options
+- **Language Settings**: Easy language switching
+- **Customizable Layout**: Flexible sidebar and header configuration
+- **Responsive Sidebar**: Collapsible navigation with smooth transitions
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🚀 Getting Started
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Prerequisites
+- Node.js 18+ 
+- npm or bun package manager
 
-Follow these steps:
+### Installation
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd react19-admin-template
+   ```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   bun install
+   ```
 
-# Step 3: Install the necessary dependencies.
-npm i
+3. **Start development server**
+   ```bash
+   npm run dev
+   # or
+   bun dev
+   ```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+4. **Build for production**
+   ```bash
+   npm run build
+   # or
+   bun run build
+   ```
+
+## 🛠️ Tech Stack
+
+- **Frontend Framework**: React 19 with TypeScript
+- **Styling**: Tailwind CSS with custom components
+- **UI Components**: Shadcn/ui component library
+- **Icons**: Lucide React icon set
+- **Charts**: Recharts for data visualization
+- **Routing**: React Router DOM
+- **State Management**: React Context API
+- **Build Tool**: Vite
+- **Package Manager**: npm/bun
+
+## 📁 Project Structure
+
+```
+src/
+├── components/          # Reusable UI components
+│   ├── ui/             # Shadcn/ui components
+│   └── AppSidebar.tsx  # Main navigation sidebar
+├── contexts/            # React Context providers
+│   ├── ThemeContext.tsx    # Theme management
+│   └── LanguageContext.tsx # Language management
+├── hooks/               # Custom React hooks
+├── layouts/             # Layout components
+│   └── AppLayout.tsx   # Main application layout
+├── pages/               # Application pages
+│   ├── Dashboard.tsx   # Main dashboard
+│   ├── Analytics.tsx   # Analytics and reports
+│   ├── Settings.tsx    # Application settings
+│   ├── Profile.tsx     # User profile
+│   ├── Notifications.tsx # Notifications center
+│   ├── Login.tsx       # Authentication
+│   ├── Register.tsx    # User registration
+│   └── ...             # Other pages
+├── lib/                 # Utility functions
+└── main.tsx            # Application entry point
 ```
 
-**Edit a file directly in GitHub**
+## 🎯 Key Components
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Theme Context
+Manages application theme (light/dark/system) with localStorage persistence and system preference detection.
 
-**Use GitHub Codespaces**
+### Language Context
+Provides internationalization support with dynamic language switching and translation management.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### AppLayout
+Main application layout with responsive header, sidebar, and content area.
 
-## What technologies are used for this project?
+### AppSidebar
+Navigation sidebar with collapsible menu items and user profile section.
 
-This project is built with:
+## 🎨 Customization
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Adding New Pages
+1. Create a new component in `src/pages/`
+2. Add the route to `src/App.tsx`
+3. Update navigation in `src/components/AppSidebar.tsx`
 
-## How can I deploy this project?
+### Adding New Languages
+1. Update translations in `src/contexts/LanguageContext.tsx`
+2. Add language selector option in `src/layouts/AppLayout.tsx`
 
-Simply open [Lovable](https://lovable.dev/projects/5fbc61db-a7d0-4703-899d-0e91790f6a17) and click on Share -> Publish.
+### Customizing Themes
+1. Modify Tailwind CSS configuration in `tailwind.config.ts`
+2. Update theme context in `src/contexts/ThemeContext.tsx`
 
-## Can I connect a custom domain to my Lovable project?
+## 📱 Responsive Design
 
-Yes, you can!
+The template is fully responsive and includes:
+- Mobile-first approach
+- Collapsible sidebar on small screens
+- Touch-friendly interface elements
+- Optimized layouts for all screen sizes
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 🔧 Development
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+### Available Scripts
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+
+### Code Style
+- TypeScript for type safety
+- ESLint for code quality
+- Prettier for code formatting
+- Consistent component structure
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
+
+## 📞 Support
+
+For support and questions:
+- Create an issue in the repository
+- Check the documentation
+- Review existing issues and discussions
+
+---
+
+**Built with ❤️ using React 19, TypeScript, and Tailwind CSS**
