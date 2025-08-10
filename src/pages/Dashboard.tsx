@@ -29,7 +29,7 @@ export default function Dashboard() {
       change: "+12.5%",
       changeType: "positive" as const,
       icon: Users,
-      description: "Son 30 günde"
+      description: t('dashboard.last30Days')
     },
     {
       title: t('dashboard.totalRevenue'),
@@ -37,7 +37,7 @@ export default function Dashboard() {
       change: "+8.2%",
       changeType: "positive" as const,
       icon: DollarSign,
-      description: "Bu ay"
+      description: t('dashboard.thisMonth')
     },
     {
       title: t('dashboard.activeProjects'),
@@ -45,7 +45,7 @@ export default function Dashboard() {
       change: "+5.1%",
       changeType: "positive" as const,
       icon: Activity,
-      description: "Devam eden"
+      description: t('dashboard.ongoing')
     },
     {
       title: t('dashboard.pendingTasks'),
@@ -53,7 +53,7 @@ export default function Dashboard() {
       change: "-2.3%",
       changeType: "negative" as const,
       icon: Target,
-      description: "Bekleyen"
+      description: t('dashboard.pending')
     }
   ];
 
@@ -61,46 +61,46 @@ export default function Dashboard() {
     {
       id: 1,
       user: "Samet UCA",
-      action: "Yeni kullanıcı kaydetti",
+      action: t('dashboard.newUserRegistered'),
       target: "Mehmet Demir",
-      time: "2 dakika önce",
+      time: t('dashboard.2minutesAgo'),
       type: "success" as const,
       avatar: "AY"
     },
     {
       id: 2,
       user: "Fatma Kaya",
-      action: "Proje güncelledi",
-      target: "E-ticaret Sitesi",
-      time: "15 dakika önce",
+      action: t('dashboard.projectUpdated'),
+      target: t('dashboard.ecommerceSite'),
+      time: t('dashboard.15minutesAgo'),
       type: "info" as const,
       avatar: "FK"
     },
     {
       id: 3,
       user: "Ali Özkan",
-      action: "Rapor oluşturdu",
+      action: t('dashboard.reportCreated'),
       target: "Aylık Analiz",
-      time: "1 saat önce",
+      time: t('dashboard.1hourAgo'),
       type: "warning" as const,
       avatar: "AÖ"
     },
     {
       id: 4,
       user: "Zeynep Arslan",
-      action: "Sistem hatası bildirdi",
+      action: t('dashboard.systemErrorReported'),
       target: "Login API",
-      time: "3 saat önce",
+      time: t('dashboard.3hoursAgo'),
       type: "error" as const,
       avatar: "ZA"
     }
   ];
 
   const quickActions = [
-    { title: "Yeni Kullanıcı Ekle", icon: Users, color: "bg-blue-500" },
-    { title: "Rapor Oluştur", icon: BarChart3, color: "bg-green-500" },
-    { title: "Proje Başlat", icon: Activity, color: "bg-purple-500" },
-    { title: "Toplantı Planla", icon: Calendar, color: "bg-orange-500" }
+    { title: t('dashboard.addNewUser'), icon: Users, color: "bg-blue-500" },
+    { title: t('dashboard.createReport'), icon: BarChart3, color: "bg-green-500" },
+    { title: t('dashboard.startProject'), icon: Activity, color: "bg-purple-500" },
+    { title: t('dashboard.scheduleMeeting'), icon: Calendar, color: "bg-orange-500" }
   ];
 
   const getActivityIcon = (type: string) => {
@@ -121,15 +121,15 @@ export default function Dashboard() {
   return (
     <>
       <Helmet>
-        <title>Dashboard - React19 Admin</title>
-        <meta name="description" content="Ana dashboard sayfası" />
+        <title>{t('dashboard.pageTitle')}</title>
+        <meta name="description" content={t('dashboard.metaDescription')} />
       </Helmet>
 
       <div className="space-y-6">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">{t('dashboard.welcome')}</h1>
           <p className="text-muted-foreground">
-            Projenizin genel durumunu ve önemli metriklerini görüntüleyin
+            {t('dashboard.projectOverview')}
           </p>
         </div>
 
@@ -163,9 +163,9 @@ export default function Dashboard() {
           {/* Recent Activities */}
           <Card className="col-span-4">
             <CardHeader>
-              <CardTitle>Son Aktiviteler</CardTitle>
+              <CardTitle>{t('dashboard.recentActivities')}</CardTitle>
               <CardDescription>
-                Sistemde gerçekleşen son işlemler
+                {t('dashboard.systemRecentOperations')}
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -196,9 +196,9 @@ export default function Dashboard() {
           {/* Quick Actions */}
           <Card className="col-span-3">
             <CardHeader>
-              <CardTitle>Hızlı İşlemler</CardTitle>
+              <CardTitle>{t('dashboard.quickActions')}</CardTitle>
               <CardDescription>
-                Sık kullanılan işlemler
+                {t('dashboard.frequentlyUsedOperations')}
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -220,15 +220,15 @@ export default function Dashboard() {
         <div className="grid gap-6 md:grid-cols-2">
           <Card>
             <CardHeader>
-              <CardTitle>Proje Durumu</CardTitle>
+              <CardTitle>{t('dashboard.projectStatus')}</CardTitle>
               <CardDescription>
-                Aktif projelerin genel durumu
+                {t('dashboard.activeProjectsGeneralStatus')}
               </CardDescription>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium">E-ticaret Sitesi</span>
+                  <span className="text-sm font-medium">{t('dashboard.ecommerceSite')}</span>
                   <Badge variant="default">%75</Badge>
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-2">
@@ -236,7 +236,7 @@ export default function Dashboard() {
                 </div>
                 
                 <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium">Mobil Uygulama</span>
+                  <span className="text-sm font-medium">{t('dashboard.mobileApp')}</span>
                   <Badge variant="secondary">%45</Badge>
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-2">
@@ -244,7 +244,7 @@ export default function Dashboard() {
                 </div>
                 
                 <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium">Admin Panel</span>
+                  <span className="text-sm font-medium">{t('dashboard.adminPanel')}</span>
                   <Badge variant="outline">%90</Badge>
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-2">
@@ -256,35 +256,35 @@ export default function Dashboard() {
 
           <Card>
             <CardHeader>
-              <CardTitle>Sistem Durumu</CardTitle>
+              <CardTitle>{t('dashboard.systemStatus')}</CardTitle>
               <CardDescription>
-                Sunucu ve servis durumları
+                {t('dashboard.serverAndServiceStatus')}
               </CardDescription>
             </CardHeader>
             <CardContent>
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm">Web Sunucu</span>
+                  <span className="text-sm">{t('dashboard.webServer')}</span>
                   <Badge variant="default" className="bg-green-100 text-green-800">
-                    Çalışıyor
+                    {t('dashboard.running')}
                   </Badge>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm">Veritabanı</span>
+                  <span className="text-sm">{t('dashboard.database')}</span>
                   <Badge variant="default" className="bg-green-100 text-green-800">
-                    Çalışıyor
+                    {t('dashboard.running')}
                   </Badge>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm">API Servisi</span>
+                  <span className="text-sm">{t('dashboard.apiService')}</span>
                   <Badge variant="default" className="bg-green-100 text-green-800">
-                    Çalışıyor
+                    {t('dashboard.running')}
                   </Badge>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm">E-posta Servisi</span>
+                  <span className="text-sm">{t('dashboard.emailService')}</span>
                   <Badge variant="destructive">
-                    Hata
+                    {t('dashboard.error')}
                   </Badge>
                 </div>
               </div>
