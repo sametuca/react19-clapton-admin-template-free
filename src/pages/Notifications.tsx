@@ -116,7 +116,7 @@ export default function Notifications() {
   return (
     <div>
       <Helmet>
-        <title>Bildirimler | CodeMaze Admin</title>
+        <title>Bildirimler | React19 Admin</title>
         <meta name="description" content="Sistem bildirimleri ve mesajlar." />
         {canonical && <link rel="canonical" href={canonical} />}
       </Helmet>

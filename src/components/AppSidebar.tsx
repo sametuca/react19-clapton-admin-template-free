@@ -1,5 +1,5 @@
 import { NavLink, useLocation } from "react-router-dom";
-import { LayoutDashboard, Table2, FileInput, Users, Shield, BarChart3, Settings, User, Bell } from "lucide-react";
+import { LayoutDashboard, Table2, FileInput, Users, Shield, BarChart3, Settings, User, Bell, UserPlus, LogIn } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -31,6 +31,8 @@ export default function AppSidebar() {
     { title: t('nav.profile'), url: "/profile", icon: User },
     { title: t('nav.notifications'), url: "/notifications", icon: Bell },
     { title: t('nav.settings'), url: "/settings", icon: Settings },
+    { title: t('nav.login'), url: "/login", icon: LogIn },
+    { title: t('nav.register'), url: "/register", icon: UserPlus },
   ];
 
   return (
@@ -43,7 +45,7 @@ export default function AppSidebar() {
                 <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
                   A
                 </div>
-                <span className="hidden lg:inline">CodeMaze Admin</span>
+                <span className="hidden lg:inline">React19 Admin</span>
               </NavLink>
             </SidebarMenuButton>
           </SidebarMenuItem>

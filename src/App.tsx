@@ -13,6 +13,8 @@ import Analytics from "./pages/Analytics";
 import Settings from "./pages/Settings";
 import Profile from "./pages/Profile";
 import Notifications from "./pages/Notifications";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
 import { HelmetProvider } from "react-helmet-async";
 import { ThemeProvider } from "./contexts/ThemeContext";
@@ -30,6 +32,11 @@ const App = () => (
             <Sonner />
             <BrowserRouter>
               <Routes>
+                {/* Auth Routes - Outside AppLayout */}
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                
+                {/* Protected Routes - Inside AppLayout */}
                 <Route element={<AppLayout />}>
                   <Route path="/" element={<Dashboard />} />
                   <Route path="/tables" element={<TablesPage />} />

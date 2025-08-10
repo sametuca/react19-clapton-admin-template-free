@@ -14,7 +14,7 @@ export default function RolesPage() {
   return (
     <div>
       <Helmet>
-        <title>Roller | CodeMaze Admin</title>
+        <title>Roller | React19 Admin</title>
         <meta name="description" content="Rol ve izinlerin listelendiği örnek sayfa." />
         {canonical && <link rel="canonical" href={canonical} />}
       </Helmet>

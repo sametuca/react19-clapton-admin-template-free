@@ -26,8 +26,8 @@ const translations = {
     'common.info': 'Bilgi',
     
     // Navigation
-    'nav.dashboard': 'Dashboard',
-    'nav.analytics': 'Analytics',
+    'nav.dashboard': 'Anasayfa',
+    'nav.analytics': 'Analitik',
     'nav.tables': 'Tablolar',
     'nav.forms': 'Form Sihirbazı',
     'nav.users': 'Kullanıcılar',
@@ -35,6 +35,8 @@ const translations = {
     'nav.profile': 'Profil',
     'nav.notifications': 'Bildirimler',
     'nav.settings': 'Ayarlar',
+    'nav.login': 'Giriş Yap',
+    'nav.register': 'Kayıt Ol',
     
     // Settings
     'settings.general': 'Genel',
@@ -126,6 +128,8 @@ const translations = {
     'nav.profile': 'Profile',
     'nav.notifications': 'Notifications',
     'nav.settings': 'Settings',
+    'nav.login': 'Login',
+    'nav.register': 'Register',
     
     // Settings
     'settings.general': 'General',

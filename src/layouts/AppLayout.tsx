@@ -18,7 +18,7 @@ export default function AppLayout() {
 
   useEffect(() => {
     toast({
-      title: "CodeMaze Admin",
+      title: "React19 Admin",
       description: "Hoş geldin! Şablonu keşfetmeye başla.",
     });
   }, []);
@@ -47,7 +47,7 @@ export default function AppLayout() {
   return (
     <SidebarProvider>
       <Helmet>
-        <title>CodeMaze Admin – Modern React Admin Template</title>
+        <title>React19 Admin – Modern React Admin Template</title>
         <meta name="description" content="Modern React admin template with dashboard, tables, forms and user management." />
       </Helmet>
 
@@ -58,7 +58,7 @@ export default function AppLayout() {
           <header className="h-14 flex items-center gap-3 px-4 border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <SidebarTrigger className="" />
             <div className="flex items-center gap-2 font-semibold">
-              <span className="hidden sm:inline">CodeMaze Admin</span>
+              <span className="hidden sm:inline">React19 Admin</span>
             </div>
             <div className="ml-auto flex items-center gap-3">
               <div className="hidden md:flex items-center gap-2">

@@ -14,7 +14,7 @@ export default function UsersPage() {
   return (
     <div>
       <Helmet>
-        <title>Kullanıcılar | CodeMaze Admin</title>
+        <title>Kullanıcılar | React19 Admin</title>
         <meta name="description" content="Kullanıcı yönetimi ve rol atama örnek sayfası." />
         {canonical && <link rel="canonical" href={canonical} />}
       </Helmet>

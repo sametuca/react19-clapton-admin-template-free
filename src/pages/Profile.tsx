@@ -84,7 +84,7 @@ export default function Profile() {
   return (
     <div>
       <Helmet>
-        <title>Profil | CodeMaze Admin</title>
+        <title>Profil | React19 Admin</title>
         <meta name="description" content="Kullanıcı profil bilgileri ve aktivite geçmişi." />
         {canonical && <link rel="canonical" href={canonical} />}
       </Helmet>
@@ -131,7 +131,7 @@ export default function Profile() {
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <Building className="h-4 w-4 text-muted-foreground" />
-                    <span>CodeMaze Tech</span>
+                    <span>React19 Tech</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <Calendar className="h-4 w-4 text-muted-foreground" />
@@ -233,7 +233,7 @@ export default function Profile() {
 
                   <div className="space-y-2">
                     <Label htmlFor="company">Şirket</Label>
-                    <Input id="company" defaultValue="CodeMaze Tech" />
+                    <Input id="company" defaultValue="React19 Tech" />
                   </div>
 
                   <div className="space-y-2">

@@ -1,6 +1,5 @@
 import { Helmet } from "react-helmet-async";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -38,7 +37,7 @@ export default function Analytics() {
   return (
     <div>
       <Helmet>
-        <title>Analytics | CodeMaze Admin</title>
+        <title>Analytics | React19 Admin</title>
         <meta name="description" content="Detaylı analitik raporları ve performans metrikleri." />
         {canonical && <link rel="canonical" href={canonical} />}
       </Helmet>

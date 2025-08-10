@@ -38,7 +38,7 @@ export default function Login() {
   return (
     <>
       <Helmet>
-        <title>Giriş Yap - Aurora Admin</title>
+        <title>Giriş Yap - React19 Admin</title>
         <meta name="description" content="Hesabınıza giriş yapın" />
       </Helmet>
 
@@ -189,7 +189,7 @@ export default function Login() {
 
           {/* Footer */}
           <div className="text-center mt-8 text-xs text-muted-foreground">
-            <p>© 2024 Aurora Admin. Tüm hakları saklıdır.</p>
+            <p>© 2024 React19 Admin. Tüm hakları saklıdır.</p>
             <div className="flex justify-center gap-4 mt-2">
               <Link to="/privacy" className="hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
                 Gizlilik

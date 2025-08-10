@@ -135,7 +135,7 @@ export default function Dashboard() {
   return (
     <>
       <Helmet>
-        <title>Dashboard - CodeMaze Admin</title>
+        <title>Dashboard - React19 Admin</title>
         <meta name="description" content="Ana dashboard sayfası" />
       </Helmet>
 

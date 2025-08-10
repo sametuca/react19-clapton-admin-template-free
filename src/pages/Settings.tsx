@@ -41,7 +41,7 @@ export default function Settings() {
   return (
     <>
       <Helmet>
-        <title>Ayarlar - CodeMaze Admin</title>
+        <title>Ayarlar - React19 Admin</title>
         <meta name="description" content="Uygulama ayarlarını yönetin" />
       </Helmet>
 
@@ -96,7 +96,7 @@ export default function Settings() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="appName">{t('settings.appName')}</Label>
-                    <Input id="appName" defaultValue="CodeMaze Admin" />
+                    <Input id="appName" defaultValue="React19 Admin" />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="language">{t('settings.language')}</Label>
