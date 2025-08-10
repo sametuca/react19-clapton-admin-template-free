@@ -8,65 +8,68 @@ import {
   BarChart, Bar, PieChart, Pie, Cell, AreaChart, Area 
 } from "recharts";
 import { Download, Filter, TrendingUp, TrendingDown, Users, ShoppingCart, Eye, MousePointer } from "lucide-react";
-
-const chartData = [
-  { month: "Oca", gelir: 12000, gider: 8000, ziyaretci: 4500, donusum: 2.4 },
-  { month: "Şub", gelir: 18000, gider: 9000, ziyaretci: 5200, donusum: 3.1 },
-  { month: "Mar", gelir: 16000, gider: 11000, ziyaretci: 4800, donusum: 2.8 },
-  { month: "Nis", gelir: 22000, gider: 13000, ziyaretci: 6100, donusum: 3.6 },
-  { month: "May", gelir: 26000, gider: 14000, ziyaretci: 6800, donusum: 4.2 },
-  { month: "Haz", gelir: 28000, gider: 16000, ziyaretci: 7200, donusum: 4.7 },
-];
-
-const pieData = [
-  { name: "Mobil", value: 65, color: "#3b82f6" },
-  { name: "Desktop", value: 25, color: "#10b981" },
-  { name: "Tablet", value: 10, color: "#f59e0b" },
-];
-
-const topPages = [
-  { page: "/anasayfa", views: 12500, bounce: "32%", conversion: "4.2%" },
-  { page: "/urunler", views: 8900, bounce: "28%", conversion: "6.8%" },
-  { page: "/hakkimizda", views: 6700, bounce: "45%", conversion: "1.2%" },
-  { page: "/iletisim", views: 5400, bounce: "38%", conversion: "2.1%" },
-];
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Analytics() {
+  const { t } = useLanguage();
+
+  const chartData = [
+    { month: t("analytics.jan"), gelir: 12000, gider: 8000, ziyaretci: 4500, donusum: 2.4 },
+    { month: t("analytics.feb"), gelir: 18000, gider: 9000, ziyaretci: 5200, donusum: 3.1 },
+    { month: t("analytics.mar"), gelir: 16000, gider: 11000, ziyaretci: 4800, donusum: 2.8 },
+    { month: t("analytics.apr"), gelir: 22000, gider: 13000, ziyaretci: 6100, donusum: 3.6 },
+    { month: t("analytics.may"), gelir: 26000, gider: 14000, ziyaretci: 6800, donusum: 4.2 },
+    { month: t("analytics.jun"), gelir: 28000, gider: 16000, ziyaretci: 7200, donusum: 4.7 },
+  ];
+
+  const pieData = [
+    { name: t("analytics.mobile"), value: 65, color: "#3b82f6" },
+    { name: t("analytics.desktop"), value: 25, color: "#10b981" },
+    { name: t("analytics.tablet"), value: 10, color: "#f59e0b" },
+  ];
+
+  const topPages = [
+    { page: t("analytics.homepage"), views: 12500, bounce: "32%", conversion: "4.2%" },
+    { page: t("analytics.products"), views: 8900, bounce: "28%", conversion: "6.8%" },
+    { page: t("analytics.about"), views: 6700, bounce: "45%", conversion: "1.2%" },
+    { page: t("analytics.contact"), views: 5400, bounce: "38%", conversion: "2.1%" },
+  ];
+
   const canonical = typeof window !== "undefined" ? window.location.href : "";
 
   return (
     <div>
       <Helmet>
-        <title>Analytics | React19 Admin</title>
-        <meta name="description" content="Detaylı analitik raporları ve performans metrikleri." />
+        <title>{t("analytics.pageTitle")} | React19 Admin</title>
+        <meta name="description" content={t("analytics.metaDescription")} />
         {canonical && <link rel="canonical" href={canonical} />}
       </Helmet>
 
       <header className="mb-6">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-3xl font-bold tracking-tight">Analytics</h1>
-            <p className="text-muted-foreground mt-1">Detaylı performans analizi ve raporlar</p>
+            <h1 className="text-3xl font-bold tracking-tight">{t("analytics.title")}</h1>
+            <p className="text-muted-foreground mt-1">{t("analytics.subtitle")}</p>
           </div>
           <div className="flex items-center gap-3">
             <Select defaultValue="30">
               <SelectTrigger className="w-32">
-                <SelectValue placeholder="Süre" />
+                <SelectValue placeholder={t("analytics.duration")} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="7">7 gün</SelectItem>
-                <SelectItem value="30">30 gün</SelectItem>
-                <SelectItem value="90">90 gün</SelectItem>
-                <SelectItem value="365">1 yıl</SelectItem>
+                <SelectItem value="7">{t("analytics.7days")}</SelectItem>
+                <SelectItem value="30">{t("analytics.30days")}</SelectItem>
+                <SelectItem value="90">{t("analytics.90days")}</SelectItem>
+                <SelectItem value="365">{t("analytics.1year")}</SelectItem>
               </SelectContent>
             </Select>
             <Button variant="outline" size="sm">
               <Filter className="h-4 w-4 mr-2" />
-              Filtrele
+              {t("analytics.filter")}
             </Button>
             <Button size="sm">
               <Download className="h-4 w-4 mr-2" />
-              Rapor İndir
+              {t("analytics.downloadReport")}
             </Button>
           </div>
         </div>
@@ -74,25 +77,25 @@ export default function Analytics() {
 
       <section className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 mb-6">
         {[{
-          title: "Toplam Ziyaretçi",
+          title: t("analytics.totalVisitors"),
           value: "45.2K",
           delta: "+12.5%",
           trend: "up",
           icon: Users,
         }, {
-          title: "Sayfa Görüntüleme",
+          title: t("analytics.pageViews"),
           value: "89.7K",
           delta: "+8.2%",
           trend: "up",
           icon: Eye,
         }, {
-          title: "Dönüşüm Oranı",
+          title: t("analytics.conversionRate"),
           value: "3.8%",
           delta: "+0.4%",
           trend: "up",
           icon: TrendingUp,
         }, {
-          title: "Ortalama Oturum",
+          title: t("analytics.avgSession"),
           value: "2m 34s",
           delta: "-0.2%",
           trend: "down",
@@ -125,7 +128,7 @@ export default function Analytics() {
       <section className="grid grid-cols-1 xl:grid-cols-3 gap-4 mb-6">
         <Card className="xl:col-span-2">
           <CardHeader>
-            <CardTitle>Ziyaretçi Trendi</CardTitle>
+            <CardTitle>{t("analytics.visitorTrend")}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="h-72">
@@ -151,7 +154,7 @@ export default function Analytics() {
 
         <Card>
           <CardHeader>
-            <CardTitle>Cihaz Dağılımı</CardTitle>
+            <CardTitle>{t("analytics.deviceDistribution")}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="h-72">
@@ -195,7 +198,7 @@ export default function Analytics() {
       <section className="grid grid-cols-1 xl:grid-cols-2 gap-4">
         <Card>
           <CardHeader>
-            <CardTitle>En Popüler Sayfalar</CardTitle>
+            <CardTitle>{t("analytics.topPages")}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
@@ -207,12 +210,12 @@ export default function Analytics() {
                     </div>
                     <div>
                       <p className="font-medium">{page.page}</p>
-                      <p className="text-sm text-muted-foreground">{page.views.toLocaleString()} görüntüleme</p>
+                      <p className="text-sm text-muted-foreground">{page.views.toLocaleString()} {t("analytics.views")}</p>
                     </div>
                   </div>
                   <div className="text-right">
                     <p className="text-sm font-medium">{page.conversion}</p>
-                    <p className="text-xs text-muted-foreground">Bounce: {page.bounce}</p>
+                    <p className="text-xs text-muted-foreground">{t("analytics.bounce")}: {page.bounce}</p>
                   </div>
                 </div>
               ))}
@@ -222,7 +225,7 @@ export default function Analytics() {
 
         <Card>
           <CardHeader>
-            <CardTitle>Gelir Analizi</CardTitle>
+            <CardTitle>{t("analytics.revenueAnalysis")}</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="h-64">
