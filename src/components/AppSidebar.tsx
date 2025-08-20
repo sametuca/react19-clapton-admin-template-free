@@ -1,5 +1,5 @@
 import { NavLink, useLocation } from "react-router-dom";
-import { LayoutDashboard, Table2, FileInput, Users, Shield, BarChart3, Settings, User, Bell, UserPlus, LogIn } from "lucide-react";
+import { LayoutDashboard, Table2, FileInput, Users, Shield, BarChart3, Settings, User, Bell, UserPlus, LogIn, Palette } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -31,6 +31,7 @@ export default function AppSidebar() {
     { title: t('nav.profile'), url: "/profile", icon: User },
     { title: t('nav.notifications'), url: "/notifications", icon: Bell },
     { title: t('nav.settings'), url: "/settings", icon: Settings },
+    { title: "Component Showcase", url: "/showcase", icon: Palette },
     { title: t('nav.login'), url: "/login", icon: LogIn },
     { title: t('nav.register'), url: "/register", icon: UserPlus },
   ];

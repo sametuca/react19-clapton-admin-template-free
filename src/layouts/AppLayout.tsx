@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { NotificationBell } from "@/components/ui/notification-bell";
 import { Helmet } from "react-helmet-async";
 import { useEffect } from "react";
 import { toast } from "@/hooks/use-toast";
@@ -16,6 +17,32 @@ export default function AppLayout() {
   const { theme, setTheme } = useTheme();
   const { language, setLanguage } = useLanguage();
 
+  const notifications = [
+    {
+      id: "1",
+      title: "Yeni kullanıcı kaydı",
+      message: "Ahmet Yılmaz sisteme kayıt oldu",
+      time: "2 dakika önce",
+      read: false,
+      type: "info" as const
+    },
+    {
+      id: "2",
+      title: "Sistem güncellemesi",
+      message: "v1.2.0 sürümü başarıyla yüklendi",
+      time: "1 saat önce",
+      read: false,
+      type: "success" as const
+    },
+    {
+      id: "3",
+      title: "Güvenlik uyarısı",
+      message: "Şifrenizi güncellemeniz öneriliyor",
+      time: "3 saat önce",
+      read: true,
+      type: "warning" as const
+    }
+  ];
   useEffect(() => {
     toast({
       title: "React19 Admin",
@@ -102,6 +129,14 @@ export default function AppLayout() {
               <div className="hidden md:flex items-center">
                 <Input placeholder="Ara..." className="w-64" />
               </div>
+              
+              <NotificationBell 
+                notifications={notifications}
+                onMarkAsRead={(id) => console.log('Mark as read:', id)}
+                onMarkAllAsRead={() => console.log('Mark all as read')}
+                onRemove={(id) => console.log('Remove:', id)}
+              />
+              
               <Avatar>
                 <AvatarFallback>AA</AvatarFallback>
               </Avatar>

@@ -3,6 +3,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { StatsCard } from "@/components/ui/stats-card";
+import { ActivityFeed } from "@/components/ui/activity-feed";
+import { MetricChart } from "@/components/ui/metric-chart";
+import { DataTable } from "@/components/ui/data-table";
 import { 
   BarChart3, 
   Users, 
@@ -15,87 +19,141 @@ import {
   CheckCircle,
   AlertCircle,
   XCircle,
-  Info
+  Info,
+  FileText,
+  Settings as SettingsIcon,
+  TrendingUp
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Dashboard() {
   const { t } = useLanguage();
 
-  const stats = [
+  const statsData = [
     {
       title: t('dashboard.totalUsers'),
-      value: "12,345",
-      change: "+12.5%",
+      value: 12345,
+      change: 12.5,
       changeType: "positive" as const,
       icon: Users,
-      description: t('dashboard.last30Days')
+      description: t('dashboard.last30Days'),
+      suffix: ""
     },
     {
       title: t('dashboard.totalRevenue'),
-      value: "₺45,678",
-      change: "+8.2%",
+      value: 45678,
+      change: 8.2,
       changeType: "positive" as const,
       icon: DollarSign,
-      description: t('dashboard.thisMonth')
+      description: t('dashboard.thisMonth'),
+      prefix: "₺"
     },
     {
       title: t('dashboard.activeProjects'),
-      value: "23",
-      change: "+5.1%",
+      value: 23,
+      change: 5.1,
       changeType: "positive" as const,
       icon: Activity,
       description: t('dashboard.ongoing')
     },
     {
       title: t('dashboard.pendingTasks'),
-      value: "156",
-      change: "-2.3%",
+      value: 156,
+      change: -2.3,
       changeType: "negative" as const,
       icon: Target,
       description: t('dashboard.pending')
     }
   ];
 
-  const recentActivities = [
+  const activities = [
     {
-      id: 1,
-      user: "Samet UCA",
+      id: "1",
+      user: {
+        name: "Samet UCA",
+        initials: "SU"
+      },
       action: t('dashboard.newUserRegistered'),
       target: "Mehmet Demir",
       time: t('dashboard.2minutesAgo'),
       type: "success" as const,
-      avatar: "AY"
+      icon: Users
     },
     {
-      id: 2,
-      user: "Fatma Kaya",
+      id: "2",
+      user: {
+        name: "Fatma Kaya",
+        initials: "FK"
+      },
       action: t('dashboard.projectUpdated'),
       target: t('dashboard.ecommerceSite'),
       time: t('dashboard.15minutesAgo'),
       type: "info" as const,
-      avatar: "FK"
+      icon: FileText
     },
     {
-      id: 3,
-      user: "Ali Özkan",
+      id: "3",
+      user: {
+        name: "Ali Özkan",
+        initials: "AÖ"
+      },
       action: t('dashboard.reportCreated'),
       target: "Aylık Analiz",
       time: t('dashboard.1hourAgo'),
       type: "warning" as const,
-      avatar: "AÖ"
+      icon: BarChart3
     },
     {
-      id: 4,
-      user: "Zeynep Arslan",
+      id: "4",
+      user: {
+        name: "Zeynep Arslan",
+        initials: "ZA"
+      },
       action: t('dashboard.systemErrorReported'),
       target: "Login API",
       time: t('dashboard.3hoursAgo'),
       type: "error" as const,
-      avatar: "ZA"
+      icon: AlertCircle
     }
   ];
 
+  const chartData = [
+    { label: "Ocak", value: 4500, color: "bg-blue-500" },
+    { label: "Şubat", value: 5200, color: "bg-green-500" },
+    { label: "Mart", value: 4800, color: "bg-purple-500" },
+    { label: "Nisan", value: 6100, color: "bg-orange-500" },
+    { label: "Mayıs", value: 6800, color: "bg-red-500" },
+    { label: "Haziran", value: 7200, color: "bg-indigo-500" }
+  ];
+
+  const tableData = [
+    { id: 1, name: "Ahmet Yılmaz", email: "ahmet@example.com", role: "Admin", status: "Aktif", lastLogin: "2 saat önce" },
+    { id: 2, name: "Fatma Kaya", email: "fatma@example.com", role: "Editör", status: "Aktif", lastLogin: "1 gün önce" },
+    { id: 3, name: "Mehmet Demir", email: "mehmet@example.com", role: "Üye", status: "Pasif", lastLogin: "1 hafta önce" },
+    { id: 4, name: "Ayşe Özkan", email: "ayse@example.com", role: "Editör", status: "Aktif", lastLogin: "3 saat önce" },
+    { id: 5, name: "Ali Arslan", email: "ali@example.com", role: "Üye", status: "Aktif", lastLogin: "5 dakika önce" }
+  ];
+
+  const tableColumns = [
+    { key: 'id' as keyof typeof tableData[0], title: 'ID', sortable: true },
+    { key: 'name' as keyof typeof tableData[0], title: 'Ad Soyad', sortable: true },
+    { key: 'email' as keyof typeof tableData[0], title: 'E-posta', sortable: true },
+    { 
+      key: 'role' as keyof typeof tableData[0], 
+      title: 'Rol', 
+      render: (value: string) => <Badge variant="outline">{value}</Badge>
+    },
+    { 
+      key: 'status' as keyof typeof tableData[0], 
+      title: 'Durum',
+      render: (value: string) => (
+        <Badge variant={value === 'Aktif' ? 'default' : 'secondary'}>
+          {value}
+        </Badge>
+      )
+    },
+    { key: 'lastLogin' as keyof typeof tableData[0], title: 'Son Giriş' }
+  ];
   const quickActions = [
     { title: t('dashboard.addNewUser'), icon: Users, color: "bg-blue-500" },
     { title: t('dashboard.createReport'), icon: BarChart3, color: "bg-green-500" },
@@ -134,67 +192,41 @@ export default function Dashboard() {
         </div>
 
         {/* Stats Cards */}
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {stats.map((stat, index) => (
-            <Card key={index}>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">
-                  {stat.title}
-                </CardTitle>
-                <stat.icon className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">{stat.value}</div>
-                <div className="flex items-center text-xs text-muted-foreground">
-                  {stat.changeType === "positive" ? (
-                    <ArrowUpRight className="h-3 w-3 text-green-500 mr-1" />
-                  ) : (
-                    <ArrowDownRight className="h-3 w-3 text-red-500 mr-1" />
-                  )}
-                  {stat.change}
-                  <span className="ml-1">{stat.description}</span>
-                </div>
-              </CardContent>
-            </Card>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {statsData.map((stat, index) => (
+            <StatsCard
+              key={index}
+              title={stat.title}
+              value={stat.value}
+              change={stat.change}
+              changeType={stat.changeType}
+              icon={stat.icon}
+              description={stat.description}
+              prefix={stat.prefix}
+              suffix={stat.suffix}
+              gradient={true}
+            />
           ))}
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-7">
+        <div className="grid gap-6 lg:grid-cols-3">
           {/* Recent Activities */}
-          <Card className="col-span-4">
-            <CardHeader>
-              <CardTitle>{t('dashboard.recentActivities')}</CardTitle>
-              <CardDescription>
-                {t('dashboard.systemRecentOperations')}
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                {recentActivities.map((activity) => (
-                  <div key={activity.id} className="flex items-center gap-3">
-                    <Avatar className="h-8 w-8">
-                      <AvatarFallback>{activity.avatar}</AvatarFallback>
-                    </Avatar>
-                    <div className="flex-1 space-y-1">
-                      <p className="text-sm font-medium leading-none">
-                        {activity.user}
-                      </p>
-                      <p className="text-sm text-muted-foreground">
-                        {activity.action} <span className="font-medium">{activity.target}</span>
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      {getActivityIcon(activity.type)}
-                      <span className="text-xs text-muted-foreground">{activity.time}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
+          <ActivityFeed 
+            activities={activities}
+            title={t('dashboard.recentActivities')}
+          />
+
+          {/* Metric Chart */}
+          <MetricChart
+            title="Aylık Ziyaretçiler"
+            data={chartData}
+            total={34400}
+            change={15.3}
+            changeType="positive"
+          />
 
           {/* Quick Actions */}
-          <Card className="col-span-3">
+          <Card>
             <CardHeader>
               <CardTitle>{t('dashboard.quickActions')}</CardTitle>
               <CardDescription>
@@ -217,7 +249,7 @@ export default function Dashboard() {
         </div>
 
         {/* Additional Content */}
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-6 lg:grid-cols-2">
           <Card>
             <CardHeader>
               <CardTitle>{t('dashboard.projectStatus')}</CardTitle>
@@ -291,6 +323,17 @@ export default function Dashboard() {
             </CardContent>
           </Card>
         </div>
+
+        {/* Data Table */}
+        <DataTable
+          data={tableData}
+          columns={tableColumns}
+          title="Son Kullanıcılar"
+          searchable={true}
+          filterable={true}
+          exportable={true}
+          pageSize={5}
+        />
       </div>
     </>
   );
