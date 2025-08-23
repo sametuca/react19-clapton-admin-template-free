@@ -68,6 +68,42 @@ export default function ComponentShowcaseIndex() {
       badge: "Smooth",
       badgeVariant: "outline" as const,
       features: ["Farklı boyutlar", "Özel mesajlar", "Tema uyumlu"]
+    },
+    {
+      title: "İnteraktif Formlar",
+      description: "Gelişmiş form bileşenleri ve multi-step wizard örnekleri",
+      icon: Star,
+      path: "/showcase/forms",
+      badge: "Premium",
+      badgeVariant: "default" as const,
+      features: ["Multi-step wizard", "Gerçek zamanlı validasyon", "Gelişmiş input'lar"]
+    },
+    {
+      title: "Dashboard Widgets",
+      description: "Modern ve interaktif dashboard widget bileşenleri",
+      icon: BarChart3,
+      path: "/showcase/widgets",
+      badge: "Pro",
+      badgeVariant: "secondary" as const,
+      features: ["KPI kartları", "Real-time data", "Interactive charts"]
+    },
+    {
+      title: "Modern Gallery",
+      description: "Çok medyalı galeri bileşenleri ve interaktif görüntüleme",
+      icon: Activity,
+      path: "/showcase/gallery",
+      badge: "Media",
+      badgeVariant: "outline" as const,
+      features: ["Grid/List view", "Filter & search", "Media preview"]
+    },
+    {
+      title: "Animation Showcase",
+      description: "Etkileyici CSS animasyonları ve interaktif efektler",
+      icon: Palette,
+      path: "/showcase/animations", 
+      badge: "Animated",
+      badgeVariant: "secondary" as const,
+      features: ["Hover effects", "Loading animations", "Interactive elements"]
     }
   ];
 
@@ -92,7 +128,7 @@ export default function ComponentShowcaseIndex() {
           <div className="flex items-center justify-between">
             <h2 className="text-2xl font-semibold">Component Kategorileri</h2>
             <Badge variant="outline" className="hidden sm:flex">
-              6 Kategori Mevcut
+              10 Kategori Mevcut
             </Badge>
           </div>
           

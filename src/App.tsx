@@ -21,6 +21,10 @@ import ActivityFeeds from "./pages/showcase/ActivityFeeds";
 import Charts from "./pages/showcase/Charts";
 import FeatureCards from "./pages/showcase/FeatureCards";
 import LoadingStates from "./pages/showcase/LoadingStates";
+import InteractiveForms from "./pages/showcase/InteractiveForms";
+import DashboardWidgets from "./pages/showcase/DashboardWidgets";
+import ModernGallery from "./pages/showcase/ModernGallery";
+import AnimationShowcase from "./pages/showcase/AnimationShowcase";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
@@ -62,6 +66,10 @@ const App = () => (
                   <Route path="/showcase/charts" element={<Charts />} />
                   <Route path="/showcase/features" element={<FeatureCards />} />
                   <Route path="/showcase/loading" element={<LoadingStates />} />
+                  <Route path="/showcase/forms" element={<InteractiveForms />} />
+                  <Route path="/showcase/widgets" element={<DashboardWidgets />} />
+                  <Route path="/showcase/gallery" element={<ModernGallery />} />
+                  <Route path="/showcase/animations" element={<AnimationShowcase />} />
                   <Route path="/old-showcase" element={<ComponentShowcase />} />
                 </Route>
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
