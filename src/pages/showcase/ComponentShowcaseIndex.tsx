@@ -9,144 +9,139 @@ import {
   Star, 
   Loader2, 
   Palette,
-  ArrowRight 
+  ArrowRight,
+  Sparkles
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function ComponentShowcaseIndex() {
+  const { t } = useLanguage();
+  
   const showcasePages = [
     {
-      title: "İstatistik Kartları",
-      description: "Animasyonlu sayaçlar ve trend göstergeleri ile etkileyici istatistik kartları",
+      title: t('showcase.stats.title'),
+      description: t('showcase.stats.description'),
       icon: BarChart3,
       path: "/showcase/stats",
-      badge: "Animasyonlu",
+      badge: t('showcase.stats.badge'),
       badgeVariant: "secondary" as const,
-      features: ["Counter animasyonları", "Trend göstergeleri", "Gradient desteği"]
+      features: [t('showcase.stats.features.counter'), t('showcase.stats.features.trend'), t('showcase.stats.features.gradient')]
     },
     {
-      title: "Veri Tabloları", 
-      description: "Güçlü arama, filtreleme ve sıralama özellikleri ile gelişmiş veri tabloları",
+      title: t('showcase.tables.title'), 
+      description: t('showcase.tables.description'),
       icon: Table2,
       path: "/showcase/tables",
-      badge: "Tam Özellikli",
+      badge: t('showcase.tables.badge'),
       badgeVariant: "default" as const,
-      features: ["Arama & Filtreleme", "Sıralama", "Export özelliği"]
+      features: [t('showcase.tables.features.search'), t('showcase.tables.features.sort'), t('showcase.tables.features.export')]
     },
     {
-      title: "Aktivite Akışları",
-      description: "Gerçek zamanlı kullanıcı aktiviteleri ve sistem olaylarını takip edin",
+      title: t('showcase.activity.title'),
+      description: t('showcase.activity.description'),
       icon: Activity,
       path: "/showcase/activity",
-      badge: "Canlı",
+      badge: t('showcase.activity.badge'),
       badgeVariant: "secondary" as const,
-      features: ["Gerçek zamanlı", "Tip kategorileri", "Avatar desteği"]
+      features: [t('showcase.activity.features.realtime'), t('showcase.activity.features.categories'), t('showcase.activity.features.avatar')]
     },
     {
-      title: "Metric Grafikleri",
-      description: "Verilerinizi görselleştirmek için güçlü ve esnek grafik bileşenleri",
+      title: t('showcase.charts.title'),
+      description: t('showcase.charts.description'),
       icon: BarChart3,
       path: "/showcase/charts",
-      badge: "İnteraktif",
+      badge: t('showcase.charts.badge'),
       badgeVariant: "outline" as const,
-      features: ["Hover etkileşimi", "Animasyonlu yükleme", "Trend analizi"]
+      features: [t('showcase.charts.features.hover'), t('showcase.charts.features.loading'), t('showcase.charts.features.trend')]
     },
     {
-      title: "Özellik Kartları",
-      description: "Ürün özelliklerinizi etkili bir şekilde sergileyen modern kart tasarımları",
+      title: t('showcase.features.title'),
+      description: t('showcase.features.description'),
       icon: Star,
       path: "/showcase/features",
-      badge: "Showcase",
+      badge: t('showcase.features.badge'),
       badgeVariant: "secondary" as const,
-      features: ["Hover animasyonları", "İkon entegrasyonu", "CTA butonları"]
+      features: [t('showcase.features.features.hover'), t('showcase.features.features.icons'), t('showcase.features.features.cta')]
     },
     {
-      title: "Yükleme Durumları",
-      description: "Kullanıcı deneyimini iyileştiren smooth loading animasyonları",
+      title: t('showcase.loading.title'),
+      description: t('showcase.loading.description'),
       icon: Loader2,
       path: "/showcase/loading",
-      badge: "Smooth",
+      badge: t('showcase.loading.badge'),
       badgeVariant: "outline" as const,
-      features: ["Farklı boyutlar", "Özel mesajlar", "Tema uyumlu"]
+      features: [t('showcase.loading.features.sizes'), t('showcase.loading.features.messages'), t('showcase.loading.features.theme')]
     },
     {
-      title: "İnteraktif Formlar",
-      description: "Gelişmiş form bileşenleri ve multi-step wizard örnekleri",
+      title: t('showcase.forms.title'),
+      description: t('showcase.forms.description'),
       icon: Star,
       path: "/showcase/forms",
-      badge: "Premium",
+      badge: t('showcase.forms.badge'),
       badgeVariant: "default" as const,
-      features: ["Multi-step wizard", "Gerçek zamanlı validasyon", "Gelişmiş input'lar"]
+      features: [t('showcase.forms.features.wizard'), t('showcase.forms.features.validation'), t('showcase.forms.features.inputs')]
     },
     {
-      title: "Dashboard Widgets",
-      description: "Modern ve interaktif dashboard widget bileşenleri",
+      title: t('showcase.widgets.title'),
+      description: t('showcase.widgets.description'),
       icon: BarChart3,
       path: "/showcase/widgets",
-      badge: "Pro",
+      badge: t('showcase.widgets.badge'),
       badgeVariant: "secondary" as const,
-      features: ["KPI kartları", "Real-time data", "Interactive charts"]
+      features: [t('showcase.widgets.features.kpi'), t('showcase.widgets.features.realtime'), t('showcase.widgets.features.charts')]
     },
     {
-      title: "Modern Gallery",
-      description: "Çok medyalı galeri bileşenleri ve interaktif görüntüleme",
+      title: t('showcase.gallery.title'),
+      description: t('showcase.gallery.description'),
       icon: Activity,
       path: "/showcase/gallery",
-      badge: "Media",
+      badge: t('showcase.gallery.badge'),
       badgeVariant: "outline" as const,
-      features: ["Grid/List view", "Filter & search", "Media preview"]
+      features: [t('showcase.gallery.features.view'), t('showcase.gallery.features.filter'), t('showcase.gallery.features.preview')]
     },
     {
-      title: "Animation Showcase",
-      description: "Etkileyici CSS animasyonları ve interaktif efektler",
+      title: t('showcase.animations.title'),
+      description: t('showcase.animations.description'),
       icon: Palette,
       path: "/showcase/animations", 
-      badge: "Animated",
+      badge: t('showcase.animations.badge'),
       badgeVariant: "secondary" as const,
-      features: ["Hover effects", "Loading animations", "Interactive elements"]
+      features: [t('showcase.animations.features.hover'), t('showcase.animations.features.loading'), t('showcase.animations.features.interactive')]
     },
     {
-      title: "Benzersiz Komponentler",
-      description: "Piyasada benzeri bulunmayan şık ve modern UI komponentleri",
+      title: t('showcase.unique.title'),
+      description: t('showcase.unique.description'),
       icon: Sparkles,
       path: "/showcase/unique",
-      badge: "Exclusive",
+      badge: t('showcase.unique.badge'),
       badgeVariant: "default" as const,
-      features: ["Glassmorphism", "Holographic effects", "Quantum loaders"]
-    },
-    {
-      title: "Benzersiz Komponentler",
-      description: "Piyasada benzeri bulunmayan şık ve modern UI komponentleri",
-      icon: Palette,
-      path: "/showcase/unique",
-      badge: "Exclusive",
-      badgeVariant: "default" as const,
-      features: ["Glassmorphism", "Holographic effects", "Quantum loaders"]
+      features: [t('showcase.unique.features.glassmorphism'), t('showcase.unique.features.holographic'), t('showcase.unique.features.quantum')]
     }
   ];
 
   return (
     <>
       <Helmet>
-        <title>Component Showcase - CodeMaze Admin</title>
-        <meta name="description" content="Modern ve etkileyici UI componentlerinin sergilendiği ana sayfa" />
+        <title>{t('showcase.pageTitle')}</title>
+        <meta name="description" content={t('showcase.metaDescription')} />
       </Helmet>
 
       <div className="space-y-8">
         <div className="text-center space-y-4">
           <h1 className="text-4xl font-bold tracking-tight bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-            Component Showcase
+            {t('showcase.mainTitle')}
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Modern, etkileyici ve kullanıcı dostu UI componentleri ile admin panellerinizi güçlendirin
+            {t('showcase.mainDescription')}
           </p>
         </div>
 
         <section className="space-y-6">
           <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-semibold">Component Kategorileri</h2>
+            <h2 className="text-2xl font-semibold">{t('showcase.categories.title')}</h2>
             <Badge variant="outline" className="hidden sm:flex">
-              10 Kategori Mevcut
+              {t('showcase.categories.count').replace('{count}', showcasePages.length.toString())}
             </Badge>
           </div>
           
@@ -171,7 +166,7 @@ export default function ComponentShowcaseIndex() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
-                    <h4 className="text-sm font-medium">Öne Çıkan Özellikler:</h4>
+                    <h4 className="text-sm font-medium">{t('showcase.keyFeatures.title')}:</h4>
                     <ul className="space-y-1">
                       {page.features.map((feature, idx) => (
                         <li key={idx} className="text-xs text-muted-foreground flex items-center gap-2">
@@ -184,7 +179,7 @@ export default function ComponentShowcaseIndex() {
                   
                   <Button asChild className="w-full group/btn">
                     <Link to={page.path} className="flex items-center justify-center gap-2">
-                      Görüntüle
+                      {t('showcase.viewButton')}
                       <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
                     </Link>
                   </Button>
@@ -197,18 +192,18 @@ export default function ComponentShowcaseIndex() {
         {/* Call to Action */}
         <section className="text-center space-y-6 py-12 bg-muted/30 rounded-2xl">
           <div className="space-y-4">
-            <h2 className="text-3xl font-bold">Etkileyici Admin Panelleri Oluşturun</h2>
+            <h2 className="text-3xl font-bold">{t('showcase.cta.title')}</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Modern tasarım, yüksek performans ve kullanıcı dostu arayüz ile admin panellerinizi bir üst seviyeye taşıyın
+              {t('showcase.cta.description')}
             </p>
           </div>
           <div className="flex items-center justify-center gap-4">
             <Button size="lg" className="bg-gradient-to-r from-primary to-primary/80">
               <Palette className="h-5 w-5 mr-2" />
-              Hemen Başlayın
+              {t('showcase.cta.primaryButton')}
             </Button>
             <Button variant="outline" size="lg">
-              Daha Fazla Örnek
+              {t('showcase.cta.secondaryButton')}
             </Button>
           </div>
         </section>

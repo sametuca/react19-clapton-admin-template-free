@@ -26,6 +26,7 @@ import {
   FileText,
   Settings
 } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const activities = [
   {
@@ -79,19 +80,20 @@ const skills = [
 ];
 
 export default function Profile() {
+  const { t } = useLanguage();
   const canonical = typeof window !== "undefined" ? window.location.href : "";
 
   return (
     <div>
       <Helmet>
-        <title>Profil | React19 Admin</title>
-        <meta name="description" content="Kullanıcı profil bilgileri ve aktivite geçmişi." />
+        <title>{t('profile.pageTitle')} | React19 Admin</title>
+        <meta name="description" content={t('profile.metaDescription')} />
         {canonical && <link rel="canonical" href={canonical} />}
       </Helmet>
 
       <header className="mb-6">
-        <h1 className="text-3xl font-bold tracking-tight">Profil</h1>
-        <p className="text-muted-foreground mt-1">Kişisel bilgiler ve hesap ayarları</p>
+        <h1 className="text-3xl font-bold tracking-tight">{t('profile.title')}</h1>
+        <p className="text-muted-foreground mt-1">{t('profile.subtitle')}</p>
       </header>
 
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">

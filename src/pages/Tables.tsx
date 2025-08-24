@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const rows = Array.from({ length: 24 }).map((_, i) => ({
   id: i + 1,
@@ -14,6 +15,7 @@ const rows = Array.from({ length: 24 }).map((_, i) => ({
 }));
 
 export default function TablesPage() {
+  const { t } = useLanguage();
   const [q, setQ] = useState("");
   const canonical = typeof window !== "undefined" ? window.location.href : "";
 
@@ -27,31 +29,31 @@ export default function TablesPage() {
   return (
     <div>
       <Helmet>
-        <title>Tablolar | React19 Admin</title>
-        <meta name="description" content="Filtreleme ve arama destekli tablo örneği." />
+        <title>{t('tables.pageTitle')} | React19 Admin</title>
+        <meta name="description" content={t('tables.metaDescription')} />
         {canonical && <link rel="canonical" href={canonical} />}
       </Helmet>
 
       <header className="mb-6">
-        <h1 className="text-3xl font-bold tracking-tight">Tablolar</h1>
-        <p className="text-muted-foreground mt-1">Arama ve filtreleme destekli tablo örneği</p>
+        <h1 className="text-3xl font-bold tracking-tight">{t('tables.title')}</h1>
+        <p className="text-muted-foreground mt-1">{t('tables.subtitle')}</p>
       </header>
 
       <Card>
         <CardHeader className="gap-2">
-          <CardTitle>Üyeler</CardTitle>
-          <Input placeholder="Ara..." value={q} onChange={(e) => setQ(e.target.value)} />
+          <CardTitle>{t('tables.members')}</CardTitle>
+          <Input placeholder={t('tables.searchPlaceholder')} value={q} onChange={(e) => setQ(e.target.value)} />
         </CardHeader>
         <CardContent>
           <Table>
-            <TableCaption>Toplam {filtered.length} kayıt</TableCaption>
+            <TableCaption>{t('tables.totalRecords').replace('{count}', filtered.length.toString())}</TableCaption>
             <TableHeader>
               <TableRow>
-                <TableHead>ID</TableHead>
-                <TableHead>Ad</TableHead>
-                <TableHead>E-posta</TableHead>
-                <TableHead>Rol</TableHead>
-                <TableHead>Durum</TableHead>
+                <TableHead>{t('tables.columns.id')}</TableHead>
+                <TableHead>{t('tables.columns.name')}</TableHead>
+                <TableHead>{t('tables.columns.email')}</TableHead>
+                <TableHead>{t('tables.columns.role')}</TableHead>
+                <TableHead>{t('tables.columns.status')}</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>

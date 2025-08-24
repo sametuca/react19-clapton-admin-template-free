@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -7,6 +8,14 @@ import { StatsCard } from "@/components/ui/stats-card";
 import { ActivityFeed } from "@/components/ui/activity-feed";
 import { MetricChart } from "@/components/ui/metric-chart";
 import { DataTable } from "@/components/ui/data-table";
+import { GlassmorphismCard } from "@/components/ui/glassmorphism-card";
+import { HolographicCard } from "@/components/ui/holographic-card";
+import { QuantumLoader } from "@/components/ui/quantum-loader";
+import { MorphingButton } from "@/components/ui/morphing-button";
+import { NeonBorder } from "@/components/ui/neon-border";
+import { LiquidProgress } from "@/components/ui/liquid-progress";
+import { MagneticButton } from "@/components/ui/magnetic-button";
+import { WaveButton } from "@/components/ui/wave-button";
 import { 
   BarChart3, 
   Users, 
@@ -22,7 +31,8 @@ import {
   Info,
   FileText,
   Settings as SettingsIcon,
-  TrendingUp
+  TrendingUp,
+  Sparkles
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -190,6 +200,91 @@ export default function Dashboard() {
             {t('dashboard.projectOverview')}
           </p>
         </div>
+
+        {/* Benzersiz Komponentler Showcase */}
+        <section className="space-y-6">
+          <div className="text-center space-y-4">
+            <div className="flex items-center justify-center gap-2">
+              <Sparkles className="h-6 w-6 text-primary" />
+              <h2 className="text-3xl font-bold bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent">
+                Benzersiz Komponentler
+              </h2>
+              <Sparkles className="h-6 w-6 text-primary" />
+            </div>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Piyasada benzeri bulunmayan, şık ve modern UI komponentleri ile fark yaratın
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            <GlassmorphismCard
+              title="Glassmorphism Kart"
+              description="Şeffaf cam efekti ile modern görünüm"
+              icon={Sparkles}
+              variant="default"
+            >
+              <div className="text-center space-y-2">
+                <div className="w-16 h-16 mx-auto bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+                  <Sparkles className="h-8 w-8 text-white" />
+                </div>
+                <p className="text-sm opacity-80">
+                  Glassmorphism tasarım trendi ile etkileyici kartlar
+                </p>
+              </div>
+            </GlassmorphismCard>
+
+            <HolographicCard
+              title="Holographic Kart"
+              description="3D holografik efekt ile gelecekteki tasarım"
+              icon={Sparkles}
+            >
+              <div className="text-center space-y-2">
+                <div className="w-16 h-16 mx-auto bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full flex items-center justify-center">
+                  <Sparkles className="h-8 w-8 text-white" />
+                </div>
+                <p className="text-sm">
+                  Holografik efektler ile etkileyici görünüm
+                </p>
+              </div>
+            </HolographicCard>
+
+            <Card className="relative overflow-hidden group">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Sparkles className="h-5 w-5 text-primary" />
+                  Quantum Loader
+                </CardTitle>
+                <CardDescription>
+                  Kuantum fiziği ilhamlı loading animasyonu
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="flex justify-center py-6">
+                <QuantumLoader size="lg" />
+              </CardContent>
+            </Card>
+
+            <NeonBorder className="p-6">
+              <div className="text-center space-y-4">
+                <div className="w-16 h-16 mx-auto bg-gradient-to-r from-pink-500 to-violet-500 rounded-full flex items-center justify-center">
+                  <Sparkles className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="text-lg font-semibold">Neon Border</h3>
+                <p className="text-sm text-muted-foreground">
+                  Parlayan neon kenarlık efekti
+                </p>
+              </div>
+            </NeonBorder>
+          </div>
+
+          <div className="text-center">
+            <Button asChild variant="outline" size="lg">
+              <Link to="/showcase/unique" className="flex items-center gap-2">
+                <Sparkles className="h-4 w-4" />
+                Tüm Komponentleri Görüntüle
+              </Link>
+            </Button>
+          </div>
+        </section>
 
         {/* Stats Cards */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">

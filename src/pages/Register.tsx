@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Eye, EyeOff, Mail, Lock, User, Phone, Building, Github, Chrome, Facebook, Twitter, CheckCircle } from "lucide-react";
+import { Eye, EyeOff, Mail, Lock, User, Phone, Building, Github, Chrome, Facebook, Twitter, CheckCircle, ArrowLeft } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Register() {
@@ -273,6 +273,21 @@ export default function Register() {
 
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 p-4">
         <div className="w-full max-w-2xl">
+          {/* Dashboard Return Button */}
+          <div className="mb-6">
+            <Button
+              variant="ghost"
+              size="sm"
+              asChild
+              className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
+            >
+              <Link to="/" className="flex items-center gap-2">
+                <ArrowLeft className="h-4 w-4" />
+                Ana Sayfaya Dön
+              </Link>
+            </Button>
+          </div>
+
           {/* Logo and Title */}
           <div className="text-center mb-8">
             <div className="mx-auto w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
