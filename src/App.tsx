@@ -70,6 +70,7 @@ const App = () => (
                   <Route path="/showcase/widgets" element={<DashboardWidgets />} />
                   <Route path="/showcase/gallery" element={<ModernGallery />} />
                   <Route path="/showcase/animations" element={<AnimationShowcase />} />
+                  <Route path="/showcase/unique" element={<UniqueComponents />} />
                   <Route path="/old-showcase" element={<ComponentShowcase />} />
                 </Route>
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
