@@ -25,6 +25,7 @@ import InteractiveForms from "./pages/showcase/InteractiveForms";
 import DashboardWidgets from "./pages/showcase/DashboardWidgets";
 import ModernGallery from "./pages/showcase/ModernGallery";
 import AnimationShowcase from "./pages/showcase/AnimationShowcase";
+import UniqueComponents from "./pages/showcase/UniqueComponents";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
@@ -70,6 +71,7 @@ const App = () => (
                   <Route path="/showcase/widgets" element={<DashboardWidgets />} />
                   <Route path="/showcase/gallery" element={<ModernGallery />} />
                   <Route path="/showcase/animations" element={<AnimationShowcase />} />
+                  <Route path="/showcase/unique" element={<UniqueComponents />} />
                   <Route path="/showcase/unique" element={<UniqueComponents />} />
                   <Route path="/old-showcase" element={<ComponentShowcase />} />
                 </Route>

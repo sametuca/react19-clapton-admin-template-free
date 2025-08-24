@@ -104,6 +104,24 @@ export default function ComponentShowcaseIndex() {
       badge: "Animated",
       badgeVariant: "secondary" as const,
       features: ["Hover effects", "Loading animations", "Interactive elements"]
+    },
+    {
+      title: "Benzersiz Komponentler",
+      description: "Piyasada benzeri bulunmayan şık ve modern UI komponentleri",
+      icon: Sparkles,
+      path: "/showcase/unique",
+      badge: "Exclusive",
+      badgeVariant: "default" as const,
+      features: ["Glassmorphism", "Holographic effects", "Quantum loaders"]
+    },
+    {
+      title: "Benzersiz Komponentler",
+      description: "Piyasada benzeri bulunmayan şık ve modern UI komponentleri",
+      icon: Palette,
+      path: "/showcase/unique",
+      badge: "Exclusive",
+      badgeVariant: "default" as const,
+      features: ["Glassmorphism", "Holographic effects", "Quantum loaders"]
     }
   ];
 
