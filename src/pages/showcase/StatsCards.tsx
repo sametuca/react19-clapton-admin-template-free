@@ -83,7 +83,7 @@ export default function StatsCards() {
         <section className="space-y-4">
           <div className="flex items-center gap-2">
             <h2 className="text-2xl font-semibold">Gradient Kartlar</h2>
-            <Badge variant="default">Premium</Badge>
+            <Badge variant="secondary">Core</Badge>
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {statsData.map((stat, index) => (
@@ -115,7 +115,7 @@ export default function StatsCards() {
             </Card>
             <Card className="p-6">
               <h3 className="font-semibold mb-2">Gradient Desteği</h3>
-              <p className="text-muted-foreground">Premium görünüm için gradient arka planlar</p>
+              <p className="text-muted-foreground">Gradient arka planlar ile modern görünüm</p>
             </Card>
           </div>
         </section>

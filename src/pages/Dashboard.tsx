@@ -1,190 +1,191 @@
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { StatsCard } from "@/components/ui/stats-card";
-import { ActivityFeed } from "@/components/ui/activity-feed";
-import { MetricChart } from "@/components/ui/metric-chart";
-import { DataTable } from "@/components/ui/data-table";
-import { GlassmorphismCard } from "@/components/ui/glassmorphism-card";
-import { HolographicCard } from "@/components/ui/holographic-card";
-import { QuantumLoader } from "@/components/ui/quantum-loader";
-import { MorphingButton } from "@/components/ui/morphing-button";
-import { NeonBorder } from "@/components/ui/neon-border";
-import { LiquidProgress } from "@/components/ui/liquid-progress";
-import { MagneticButton } from "@/components/ui/magnetic-button";
-import { WaveButton } from "@/components/ui/wave-button";
+import { Badge } from "@/components/ui/badge";
+import { Progress } from "@/components/ui/progress";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { 
-  BarChart3, 
   Users, 
+  TrendingUp, 
+  ShoppingCart, 
   DollarSign, 
-  Activity,
+  Activity, 
+  BarChart3, 
+  Calendar,
   ArrowUpRight,
   ArrowDownRight,
-  Calendar,
+  Star,
+  Clock,
   Target,
   CheckCircle,
   AlertCircle,
-  XCircle,
-  Info,
-  FileText,
-  Settings as SettingsIcon,
-  TrendingUp,
-  Sparkles
+  TrendingDown,
+  Eye,
+  MousePointer,
+  Zap,
+  Shield,
+  Globe,
+  Smartphone,
+  Palette,
+  Code,
+  Rocket,
+  Layers,
+  Sparkles,
+  FileText
 } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Dashboard() {
   const { t } = useLanguage();
 
-  const statsData = [
+  const stats = [
     {
       title: t('dashboard.totalUsers'),
-      value: 12345,
-      change: 12.5,
-      changeType: "positive" as const,
+      value: "12,345",
+      change: "+12.5%",
+      changeType: "positive",
       icon: Users,
-      description: t('dashboard.last30Days'),
-      suffix: ""
+      color: "from-blue-500 to-cyan-500"
     },
     {
       title: t('dashboard.totalRevenue'),
-      value: 45678,
-      change: 8.2,
-      changeType: "positive" as const,
+      value: "$45,678",
+      change: "+8.2%",
+      changeType: "positive",
       icon: DollarSign,
-      description: t('dashboard.thisMonth'),
-      prefix: "₺"
+      color: "from-green-500 to-emerald-500"
     },
     {
       title: t('dashboard.activeProjects'),
-      value: 23,
-      change: 5.1,
-      changeType: "positive" as const,
-      icon: Activity,
-      description: t('dashboard.ongoing')
+      value: "23",
+      change: "+5.1%",
+      changeType: "positive",
+      icon: Target,
+      color: "from-purple-500 to-pink-500"
     },
     {
       title: t('dashboard.pendingTasks'),
-      value: 156,
-      change: -2.3,
-      changeType: "negative" as const,
-      icon: Target,
-      description: t('dashboard.pending')
+      value: "156",
+      change: "-2.3%",
+      changeType: "negative",
+      icon: Clock,
+      color: "from-orange-500 to-red-500"
     }
   ];
 
-  const activities = [
+  const recentActivities = [
     {
-      id: "1",
-      user: {
-        name: "Samet UCA",
-        initials: "SU"
-      },
+      user: "Ahmet Yılmaz",
       action: t('dashboard.newUserRegistered'),
-      target: "Mehmet Demir",
       time: t('dashboard.2minutesAgo'),
-      type: "success" as const,
-      icon: Users
+      icon: Users,
+      color: "text-blue-400"
     },
     {
-      id: "2",
-      user: {
-        name: "Fatma Kaya",
-        initials: "FK"
-      },
+      user: "Fatma Demir",
       action: t('dashboard.projectUpdated'),
-      target: t('dashboard.ecommerceSite'),
       time: t('dashboard.15minutesAgo'),
-      type: "info" as const,
-      icon: FileText
+      icon: Target,
+      color: "text-green-400"
     },
     {
-      id: "3",
-      user: {
-        name: "Ali Özkan",
-        initials: "AÖ"
-      },
+      user: "Mehmet Kaya",
       action: t('dashboard.reportCreated'),
-      target: "Aylık Analiz",
       time: t('dashboard.1hourAgo'),
-      type: "warning" as const,
-      icon: BarChart3
+      icon: FileText,
+      color: "text-purple-400"
     },
     {
-      id: "4",
-      user: {
-        name: "Zeynep Arslan",
-        initials: "ZA"
-      },
+      user: "Ayşe Özkan",
       action: t('dashboard.systemErrorReported'),
-      target: "Login API",
       time: t('dashboard.3hoursAgo'),
-      type: "error" as const,
-      icon: AlertCircle
+      icon: AlertCircle,
+      color: "text-red-400"
     }
   ];
 
-  const chartData = [
-    { label: "Ocak", value: 4500, color: "bg-blue-500" },
-    { label: "Şubat", value: 5200, color: "bg-green-500" },
-    { label: "Mart", value: 4800, color: "bg-purple-500" },
-    { label: "Nisan", value: 6100, color: "bg-orange-500" },
-    { label: "Mayıs", value: 6800, color: "bg-red-500" },
-    { label: "Haziran", value: 7200, color: "bg-indigo-500" }
-  ];
-
-  const tableData = [
-    { id: 1, name: "Ahmet Yılmaz", email: "ahmet@example.com", role: "Admin", status: "Aktif", lastLogin: "2 saat önce" },
-    { id: 2, name: "Fatma Kaya", email: "fatma@example.com", role: "Editör", status: "Aktif", lastLogin: "1 gün önce" },
-    { id: 3, name: "Mehmet Demir", email: "mehmet@example.com", role: "Üye", status: "Pasif", lastLogin: "1 hafta önce" },
-    { id: 4, name: "Ayşe Özkan", email: "ayse@example.com", role: "Editör", status: "Aktif", lastLogin: "3 saat önce" },
-    { id: 5, name: "Ali Arslan", email: "ali@example.com", role: "Üye", status: "Aktif", lastLogin: "5 dakika önce" }
-  ];
-
-  const tableColumns = [
-    { key: 'id' as keyof typeof tableData[0], title: 'ID', sortable: true },
-    { key: 'name' as keyof typeof tableData[0], title: 'Ad Soyad', sortable: true },
-    { key: 'email' as keyof typeof tableData[0], title: 'E-posta', sortable: true },
-    { 
-      key: 'role' as keyof typeof tableData[0], 
-      title: 'Rol', 
-      render: (value: string) => <Badge variant="outline">{value}</Badge>
-    },
-    { 
-      key: 'status' as keyof typeof tableData[0], 
-      title: 'Durum',
-      render: (value: string) => (
-        <Badge variant={value === 'Aktif' ? 'default' : 'secondary'}>
-          {value}
-        </Badge>
-      )
-    },
-    { key: 'lastLogin' as keyof typeof tableData[0], title: 'Son Giriş' }
-  ];
   const quickActions = [
-    { title: t('dashboard.addNewUser'), icon: Users, color: "bg-blue-500" },
-    { title: t('dashboard.createReport'), icon: BarChart3, color: "bg-green-500" },
-    { title: t('dashboard.startProject'), icon: Activity, color: "bg-purple-500" },
-    { title: t('dashboard.scheduleMeeting'), icon: Calendar, color: "bg-orange-500" }
+    {
+      title: t('dashboard.addNewUser'),
+      description: "Yeni kullanıcı ekleyin",
+      icon: Users,
+      color: "from-blue-500 to-cyan-500",
+      url: "/users"
+    },
+    {
+      title: t('dashboard.createReport'),
+      description: "Rapor oluşturun",
+      icon: FileText,
+      color: "from-green-500 to-emerald-500",
+      url: "/analytics"
+    },
+    {
+      title: t('dashboard.startProject'),
+      description: "Yeni proje başlatın",
+      icon: Target,
+      color: "from-purple-500 to-pink-500",
+      url: "/projects"
+    },
+    {
+      title: t('dashboard.scheduleMeeting'),
+      description: "Toplantı planlayın",
+      icon: Calendar,
+      color: "from-orange-500 to-red-500",
+      url: "/calendar"
+    }
   ];
 
-  const getActivityIcon = (type: string) => {
-    switch (type) {
-      case 'success':
-        return <CheckCircle className="h-4 w-4 text-green-500" />;
-      case 'info':
-        return <Info className="h-4 w-4 text-blue-500" />;
-      case 'warning':
-        return <AlertCircle className="h-4 w-4 text-yellow-500" />;
-      case 'error':
-        return <XCircle className="h-4 w-4 text-red-500" />;
-      default:
-        return <Info className="h-4 w-4 text-gray-500" />;
+  const projectStatus = [
+    {
+      name: t('dashboard.ecommerceSite'),
+      progress: 75,
+      status: t('dashboard.ongoing'),
+      team: "Frontend Team",
+      color: "from-blue-500 to-cyan-500"
+    },
+    {
+      name: t('dashboard.mobileApp'),
+      progress: 45,
+      status: t('dashboard.ongoing'),
+      team: "Mobile Team",
+      color: "from-green-500 to-emerald-500"
+    },
+    {
+      name: t('dashboard.adminPanel'),
+      progress: 90,
+      status: t('dashboard.ongoing'),
+      team: "Backend Team",
+      color: "from-purple-500 to-pink-500"
     }
-  };
+  ];
+
+  const systemStatus = [
+    {
+      service: t('dashboard.webServer'),
+      status: t('dashboard.running'),
+      uptime: "99.9%",
+      color: "text-green-400"
+    },
+    {
+      service: t('dashboard.database'),
+      status: t('dashboard.running'),
+      uptime: "99.8%",
+      color: "text-green-400"
+    },
+    {
+      service: t('dashboard.apiService'),
+      status: t('dashboard.running'),
+      uptime: "99.7%",
+      color: "text-green-400"
+    },
+    {
+      service: t('dashboard.emailService'),
+      status: t('dashboard.running'),
+      uptime: "99.5%",
+      color: "text-green-400"
+    }
+  ];
 
   return (
     <>
@@ -193,242 +194,204 @@ export default function Dashboard() {
         <meta name="description" content={t('dashboard.metaDescription')} />
       </Helmet>
 
-      <div className="space-y-6">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">{t('dashboard.welcome')}</h1>
-          <p className="text-muted-foreground">
-            {t('dashboard.projectOverview')}
-          </p>
-        </div>
-
-        {/* Benzersiz Komponentler Showcase */}
-        <section className="space-y-6">
-          <div className="text-center space-y-4">
-            <div className="flex items-center justify-center gap-2">
-              <Sparkles className="h-6 w-6 text-primary" />
-              <h2 className="text-3xl font-bold bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent">
-                Benzersiz Komponentler
-              </h2>
-              <Sparkles className="h-6 w-6 text-primary" />
-            </div>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Piyasada benzeri bulunmayan, şık ve modern UI komponentleri ile fark yaratın
+      <div className="p-6 space-y-6">
+        {/* Hero Section */}
+        <div className="hero-section">
+          <div className="space-y-4">
+            <h1 className="text-4xl font-bold gradient-text-primary">
+              {t('dashboard.welcome')}, Samet! 👋
+            </h1>
+            <p className="text-xl text-white/70 max-w-3xl mx-auto">
+              {t('dashboard.projectOverview')}
             </p>
           </div>
-
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            <GlassmorphismCard
-              title="Glassmorphism Kart"
-              description="Şeffaf cam efekti ile modern görünüm"
-              icon={Sparkles}
-              variant="default"
-            >
-              <div className="text-center space-y-2">
-                <div className="w-16 h-16 mx-auto bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
-                  <Sparkles className="h-8 w-8 text-white" />
-                </div>
-                <p className="text-sm opacity-80">
-                  Glassmorphism tasarım trendi ile etkileyici kartlar
-                </p>
-              </div>
-            </GlassmorphismCard>
-
-            <HolographicCard
-              title="Holographic Kart"
-              description="3D holografik efekt ile gelecekteki tasarım"
-              icon={Sparkles}
-            >
-              <div className="text-center space-y-2">
-                <div className="w-16 h-16 mx-auto bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full flex items-center justify-center">
-                  <Sparkles className="h-8 w-8 text-white" />
-                </div>
-                <p className="text-sm">
-                  Holografik efektler ile etkileyici görünüm
-                </p>
-              </div>
-            </HolographicCard>
-
-            <Card className="relative overflow-hidden group">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Sparkles className="h-5 w-5 text-primary" />
-                  Quantum Loader
-                </CardTitle>
-                <CardDescription>
-                  Kuantum fiziği ilhamlı loading animasyonu
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="flex justify-center py-6">
-                <QuantumLoader size="lg" />
-              </CardContent>
-            </Card>
-
-            <NeonBorder className="p-6">
-              <div className="text-center space-y-4">
-                <div className="w-16 h-16 mx-auto bg-gradient-to-r from-pink-500 to-violet-500 rounded-full flex items-center justify-center">
-                  <Sparkles className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="text-lg font-semibold">Neon Border</h3>
-                <p className="text-sm text-muted-foreground">
-                  Parlayan neon kenarlık efekti
-                </p>
-              </div>
-            </NeonBorder>
-          </div>
-
-          <div className="text-center">
-            <Button asChild variant="outline" size="lg">
-              <Link to="/showcase/unique" className="flex items-center gap-2">
-                <Sparkles className="h-4 w-4" />
-                Tüm Komponentleri Görüntüle
-              </Link>
-            </Button>
-          </div>
-        </section>
+        </div>
 
         {/* Stats Cards */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {statsData.map((stat, index) => (
-            <StatsCard
-              key={index}
-              title={stat.title}
-              value={stat.value}
-              change={stat.change}
-              changeType={stat.changeType}
-              icon={stat.icon}
-              description={stat.description}
-              prefix={stat.prefix}
-              suffix={stat.suffix}
-              gradient={true}
-            />
+          {stats.map((stat, index) => (
+            <Card key={index} className="stats-card group">
+              <CardContent className="p-6">
+                <div className="flex items-center justify-between">
+                  <div className="space-y-2">
+                    <p className="text-sm font-medium text-white/60">
+                      {stat.title}
+                    </p>
+                    <p className="text-2xl font-bold text-white">
+                      {stat.value}
+                    </p>
+                  </div>
+                  <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${stat.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-200`}>
+                    <stat.icon className="w-6 h-6 text-white" />
+                  </div>
+                </div>
+                <div className="flex items-center gap-2 mt-4">
+                  {stat.changeType === "positive" ? (
+                    <ArrowUpRight className="w-4 h-4 text-green-400" />
+                  ) : (
+                    <ArrowDownRight className="w-4 h-4 text-red-400" />
+                  )}
+                  <span className={`text-sm font-medium ${
+                    stat.changeType === "positive" ? "text-green-400" : "text-red-400"
+                  }`}>
+                    {stat.change}
+                  </span>
+                  <span className="text-sm text-white/60">
+                    {t('dashboard.last30Days')}
+                  </span>
+                </div>
+              </CardContent>
+            </Card>
           ))}
         </div>
 
+        {/* Main Content Grid */}
         <div className="grid gap-6 lg:grid-cols-3">
-          {/* Recent Activities */}
-          <ActivityFeed 
-            activities={activities}
-            title={t('dashboard.recentActivities')}
-          />
-
-          {/* Metric Chart */}
-          <MetricChart
-            title="Aylık Ziyaretçiler"
-            data={chartData}
-            total={34400}
-            change={15.3}
-            changeType="positive"
-          />
-
           {/* Quick Actions */}
-          <Card>
-            <CardHeader>
-              <CardTitle>{t('dashboard.quickActions')}</CardTitle>
-              <CardDescription>
-                {t('dashboard.frequentlyUsedOperations')}
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="grid gap-3">
-                {quickActions.map((action, index) => (
-                  <Button key={index} variant="outline" className="justify-start h-auto p-3">
-                    <div className={`${action.color} p-2 rounded mr-3`}>
-                      <action.icon className="h-4 w-4 text-white" />
+          <div className="lg:col-span-2">
+            <Card className="glassmorphism-card">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-white">
+                  <Zap className="w-5 h-5 text-blue-400" />
+                  {t('dashboard.quickActions')}
+                </CardTitle>
+                <CardDescription className="text-white/60">
+                  {t('dashboard.frequentlyUsedOperations')}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="grid gap-4 md:grid-cols-2">
+                  {quickActions.map((action, index) => (
+                    <Link key={index} to={action.url}>
+                      <div className="group p-4 rounded-lg border border-white/10 hover:border-white/20 transition-all duration-200 hover:bg-white/5">
+                        <div className="flex items-center gap-3">
+                          <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${action.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-200`}>
+                            <action.icon className="w-5 h-5 text-white" />
+                          </div>
+                          <div className="flex-1">
+                            <h3 className="font-medium text-white group-hover:text-blue-300 transition-colors">
+                              {action.title}
+                            </h3>
+                            <p className="text-sm text-white/60">
+                              {action.description}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Recent Activities */}
+          <div>
+            <Card className="glassmorphism-card">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-white">
+                  <Activity className="w-5 h-5 text-green-400" />
+                  {t('dashboard.recentActivities')}
+                </CardTitle>
+                <CardDescription className="text-white/60">
+                  {t('dashboard.systemRecentOperations')}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {recentActivities.map((activity, index) => (
+                    <div key={index} className="activity-item">
+                      <div className="flex items-start gap-3">
+                        <div className={`w-8 h-8 rounded-full bg-white/10 flex items-center justify-center ${activity.color}`}>
+                          <activity.icon className="w-4 h-4" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm font-medium text-white">
+                            {activity.user}
+                          </p>
+                          <p className="text-sm text-white/60">
+                            {activity.action}
+                          </p>
+                          <p className="text-xs text-white/40">
+                            {activity.time}
+                          </p>
+                        </div>
+                      </div>
                     </div>
-                    <span className="text-sm">{action.title}</span>
-                  </Button>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         </div>
 
-        {/* Additional Content */}
-        <div className="grid gap-6 lg:grid-cols-2">
-          <Card>
-            <CardHeader>
-              <CardTitle>{t('dashboard.projectStatus')}</CardTitle>
-              <CardDescription>
-                {t('dashboard.activeProjectsGeneralStatus')}
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium">{t('dashboard.ecommerceSite')}</span>
-                  <Badge variant="default">%75</Badge>
+        {/* Project Status */}
+        <Card className="glassmorphism-card">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-white">
+              <Target className="w-5 h-5 text-purple-400" />
+              {t('dashboard.projectStatus')}
+            </CardTitle>
+            <CardDescription className="text-white/60">
+              {t('dashboard.activeProjectsGeneralStatus')}
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-6">
+              {projectStatus.map((project, index) => (
+                <div key={index} className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h3 className="font-medium text-white">{project.name}</h3>
+                      <p className="text-sm text-white/60">{project.team}</p>
+                    </div>
+                    <Badge variant="secondary" className="badge-glass">
+                      {project.status}
+                    </Badge>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-white/60">Progress</span>
+                      <span className="text-white">{project.progress}%</span>
+                    </div>
+                    <Progress value={project.progress} className="h-2" />
+                  </div>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-2">
-                  <div className="bg-blue-600 h-2 rounded-full" style={{ width: '75%' }}></div>
-                </div>
-                
-                <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium">{t('dashboard.mobileApp')}</span>
-                  <Badge variant="secondary">%45</Badge>
-                </div>
-                <div className="w-full bg-gray-200 rounded-full h-2">
-                  <div className="bg-green-600 h-2 rounded-full" style={{ width: '45%' }}></div>
-                </div>
-                
-                <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium">{t('dashboard.adminPanel')}</span>
-                  <Badge variant="outline">%90</Badge>
-                </div>
-                <div className="w-full bg-gray-200 rounded-full h-2">
-                  <div className="bg-purple-600 h-2 rounded-full" style={{ width: '90%' }}></div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
 
-          <Card>
-            <CardHeader>
-              <CardTitle>{t('dashboard.systemStatus')}</CardTitle>
-              <CardDescription>
-                {t('dashboard.serverAndServiceStatus')}
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="text-sm">{t('dashboard.webServer')}</span>
-                  <Badge variant="default" className="bg-green-100 text-green-800">
-                    {t('dashboard.running')}
-                  </Badge>
+        {/* System Status */}
+        <Card className="glassmorphism-card">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2 text-white">
+              <Shield className="w-5 h-5 text-blue-400" />
+              {t('dashboard.systemStatus')}
+            </CardTitle>
+            <CardDescription className="text-white/60">
+              {t('dashboard.serverAndServiceStatus')}
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+              {systemStatus.map((service, index) => (
+                <div key={index} className="p-4 rounded-lg border border-white/10 bg-white/5">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className={`w-3 h-3 rounded-full ${service.color} bg-current`}></div>
+                    <span className="text-sm font-medium text-white">
+                      {service.service}
+                    </span>
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-xs text-white/60">{service.status}</p>
+                    <p className="text-sm font-medium text-white">{service.uptime}</p>
+                  </div>
                 </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm">{t('dashboard.database')}</span>
-                  <Badge variant="default" className="bg-green-100 text-green-800">
-                    {t('dashboard.running')}
-                  </Badge>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm">{t('dashboard.apiService')}</span>
-                  <Badge variant="default" className="bg-green-100 text-green-800">
-                    {t('dashboard.running')}
-                  </Badge>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm">{t('dashboard.emailService')}</span>
-                  <Badge variant="destructive">
-                    {t('dashboard.error')}
-                  </Badge>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Data Table */}
-        <DataTable
-          data={tableData}
-          columns={tableColumns}
-          title="Son Kullanıcılar"
-          searchable={true}
-          filterable={true}
-          exportable={true}
-          pageSize={5}
-        />
+              ))}
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </>
   );

@@ -10,14 +10,15 @@ import {
   Loader2, 
   Palette,
   ArrowRight,
-  Sparkles
+  Sparkles,
+  Zap,
+  Eye,
+  Rocket
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { usePremium } from "@/contexts/PremiumContext";
 
 export default function ComponentShowcaseIndex() {
-  const { isPremiumUser, upgradeUser } = usePremium();
   const { t } = useLanguage();
   
   const showcasePages = [
@@ -27,17 +28,23 @@ export default function ComponentShowcaseIndex() {
       icon: BarChart3,
       path: "/showcase/stats",
       badge: t('showcase.stats.badge'),
-      badgeVariant: "secondary" as const,
-      features: [t('showcase.stats.features.counter'), t('showcase.stats.features.trend'), t('showcase.stats.features.gradient')]
+      features: [
+        t('showcase.stats.features.counter'),
+        t('showcase.stats.features.trend'),
+        t('showcase.stats.features.gradient')
+      ]
     },
     {
-      title: t('showcase.tables.title'), 
+      title: t('showcase.tables.title'),
       description: t('showcase.tables.description'),
       icon: Table2,
       path: "/showcase/tables",
       badge: t('showcase.tables.badge'),
-      badgeVariant: "default" as const,
-      features: [t('showcase.tables.features.search'), t('showcase.tables.features.sort'), t('showcase.tables.features.export')]
+      features: [
+        t('showcase.tables.features.search'),
+        t('showcase.tables.features.sort'),
+        t('showcase.tables.features.export')
+      ]
     },
     {
       title: t('showcase.activity.title'),
@@ -45,8 +52,11 @@ export default function ComponentShowcaseIndex() {
       icon: Activity,
       path: "/showcase/activity",
       badge: t('showcase.activity.badge'),
-      badgeVariant: "secondary" as const,
-      features: [t('showcase.activity.features.realtime'), t('showcase.activity.features.categories'), t('showcase.activity.features.avatar')]
+      features: [
+        t('showcase.activity.features.realtime'),
+        t('showcase.activity.features.categories'),
+        t('showcase.activity.features.avatar')
+      ]
     },
     {
       title: t('showcase.charts.title'),
@@ -54,8 +64,11 @@ export default function ComponentShowcaseIndex() {
       icon: BarChart3,
       path: "/showcase/charts",
       badge: t('showcase.charts.badge'),
-      badgeVariant: "outline" as const,
-      features: [t('showcase.charts.features.hover'), t('showcase.charts.features.loading'), t('showcase.charts.features.trend')]
+      features: [
+        t('showcase.charts.features.hover'),
+        t('showcase.charts.features.loading'),
+        t('showcase.charts.features.trend')
+      ]
     },
     {
       title: t('showcase.features.title'),
@@ -63,8 +76,11 @@ export default function ComponentShowcaseIndex() {
       icon: Star,
       path: "/showcase/features",
       badge: t('showcase.features.badge'),
-      badgeVariant: "secondary" as const,
-      features: [t('showcase.features.features.hover'), t('showcase.features.features.icons'), t('showcase.features.features.cta')]
+      features: [
+        t('showcase.features.features.hover'),
+        t('showcase.features.features.icons'),
+        t('showcase.features.features.cta')
+      ]
     },
     {
       title: t('showcase.loading.title'),
@@ -72,17 +88,11 @@ export default function ComponentShowcaseIndex() {
       icon: Loader2,
       path: "/showcase/loading",
       badge: t('showcase.loading.badge'),
-      badgeVariant: "outline" as const,
-      features: [t('showcase.loading.features.sizes'), t('showcase.loading.features.messages'), t('showcase.loading.features.theme')]
-    },
-    {
-      title: t('showcase.forms.title'),
-      description: t('showcase.forms.description'),
-      icon: Star,
-      path: "/showcase/forms",
-      badge: t('showcase.forms.badge'),
-      badgeVariant: "default" as const,
-      features: [t('showcase.forms.features.wizard'), t('showcase.forms.features.validation'), t('showcase.forms.features.inputs')]
+      features: [
+        t('showcase.loading.features.sizes'),
+        t('showcase.loading.features.messages'),
+        t('showcase.loading.features.theme')
+      ]
     },
     {
       title: t('showcase.widgets.title'),
@@ -90,35 +100,35 @@ export default function ComponentShowcaseIndex() {
       icon: BarChart3,
       path: "/showcase/widgets",
       badge: t('showcase.widgets.badge'),
-      badgeVariant: "secondary" as const,
-      features: [t('showcase.widgets.features.kpi'), t('showcase.widgets.features.realtime'), t('showcase.widgets.features.charts')]
+      features: [
+        t('showcase.widgets.features.kpi'),
+        t('showcase.widgets.features.realtime'),
+        t('showcase.widgets.features.charts')
+      ]
     },
     {
       title: t('showcase.gallery.title'),
       description: t('showcase.gallery.description'),
-      icon: Activity,
+      icon: Palette,
       path: "/showcase/gallery",
       badge: t('showcase.gallery.badge'),
-      badgeVariant: "outline" as const,
-      features: [t('showcase.gallery.features.view'), t('showcase.gallery.features.filter'), t('showcase.gallery.features.preview')]
+      features: [
+        t('showcase.gallery.features.view'),
+        t('showcase.gallery.features.filter'),
+        t('showcase.gallery.features.preview')
+      ]
     },
     {
       title: t('showcase.animations.title'),
       description: t('showcase.animations.description'),
-      icon: Palette,
-      path: "/showcase/animations", 
+      icon: Star,
+      path: "/showcase/animations",
       badge: t('showcase.animations.badge'),
-      badgeVariant: "secondary" as const,
-      features: [t('showcase.animations.features.hover'), t('showcase.animations.features.loading'), t('showcase.animations.features.interactive')]
-    },
-    {
-      title: t('showcase.unique.title'),
-      description: t('showcase.unique.description'),
-      icon: Sparkles,
-      path: "/showcase/unique",
-      badge: t('showcase.unique.badge'),
-      badgeVariant: "default" as const,
-      features: [t('showcase.unique.features.glassmorphism'), t('showcase.unique.features.holographic'), t('showcase.unique.features.quantum')]
+      features: [
+        t('showcase.animations.features.hover'),
+        t('showcase.animations.features.loading'),
+        t('showcase.animations.features.interactive')
+      ]
     }
   ];
 
@@ -129,86 +139,119 @@ export default function ComponentShowcaseIndex() {
         <meta name="description" content={t('showcase.metaDescription')} />
       </Helmet>
 
-      <div className="space-y-8">
-        <div className="text-center space-y-4">
-          <h1 className="text-4xl font-bold tracking-tight bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-            {t('showcase.mainTitle')}
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            {t('showcase.mainDescription')}
-          </p>
+      <div className="p-6 space-y-8">
+        {/* Hero Section */}
+        <div className="hero-section">
+          <div className="space-y-6">
+            <div className="flex items-center justify-center gap-3">
+              <Sparkles className="h-8 w-8 text-blue-400" />
+              <h1 className="text-5xl font-bold gradient-text-primary">
+                {t('showcase.mainTitle')}
+              </h1>
+              <Sparkles className="h-8 w-8 text-purple-400" />
+            </div>
+            <p className="text-xl text-white/70 max-w-4xl mx-auto leading-relaxed">
+              {t('showcase.mainDescription')}
+            </p>
+            <div className="flex items-center justify-center gap-4">
+              <Button size="lg" className="button-glass hover:bg-blue-500/20">
+                <Zap className="w-5 h-5 mr-2" />
+                {t('showcase.cta.primaryButton')}
+              </Button>
+              <Button variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10">
+                <Eye className="w-5 h-5 mr-2" />
+                {t('showcase.cta.secondaryButton')}
+              </Button>
+            </div>
+          </div>
         </div>
 
-        <section className="space-y-6">
-          <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-semibold">{t('showcase.categories.title')}</h2>
-            <Badge variant="outline" className="hidden sm:flex">
+        {/* Categories Section */}
+        <div className="space-y-6">
+          <div className="text-center space-y-4">
+            <h2 className="text-3xl font-bold gradient-text-secondary">
+              {t('showcase.categories.title')}
+            </h2>
+            <p className="text-lg text-white/60">
               {t('showcase.categories.count').replace('{count}', showcasePages.length.toString())}
-            </Badge>
+            </p>
           </div>
-          
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+          <div className="showcase-grid">
             {showcasePages.map((page, index) => (
-              <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-2 hover:border-primary/20">
-                <CardHeader>
+              <div key={index} className="showcase-item group">
+                <div className="space-y-4">
+                  {/* Header */}
                   <div className="flex items-start justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                        <page.icon className="h-5 w-5" />
-                      </div>
-                      <div>
-                        <CardTitle className="text-lg">{page.title}</CardTitle>
-                      </div>
+                    <div className={`w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-200`}>
+                      <page.icon className="w-6 h-6 text-blue-400" />
                     </div>
-                    <Badge variant={page.badgeVariant}>{page.badge}</Badge>
+                    <Badge variant="secondary" className="badge-glass">
+                      {page.badge}
+                    </Badge>
                   </div>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    {page.description}
-                  </p>
-                </CardHeader>
-                <CardContent className="space-y-4">
+
+                  {/* Content */}
+                  <div className="space-y-3">
+                    <h3 className="text-xl font-bold text-white group-hover:text-blue-300 transition-colors">
+                      {page.title}
+                    </h3>
+                    <p className="text-white/70 leading-relaxed">
+                      {page.description}
+                    </p>
+                  </div>
+
+                  {/* Features */}
                   <div className="space-y-2">
-                    <h4 className="text-sm font-medium">{t('showcase.keyFeatures.title')}:</h4>
+                    <h4 className="text-sm font-medium text-white/60 uppercase tracking-wider">
+                      {t('showcase.keyFeatures.title')}
+                    </h4>
                     <ul className="space-y-1">
-                      {page.features.map((feature, idx) => (
-                        <li key={idx} className="text-xs text-muted-foreground flex items-center gap-2">
-                          <div className="h-1 w-1 rounded-full bg-primary"></div>
+                      {page.features.map((feature, featureIndex) => (
+                        <li key={featureIndex} className="flex items-center gap-2 text-sm text-white/70">
+                          <div className="w-1.5 h-1.5 rounded-full bg-blue-400"></div>
                           {feature}
                         </li>
                       ))}
                     </ul>
                   </div>
-                  
-                  <Button asChild className="w-full group/btn">
-                    <Link to={page.path} className="flex items-center justify-center gap-2">
-                      {t('showcase.viewButton')}
-                      <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+
+                  {/* Action */}
+                  <div className="pt-4">
+                    <Link to={page.path}>
+                      <Button className="w-full button-glass group-hover:bg-blue-500/20 transition-all duration-200">
+                        {t('showcase.viewButton')}
+                        <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+                      </Button>
                     </Link>
-                  </Button>
-                </CardContent>
-              </Card>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
-        </section>
+        </div>
 
-        {/* Call to Action */}
-        <section className="text-center space-y-6 py-12 bg-muted/30 rounded-2xl">
-          <div className="space-y-4">
-            <h2 className="text-3xl font-bold">{t('showcase.cta.title')}</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        {/* CTA Section */}
+        <div className="cta-section">
+          <div className="space-y-6">
+            <h2 className="text-3xl font-bold gradient-text-primary">
+              {t('showcase.cta.title')}
+            </h2>
+            <p className="text-lg text-white/70 max-w-3xl mx-auto">
               {t('showcase.cta.description')}
             </p>
+            <div className="flex items-center justify-center gap-4">
+              <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white border-0">
+                <Rocket className="w-5 h-5 mr-2" />
+                {t('showcase.cta.primaryButton')}
+              </Button>
+              <Button variant="outline" size="lg" className="border-white/30 text-white hover:bg-white/10">
+                <Palette className="w-5 h-5 mr-2" />
+                {t('showcase.cta.secondaryButton')}
+              </Button>
+            </div>
           </div>
-          <div className="flex items-center justify-center gap-4">
-            <Button size="lg" className="bg-gradient-to-r from-primary to-primary/80">
-              <Palette className="h-5 w-5 mr-2" />
-              {t('showcase.cta.primaryButton')}
-            </Button>
-            <Button variant="outline" size="lg">
-              {t('showcase.cta.secondaryButton')}
-            </Button>
-          </div>
-        </section>
+        </div>
       </div>
     </>
   );

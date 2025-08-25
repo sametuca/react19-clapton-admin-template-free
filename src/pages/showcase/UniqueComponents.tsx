@@ -128,7 +128,7 @@ export default function UniqueComponents() {
             >
               <div className="flex items-center gap-2">
                 <Star className="h-4 w-4 fill-current" />
-                <span className="text-sm">Premium Özellik</span>
+                <span className="text-sm">Core Özellik</span>
               </div>
             </GlassmorphismCard>
           </div>

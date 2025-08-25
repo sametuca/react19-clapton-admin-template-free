@@ -13,7 +13,7 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 // Dil çevirileri
 const translations = {
   tr: {
-    // Genel
+    // General
     'common.save': 'Kaydet',
     'common.cancel': 'İptal',
     'common.edit': 'Düzenle',
@@ -38,6 +38,13 @@ const translations = {
     'nav.showcase': 'Component Showcase',
     'nav.login': 'Giriş Yap',
     'nav.register': 'Kayıt Ol',
+    'nav.getStarted': 'Başlangıç',
+    'nav.guide': 'Rehber',
+    'nav.mainMenu': 'Ana Menü',
+    'nav.auth': 'Giriş',
+    'nav.logout': 'Çıkış Yap',
+    'nav.pro': 'Pro',
+    'nav.beta': 'Beta',
     
     // Settings
     'settings.general': 'Genel',
@@ -279,7 +286,7 @@ const translations = {
     // Showcase Forms
     'showcase.forms.title': 'İnteraktif Formlar',
     'showcase.forms.description': 'Gelişmiş form bileşenleri ve multi-step wizard örnekleri',
-    'showcase.forms.badge': 'Premium',
+    'showcase.forms.badge': 'Core',
     'showcase.forms.features.wizard': 'Multi-step wizard',
     'showcase.forms.features.validation': 'Gerçek zamanlı validasyon',
     'showcase.forms.features.inputs': 'Gelişmiş input\'lar',
@@ -342,6 +349,11 @@ const translations = {
     'tables.columns.role': 'Rol',
     'tables.columns.status': 'Durum',
     
+    // App
+    'app.title': 'React19 Admin',
+    'app.freeTemplate': 'Ücretsiz Şablon',
+    'app.free': 'Ücretsiz',
+    'app.allFeaturesAccess': 'Tüm özelliklere erişim',
 
   },
   en: {
@@ -370,6 +382,13 @@ const translations = {
     'nav.showcase': 'Component Showcase',
     'nav.login': 'Login',
     'nav.register': 'Register',
+    'nav.getStarted': 'Get Started',
+    'nav.guide': 'Guide',
+    'nav.mainMenu': 'Main Menu',
+    'nav.auth': 'Auth',
+    'nav.logout': 'Logout',
+    'nav.pro': 'Pro',
+    'nav.beta': 'Beta',
     
     // Settings
     'settings.general': 'General',
@@ -613,7 +632,7 @@ const translations = {
     // Showcase Forms
     'showcase.forms.title': 'Interactive Forms',
     'showcase.forms.description': 'Advanced form components and multi-step wizard examples',
-    'showcase.forms.badge': 'Premium',
+    'showcase.forms.badge': 'Core',
     'showcase.forms.features.wizard': 'Multi-step wizard',
     'showcase.forms.features.validation': 'Real-time validation',
     'showcase.forms.features.inputs': 'Advanced inputs',
@@ -675,6 +694,12 @@ const translations = {
     'tables.columns.email': 'Email',
     'tables.columns.role': 'Role',
     'tables.columns.status': 'Status',
+    
+    // App
+    'app.title': 'React19 Admin',
+    'app.freeTemplate': 'Free Template',
+    'app.free': 'Free',
+    'app.allFeaturesAccess': 'All features access',
   }
 };
 

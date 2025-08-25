@@ -9,7 +9,6 @@ import {
   Palette, 
   Zap, 
   Star, 
-  Crown, 
   Download, 
   BookOpen, 
   Github, 
@@ -30,405 +29,278 @@ export default function GetStarted() {
       icon: Palette,
       title: "Modern UI Components",
       description: "100+ beautifully designed components with dark/light theme support",
-      badge: "Core"
+      color: "from-blue-500 to-cyan-500"
+    },
+    {
+      icon: Code,
+      title: "TypeScript Ready",
+      description: "Built with TypeScript for better development experience and type safety",
+      color: "from-purple-500 to-pink-500"
     },
     {
       icon: Zap,
-      title: "Premium Features",
-      description: "Advanced components, animations, and exclusive layouts",
-      badge: "Premium"
+      title: "High Performance",
+      description: "Optimized for speed with modern React patterns and best practices",
+      color: "from-green-500 to-emerald-500"
     },
     {
-      icon: Smartphone,
-      title: "Responsive Design",
-      description: "Mobile-first approach with perfect mobile and desktop experience",
-      badge: "Core"
-    },
-    {
-      icon: Globe,
-      title: "Multi-language",
-      description: "Built-in internationalization with easy language switching",
-      badge: "Core"
-    },
-    {
-      icon: Shield,
-      title: "TypeScript",
-      description: "Full TypeScript support with comprehensive type definitions",
-      badge: "Core"
-    },
-    {
-      icon: Clock,
-      title: "Regular Updates",
-      description: "Monthly updates with new components and features",
-      badge: "Premium"
+      icon: Star,
+      title: "Developer Experience",
+      description: "Excellent DX with hot reload, ESLint, and comprehensive documentation",
+      color: "from-orange-500 to-red-500"
     }
   ];
 
   const quickStartSteps = [
     {
       step: "1",
-      title: "Install Dependencies",
-      code: "npm install",
-      description: "Install all required packages and dependencies"
+      title: "Clone Repository",
+      description: "Clone the template from GitHub to your local machine",
+      command: "git clone https://github.com/your-username/react19-admin-template.git",
+      icon: Download
     },
     {
       step: "2",
-      title: "Start Development Server",
-      code: "npm run dev",
-      description: "Launch the development server on localhost"
+      title: "Install Dependencies",
+      description: "Install all required packages using npm or yarn",
+      command: "npm install",
+      icon: Code
     },
     {
       step: "3",
-      title: "Open in Browser",
-      code: "http://localhost:5173",
-      description: "View your application in the browser"
-    },
-    {
-      step: "4",
-      title: "Start Building",
-      code: "Edit src/pages/*.tsx",
-      description: "Begin customizing and building your application"
+      title: "Start Development",
+      description: "Run the development server and start building",
+      command: "npm run dev",
+      icon: Rocket
     }
   ];
 
   const techStack = [
-    { name: "React 19", version: "Latest", color: "bg-blue-500" },
-    { name: "TypeScript", version: "5.0+", color: "bg-blue-600" },
-    { name: "Tailwind CSS", version: "3.4+", color: "bg-cyan-500" },
-    { name: "Vite", version: "5.0+", color: "bg-purple-500" },
-    { name: "Radix UI", version: "Latest", color: "bg-slate-600" },
-    { name: "Lucide Icons", version: "Latest", color: "bg-green-500" }
+    { name: "React 19", description: "Latest React with concurrent features", icon: Code },
+    { name: "TypeScript", description: "Type-safe JavaScript development", icon: Shield },
+    { name: "Tailwind CSS", description: "Utility-first CSS framework", icon: Palette },
+    { name: "Vite", description: "Fast build tool and dev server", icon: Zap },
+    { name: "Shadcn/ui", description: "Beautiful and accessible components", icon: Layers },
+    { name: "React Router", description: "Declarative routing for React", icon: Globe }
+  ];
+
+  const nextSteps = [
+    {
+      title: "Explore Components",
+      description: "Browse through all available UI components",
+      icon: Palette,
+      action: "View Components",
+      url: "/showcase"
+    },
+    {
+      title: "Read Documentation",
+      description: "Learn how to use and customize components",
+      icon: BookOpen,
+      action: "Read Docs",
+      url: "#"
+    },
+    {
+      title: "Join Community",
+      description: "Connect with other developers and get help",
+      icon: Github,
+      action: "Join Discord",
+      url: "#"
+    }
   ];
 
   return (
     <>
       <Helmet>
-        <title>Get Started - React19 Admin</title>
-        <meta name="description" content="Get started with React19 Admin template - Installation guide and quick start" />
+        <title>Get Started - React19 Admin Template</title>
+        <meta name="description" content="Get started with React19 Admin Template - A modern, beautiful admin dashboard template built with React 19, TypeScript, and Tailwind CSS." />
       </Helmet>
 
-      <div className="space-y-8">
+      <div className="p-6 space-y-8">
         {/* Hero Section */}
-        <div className="text-center space-y-6">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <Rocket className="h-8 w-8 text-primary animate-pulse" />
-            <h1 className="text-4xl font-bold tracking-tight bg-gradient-to-r from-primary via-purple-500 to-blue-500 bg-clip-text text-transparent">
-              Get Started
-            </h1>
-          </div>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Welcome to React19 Admin Template! This comprehensive guide will help you get up and running quickly.
-          </p>
-          <div className="flex items-center justify-center gap-4">
-            <Button size="lg" className="gap-2">
-              <Download className="h-4 w-4" />
-              Download Template
-            </Button>
-            <Button variant="outline" size="lg" className="gap-2">
-              <Github className="h-4 w-4" />
-              View on GitHub
-            </Button>
+        <div className="hero-section">
+          <div className="space-y-6">
+            <div className="flex items-center justify-center gap-3">
+              <Rocket className="h-8 w-8 text-blue-400" />
+              <h1 className="text-5xl font-bold gradient-text-primary">
+                Get Started
+              </h1>
+              <Rocket className="h-8 w-8 text-purple-400" />
+            </div>
+            <p className="text-xl text-white/70 max-w-4xl mx-auto text-center leading-relaxed">
+              Welcome to React19 Admin Template! This guide will help you get up and running quickly.
+              Built with modern technologies and best practices for creating beautiful admin dashboards.
+            </p>
+            <div className="flex items-center justify-center gap-4">
+              <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white border-0">
+                <Download className="w-5 h-5 mr-2" />
+                Download Template
+              </Button>
+              <Button variant="outline" size="lg" className="border-white/30 text-white hover:bg-white/10">
+                <Github className="w-5 h-5 mr-2" />
+                View on GitHub
+              </Button>
+            </div>
           </div>
         </div>
 
-        {/* Quick Start Tabs */}
-        <Tabs defaultValue="overview" className="w-full">
-          <TabsList className="grid w-full grid-cols-4">
-            <TabsTrigger value="overview" className="gap-2">
-              <BookOpen className="h-4 w-4" />
-              Overview
-            </TabsTrigger>
-            <TabsTrigger value="installation" className="gap-2">
-              <Code className="h-4 w-4" />
-              Installation
-            </TabsTrigger>
-            <TabsTrigger value="features" className="gap-2">
-              <Star className="h-4 w-4" />
-              Features
-            </TabsTrigger>
-            <TabsTrigger value="customization" className="gap-2">
-              <Palette className="h-4 w-4" />
-              Customization
-            </TabsTrigger>
-          </TabsList>
-
-          <TabsContent value="overview" className="space-y-6 mt-6">
-            <div className="grid gap-6 md:grid-cols-2">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Sparkles className="h-5 w-5 text-primary" />
-                    What's Included
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-green-500" />
-                      <span className="text-sm">100+ UI Components</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-green-500" />
-                      <span className="text-sm">Dark/Light Theme</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-green-500" />
-                      <span className="text-sm">Responsive Layout</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-green-500" />
-                      <span className="text-sm">TypeScript Support</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-green-500" />
-                      <span className="text-sm">Premium Components</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Layers className="h-5 w-5 text-primary" />
-                    Tech Stack
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid grid-cols-2 gap-3">
-                    {techStack.map((tech) => (
-                      <div key={tech.name} className="flex items-center gap-2">
-                        <div className={`w-3 h-3 rounded-full ${tech.color}`} />
-                        <div>
-                          <p className="text-sm font-medium">{tech.name}</p>
-                          <p className="text-xs text-muted-foreground">{tech.version}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-
-            {/* Quick Start Steps */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Rocket className="h-5 w-5 text-primary" />
-                  Quick Start Guide
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-                  {quickStartSteps.map((step) => (
-                    <div key={step.step} className="text-center space-y-3">
-                      <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-                        <span className="text-lg font-bold text-primary">{step.step}</span>
-                      </div>
-                      <div>
-                        <h4 className="font-medium">{step.title}</h4>
-                        <p className="text-sm text-muted-foreground">{step.description}</p>
-                      </div>
-                      <div className="bg-muted rounded-lg p-2">
-                        <code className="text-xs text-primary">{step.code}</code>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="installation" className="space-y-6 mt-6">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Download className="h-5 w-5 text-primary" />
-                  Installation Steps
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="space-y-4">
-                  <div>
-                    <h4 className="font-medium mb-2">1. Clone the Repository</h4>
-                    <div className="bg-muted rounded-lg p-3">
-                      <code className="text-sm">git clone https://github.com/sametuca/react19-admin-template.git</code>
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <h4 className="font-medium mb-2">2. Navigate to Project Directory</h4>
-                    <div className="bg-muted rounded-lg p-3">
-                      <code className="text-sm">cd react19-admin-template</code>
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <h4 className="font-medium mb-2">3. Install Dependencies</h4>
-                    <div className="bg-muted rounded-lg p-3">
-                      <code className="text-sm">npm install</code>
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <h4 className="font-medium mb-2">4. Start Development Server</h4>
-                    <div className="bg-muted rounded-lg p-3">
-                      <code className="text-sm">npm run dev</code>
-                    </div>
-                  </div>
-                  
-                  <div>
-                    <h4 className="font-medium mb-2">5. Open in Browser</h4>
-                    <p className="text-sm text-muted-foreground">Open your browser and navigate to <code className="bg-muted px-1 rounded">http://localhost:5173</code></p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          <TabsContent value="features" className="space-y-6 mt-6">
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {features.map((feature, index) => (
-                <Card key={index} className="group hover:shadow-lg transition-all duration-300">
-                  <CardContent className="p-6">
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
-                        <feature.icon className="h-6 w-6 text-primary" />
-                      </div>
-                      <Badge variant={feature.badge === "Premium" ? "default" : "secondary"}>
-                        {feature.badge === "Premium" && <Crown className="h-3 w-3 mr-1" />}
-                        {feature.badge}
-                      </Badge>
-                    </div>
-                    <h3 className="font-semibold mb-2">{feature.title}</h3>
-                    <p className="text-sm text-muted-foreground">{feature.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </TabsContent>
-
-          <TabsContent value="customization" className="space-y-6 mt-6">
-            <div className="grid gap-6 md:grid-cols-2">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Palette className="h-5 w-5 text-primary" />
-                    Theme Customization
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-green-500" />
-                      <span className="text-sm">Custom color schemes</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-green-500" />
-                      <span className="text-sm">Dark/Light mode toggle</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-green-500" />
-                      <span className="text-sm">CSS variables for easy theming</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-green-500" />
-                      <span className="text-sm">Component-level customization</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Code className="h-5 w-5 text-primary" />
-                    Code Customization
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-green-500" />
-                      <span className="text-sm">Modular component structure</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-green-500" />
-                      <span className="text-sm">TypeScript interfaces</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-green-500" />
-                      <span className="text-sm">Customizable layouts</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4 text-green-500" />
-                      <span className="text-sm">Extensible architecture</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <ExternalLink className="h-5 w-5 text-primary" />
-                  Next Steps
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <p className="text-muted-foreground">
-                    Now that you're set up, here are some recommended next steps:
-                  </p>
-                  <div className="grid gap-3 md:grid-cols-2">
-                    <Button variant="outline" className="justify-start gap-2">
-                      <BookOpen className="h-4 w-4" />
-                      Read Documentation
-                      <ArrowRight className="h-4 w-4 ml-auto" />
-                    </Button>
-                    <Button variant="outline" className="justify-start gap-2">
-                      <Palette className="h-4 w-4" />
-                      Explore Components
-                      <ArrowRight className="h-4 w-4 ml-auto" />
-                    </Button>
-                    <Button variant="outline" className="justify-start gap-2">
-                      <Github className="h-4 w-4" />
-                      View Examples
-                      <ArrowRight className="h-4 w-4 ml-auto" />
-                    </Button>
-                    <Button variant="outline" className="justify-start gap-2">
-                      <Star className="h-4 w-4" />
-                      Premium Features
-                      <ArrowRight className="h-4 w-4 ml-auto" />
-                    </Button>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-        </Tabs>
-
-        {/* Premium CTA */}
-        <Card className="bg-gradient-to-r from-primary/10 to-purple-500/10 border-primary/20">
-          <CardContent className="p-8 text-center">
-            <Crown className="h-12 w-12 text-primary mx-auto mb-4" />
-            <h3 className="text-2xl font-bold mb-2">Unlock Premium Features</h3>
-            <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              Get access to exclusive components, advanced animations, premium layouts, and priority support
+        {/* Features Grid */}
+        <div className="space-y-6">
+          <div className="text-center space-y-4">
+            <h2 className="text-3xl font-bold gradient-text-secondary">
+              Why Choose This Template?
+            </h2>
+            <p className="text-lg text-white/60 max-w-2xl mx-auto">
+              Packed with features that make development faster and more enjoyable
             </p>
-            <div className="flex items-center justify-center gap-4">
-              <Button size="lg" className="gap-2">
-                <Crown className="h-4 w-4" />
-                Upgrade to Premium
-              </Button>
-              <Button variant="outline" size="lg" className="gap-2">
-                <ExternalLink className="h-4 w-4" />
-                View Premium Features
-              </Button>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {features.map((feature, index) => (
+              <div key={index} className="feature-card p-6 rounded-xl">
+                <div className="space-y-4">
+                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${feature.color} flex items-center justify-center`}>
+                    <feature.icon className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white">
+                    {feature.title}
+                  </h3>
+                  <p className="text-white/70 leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Quick Start */}
+        <Card className="glassmorphism-card">
+          <CardHeader className="text-center">
+            <CardTitle className="text-3xl font-bold gradient-text-primary">
+              Quick Start Guide
+            </CardTitle>
+            <p className="text-lg text-white/60">
+              Get up and running in just a few minutes
+            </p>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-6">
+              {quickStartSteps.map((step, index) => (
+                <div key={index} className="flex items-start gap-4">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm">
+                    {step.step}
+                  </div>
+                  <div className="flex-1 space-y-3">
+                    <div className="flex items-center gap-3">
+                      <step.icon className="w-5 h-5 text-blue-400" />
+                      <h3 className="text-xl font-bold text-white">
+                        {step.title}
+                      </h3>
+                    </div>
+                    <p className="text-white/70">
+                      {step.description}
+                    </p>
+                    <div className="bg-black/20 rounded-lg p-3 border border-white/10">
+                      <code className="text-green-400 font-mono text-sm">
+                        {step.command}
+                      </code>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </CardContent>
         </Card>
+
+        {/* Tech Stack */}
+        <div className="space-y-6">
+          <div className="text-center space-y-4">
+            <h2 className="text-3xl font-bold gradient-text-secondary">
+              Technology Stack
+            </h2>
+            <p className="text-lg text-white/60 max-w-2xl mx-auto">
+              Built with modern, reliable technologies that developers love
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {techStack.map((tech, index) => (
+              <div key={index} className="showcase-item group">
+                <div className="space-y-4">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+                    <tech.icon className="w-6 h-6 text-blue-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-white group-hover:text-blue-300 transition-colors">
+                      {tech.name}
+                    </h3>
+                    <p className="text-white/70 leading-relaxed">
+                      {tech.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Next Steps */}
+        <Card className="glassmorphism-card">
+          <CardHeader className="text-center">
+            <CardTitle className="text-3xl font-bold gradient-text-primary">
+              What's Next?
+            </CardTitle>
+            <p className="text-lg text-white/60">
+              Continue your journey with these helpful resources
+            </p>
+          </CardHeader>
+          <CardContent>
+            <div className="grid gap-6 md:grid-cols-3">
+              {nextSteps.map((step, index) => (
+                <div key={index} className="text-center space-y-4 p-6 rounded-lg border border-white/10 hover:border-white/20 transition-all duration-200 hover:bg-white/5">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center mx-auto">
+                    <step.icon className="w-8 h-8 text-blue-400" />
+                  </div>
+                  <div className="space-y-2">
+                    <h3 className="text-xl font-bold text-white">
+                      {step.title}
+                    </h3>
+                    <p className="text-white/70">
+                      {step.description}
+                    </p>
+                  </div>
+                  <Button className="button-glass w-full">
+                    {step.action}
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* CTA Section */}
+        <div className="cta-section">
+          <div className="space-y-6 text-center">
+            <h2 className="text-3xl font-bold gradient-text-primary">
+              Ready to Build Something Amazing?
+            </h2>
+            <p className="text-lg text-white/70 max-w-3xl mx-auto">
+              Start building your next admin dashboard today with React19 Admin Template.
+              Join thousands of developers who trust this template for their projects.
+            </p>
+            <div className="flex items-center justify-center gap-4">
+              <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white border-0">
+                <Rocket className="w-5 h-5 mr-2" />
+                Get Started Now
+              </Button>
+              <Button variant="outline" size="lg" className="border-white/30 text-white hover:bg-white/10">
+                <BookOpen className="w-5 h-5 mr-2" />
+                View Documentation
+              </Button>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

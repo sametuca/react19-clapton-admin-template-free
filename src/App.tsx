@@ -21,14 +21,9 @@ import ActivityFeeds from "./pages/showcase/ActivityFeeds";
 import Charts from "./pages/showcase/Charts";
 import FeatureCards from "./pages/showcase/FeatureCards";
 import LoadingStates from "./pages/showcase/LoadingStates";
-import InteractiveForms from "./pages/showcase/InteractiveForms";
 import DashboardWidgets from "./pages/showcase/DashboardWidgets";
 import ModernGallery from "./pages/showcase/ModernGallery";
 import AnimationShowcase from "./pages/showcase/AnimationShowcase";
-import UniqueComponents from "./pages/showcase/UniqueComponents";
-import EcommerceShowcase from "./pages/showcase/EcommerceShowcase";
-import CryptoFinance from "./pages/showcase/CryptoFinance";
-import SocialMedia from "./pages/showcase/SocialMedia";
 import GetStarted from "./pages/GetStarted";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -36,7 +31,6 @@ import NotFound from "./pages/NotFound";
 import { HelmetProvider } from "react-helmet-async";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { LanguageProvider } from "./contexts/LanguageContext";
-import { PremiumProvider } from "./contexts/PremiumContext";
 
 const queryClient = new QueryClient();
 
@@ -44,8 +38,7 @@ const App = () => (
   <HelmetProvider>
     <ThemeProvider>
       <LanguageProvider>
-        <PremiumProvider>
-          <QueryClientProvider client={queryClient}>
+        <QueryClientProvider client={queryClient}>
           <TooltipProvider>
             <Toaster />
             <Sonner />
@@ -74,14 +67,9 @@ const App = () => (
                   <Route path="/showcase/charts" element={<Charts />} />
                   <Route path="/showcase/features" element={<FeatureCards />} />
                   <Route path="/showcase/loading" element={<LoadingStates />} />
-                  <Route path="/showcase/forms" element={<InteractiveForms />} />
                   <Route path="/showcase/widgets" element={<DashboardWidgets />} />
                   <Route path="/showcase/gallery" element={<ModernGallery />} />
                   <Route path="/showcase/animations" element={<AnimationShowcase />} />
-                  <Route path="/showcase/unique" element={<UniqueComponents />} />
-                  <Route path="/showcase/ecommerce" element={<EcommerceShowcase />} />
-                  <Route path="/showcase/crypto-finance" element={<CryptoFinance />} />
-                  <Route path="/showcase/social-media" element={<SocialMedia />} />
                   <Route path="/old-showcase" element={<ComponentShowcase />} />
                 </Route>
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
@@ -90,7 +78,6 @@ const App = () => (
             </BrowserRouter>
           </TooltipProvider>
         </QueryClientProvider>
-      </PremiumProvider>
       </LanguageProvider>
     </ThemeProvider>
   </HelmetProvider>

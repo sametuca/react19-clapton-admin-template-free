@@ -114,27 +114,7 @@ export default function FeatureCards() {
           </div>
         </section>
 
-        <section className="space-y-4">
-          <div className="flex items-center gap-2">
-            <h2 className="text-2xl font-semibold">Gelişmiş Özellikler</h2>
-            <Badge variant="default">Premium</Badge>
-          </div>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {advancedFeatures.map((feature, index) => (
-              <FeatureCard
-                key={`advanced-${index}`}
-                title={feature.title}
-                description={feature.description}
-                icon={feature.icon}
-                features={feature.features}
-                badge={feature.badge}
-                badgeVariant={feature.badgeVariant}
-                gradient={true}
-                onLearnMore={() => console.log(`Learn more about ${feature.title}`)}
-              />
-            ))}
-          </div>
-        </section>
+
 
         <section className="space-y-4">
           <h2 className="text-2xl font-semibold">Kart Özellikleri</h2>
