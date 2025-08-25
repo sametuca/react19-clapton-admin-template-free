@@ -84,7 +84,7 @@ export default function AppSidebar() {
   };
 
   return (
-    <Sidebar className={`border-r bg-gradient-to-b from-background to-muted/20 ${collapsed ? "w-16" : "w-72"}`}>
+    <Sidebar className="border-r bg-gradient-to-b from-background to-muted/20" collapsible="icon">
       {/* Header */}
       <SidebarHeader className="border-b border-border/50 p-4">
         <div className="flex items-center gap-3">

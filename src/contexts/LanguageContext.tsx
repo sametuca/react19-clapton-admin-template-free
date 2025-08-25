@@ -63,6 +63,12 @@ const translations = {
     'settings.purple': 'Mor',
     'settings.red': 'Kırmızı',
     
+    // Theme and Search
+    'theme.light': 'Açık',
+    'theme.dark': 'Koyu', 
+    'theme.system': 'Sistem',
+    'search.placeholder': 'Ara...',
+    
     // Profile
     'profile.personalInfo': 'Kişisel Bilgiler',
     'profile.contactInfo': 'İletişim Bilgileri',
@@ -388,6 +394,12 @@ const translations = {
     'settings.green': 'Green',
     'settings.purple': 'Purple',
     'settings.red': 'Red',
+    
+    // Theme and Search
+    'theme.light': 'Light',
+    'theme.dark': 'Dark',
+    'theme.system': 'System',
+    'search.placeholder': 'Search...',
     
     // Profile
     'profile.personalInfo': 'Personal Information',

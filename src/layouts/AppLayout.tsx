@@ -71,6 +71,8 @@ export default function AppLayout() {
     }
   };
 
+  const { t } = useLanguage();
+
   return (
     <SidebarProvider>
       <Helmet>
@@ -78,12 +80,12 @@ export default function AppLayout() {
         <meta name="description" content="Modern React admin template with dashboard, tables, forms and user management." />
       </Helmet>
 
-      <div className="min-h-screen flex w-full">
+      <div className="flex min-h-screen w-full">
         <AppSidebar />
 
-        <div className="flex-1 flex min-h-screen flex-col">
-          <header className="h-14 flex items-center gap-3 px-4 border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-            <SidebarTrigger className="" />
+        <div className="flex flex-1 flex-col">
+          <header className="sticky top-0 z-50 h-14 flex items-center gap-3 px-4 border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+            <SidebarTrigger />
             <div className="flex items-center gap-2 font-semibold">
               <span className="hidden sm:inline">React19 Admin</span>
             </div>
@@ -112,22 +114,22 @@ export default function AppLayout() {
                   <SelectContent>
                     <SelectItem value="light" className="flex items-center gap-2">
                       <Sun className="h-4 w-4" />
-                      Açık
+                      {t('theme.light')}
                     </SelectItem>
                     <SelectItem value="dark" className="flex items-center gap-2">
                       <Moon className="h-4 w-4" />
-                      Koyu
+                      {t('theme.dark')}
                     </SelectItem>
                     <SelectItem value="system" className="flex items-center gap-2">
                       <Monitor className="h-4 w-4" />
-                      Sistem
+                      {t('theme.system')}
                     </SelectItem>
                   </SelectContent>
                 </Select>
               </div>
               
               <div className="hidden md:flex items-center">
-                <Input placeholder="Ara..." className="w-64" />
+                <Input placeholder={t('search.placeholder')} className="w-64" />
               </div>
               
               <NotificationBell 
