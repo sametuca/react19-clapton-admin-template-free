@@ -15,7 +15,12 @@ import {
   Crown,
   LogOut,
   ChevronRight,
-  Sparkles
+  Sparkles,
+  Star,
+  Loader2,
+  Image,
+  ShoppingCart,
+  DollarSign
 } from "lucide-react";
 import {
   Sidebar,
@@ -50,7 +55,21 @@ export default function AppSidebar() {
   ];
 
   const showcaseItems = [
-    { title: t('nav.showcase'), url: "/showcase", icon: Palette, badge: "14" },
+    { title: t('nav.showcase'), url: "/showcase", icon: Palette, badge: "14", isParent: true },
+    { title: "İstatistik Kartları", url: "/showcase/stats", icon: BarChart3, badge: "Animasyonlu", isChild: true },
+    { title: "Veri Tabloları", url: "/showcase/tables", icon: Table2, badge: "Tam Özellikli", isChild: true },
+    { title: "Aktivite Akışları", url: "/showcase/activity", icon: Activity, badge: "Canlı", isChild: true },
+    { title: "Metric Grafikleri", url: "/showcase/charts", icon: BarChart3, badge: "İnteraktif", isChild: true },
+    { title: "Özellik Kartları", url: "/showcase/features", icon: Star, badge: "Showcase", isChild: true },
+    { title: "Yükleme Durumları", url: "/showcase/loading", icon: Loader2, badge: "Smooth", isChild: true },
+    { title: "İnteraktif Formlar", url: "/showcase/forms", icon: FileInput, badge: "Premium", isChild: true },
+    { title: "Dashboard Widgets", url: "/showcase/widgets", icon: LayoutDashboard, badge: "Pro", isChild: true },
+    { title: "Modern Gallery", url: "/showcase/gallery", icon: Image, badge: "Media", isChild: true },
+    { title: "Animation Showcase", url: "/showcase/animations", icon: Palette, badge: "Animated", isChild: true },
+    { title: "Benzersiz Komponentler", url: "/showcase/unique", icon: Sparkles, badge: "Exclusive", isChild: true },
+    { title: "E-commerce Showcase", url: "/showcase/ecommerce", icon: ShoppingCart, badge: "Premium", isChild: true },
+    { title: "Crypto & Finance", url: "/showcase/crypto-finance", icon: DollarSign, badge: "Premium", isChild: true },
+    { title: "Social Media", url: "/showcase/social-media", icon: Users, badge: "Premium", isChild: true },
   ];
 
   const settingsItems = [
@@ -148,16 +167,22 @@ export default function AppSidebar() {
               {showcaseItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild className="p-0">
-                    <NavLink to={item.url} className={getNavClassName(item.url)}>
-                      <div className="flex h-4 w-4 items-center justify-center rounded bg-gradient-to-br from-yellow-400 to-orange-500 flex-shrink-0">
-                        <item.icon className="h-3 w-3 text-white" />
-                      </div>
+                    <NavLink to={item.url} className={`${getNavClassName(item.url)} ${item.isChild ? 'ml-4 text-sm' : ''}`}>
+                      {item.isChild ? (
+                        <div className="h-4 w-4 flex items-center justify-center flex-shrink-0">
+                          <item.icon className="h-3 w-3 text-muted-foreground" />
+                        </div>
+                      ) : (
+                        <div className="flex h-4 w-4 items-center justify-center rounded bg-gradient-to-br from-yellow-400 to-orange-500 flex-shrink-0">
+                          <item.icon className="h-3 w-3 text-white" />
+                        </div>
+                      )}
                       {!collapsed && (
                         <>
                           <span className="flex-1">{item.title}</span>
                           {item.badge && (
-                            <Badge variant="outline" className="text-xs border-yellow-500 text-yellow-600">
-                              {item.badge} Kategori
+                            <Badge variant={item.isChild ? "secondary" : "outline"} className={`text-xs ${item.isChild ? '' : 'border-yellow-500 text-yellow-600'}`}>
+                              {item.isChild ? item.badge : `${item.badge} Kategori`}
                             </Badge>
                           )}
                           {isActive(item.url) && (
