@@ -29,6 +29,7 @@ import UniqueComponents from "./pages/showcase/UniqueComponents";
 import EcommerceShowcase from "./pages/showcase/EcommerceShowcase";
 import CryptoFinance from "./pages/showcase/CryptoFinance";
 import SocialMedia from "./pages/showcase/SocialMedia";
+import GetStarted from "./pages/GetStarted";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
@@ -57,6 +58,7 @@ const App = () => (
                 {/* Protected Routes - Inside AppLayout */}
                 <Route element={<AppLayout />}>
                   <Route path="/" element={<Dashboard />} />
+                  <Route path="/get-started" element={<GetStarted />} />
                   <Route path="/tables" element={<TablesPage />} />
                   <Route path="/forms" element={<FormsWizard />} />
                   <Route path="/users" element={<UsersPage />} />

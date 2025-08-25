@@ -74,16 +74,16 @@ export default function SocialMedia() {
   ];
 
   const PremiumOverlay = ({ children }: { children: React.ReactNode }) => (
-    <div className="relative">
+    <div className="relative group">
       {children}
       {!isPremiumUser && (
-        <div className="absolute inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center rounded-lg">
-          <div className="text-center space-y-2">
-            <Crown className="h-8 w-8 text-yellow-500 mx-auto" />
-            <p className="text-sm font-medium">Premium Feature</p>
-            <Button size="sm" className="gap-2">
-              <Lock className="h-4 w-4" />
-              Unlock Premium
+        <div className="absolute inset-0 bg-background/40 backdrop-blur-[1px] flex items-center justify-center rounded-lg z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="text-center space-y-2 p-3 bg-background/80 rounded-lg border border-yellow-500/30 shadow-lg backdrop-blur-sm">
+            <Crown className="h-6 w-6 text-yellow-500 mx-auto" />
+            <p className="text-xs font-medium text-foreground">Premium</p>
+            <Button size="sm" className="gap-1 h-7 px-2 text-xs bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white border-0">
+              <Lock className="h-3 w-3" />
+              Unlock
             </Button>
           </div>
         </div>
@@ -113,11 +113,17 @@ export default function SocialMedia() {
           <h2 className="text-2xl font-semibold">Stories</h2>
           <div className="flex gap-4 overflow-x-auto pb-4">
             {stories.map((story, index) => (
-              <div key={story.name}>
+              <div key={story.name} className="flex-shrink-0">
                 {index > 2 ? (
-                  <PremiumOverlay>
+                  <div className="relative group">
                     <StoryItem story={story} />
-                  </PremiumOverlay>
+                    <div className="absolute inset-0 bg-background/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <div className="text-center space-y-1">
+                        <Crown className="h-4 w-4 text-yellow-500 mx-auto" />
+                        <p className="text-xs font-medium text-foreground">Premium</p>
+                      </div>
+                    </div>
+                  </div>
                 ) : (
                   <StoryItem story={story} />
                 )}
@@ -151,12 +157,18 @@ export default function SocialMedia() {
                         <Video className="h-4 w-4" />
                         Video
                       </Button>
-                      <PremiumOverlay>
-                        <Button variant="outline" size="sm" className="gap-2">
+                      <div className="relative group">
+                        <Button variant="outline" size="sm" className="gap-2 relative">
                           <Zap className="h-4 w-4" />
                           Live
                         </Button>
-                      </PremiumOverlay>
+                        <div className="absolute inset-0 bg-background/20 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                          <div className="text-center space-y-1">
+                            <Crown className="h-3 w-3 text-yellow-500 mx-auto" />
+                            <p className="text-xs font-medium text-foreground">Premium</p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                     <Button>Post</Button>
                   </div>
@@ -206,8 +218,8 @@ export default function SocialMedia() {
               </CardContent>
             </Card>
 
-            <PremiumOverlay>
-              <Card>
+            <div className="relative group">
+              <Card className="relative">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
@@ -224,10 +236,16 @@ export default function SocialMedia() {
                   </div>
                 </CardContent>
               </Card>
-            </PremiumOverlay>
+              <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="bg-yellow-500/90 text-white px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1">
+                  <Crown className="h-3 w-3" />
+                  Premium
+                </div>
+              </div>
+            </div>
 
-            <PremiumOverlay>
-              <Card>
+            <div className="relative group">
+              <Card className="relative">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
@@ -244,10 +262,16 @@ export default function SocialMedia() {
                   </div>
                 </CardContent>
               </Card>
-            </PremiumOverlay>
+              <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="bg-yellow-500/90 text-white px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1">
+                  <Crown className="h-3 w-3" />
+                  Premium
+                </div>
+              </div>
+            </div>
 
-            <PremiumOverlay>
-              <Card>
+            <div className="relative group">
+              <Card className="relative">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
@@ -264,15 +288,21 @@ export default function SocialMedia() {
                   </div>
                 </CardContent>
               </Card>
-            </PremiumOverlay>
+              <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="bg-yellow-500/90 text-white px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1">
+                  <Crown className="h-3 w-3" />
+                  Premium
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
         {/* Chat Interface */}
         <section className="space-y-4">
           <h2 className="text-2xl font-semibold">Direct Messages</h2>
-          <PremiumOverlay>
-            <div className="grid gap-6 md:grid-cols-3">
+          <div className="relative group">
+            <div className="grid gap-6 md:grid-cols-3 relative">
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
@@ -348,7 +378,13 @@ export default function SocialMedia() {
                 </CardContent>
               </Card>
             </div>
-          </PremiumOverlay>
+            <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="bg-yellow-500/90 text-white px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1">
+                <Crown className="h-3 w-3" />
+                Premium
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* Premium Features Banner */}
@@ -376,7 +412,7 @@ export default function SocialMedia() {
 function StoryItem({ story }: { story: any }) {
   return (
     <div className="flex flex-col items-center gap-2 min-w-[80px]">
-      <div className={`relative ${story.hasNew ? 'ring-2 ring-gradient-to-r from-pink-500 to-purple-500 rounded-full p-1' : ''}`}>
+      <div className={`relative ${story.hasNew ? 'ring-2 ring-pink-500 rounded-full p-1' : ''}`}>
         <Avatar className="h-16 w-16">
           <AvatarImage src={story.avatar} />
           <AvatarFallback>{story.name[0]}</AvatarFallback>

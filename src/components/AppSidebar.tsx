@@ -20,7 +20,9 @@ import {
   Loader2,
   Image,
   ShoppingCart,
-  DollarSign
+  DollarSign,
+  Activity,
+  Rocket
 } from "lucide-react";
 import {
   Sidebar,
@@ -42,16 +44,12 @@ import { useLanguage } from "@/contexts/LanguageContext";
 export default function AppSidebar() {
   const location = useLocation();
   const { t } = useLanguage();
-  const { state } = useSidebar();
+  const { state, setOpenMobile } = useSidebar();
   const collapsed = state === "collapsed";
 
   const mainItems = [
     { title: t('nav.dashboard'), url: "/", icon: LayoutDashboard, badge: null },
-    { title: t('nav.analytics'), url: "/analytics", icon: BarChart3, badge: "Pro" },
-    { title: t('nav.tables'), url: "/tables", icon: Table2, badge: null },
-    { title: t('nav.forms'), url: "/forms", icon: FileInput, badge: "Beta" },
-    { title: t('nav.users'), url: "/users", icon: Users, badge: null },
-    { title: t('nav.roles'), url: "/roles", icon: Shield, badge: null },
+    { title: "Get Started", url: "/get-started", icon: Rocket, badge: "Guide" },
   ];
 
   const showcaseItems = [
@@ -70,6 +68,12 @@ export default function AppSidebar() {
     { title: "E-commerce Showcase", url: "/showcase/ecommerce", icon: ShoppingCart, badge: "Premium", isChild: true },
     { title: "Crypto & Finance", url: "/showcase/crypto-finance", icon: DollarSign, badge: "Premium", isChild: true },
     { title: "Social Media", url: "/showcase/social-media", icon: Users, badge: "Premium", isChild: true },
+    // Ana menüden taşınan öğeler
+    { title: t('nav.analytics'), url: "/analytics", icon: BarChart3, badge: "Pro", isChild: true },
+    { title: t('nav.tables'), url: "/tables", icon: Table2, badge: null, isChild: true },
+    { title: t('nav.forms'), url: "/forms", icon: FileInput, badge: "Beta", isChild: true },
+    { title: t('nav.users'), url: "/users", icon: Users, badge: null, isChild: true },
+    { title: t('nav.roles'), url: "/roles", icon: Shield, badge: null, isChild: true },
   ];
 
   const settingsItems = [
@@ -93,10 +97,10 @@ export default function AppSidebar() {
   const getNavClassName = (path: string) => {
     const active = isActive(path);
     return `
-      relative group flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-200
+      relative group flex items-center gap-4 rounded-xl px-4 py-3 text-sm font-medium transition-all duration-300 min-h-[44px]
       ${active 
-        ? "bg-gradient-to-r from-primary/20 to-primary/10 text-primary border-r-2 border-primary shadow-sm" 
-        : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+        ? "bg-gradient-to-r from-primary/15 via-primary/10 to-primary/5 text-primary border-l-4 border-primary shadow-lg shadow-primary/20" 
+        : "text-muted-foreground hover:text-foreground hover:bg-muted/50 hover:shadow-md"
       }
       ${collapsed ? "justify-center" : ""}
     `;
@@ -121,7 +125,7 @@ export default function AppSidebar() {
         </div>
       </SidebarHeader>
 
-      <SidebarContent className="p-4 space-y-6">
+      <SidebarContent className="p-6 space-y-8 overflow-y-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-sidebar-border/50 hover:scrollbar-thumb-sidebar-border/70">
         {/* Main Navigation */}
         <SidebarGroup>
           <SidebarGroupLabel className="flex items-center gap-2 px-0 text-xs font-semibold uppercase tracking-wider text-muted-foreground/80">
@@ -129,25 +133,34 @@ export default function AppSidebar() {
             {!collapsed && "Ana Menü"}
           </SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu className="space-y-1">
-              {mainItems.map((item) => (
+                         <SidebarMenu className="space-y-2">
+               {mainItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild className="p-0">
-                    <NavLink to={item.url} className={getNavClassName(item.url)}>
-                      <item.icon className="h-4 w-4 flex-shrink-0" />
-                      {!collapsed && (
-                        <>
-                          <span className="flex-1">{item.title}</span>
-                          {item.badge && (
-                            <Badge variant={item.badge === "Pro" ? "default" : "secondary"} className="text-xs">
-                              {item.badge}
-                            </Badge>
-                          )}
-                          {isActive(item.url) && (
-                            <ChevronRight className="h-3 w-3 text-primary" />
-                          )}
-                        </>
-                      )}
+                    <NavLink 
+                      to={item.url} 
+                      className={getNavClassName(item.url)}
+                      onClick={() => {
+                        // Prevent sidebar from auto-closing on mobile
+                        if (window.innerWidth < 1024) {
+                          setOpenMobile(false);
+                        }
+                      }}
+                    >
+                                             <item.icon className="h-5 w-5 flex-shrink-0" />
+                       {!collapsed && (
+                         <>
+                           <span className="flex-1 font-medium leading-tight">{item.title}</span>
+                           {item.badge && (
+                             <Badge variant={item.badge === "Pro" ? "default" : "secondary"} className="text-xs px-2 py-1 flex-shrink-0">
+                               {item.badge}
+                             </Badge>
+                           )}
+                           {isActive(item.url) && (
+                             <ChevronRight className="h-4 w-4 text-primary animate-pulse flex-shrink-0" />
+                           )}
+                         </>
+                       )}
                     </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -163,34 +176,43 @@ export default function AppSidebar() {
             {!collapsed && "Showcase"}
           </SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu className="space-y-1">
-              {showcaseItems.map((item) => (
+                         <SidebarMenu className="space-y-2">
+               {showcaseItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild className="p-0">
-                    <NavLink to={item.url} className={`${getNavClassName(item.url)} ${item.isChild ? 'ml-4 text-sm' : ''}`}>
-                      {item.isChild ? (
-                        <div className="h-4 w-4 flex items-center justify-center flex-shrink-0">
-                          <item.icon className="h-3 w-3 text-muted-foreground" />
-                        </div>
-                      ) : (
-                        <div className="flex h-4 w-4 items-center justify-center rounded bg-gradient-to-br from-yellow-400 to-orange-500 flex-shrink-0">
-                          <item.icon className="h-3 w-3 text-white" />
-                        </div>
-                      )}
-                      {!collapsed && (
-                        <>
-                          <span className="flex-1">{item.title}</span>
-                          {item.badge && (
-                            <Badge variant={item.isChild ? "secondary" : "outline"} className={`text-xs ${item.isChild ? '' : 'border-yellow-500 text-yellow-600'}`}>
-                              {item.isChild ? item.badge : `${item.badge} Kategori`}
-                            </Badge>
-                          )}
-                          {isActive(item.url) && (
-                            <ChevronRight className="h-3 w-3 text-primary" />
-                          )}
-                        </>
-                      )}
-                    </NavLink>
+                                         <NavLink 
+                       to={item.url} 
+                       className={`${getNavClassName(item.url)} ${item.isChild ? 'ml-6 text-sm' : ''}`}
+                       onClick={() => {
+                         // Prevent sidebar from auto-closing on mobile
+                         if (window.innerWidth < 1024) {
+                           setOpenMobile(false);
+                         }
+                       }}
+                     >
+                       {item.isChild ? (
+                         <div className="h-5 w-5 flex items-center justify-center flex-shrink-0">
+                           <item.icon className="h-4 w-4 text-muted-foreground" />
+                         </div>
+                       ) : (
+                         <div className="flex h-5 w-5 items-center justify-center rounded-lg bg-gradient-to-br from-yellow-400 to-orange-500 flex-shrink-0 shadow-sm">
+                           <item.icon className="h-4 w-4 text-white" />
+                         </div>
+                       )}
+                       {!collapsed && (
+                         <>
+                           <span className="flex-1 font-medium leading-tight">{item.title}</span>
+                           {item.badge && (
+                             <Badge variant={item.isChild ? "secondary" : "outline"} className={`text-xs px-2 py-1 flex-shrink-0 ${item.isChild ? 'bg-muted/80' : 'border-yellow-500 text-yellow-600'}`}>
+                               {item.isChild ? item.badge : `${item.badge} Kategori`}
+                             </Badge>
+                           )}
+                           {isActive(item.url) && (
+                             <ChevronRight className="h-4 w-4 text-primary animate-pulse flex-shrink-0" />
+                           )}
+                         </>
+                       )}
+                     </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -205,25 +227,34 @@ export default function AppSidebar() {
             {!collapsed && "Ayarlar"}
           </SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu className="space-y-1">
-              {settingsItems.map((item) => (
+                         <SidebarMenu className="space-y-2">
+               {settingsItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild className="p-0">
-                    <NavLink to={item.url} className={getNavClassName(item.url)}>
-                      <item.icon className="h-4 w-4 flex-shrink-0" />
-                      {!collapsed && (
-                        <>
-                          <span className="flex-1">{item.title}</span>
-                          {item.badge && (
-                            <Badge variant="destructive" className="text-xs">
-                              {item.badge}
-                            </Badge>
-                          )}
-                          {isActive(item.url) && (
-                            <ChevronRight className="h-3 w-3 text-primary" />
-                          )}
-                        </>
-                      )}
+                    <NavLink 
+                      to={item.url} 
+                      className={getNavClassName(item.url)}
+                      onClick={() => {
+                        // Prevent sidebar from auto-closing on mobile
+                        if (window.innerWidth < 1024) {
+                          setOpenMobile(false);
+                        }
+                      }}
+                    >
+                                             <item.icon className="h-5 w-5 flex-shrink-0" />
+                       {!collapsed && (
+                         <>
+                           <span className="flex-1 font-medium leading-tight">{item.title}</span>
+                           {item.badge && (
+                             <Badge variant="destructive" className="text-xs px-2 py-1 flex-shrink-0">
+                               {item.badge}
+                             </Badge>
+                           )}
+                           {isActive(item.url) && (
+                             <ChevronRight className="h-4 w-4 text-primary animate-pulse flex-shrink-0" />
+                           )}
+                         </>
+                       )}
                     </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -240,20 +271,29 @@ export default function AppSidebar() {
               {!collapsed && "Giriş"}
             </SidebarGroupLabel>
             <SidebarGroupContent>
-              <SidebarMenu className="space-y-1">
+              <SidebarMenu className="space-y-2">
                 {authItems.map((item) => (
                   <SidebarMenuItem key={item.title}>
                     <SidebarMenuButton asChild className="p-0">
-                      <NavLink to={item.url} className={getNavClassName(item.url)}>
-                        <item.icon className="h-4 w-4 flex-shrink-0" />
-                        {!collapsed && (
-                          <>
-                            <span className="flex-1">{item.title}</span>
-                            {isActive(item.url) && (
-                              <ChevronRight className="h-3 w-3 text-primary" />
-                            )}
-                          </>
-                        )}
+                      <NavLink 
+                        to={item.url} 
+                        className={getNavClassName(item.url)}
+                        onClick={() => {
+                          // Prevent sidebar from auto-closing on mobile
+                          if (window.innerWidth < 1024) {
+                            setOpenMobile(false);
+                          }
+                        }}
+                      >
+                                               <item.icon className="h-5 w-5 flex-shrink-0" />
+                       {!collapsed && (
+                         <>
+                           <span className="flex-1 font-medium leading-tight">{item.title}</span>
+                           {isActive(item.url) && (
+                             <ChevronRight className="h-4 w-4 text-primary animate-pulse flex-shrink-0" />
+                           )}
+                         </>
+                       )}
                       </NavLink>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
