@@ -4,7 +4,7 @@ A modern, responsive admin dashboard template built with React 19, TypeScript, a
 
 ## 🚀 Live Demo
 
-**Try it online:** https://react19-clapton-admin-template-free.vercel.app/
+**Try it online:** [https://react19-clapton-admin-template-free.vercel.app/](https://react19-admin-template-premium-prev.vercel.app/)
 
 Experience the template live with all features including theme switching, language support, and responsive design.
 
