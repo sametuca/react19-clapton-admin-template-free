@@ -4,7 +4,7 @@ A modern, responsive admin dashboard template built with React 19, TypeScript, a
 
 ## 🚀 Live Demo
 
-**Try it online:** [React19 Admin Template on StackBlitz](https://stackblitz.com/~/github.com/sametuca/react19-admin-template)
+**Try it online:** [React19 Admin Template on StackBlitz](react19-clapton-admin-template-free-6tz1efkpf.vercel.app)
 
 Experience the template live with all features including theme switching, language support, and responsive design.
 
