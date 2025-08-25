@@ -14,8 +14,10 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { usePremium } from "@/contexts/PremiumContext";
 
 export default function ComponentShowcaseIndex() {
+  const { isPremiumUser, upgradeUser } = usePremium();
   const { t } = useLanguage();
   
   const showcasePages = [
