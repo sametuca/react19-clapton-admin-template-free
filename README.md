@@ -135,24 +135,18 @@ function MyComponent() {
 }
 ```
 
-### **AI Chat Component**
-```tsx
-import { AIChat } from '@/components/ui/ai/ai-chat';
+- **Add a New Page**
+  1. Create a component in `src/pages/`
+  2. Add the route in `src/App.tsx`
+  3. Update navigation in `src/components/AppSidebar.tsx`
+- **Add a New Language**
+  1. Extend translations in `src/contexts/LanguageContext.tsx`
+  2. Add the language selector in `src/layouts/AppLayout.tsx`
+- **Modify Themes**
+  - Edit Tailwind configuration in `tailwind.config.ts`
+  - Update logic in `src/contexts/ThemeContext.tsx`
 
-function ChatPage() {
-  return (
-    <div>
-      <h1>AI Assistant</h1>
-      <AIChat />
-    </div>
-  );
-}
-```
-
-### **Premium Components**
-```tsx
-import { Card3D } from '@/components/ui/3d-card';
-import { ParallaxHero } from '@/components/ui/parallax-hero';
+---
 
 function PremiumPage() {
   return (
@@ -200,6 +194,38 @@ function ThemeToggle() {
   }
 }
 ```
+- Mobile-first approach
+- Collapsible sidebar on small screens
+- Touch-friendly interface elements
+- Optimized layouts for all devices
+
+---
+
+## 🧑‍💻 Tech Stack
+
+- **React 19** with TypeScript
+- **Tailwind CSS**
+- **shadcn/ui** component library
+- **Lucide React** icon set
+- **Recharts** for data visualization
+- **React Router DOM** for routing
+- **React Context API** for state management
+- **Vite** as the build tool
+- **npm** or **bun** as package manager
+
+---
+
+## ⚙️ Development Scripts
+
+- `npm run dev` – Start development server
+- `npm run build` – Build for production
+- `npm run preview` – Preview production build
+- `npm run lint` – Run ESLint checks
+
+**Code Standards:**  
+TypeScript, ESLint, Prettier
+
+---
 
 ## Responsive Design
 
@@ -212,6 +238,9 @@ lg: 1024px  /* Large devices */
 xl: 1280px  /* Extra large devices */
 2xl: 1536px /* 2X large devices */
 ```
+This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
+
+---
 
 ### **Mobile-First Approach**
 ```tsx
@@ -643,3 +672,13 @@ Eğer layout (örn. <AppLayout />) kullanıyorsanız:
 ```
 
 Sorun devam ederse `App.tsx` veya router yapılandırma dosyanızı paylaşın; doğrudan patch ekleyeyim.
+For support or questions:  
+- [Open an issue](https://github.com/sametuca/react19-clapton-admin-template-free/issues)
+- Check the documentation
+- Review existing issues and discussions
+
+---
+
+_Built with ❤️ using React 19, TypeScript, and Tailwind CSS._
+
+---
