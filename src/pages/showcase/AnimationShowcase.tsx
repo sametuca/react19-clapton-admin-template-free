@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { useState, useEffect } from "react";
+import { useLanguage } from "@/hooks/useLanguage";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -26,6 +27,7 @@ import {
 } from "lucide-react";
 
 export default function AnimationShowcase() {
+  const { t } = useLanguage();
   const [isPlaying, setIsPlaying] = useState(true);
   const [animationSpeed, setAnimationSpeed] = useState([1]);
   const [pulseCount, setPulseCount] = useState(0);
@@ -150,7 +152,7 @@ export default function AnimationShowcase() {
           className="relative overflow-hidden"
         >
           <Sparkles className="h-4 w-4 mr-2" />
-          Parçacık Efekti
+          {t('showcase.animation.particleEffect')}
         </Button>
         {particles.map((particle) => (
           <div
@@ -216,17 +218,17 @@ export default function AnimationShowcase() {
   return (
     <>
       <Helmet>
-        <title>Animation Showcase - CodeMaze Admin</title>
-        <meta name="description" content="Etkileyici CSS animasyonları ve interaktif efektler koleksiyonu" />
+        <title>{t('showcase.animation.pageTitle')}</title>
+        <meta name="description" content={t('showcase.animation.metaDescription')} />
       </Helmet>
 
       <div className="space-y-8">
         <div className="text-center space-y-4">
           <h1 className="text-4xl font-bold tracking-tight bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-            Animation Showcase
+            {t('showcase.animation.title')}
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Modern CSS animasyonları ve etkileşimli efektlerle kullanıcı deneyimini zenginleştirin
+            {t('showcase.animation.description')}
           </p>
         </div>
 
@@ -235,12 +237,12 @@ export default function AnimationShowcase() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Palette className="h-5 w-5" />
-              Animasyon Kontrolleri
+              {t('showcase.animation.controls.title')}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="flex items-center justify-between">
-              <Label htmlFor="animation-toggle">Animasyonları Oynat/Durdur</Label>
+              <Label htmlFor="animation-toggle">{t('showcase.animation.controls.toggle')}</Label>
               <Switch
                 id="animation-toggle"
                 checked={isPlaying}
@@ -249,7 +251,7 @@ export default function AnimationShowcase() {
             </div>
             
             <div className="space-y-2">
-              <Label>Animasyon Hızı: {animationSpeed[0]}x</Label>
+              <Label>{t('showcase.animation.controls.speed')} {animationSpeed[0]}x</Label>
               <Slider
                 value={animationSpeed}
                 onValueChange={setAnimationSpeed}
@@ -264,11 +266,11 @@ export default function AnimationShowcase() {
 
         <Tabs defaultValue="hover" className="space-y-6">
           <TabsList className="grid w-full grid-cols-5">
-            <TabsTrigger value="hover">Hover Efektleri</TabsTrigger>
-            <TabsTrigger value="loading">Loading Animasyonları</TabsTrigger>
-            <TabsTrigger value="interactive">İnteraktif Elementler</TabsTrigger>
-            <TabsTrigger value="transitions">Geçiş Efektleri</TabsTrigger>
-            <TabsTrigger value="advanced">Gelişmiş Animasyonlar</TabsTrigger>
+            <TabsTrigger value="hover">{t('showcase.animation.sections.hover')}</TabsTrigger>
+            <TabsTrigger value="loading">{t('showcase.animation.sections.loading')}</TabsTrigger>
+            <TabsTrigger value="interactive">{t('showcase.animation.sections.interactive')}</TabsTrigger>
+            <TabsTrigger value="transitions">{t('showcase.animation.sections.transitions')}</TabsTrigger>
+            <TabsTrigger value="advanced">{t('showcase.animation.sections.advanced')}</TabsTrigger>
           </TabsList>
 
           <TabsContent value="hover" className="space-y-6">
@@ -276,10 +278,10 @@ export default function AnimationShowcase() {
               <AnimatedCard delay={0}>
                 <Card className="hover:shadow-2xl hover:scale-105 transition-all duration-300 group">
                   <CardHeader>
-                    <CardTitle className="group-hover:text-primary transition-colors">Hover Scale</CardTitle>
+                    <CardTitle className="group-hover:text-primary transition-colors">{t('showcase.animation.hover.scale')}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground">Fareyi üzerine getirin</p>
+                    <p className="text-muted-foreground">{t('showcase.animation.hover.scaleDescription')}</p>
                   </CardContent>
                 </Card>
               </AnimatedCard>
@@ -287,10 +289,10 @@ export default function AnimationShowcase() {
               <AnimatedCard delay={100}>
                 <Card className="hover:shadow-[0_0_30px_rgba(59,130,246,0.3)] hover:border-primary/50 transition-all duration-500 group">
                   <CardHeader>
-                    <CardTitle className="group-hover:text-primary transition-colors">Glow Effect</CardTitle>
+                    <CardTitle className="group-hover:text-primary transition-colors">{t('showcase.animation.hover.glow')}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground">Parlama efekti</p>
+                    <p className="text-muted-foreground">{t('showcase.animation.hover.glowDescription')}</p>
                   </CardContent>
                 </Card>
               </AnimatedCard>
@@ -298,10 +300,10 @@ export default function AnimationShowcase() {
               <AnimatedCard delay={200}>
                 <Card className="hover:rotate-1 hover:scale-105 transition-all duration-300 group">
                   <CardHeader>
-                    <CardTitle className="group-hover:text-primary transition-colors">Tilt Effect</CardTitle>
+                    <CardTitle className="group-hover:text-primary transition-colors">{t('showcase.animation.hover.tilt')}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground">Hafif eğim efekti</p>
+                    <p className="text-muted-foreground">{t('showcase.animation.hover.tiltDescription')}</p>
                   </CardContent>
                 </Card>
               </AnimatedCard>
@@ -310,10 +312,10 @@ export default function AnimationShowcase() {
                 <Card className="group overflow-hidden relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                   <CardHeader>
-                    <CardTitle>Shine Effect</CardTitle>
+                    <CardTitle>{t('showcase.animation.hover.shine')}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground">Parlama geçişi</p>
+                    <p className="text-muted-foreground">{t('showcase.animation.hover.shineDescription')}</p>
                   </CardContent>
                 </Card>
               </AnimatedCard>
@@ -323,11 +325,11 @@ export default function AnimationShowcase() {
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <Heart className="h-5 w-5 group-hover:text-red-500 group-hover:scale-125 transition-all duration-300" />
-                      Icon Animation
+                      {t('showcase.animation.hover.icon')}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground">İkon animasyonu</p>
+                    <p className="text-muted-foreground">{t('showcase.animation.hover.iconDescription')}</p>
                   </CardContent>
                 </Card>
               </AnimatedCard>
@@ -336,10 +338,10 @@ export default function AnimationShowcase() {
                 <Card className="group perspective-1000">
                   <div className="group-hover:rotateY-12 transition-all duration-500 transform-style-3d">
                     <CardHeader>
-                      <CardTitle>3D Rotate</CardTitle>
+                      <CardTitle>{t('showcase.animation.hover.rotate')}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-muted-foreground">3D döndürme efekti</p>
+                      <p className="text-muted-foreground">{t('showcase.animation.hover.rotateDescription')}</p>
                     </CardContent>
                   </div>
                 </Card>
@@ -351,7 +353,7 @@ export default function AnimationShowcase() {
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               <Card>
                 <CardHeader>
-                  <CardTitle>Klasik Spinner</CardTitle>
+                  <CardTitle>{t('showcase.animation.loading.spinner')}</CardTitle>
                 </CardHeader>
                 <CardContent className="flex justify-center">
                   <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin" />
@@ -360,7 +362,7 @@ export default function AnimationShowcase() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle>Pulse Loader</CardTitle>
+                  <CardTitle>{t('showcase.animation.loading.pulse')}</CardTitle>
                 </CardHeader>
                 <CardContent className="flex justify-center">
                   <div className="flex gap-2">
@@ -377,7 +379,7 @@ export default function AnimationShowcase() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle>Wave Loader</CardTitle>
+                  <CardTitle>{t('showcase.animation.loading.wave')}</CardTitle>
                 </CardHeader>
                 <CardContent className="flex justify-center">
                   <WaveLoader />
@@ -386,7 +388,7 @@ export default function AnimationShowcase() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle>Progress Ring</CardTitle>
+                  <CardTitle>{t('showcase.animation.loading.progress')}</CardTitle>
                 </CardHeader>
                 <CardContent className="flex justify-center">
                   <ProgressRing progress={75} />
@@ -395,7 +397,7 @@ export default function AnimationShowcase() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle>Morphing Shape</CardTitle>
+                  <CardTitle>{t('showcase.animation.loading.morph')}</CardTitle>
                 </CardHeader>
                 <CardContent className="flex justify-center">
                   <MorphingShape />
@@ -404,7 +406,7 @@ export default function AnimationShowcase() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle>Gradient Spinner</CardTitle>
+                  <CardTitle>{t('showcase.animation.loading.gradient')}</CardTitle>
                 </CardHeader>
                 <CardContent className="flex justify-center">
                   <div className="w-8 h-8 rounded-full bg-gradient-to-r from-primary to-primary/30 animate-spin">
@@ -419,7 +421,7 @@ export default function AnimationShowcase() {
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               <Card>
                 <CardHeader>
-                  <CardTitle>Bouncing Buttons</CardTitle>
+                  <CardTitle>{t('showcase.animation.interactive.bounce')}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   {[0, 1, 2].map((index) => (
@@ -430,7 +432,7 @@ export default function AnimationShowcase() {
                         bounceItems.includes(index) ? 'animate-bounce' : ''
                       }`}
                     >
-                      Tıkla & Zıpla {index + 1}
+                      {t('showcase.animation.interactive.bounceButton')} {index + 1}
                     </Button>
                   ))}
                 </CardContent>
@@ -438,27 +440,27 @@ export default function AnimationShowcase() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle>Glow Buttons</CardTitle>
+                  <CardTitle>{t('showcase.animation.interactive.glow')}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <GlowButton variant="primary">
                     <Zap className="h-4 w-4 mr-2" />
-                    Primary Glow
+                    {t('showcase.animation.interactive.glowPrimary')}
                   </GlowButton>
                   <GlowButton variant="secondary">
                     <Star className="h-4 w-4 mr-2" />
-                    Secondary Glow
+                    {t('showcase.animation.interactive.glowSecondary')}
                   </GlowButton>
                   <GlowButton variant="accent">
                     <Heart className="h-4 w-4 mr-2" />
-                    Accent Glow
+                    {t('showcase.animation.interactive.glowAccent')}
                   </GlowButton>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader>
-                  <CardTitle>Particle Effect</CardTitle>
+                  <CardTitle>{t('showcase.animation.interactive.particle')}</CardTitle>
                 </CardHeader>
                 <CardContent className="flex justify-center">
                   <ParticleButton />
@@ -467,7 +469,7 @@ export default function AnimationShowcase() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle>Floating Elements</CardTitle>
+                  <CardTitle>{t('showcase.animation.interactive.float')}</CardTitle>
                 </CardHeader>
                 <CardContent className="grid grid-cols-2 gap-4">
                   <FloatingElement direction="up">
@@ -485,26 +487,26 @@ export default function AnimationShowcase() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle>Typewriter Effect</CardTitle>
+                  <CardTitle>{t('showcase.animation.interactive.typewriter')}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <TypewriterText text="Merhaba, bu bir typewriter efekti!" speed={100} />
+                  <TypewriterText text={t('showcase.animation.interactive.typewriterText')} speed={100} />
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader>
-                  <CardTitle>Interactive Badge</CardTitle>
+                  <CardTitle>{t('showcase.animation.interactive.badge')}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-2">
                   <Badge className="hover:scale-110 transition-transform cursor-pointer">
-                    Hover Scale
+                    {t('showcase.animation.interactive.badgeScale')}
                   </Badge>
                   <Badge variant="secondary" className="hover:rotate-12 transition-transform cursor-pointer">
-                    Hover Rotate
+                    {t('showcase.animation.interactive.badgeRotate')}
                   </Badge>
                   <Badge variant="outline" className="hover:shadow-lg transition-shadow cursor-pointer">
-                    Hover Shadow
+                    {t('showcase.animation.interactive.badgeShadow')}
                   </Badge>
                 </CardContent>
               </Card>
@@ -515,38 +517,38 @@ export default function AnimationShowcase() {
             <div className="grid gap-6 md:grid-cols-2">
               <Card>
                 <CardHeader>
-                  <CardTitle>Slide Transitions</CardTitle>
+                  <CardTitle>{t('showcase.animation.transitions.slide')}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
                     <div className="w-full h-2 bg-muted rounded overflow-hidden">
                       <div className="h-full bg-primary w-0 animate-[slideRight_2s_ease-in-out_infinite] rounded" />
                     </div>
-                    <p className="text-sm text-muted-foreground">Sağa kaydırma</p>
+                    <p className="text-sm text-muted-foreground">{t('showcase.animation.transitions.slideRight')}</p>
                   </div>
                   
                   <div className="space-y-2">
                     <div className="w-full h-20 bg-muted rounded overflow-hidden relative">
                       <div className="absolute w-full h-4 bg-primary top-0 animate-[slideDown_3s_ease-in-out_infinite] rounded" />
                     </div>
-                    <p className="text-sm text-muted-foreground">Aşağı kaydırma</p>
+                    <p className="text-sm text-muted-foreground">{t('showcase.animation.transitions.slideDown')}</p>
                   </div>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader>
-                  <CardTitle>Fade Transitions</CardTitle>
+                  <CardTitle>{t('showcase.animation.transitions.fade')}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
                     <div className="w-20 h-20 bg-primary rounded-lg animate-[fadeInOut_2s_ease-in-out_infinite]" />
-                    <p className="text-sm text-muted-foreground">Fade In/Out</p>
+                    <p className="text-sm text-muted-foreground">{t('showcase.animation.transitions.fadeInOut')}</p>
                   </div>
                   
                   <div className="space-y-2">
                     <div className="w-20 h-20 bg-secondary rounded-lg animate-[scaleInOut_2s_ease-in-out_infinite]" />
-                    <p className="text-sm text-muted-foreground">Scale In/Out</p>
+                    <p className="text-sm text-muted-foreground">{t('showcase.animation.transitions.scaleInOut')}</p>
                   </div>
                 </CardContent>
               </Card>
@@ -557,7 +559,7 @@ export default function AnimationShowcase() {
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               <Card>
                 <CardHeader>
-                  <CardTitle>CSS Art</CardTitle>
+                  <CardTitle>{t('showcase.animation.advanced.cssArt')}</CardTitle>
                 </CardHeader>
                 <CardContent className="flex justify-center">
                   <div className="relative w-20 h-20">
@@ -571,7 +573,7 @@ export default function AnimationShowcase() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle>Parallax Effect</CardTitle>
+                  <CardTitle>{t('showcase.animation.advanced.parallax')}</CardTitle>
                 </CardHeader>
                 <CardContent className="h-32 overflow-hidden relative bg-gradient-to-b from-blue-400 to-blue-600 rounded-lg">
                   <div className="absolute bottom-0 w-full h-8 bg-green-400 animate-[slideLeft_10s_linear_infinite]" />
@@ -582,7 +584,7 @@ export default function AnimationShowcase() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle>Matrix Effect</CardTitle>
+                  <CardTitle>{t('showcase.animation.advanced.matrix')}</CardTitle>
                 </CardHeader>
                 <CardContent className="h-32 bg-black rounded-lg overflow-hidden relative">
                   <div className="absolute inset-0 bg-gradient-to-b from-green-400/20 to-transparent">
@@ -610,21 +612,21 @@ export default function AnimationShowcase() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Wand2 className="h-5 w-5" />
-              Animasyon Playground
+              {t('showcase.animation.playground.title')}
             </CardTitle>
           </CardHeader>
           <CardContent className="text-center space-y-4">
             <p className="text-muted-foreground">
-              Bu bölümde öğrendiklerinizi test edebilir ve kendi animasyonlarınızı oluşturabilirsiniz.
+              {t('showcase.animation.playground.description')}
             </p>
             <div className="flex justify-center gap-4">
               <Button className="hover:animate-bounce">
                 <Play className="h-4 w-4 mr-2" />
-                Animasyonu Başlat
+                {t('showcase.animation.playground.start')}
               </Button>
               <Button variant="outline" className="hover:animate-pulse">
                 <RotateCw className="h-4 w-4 mr-2" />
-                Sıfırla
+                {t('showcase.animation.playground.reset')}
               </Button>
             </div>
           </CardContent>

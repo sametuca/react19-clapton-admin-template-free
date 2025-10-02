@@ -24,7 +24,8 @@ import {
   Save
 } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useLanguage } from "@/hooks/useLanguage";
+import { ThemeSelector } from "@/components/ThemeSelector";
 
 export default function Settings() {
   const { theme, setTheme } = useTheme();
@@ -471,32 +472,7 @@ export default function Settings() {
                       <Label>{t('settings.theme')}</Label>
                       <p className="text-sm text-muted-foreground">Uygulama temasını seçin</p>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <Button 
-                        variant={theme === 'light' ? 'default' : 'outline'} 
-                        size="sm"
-                        onClick={() => handleThemeChange('light')}
-                      >
-                        <Sun className="h-4 w-4 mr-2" />
-                        {t('settings.light')}
-                      </Button>
-                      <Button 
-                        variant={theme === 'dark' ? 'default' : 'outline'} 
-                        size="sm"
-                        onClick={() => handleThemeChange('dark')}
-                      >
-                        <Moon className="h-4 w-4 mr-2" />
-                        {t('settings.dark')}
-                      </Button>
-                      <Button 
-                        variant={theme === 'system' ? 'default' : 'outline'} 
-                        size="sm"
-                        onClick={() => handleThemeChange('system')}
-                      >
-                        <Monitor className="h-4 w-4 mr-2" />
-                        {t('settings.system')}
-                      </Button>
-                    </div>
+                    <ThemeSelector />
                   </div>
 
                   <div className="flex items-center justify-between">

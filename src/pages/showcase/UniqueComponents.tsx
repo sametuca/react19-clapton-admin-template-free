@@ -41,16 +41,18 @@ import {
   Layers,
   Palette
 } from "lucide-react";
+import { useLanguage } from "@/hooks/useLanguage";
 
 export default function UniqueComponents() {
+  const { t } = useLanguage();
   const [particleTextTrigger, setParticleTextTrigger] = useState(false);
   const [progress, setProgress] = useState(65);
 
   const floatingActions = [
-    { icon: User, label: "Kullanıcı Ekle", onClick: () => console.log("User added"), color: "bg-blue-500" },
-    { icon: Mail, label: "Mesaj Gönder", onClick: () => console.log("Message sent"), color: "bg-green-500" },
-    { icon: Phone, label: "Arama Yap", onClick: () => console.log("Call made"), color: "bg-purple-500" },
-    { icon: Settings, label: "Ayarlar", onClick: () => console.log("Settings opened"), color: "bg-orange-500" }
+    { icon: User, label: t('showcase.unique.floatingActions.addUser'), onClick: () => console.log("User added"), color: "bg-blue-500" },
+    { icon: Mail, label: t('showcase.unique.floatingActions.sendMessage'), onClick: () => console.log("Message sent"), color: "bg-green-500" },
+    { icon: Phone, label: t('showcase.unique.floatingActions.makeCall'), onClick: () => console.log("Call made"), color: "bg-purple-500" },
+    { icon: Settings, label: t('showcase.unique.floatingActions.settings'), onClick: () => console.log("Settings opened"), color: "bg-orange-500" }
   ];
 
   const triggerParticleText = () => {
@@ -61,8 +63,8 @@ export default function UniqueComponents() {
   return (
     <>
       <Helmet>
-        <title>Benzersiz Komponentler - React19 Admin</title>
-        <meta name="description" content="Piyasada benzeri bulunmayan, şık ve modern UI komponentleri" />
+        <title>{t('showcase.unique.pageTitle')}</title>
+        <meta name="description" content={t('showcase.unique.metaDescription')} />
       </Helmet>
 
       <div className="space-y-8 relative">
@@ -73,10 +75,10 @@ export default function UniqueComponents() {
 
         <div className="relative z-10 text-center space-y-4">
           <h1 className="text-4xl font-bold tracking-tight bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent">
-            Benzersiz UI Komponentleri
+            {t('showcase.unique.title')}
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Piyasada benzeri bulunmayan, şık ve modern komponentlerle fark yaratın
+            {t('showcase.unique.description')}
           </p>
         </div>
 
@@ -86,31 +88,31 @@ export default function UniqueComponents() {
         {/* Glassmorphism Cards */}
         <section className="space-y-4 relative z-10">
           <div className="flex items-center gap-2">
-            <h2 className="text-2xl font-semibold">Glassmorphism Kartlar</h2>
-            <Badge variant="secondary">Cam Efekti</Badge>
+            <h2 className="text-2xl font-semibold">{t('showcase.unique.sections.glassmorphism')}</h2>
+            <Badge variant="secondary">{t('showcase.unique.badges.glassmorphism')}</Badge>
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <GlassmorphismCard
-              title="Varsayılan Kart"
-              description="Şeffaf cam efekti ile modern görünüm"
+              title={t('showcase.unique.glassmorphism.default.title')}
+              description={t('showcase.unique.glassmorphism.default.description')}
               icon={Layers}
               variant="default"
             >
               <p className="text-sm opacity-80">
-                Glassmorphism tasarım trendi ile etkileyici kartlar oluşturun.
+                {t('showcase.unique.glassmorphism.default.content')}
               </p>
             </GlassmorphismCard>
             
             <GlassmorphismCard
-              title="Primary Kart"
-              description="Ana renk teması ile vurgu"
+              title={t('showcase.unique.glassmorphism.primary.title')}
+              description={t('showcase.unique.glassmorphism.primary.description')}
               icon={Zap}
               variant="primary"
               blur="lg"
             >
               <div className="space-y-2">
                 <div className="flex justify-between text-sm">
-                  <span>Performans</span>
+                  <span>{t('showcase.unique.glassmorphism.primary.performance')}</span>
                   <span>95%</span>
                 </div>
                 <div className="w-full bg-white/20 rounded-full h-2">
@@ -120,15 +122,15 @@ export default function UniqueComponents() {
             </GlassmorphismCard>
             
             <GlassmorphismCard
-              title="Accent Kart"
-              description="Vurgu rengi ile dikkat çekici"
+              title={t('showcase.unique.glassmorphism.accent.title')}
+              description={t('showcase.unique.glassmorphism.accent.description')}
               icon={Star}
               variant="accent"
               blur="xl"
             >
               <div className="flex items-center gap-2">
                 <Star className="h-4 w-4 fill-current" />
-                <span className="text-sm">Core Özellik</span>
+                <span className="text-sm">{t('showcase.unique.glassmorphism.accent.feature')}</span>
               </div>
             </GlassmorphismCard>
           </div>
@@ -137,54 +139,54 @@ export default function UniqueComponents() {
         {/* Holographic Cards */}
         <section className="space-y-4 relative z-10">
           <div className="flex items-center gap-2">
-            <h2 className="text-2xl font-semibold">Holografik Kartlar</h2>
-            <Badge variant="default">3D Efekt</Badge>
+            <h2 className="text-2xl font-semibold">{t('showcase.unique.sections.holographic')}</h2>
+            <Badge variant="default">{t('showcase.unique.badges.holographic')}</Badge>
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             <HolographicCard
-              title="Quantum Computing"
-              description="Gelecek teknolojisi"
+              title={t('showcase.unique.holographic.quantum.title')}
+              description={t('showcase.unique.holographic.quantum.description')}
               icon={Cpu}
             >
               <div className="space-y-3">
                 <div className="flex items-center gap-2 text-cyan-400">
                   <Atom className="h-4 w-4" />
-                  <span className="text-sm">Kuantum İşlemci</span>
+                  <span className="text-sm">{t('showcase.unique.holographic.quantum.processor')}</span>
                 </div>
                 <div className="text-xs text-slate-400">
-                  1000+ qubit kapasitesi ile süper hızlı hesaplama
+                  {t('showcase.unique.holographic.quantum.capacity')}
                 </div>
               </div>
             </HolographicCard>
             
             <HolographicCard
-              title="Neural Interface"
-              description="Beyin-bilgisayar arayüzü"
+              title={t('showcase.unique.holographic.neural.title')}
+              description={t('showcase.unique.holographic.neural.description')}
               icon={Database}
             >
               <div className="space-y-3">
                 <div className="flex items-center gap-2 text-purple-400">
                   <Globe className="h-4 w-4" />
-                  <span className="text-sm">Sinir Ağı Bağlantısı</span>
+                  <span className="text-sm">{t('showcase.unique.holographic.neural.connection')}</span>
                 </div>
                 <div className="text-xs text-slate-400">
-                  Düşünce ile kontrol edilebilen arayüz
+                  {t('showcase.unique.holographic.neural.technology')}
                 </div>
               </div>
             </HolographicCard>
             
             <HolographicCard
-              title="Cyber Security"
-              description="Gelişmiş güvenlik sistemi"
+              title={t('showcase.unique.holographic.cyber.title')}
+              description={t('showcase.unique.holographic.cyber.description')}
               icon={Shield}
             >
               <div className="space-y-3">
                 <div className="flex items-center gap-2 text-green-400">
                   <Shield className="h-4 w-4" />
-                  <span className="text-sm">Quantum Encryption</span>
+                  <span className="text-sm">{t('showcase.unique.holographic.cyber.encryption')}</span>
                 </div>
                 <div className="text-xs text-slate-400">
-                  Kırılamaz şifreleme teknolojisi
+                  {t('showcase.unique.holographic.cyber.technology')}
                 </div>
               </div>
             </HolographicCard>
@@ -194,39 +196,39 @@ export default function UniqueComponents() {
         {/* Interactive Buttons */}
         <section className="space-y-4 relative z-10">
           <div className="flex items-center gap-2">
-            <h2 className="text-2xl font-semibold">İnteraktif Butonlar</h2>
-            <Badge variant="outline">Etkileşimli</Badge>
+            <h2 className="text-2xl font-semibold">{t('showcase.unique.sections.buttons')}</h2>
+            <Badge variant="outline">{t('showcase.unique.badges.interactive')}</Badge>
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             <Card>
               <CardHeader>
-                <CardTitle>Morphing Button</CardTitle>
+                <CardTitle>{t('showcase.unique.buttons.morphing.title')}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <MorphingButton
                   icon={Download}
-                  loadingText="İndiriliyor..."
-                  successText="İndirildi!"
+                  loadingText={t('showcase.unique.buttons.morphing.loading')}
+                  successText={t('showcase.unique.buttons.morphing.success')}
                   onClick={() => new Promise(resolve => setTimeout(resolve, 2000))}
                 >
-                  Dosya İndir
+                  {t('showcase.unique.buttons.morphing.download')}
                 </MorphingButton>
                 
                 <MorphingButton
                   icon={Heart}
-                  loadingText="Kaydediliyor..."
-                  successText="Kaydedildi!"
+                  loadingText={t('showcase.unique.buttons.morphing.loading')}
+                  successText={t('showcase.unique.buttons.morphing.success')}
                   variant="outline"
                   onClick={() => new Promise(resolve => setTimeout(resolve, 1500))}
                 >
-                  Favorilere Ekle
+                  {t('showcase.unique.buttons.morphing.favorites')}
                 </MorphingButton>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader>
-                <CardTitle>Magnetic Button</CardTitle>
+                <CardTitle>{t('showcase.unique.buttons.magnetic.title')}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <MagneticButton
@@ -234,7 +236,7 @@ export default function UniqueComponents() {
                   magneticStrength={0.4}
                   glowColor="#8b5cf6"
                 >
-                  Manyetik Efekt
+                  {t('showcase.unique.buttons.magnetic.effect')}
                 </MagneticButton>
                 
                 <MagneticButton
@@ -243,21 +245,21 @@ export default function UniqueComponents() {
                   magneticStrength={0.6}
                   glowColor="#ec4899"
                 >
-                  Güçlü Çekim
+                  {t('showcase.unique.buttons.magnetic.strong')}
                 </MagneticButton>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader>
-                <CardTitle>Wave Button</CardTitle>
+                <CardTitle>{t('showcase.unique.buttons.wave.title')}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <WaveButton
                   icon={Share2}
                   waveColor="#10b981"
                 >
-                  Dalga Efekti
+                  {t('showcase.unique.buttons.wave.effect')}
                 </WaveButton>
                 
                 <WaveButton
@@ -265,27 +267,27 @@ export default function UniqueComponents() {
                   variant="outline"
                   waveColor="#f59e0b"
                 >
-                  Mesaj Gönder
+                  {t('showcase.unique.buttons.wave.message')}
                 </WaveButton>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader>
-                <CardTitle>Neon Border</CardTitle>
+                <CardTitle>{t('showcase.unique.buttons.neon.title')}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <NeonBorder color="#3b82f6" intensity="medium">
                   <Button className="w-full">
                     <Code className="h-4 w-4 mr-2" />
-                    Neon Efekt
+                    {t('showcase.unique.buttons.neon.effect')}
                   </Button>
                 </NeonBorder>
                 
                 <NeonBorder color="#ec4899" intensity="high" animated={true}>
                   <Button variant="outline" className="w-full">
                     <Palette className="h-4 w-4 mr-2" />
-                    Animasyonlu
+                    {t('showcase.unique.buttons.neon.animated')}
                   </Button>
                 </NeonBorder>
               </CardContent>
@@ -293,16 +295,16 @@ export default function UniqueComponents() {
           </div>
         </section>
 
-        {/* Liquid Progress & Loaders */}
+        {/* Liquid Effects & Loaders */}
         <section className="space-y-4 relative z-10">
           <div className="flex items-center gap-2">
-            <h2 className="text-2xl font-semibold">Sıvı Efektler & Yükleyiciler</h2>
-            <Badge variant="default">Sıvı Animasyon</Badge>
+            <h2 className="text-2xl font-semibold">{t('showcase.unique.sections.liquid')}</h2>
+            <Badge variant="default">{t('showcase.unique.badges.liquid')}</Badge>
           </div>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             <Card>
               <CardHeader>
-                <CardTitle>Liquid Progress</CardTitle>
+                <CardTitle>{t('showcase.unique.liquid.progress.title')}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex justify-center">
@@ -326,14 +328,14 @@ export default function UniqueComponents() {
 
             <Card>
               <CardHeader>
-                <CardTitle>Quantum Loader</CardTitle>
+                <CardTitle>{t('showcase.unique.liquid.loader.title')}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex justify-center">
                   <QuantumLoader 
                     size="lg" 
                     color="#8b5cf6"
-                    text="Kuantum İşleme..."
+                    text={t('showcase.unique.liquid.loader.processing')}
                   />
                 </div>
               </CardContent>
@@ -341,7 +343,7 @@ export default function UniqueComponents() {
 
             <Card>
               <CardHeader>
-                <CardTitle>Farklı Boyutlar</CardTitle>
+                <CardTitle>{t('showcase.unique.liquid.sizes.title')}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-center justify-center gap-4">
@@ -354,7 +356,7 @@ export default function UniqueComponents() {
 
             <Card>
               <CardHeader>
-                <CardTitle>Quantum Varyasyonları</CardTitle>
+                <CardTitle>{t('showcase.unique.liquid.variations.title')}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-center justify-center gap-4">
@@ -370,21 +372,21 @@ export default function UniqueComponents() {
         {/* Particle Text */}
         <section className="space-y-4 relative z-10">
           <div className="flex items-center gap-2">
-            <h2 className="text-2xl font-semibold">Parçacık Efektli Metin</h2>
-            <Badge variant="secondary">Animasyonlu</Badge>
+            <h2 className="text-2xl font-semibold">{t('showcase.unique.sections.particle')}</h2>
+            <Badge variant="secondary">{t('showcase.unique.badges.particle')}</Badge>
           </div>
           <Card>
             <CardContent className="py-12">
               <div className="text-center space-y-6">
                 <ParticleText 
-                  text="REACT19 ADMIN"
+                  text={t('showcase.unique.particle.text')}
                   trigger={particleTextTrigger}
                   particleColor="#3b82f6"
                   className="text-6xl font-bold"
                 />
                 <Button onClick={triggerParticleText} className="mt-4">
                   <Sparkles className="h-4 w-4 mr-2" />
-                  Parçacık Animasyonu Başlat
+                  {t('showcase.unique.particle.start')}
                 </Button>
               </div>
             </CardContent>
@@ -394,34 +396,34 @@ export default function UniqueComponents() {
         {/* Mixed Examples */}
         <section className="space-y-4 relative z-10">
           <div className="flex items-center gap-2">
-            <h2 className="text-2xl font-semibold">Karma Örnekler</h2>
-            <Badge variant="outline">Showcase</Badge>
+            <h2 className="text-2xl font-semibold">{t('showcase.unique.sections.mixed')}</h2>
+            <Badge variant="outline">{t('showcase.unique.badges.mixed')}</Badge>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
             <Card className="relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10" />
               <CardHeader className="relative z-10">
-                <CardTitle>Medya Kontrolleri</CardTitle>
+                <CardTitle>{t('showcase.unique.mixed.media.title')}</CardTitle>
               </CardHeader>
               <CardContent className="relative z-10 space-y-4">
                 <div className="grid grid-cols-3 gap-3">
                   <WaveButton icon={Camera} size="sm" waveColor="#3b82f6">
-                    Fotoğraf
+                    {t('showcase.unique.mixed.media.photo')}
                   </WaveButton>
                   <WaveButton icon={Video} size="sm" waveColor="#8b5cf6">
-                    Video
+                    {t('showcase.unique.mixed.media.video')}
                   </WaveButton>
                   <WaveButton icon={Music} size="sm" waveColor="#ec4899">
-                    Müzik
+                    {t('showcase.unique.mixed.media.music')}
                   </WaveButton>
                 </div>
                 
                 <div className="grid grid-cols-2 gap-3">
                   <MagneticButton icon={Image} variant="outline" magneticStrength={0.3}>
-                    Galeri
+                    {t('showcase.unique.mixed.media.gallery')}
                   </MagneticButton>
                   <MagneticButton icon={FileText} variant="outline" magneticStrength={0.3}>
-                    Dosyalar
+                    {t('showcase.unique.mixed.media.files')}
                   </MagneticButton>
                 </div>
               </CardContent>
@@ -429,14 +431,14 @@ export default function UniqueComponents() {
 
             <Card className="relative">
               <CardHeader>
-                <CardTitle>Neon Efektli Kontroller</CardTitle>
+                <CardTitle>{t('showcase.unique.mixed.neon.title')}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <NeonBorder color="#00ff88" intensity="high" animated={true}>
                   <div className="p-4 space-y-3">
                     <div className="flex items-center justify-between">
-                      <span className="text-sm font-medium">Sistem Durumu</span>
-                      <Badge className="bg-green-500">Çevrimiçi</Badge>
+                      <span className="text-sm font-medium">{t('showcase.unique.mixed.neon.status')}</span>
+                      <Badge className="bg-green-500">{t('showcase.unique.mixed.neon.online')}</Badge>
                     </div>
                     <div className="flex justify-center">
                       <QuantumLoader size="sm" color="#00ff88" />
@@ -447,8 +449,8 @@ export default function UniqueComponents() {
                 <NeonBorder color="#ff0080" intensity="medium">
                   <div className="p-4 space-y-3">
                     <div className="flex items-center justify-between">
-                      <span className="text-sm font-medium">Güvenlik Taraması</span>
-                      <Badge variant="destructive">Aktif</Badge>
+                      <span className="text-sm font-medium">{t('showcase.unique.mixed.neon.scan')}</span>
+                      <Badge variant="destructive">{t('showcase.unique.mixed.neon.active')}</Badge>
                     </div>
                     <div className="flex justify-center">
                       <LiquidProgress value={78} size="md" color="#ff0080" />
@@ -462,18 +464,18 @@ export default function UniqueComponents() {
 
         {/* Component Features */}
         <section className="space-y-4 relative z-10">
-          <h2 className="text-2xl font-semibold">Komponent Özellikleri</h2>
+          <h2 className="text-2xl font-semibold">{t('showcase.unique.sections.features')}</h2>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Sparkles className="h-5 w-5 text-yellow-500" />
-                  Benzersiz Tasarım
+                  {t('showcase.unique.features.unique')}
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground text-sm">
-                  Piyasada benzeri bulunmayan özgün tasarım dili
+                  {t('showcase.unique.features.uniqueDescription')}
                 </p>
               </CardContent>
             </Card>
@@ -482,12 +484,12 @@ export default function UniqueComponents() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Zap className="h-5 w-5 text-blue-500" />
-                  Performanslı
+                  {t('showcase.unique.features.performance')}
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground text-sm">
-                  GPU hızlandırmalı animasyonlar ve smooth geçişler
+                  {t('showcase.unique.features.performanceDescription')}
                 </p>
               </CardContent>
             </Card>
@@ -496,12 +498,12 @@ export default function UniqueComponents() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Palette className="h-5 w-5 text-purple-500" />
-                  Özelleştirilebilir
+                  {t('showcase.unique.features.customizable')}
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground text-sm">
-                  Renk, boyut ve efekt yoğunluğu ayarlanabilir
+                  {t('showcase.unique.features.customizableDescription')}
                 </p>
               </CardContent>
             </Card>
@@ -510,12 +512,12 @@ export default function UniqueComponents() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Globe className="h-5 w-5 text-green-500" />
-                  Responsive
+                  {t('showcase.unique.features.responsive')}
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground text-sm">
-                  Tüm cihaz boyutlarında mükemmel görünüm
+                  {t('showcase.unique.features.responsiveDescription')}
                 </p>
               </CardContent>
             </Card>

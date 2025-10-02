@@ -1,0 +1,37 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1E40AF;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="letterGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E0E7FF;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background with rounded corners -->
+  <rect width="32" height="32" rx="8" fill="url(#bgGrad)" />
+  
+  <!-- Subtle inner shadow -->
+  <rect x="1" y="1" width="30" height="30" rx="7" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+  
+  <!-- Letter C with modern styling -->
+  <path d="M20.5 8.5C18.5 7.5 16 7.5 14 9C12 10.5 11.5 12.5 11.5 16C11.5 19.5 12 21.5 14 23C16 24.5 18.5 24.5 20.5 23.5" 
+        stroke="url(#letterGrad)" 
+        stroke-width="3" 
+        stroke-linecap="round" 
+        fill="none" 
+        filter="url(#glow)"/>
+  
+  <!-- Decorative dot -->
+  <circle cx="23" cy="9" r="1.5" fill="#10B981" opacity="0.8"/>
+</svg>

@@ -1,7 +1,30 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
+  useSidebar,
+} from "@/components/ui/sidebar";
 import { 
   LayoutDashboard, 
   Palette, 
@@ -21,245 +44,247 @@ import {
   Rocket,
   Moon,
   Sun,
-  Languages
+  Languages,
+  Sparkles,
+  MessageSquare,
+  ChevronDown,
+  ChevronRight,
+  MousePointer,
+  Wallet,
+  ShoppingCart,
+  Brain,
+  Database,
+  Camera
 } from "lucide-react";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useLanguage } from "@/hooks/useLanguage";
 import { useTheme } from "@/contexts/ThemeContext";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { ThemeSelector } from "@/components/ThemeSelector";
+import {
+  Collapsible as CollapsibleRoot,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 
 export default function AppSidebar() {
-  const [isCollapsed, setIsCollapsed] = useState(false);
-  const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [showcaseExpanded, setShowcaseExpanded] = useState(false);
+  const [examplesExpanded, setExamplesExpanded] = useState(false);
   const location = useLocation();
-  const { t, language, setLanguage } = useLanguage();
-  const { theme, setTheme } = useTheme();
+  const { t, language } = useLanguage();
+  const { state } = useSidebar();
 
   const mainItems = [
-    { title: t('nav.dashboard'), url: "/", icon: LayoutDashboard, badge: null },
     { title: t('nav.getStarted'), url: "/get-started", icon: Rocket, badge: t('nav.guide') },
+    { title: t('nav.exampleServices'), url: "/services", icon: Database, badge: "API" },
   ];
 
-  const showcaseItems = [
-    { title: t('nav.showcase'), url: "/showcase", icon: Palette, badge: "10", isParent: true },
-    { title: t('showcase.stats.title'), url: "/showcase/stats", icon: BarChart3, badge: t('showcase.stats.badge'), isChild: true },
-    { title: t('showcase.tables.title'), url: "/showcase/tables", icon: Table2, badge: t('showcase.tables.badge'), isChild: true },
-    { title: t('showcase.activity.title'), url: "/showcase/activity", icon: Activity, badge: t('showcase.activity.badge'), isChild: true },
-    { title: t('showcase.charts.title'), url: "/showcase/charts", icon: BarChart3, badge: t('showcase.charts.badge'), isChild: true },
-    { title: t('showcase.features.title'), url: "/showcase/features", icon: Star, badge: t('showcase.features.badge'), isChild: true },
-    { title: t('showcase.loading.title'), url: "/showcase/loading", icon: Loader2, badge: t('showcase.loading.badge'), isChild: true },
-    { title: t('showcase.widgets.title'), url: "/showcase/widgets", icon: BarChart3, badge: t('showcase.widgets.badge'), isChild: true },
-    { title: t('showcase.gallery.title'), url: "/showcase/gallery", icon: Palette, badge: t('showcase.gallery.badge'), isChild: true },
-    { title: t('showcase.animations.title'), url: "/showcase/animations", icon: Star, badge: t('showcase.animations.badge'), isChild: true },
+  const showcaseChildItems = [
+    { title: t('showcase.stats.title'), url: "/showcase/stats", icon: BarChart3},
+    { title: t('showcase.datatables.title'), url: "/showcase/tables", icon: Table2},
+    { title: t('showcase.activity.title'), url: "/showcase/activity", icon: Activity},
+    { title: t('showcase.charts.title'), url: "/showcase/charts", icon: BarChart3},
+    { title: t('showcase.features.title'), url: "/showcase/features", icon: Star},
+    { title: t('showcase.loading.title'), url: "/showcase/loading", icon: Loader2},
+    { title: t('showcase.widgets.title'), url: "/showcase/widgets", icon: BarChart3},
+    { title: t('showcase.gallery.title'), url: "/showcase/gallery", icon: Palette},
+    { title: t('showcase.animation.title'), url: "/showcase/animations", icon: Star},
+    { title: t('showcase.buttons.title'), url: "/showcase/buttons", icon: MousePointer},
+    { title: t('showcase.forms.title'), url: "/showcase/forms", icon: FileText},
+    { title: t('showcase.navigation.title'), url: "/showcase/navigation", icon: Menu},
+    { title: t('showcase.feedback.title'), url: "/showcase/feedback", icon: MessageSquare},
+    { title: t('showcase.media.title'), url: "/showcase/media", icon: Camera},
+    { title: "Popüler Komponentler", url: "/showcase/popular", icon: Star },
+    { title: "Kanban Board", url: "/showcase/kanban", icon: LayoutDashboard },
+    { title: "Authentication", url: "/showcase/auth", icon: User },
+    { title: t('showcase.ai.premiumComponents'), url: "/showcase/premium", icon: Star },
+    { title: t('showcase.ai.aiComponents'), url: "/showcase/ai", icon: Brain},
   ];
 
-  const otherItems = [
-    { title: t('nav.analytics'), url: "/analytics", icon: BarChart3, badge: null },
-    { title: t('nav.tables'), url: "/tables", icon: Table2, badge: null },
-    { title: t('nav.forms'), url: "/forms", icon: FileText, badge: null },
-    { title: t('nav.users'), url: "/users", icon: Users, badge: null },
-    { title: t('nav.roles'), url: "/roles", icon: Shield, badge: null },
-    { title: t('nav.profile'), url: "/profile", icon: User, badge: null },
-    { title: t('nav.notifications'), url: "/notifications", icon: Bell, badge: null },
-    { title: t('nav.settings'), url: "/settings", icon: Settings, badge: null },
+  const exampleChildItems = [
+    { title: t('nav.examples.socialMedia'), url: "/examples/social-media", icon: MessageSquare },
+    { title: t('nav.examples.ecommerce'), url: "/examples/ecommerce", icon: ShoppingCart },
+    { title: t('nav.examples.analytics'), url: "/examples/analytics", icon: BarChart3 },
+    { title: t('nav.examples.crm'), url: "/examples/crm", icon: Users },
+    { title: t('nav.examples.finance'), url: "/examples/finance", icon: Wallet },
   ];
 
   const isActive = (url: string) => location.pathname === url;
 
-  const toggleLanguage = () => {
-    setLanguage(language === 'tr' ? 'en' : 'tr');
-  };
-
-  const toggleTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
-  };
-
   return (
-    <>
-      {/* Mobile Menu Button */}
-      <div className="lg:hidden fixed top-4 left-4 z-50">
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={() => setIsMobileOpen(!isMobileOpen)}
-          className="glassmorphism-card text-white hover:bg-white/20"
-        >
-          {isMobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </Button>
-      </div>
-
-      {/* Mobile Overlay */}
-      {isMobileOpen && (
-        <div 
-          className="lg:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
-          onClick={() => setIsMobileOpen(false)}
-        />
-      )}
-
-      {/* Sidebar */}
-      <aside className={`
-        fixed left-0 top-0 h-full z-50 transition-all duration-300 ease-in-out
-        ${isCollapsed ? 'w-16' : 'w-64'}
-        ${isMobileOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
-        sidebar-glass
-      `}>
-        <div className="flex flex-col h-full">
-          {/* Header */}
-          <div className="flex items-center justify-between p-4 border-b border-white/10">
-            {!isCollapsed && (
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-gradient-to-br from-blue-400 to-purple-600 rounded-lg flex items-center justify-center">
-                  <Palette className="w-5 h-5 text-white" />
+    <TooltipProvider>
+      <Sidebar collapsible="icon">
+      <SidebarHeader>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton size="lg" asChild>
+              <Link to="/">
+                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-600 via-blue-500 to-purple-600 text-sidebar-primary-foreground shadow-lg border border-white/20">
+                  <span className="text-white font-bold text-lg tracking-wider" style={{fontFamily: 'system-ui, -apple-system, sans-serif'}}>C</span>
                 </div>
-                <span className="text-lg font-bold gradient-text-primary">
-                  {t('app.title')}
-                </span>
-              </div>
-            )}
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsCollapsed(!isCollapsed)}
-              className="text-white hover:bg-white/20"
-            >
-              {isCollapsed ? <Menu className="h-4 w-4" /> : <X className="h-4 w-4" />}
-            </Button>
-          </div>
+                <div className="grid flex-1 text-left text-sm leading-tight">
+                  <span className="truncate font-semibold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                    React19 Admin
+                  </span>
+                  <span className="truncate text-xs text-sidebar-foreground/60">
+                    Premium Template for React19
+                  </span>
+                </div>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarHeader>
 
-          {/* Navigation */}
-          <nav className="flex-1 p-4 space-y-2 overflow-y-auto">
-            {/* Main Items */}
-            <div className="space-y-1">
+      <SidebarContent>
+        {/* Main Items */}
+        <SidebarGroup>
+          <SidebarGroupLabel>{t('nav.menu')}</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
               {mainItems.map((item) => (
-                <Link
-                  key={item.url}
-                  to={item.url}
-                  className={`
-                    flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200
-                    ${isActive(item.url) 
-                      ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 text-blue-300' 
-                      : 'text-white/70 hover:bg-white/10 hover:text-white'
-                    }
-                  `}
-                >
-                  <item.icon className="h-5 w-5 flex-shrink-0" />
-                  {!isCollapsed && (
-                    <>
-                      <span className="flex-1">{item.title}</span>
-                      {item.badge && (
-                        <Badge variant="secondary" className="badge-glass text-xs">
-                          {item.badge}
-                        </Badge>
-                      )}
-                    </>
-                  )}
-                </Link>
+                <SidebarMenuItem key={item.url}>
+                  <SidebarMenuButton asChild isActive={isActive(item.url)}>
+                    <Link to={item.url}>
+                      <item.icon />
+                      <span>{item.title}</span>
+                      {item.badge && <Badge variant="secondary" className="ml-auto">{item.badge}</Badge>}
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
               ))}
-            </div>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
 
-            {/* Showcase Items */}
-            <div className="space-y-1">
-              <div className={`
-                flex items-center gap-3 px-3 py-2 text-white/50 text-sm font-medium
-                ${!isCollapsed ? 'mb-2' : 'justify-center'}
-              `}>
-                {!isCollapsed && <span>{t('nav.showcase')}</span>}
-              </div>
-              {showcaseItems.map((item) => (
-                <Link
-                  key={item.url}
-                  to={item.url}
-                  className={`
-                    flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200
-                    ${isActive(item.url) 
-                      ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 text-blue-300' 
-                      : 'text-white/70 hover:bg-white/10 hover:text-white'
-                    }
-                    ${item.isChild ? 'ml-4' : ''}
-                  `}
-                >
-                  <item.icon className="h-5 w-5 flex-shrink-0" />
-                  {!isCollapsed && (
-                    <>
-                      <span className="flex-1">{item.title}</span>
-                      {item.badge && (
-                        <Badge variant="secondary" className="badge-glass text-xs">
-                          {item.badge}
-                        </Badge>
-                      )}
-                    </>
-                  )}
-                </Link>
-              ))}
-            </div>
+        {/* Showcase Items */}
+        <SidebarGroup>
+          <SidebarGroupLabel>{t('nav.showcase')}</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <CollapsibleRoot open={showcaseExpanded} onOpenChange={setShowcaseExpanded}>
+                <SidebarMenuItem>
+                  <CollapsibleTrigger asChild>
+                    <SidebarMenuButton>
+                      <Palette />
+                      <span>{t('nav.showcase')}</span>
+                      <ChevronRight className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-90" />
+                    </SidebarMenuButton>
+                  </CollapsibleTrigger>
+                  <CollapsibleContent>
+                    <SidebarMenuSub>
+                      {/* Main Showcase Link */}
+                      <SidebarMenuSubItem>
+                        <SidebarMenuSubButton asChild isActive={isActive('/showcase')}>
+                          <Link to="/showcase">
+                            <Palette />
+                            <span>{t('nav.overview')}</span>
+                          </Link>
+                        </SidebarMenuSubButton>
+                      </SidebarMenuSubItem>
+                      
+                      {/* Showcase Child Items */}
+                      {showcaseChildItems.map((item) => (
+                        <SidebarMenuSubItem key={item.url}>
+                          <SidebarMenuSubButton asChild isActive={isActive(item.url)}>
+                            <Link to={item.url}>
+                              <item.icon />
+                              <span>{item.title}</span>
+                            </Link>
+                          </SidebarMenuSubButton>
+                        </SidebarMenuSubItem>
+                      ))}
+                    </SidebarMenuSub>
+                  </CollapsibleContent>
+                </SidebarMenuItem>
+              </CollapsibleRoot>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
 
-            {/* Other Items */}
-            <div className="space-y-1">
-              <div className={`
-                flex items-center gap-3 px-3 py-2 text-white/50 text-sm font-medium
-                ${!isCollapsed ? 'mb-2' : 'justify-center'}
-              `}>
-                {!isCollapsed && <span>{t('nav.mainMenu')}</span>}
-              </div>
-              {otherItems.map((item) => (
-                <Link
-                  key={item.url}
-                  to={item.url}
-                  className={`
-                    flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200
-                    ${isActive(item.url) 
-                      ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 text-blue-300' 
-                      : 'text-white/70 hover:bg-white/10 hover:text-white'
-                    }
-                  `}
-                >
-                  <item.icon className="h-5 w-5 flex-shrink-0" />
-                  {!isCollapsed && (
-                    <>
-                      <span className="flex-1">{item.title}</span>
-                      {item.badge && (
-                        <Badge variant="secondary" className="badge-glass text-xs">
-                          {item.badge}
-                        </Badge>
-                      )}
-                    </>
-                  )}
-                </Link>
-              ))}
-            </div>
-          </nav>
+        {/* Example Pages */}
+        <SidebarGroup>
+          <SidebarGroupLabel>{t('nav.examples.examples')}</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              <CollapsibleRoot open={examplesExpanded} onOpenChange={setExamplesExpanded}>
+                <SidebarMenuItem>
+                  <CollapsibleTrigger asChild>
+                    <SidebarMenuButton>
+                      <Sparkles />
+                      <span>{t('nav.examples.examples')}</span>
+                      <ChevronRight className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-90" />
+                    </SidebarMenuButton>
+                  </CollapsibleTrigger>
+                  <CollapsibleContent>
+                    <SidebarMenuSub>
+                      {/* Main Examples Link */}
+                      <SidebarMenuSubItem>
+                        <SidebarMenuSubButton asChild isActive={isActive('/examples')}>
+                          <Link to="/examples">
+                            <Sparkles />
+                            <span>{t('nav.examples.overview')}</span>
+                          </Link>
+                        </SidebarMenuSubButton>
+                      </SidebarMenuSubItem>
+                      
+                      {/* Example Child Items */}
+                      {exampleChildItems.map((item) => (
+                        <SidebarMenuSubItem key={item.url}>
+                          <SidebarMenuSubButton asChild isActive={isActive(item.url)}>
+                            <Link to={item.url}>
+                              <item.icon />
+                              <span>{item.title}</span>
+                            </Link>
+                          </SidebarMenuSubButton>
+                        </SidebarMenuSubItem>
+                      ))}
+                    </SidebarMenuSub>
+                  </CollapsibleContent>
+                </SidebarMenuItem>
+              </CollapsibleRoot>
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
 
-          {/* Footer Controls */}
-          <div className="p-4 border-t border-white/10 space-y-2">
-            {/* Language Toggle */}
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={toggleLanguage}
-              className="w-full text-white/70 hover:bg-white/10 hover:text-white"
-            >
-              <Languages className="h-4 w-4 mr-2" />
-              {!isCollapsed && <span>{language === 'tr' ? 'TR' : 'EN'}</span>}
-            </Button>
-
-            {/* Theme Toggle */}
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={toggleTheme}
-              className="w-full text-white/70 hover:bg-white/10 hover:text-white"
-            >
-              {theme === 'dark' ? (
-                <Sun className="h-4 w-4 mr-2" />
+      <SidebarFooter>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <div className={`flex ${state === "collapsed" ? "flex-col" : "flex-row"} items-center justify-center gap-2 p-2`}>
+              {state === "collapsed" ? (
+                <>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <div>
+                        <LanguageSwitcher />
+                      </div>
+                    </TooltipTrigger>
+                    <TooltipContent side="right">
+                      <p>{t('nav.changeLanguage')}</p>
+                    </TooltipContent>
+                  </Tooltip>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <div>
+                        <ThemeSelector />
+                      </div>
+                    </TooltipTrigger>
+                    <TooltipContent side="right">
+                      <p>{t('nav.changeTheme')}</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </>
               ) : (
-                <Moon className="h-4 w-4 mr-2" />
+                <>
+                  <LanguageSwitcher />
+                  <ThemeSelector />
+                </>
               )}
-              {!isCollapsed && <span>{theme === 'dark' ? t('theme.light') : t('theme.dark')}</span>}
-            </Button>
-          </div>
-        </div>
-      </aside>
-
-      {/* Main Content Margin */}
-      <div className={`${isCollapsed ? 'lg:ml-16' : 'lg:ml-64'} transition-all duration-300`} />
-    </>
+            </div>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarFooter>
+    </Sidebar>
+    </TooltipProvider>
   );
 }

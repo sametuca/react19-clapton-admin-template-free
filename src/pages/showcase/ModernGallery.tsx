@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { useState } from "react";
+import { useLanguage } from "@/hooks/useLanguage";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -29,17 +30,18 @@ import {
 } from "lucide-react";
 
 export default function ModernGallery() {
+  const { t } = useLanguage();
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [likedItems, setLikedItems] = useState<number[]>([]);
 
   const categories = [
-    { id: 'all', name: 'Tümü', count: 24 },
-    { id: 'landscape', name: 'Manzara', count: 8 },
-    { id: 'portrait', name: 'Portre', count: 6 },
-    { id: 'architecture', name: 'Mimari', count: 5 },
-    { id: 'nature', name: 'Doğa', count: 5 }
+    { id: 'all', name: t('showcase.gallery.categories.all'), count: 24 },
+    { id: 'landscape', name: t('showcase.gallery.categories.nature'), count: 8 },
+    { id: 'portrait', name: t('showcase.gallery.categories.people'), count: 6 },
+    { id: 'architecture', name: t('showcase.gallery.categories.architecture'), count: 5 },
+    { id: 'nature', name: t('showcase.gallery.categories.nature'), count: 5 }
   ];
 
   const galleryItems = [
@@ -322,17 +324,17 @@ export default function ModernGallery() {
   return (
     <>
       <Helmet>
-        <title>Modern Gallery - CodeMaze Admin</title>
-        <meta name="description" content="Çok medyalı galeri bileşenleri ve interaktif görüntüleme seçenekleri" />
+        <title>{t('showcase.gallery.pageTitle')}</title>
+        <meta name="description" content={t('showcase.gallery.metaDescription')} />
       </Helmet>
 
       <div className="space-y-8">
         <div className="text-center space-y-4">
           <h1 className="text-4xl font-bold tracking-tight bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-            Modern Gallery
+            {t('showcase.gallery.title')}
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Etkileyici galeri bileşenleri ile medya içeriklerinizi sergileyin
+            {t('showcase.gallery.description')}
           </p>
         </div>
 
@@ -342,7 +344,7 @@ export default function ModernGallery() {
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <Input
-                placeholder="Ara..."
+                placeholder={t('showcase.gallery.searchPlaceholder')}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-10 w-64"
@@ -350,7 +352,7 @@ export default function ModernGallery() {
             </div>
             <Button variant="outline" size="sm">
               <Filter className="h-4 w-4 mr-2" />
-              Filtrele
+              {t('showcase.gallery.filterButton')}
             </Button>
           </div>
           
@@ -395,8 +397,8 @@ export default function ModernGallery() {
           {filteredItems.length === 0 ? (
             <div className="text-center py-12">
               <Camera className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
-              <h3 className="text-lg font-semibold mb-2">Sonuç Bulunamadı</h3>
-              <p className="text-muted-foreground">Arama kriterlerinize uygun içerik bulunamadı.</p>
+              <h3 className="text-lg font-semibold mb-2">{t('showcase.gallery.noResultsTitle')}</h3>
+              <p className="text-muted-foreground">{t('showcase.gallery.noResultsDescription')}</p>
             </div>
           ) : viewMode === 'grid' ? (
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -494,7 +496,7 @@ export default function ModernGallery() {
         {filteredItems.length > 0 && (
           <div className="text-center">
             <Button variant="outline" size="lg">
-              Daha Fazla Yükle
+              {t('showcase.gallery.loadMoreButton')}
             </Button>
           </div>
         )}

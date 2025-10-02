@@ -8,7 +8,7 @@ import {
   BarChart, Bar, PieChart, Pie, Cell, AreaChart, Area 
 } from "recharts";
 import { Download, Filter, TrendingUp, TrendingDown, Users, ShoppingCart, Eye, MousePointer } from "lucide-react";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useLanguage } from "@/hooks/useLanguage";
 
 export default function Analytics() {
   const { t } = useLanguage();
@@ -57,10 +57,10 @@ export default function Analytics() {
                 <SelectValue placeholder={t("analytics.duration")} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="7">{t("analytics.7days")}</SelectItem>
-                <SelectItem value="30">{t("analytics.30days")}</SelectItem>
-                <SelectItem value="90">{t("analytics.90days")}</SelectItem>
-                <SelectItem value="365">{t("analytics.1year")}</SelectItem>
+                <SelectItem value="7">7</SelectItem>
+                <SelectItem value="30">30</SelectItem>
+                <SelectItem value="90">90</SelectItem>
+                <SelectItem value="365">365</SelectItem>
               </SelectContent>
             </Select>
             <Button variant="outline" size="sm">

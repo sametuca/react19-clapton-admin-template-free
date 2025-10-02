@@ -1,5 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ModernCard } from "@/components/ui/modern-card";
+import { SpotlightCard } from "@/components/ui/spotlight-card";
 import { StatsCard } from "@/components/ui/stats-card";
 import { ActivityFeed } from "@/components/ui/activity-feed";
 import { MetricChart } from "@/components/ui/metric-chart";
@@ -285,30 +287,41 @@ export default function ComponentShowcase() {
             <Badge variant="outline">Smooth</Badge>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
-            <Card>
-              <CardHeader>
-                <CardTitle>Küçük Spinner</CardTitle>
-              </CardHeader>
-              <CardContent className="flex justify-center py-8">
+            <ModernCard
+              title="Küçük Spinner"
+              description="Küçük yükleme animasyonu"
+              icon={Settings}
+              variant="neon"
+              interactive={true}
+            >
+              <div className="flex justify-center py-8">
                 <LoadingSpinner size="sm" text="Yükleniyor..." />
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle>Orta Spinner</CardTitle>
-              </CardHeader>
-              <CardContent className="flex justify-center py-8">
+              </div>
+            </ModernCard>
+            
+            <ModernCard
+              title="Orta Spinner"
+              description="Orta boyut yükleme animasyonu"
+              icon={Settings}
+              variant="glass"
+              interactive={true}
+            >
+              <div className="flex justify-center py-8">
                 <LoadingSpinner size="md" text="İşleniyor..." />
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle>Büyük Spinner</CardTitle>
-              </CardHeader>
-              <CardContent className="flex justify-center py-8">
+              </div>
+            </ModernCard>
+            
+            <ModernCard
+              title="Büyük Spinner"
+              description="Büyük yükleme animasyonu"
+              icon={Settings}
+              variant="gradient"
+              interactive={true}
+            >
+              <div className="flex justify-center py-8">
                 <LoadingSpinner size="lg" text="Hazırlanıyor..." />
-              </CardContent>
-            </Card>
+              </div>
+            </ModernCard>
           </div>
         </section>
 

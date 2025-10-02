@@ -1,7 +1,8 @@
 import { Helmet } from "react-helmet-async";
+import { useLanguage } from "@/hooks/useLanguage";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { 
   BarChart3, 
   Table2, 
@@ -13,121 +14,194 @@ import {
   Sparkles,
   Zap,
   Eye,
-  Rocket
+  Rocket,
+  LayoutDashboard,
+  User
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function ComponentShowcaseIndex() {
   const { t } = useLanguage();
-  
+
   const showcasePages = [
     {
-      title: t('showcase.stats.title'),
-      description: t('showcase.stats.description'),
+      title: t('showcase.index.items.statsCards'),
+      description: t('showcase.index.descriptions.statsCards'),
       icon: BarChart3,
       path: "/showcase/stats",
-      badge: t('showcase.stats.badge'),
+      badge: t('showcase.index.badges.animated'),
       features: [
-        t('showcase.stats.features.counter'),
-        t('showcase.stats.features.trend'),
-        t('showcase.stats.features.gradient')
+        t('showcase.index.features.counterAnimations'),
+        t('showcase.index.features.trendIndicators'), 
+        t('showcase.index.features.gradientSupport')
       ]
     },
     {
-      title: t('showcase.tables.title'),
-      description: t('showcase.tables.description'),
-      icon: Table2,
-      path: "/showcase/tables",
-      badge: t('showcase.tables.badge'),
-      features: [
-        t('showcase.tables.features.search'),
-        t('showcase.tables.features.sort'),
-        t('showcase.tables.features.export')
-      ]
-    },
-    {
-      title: t('showcase.activity.title'),
-      description: t('showcase.activity.description'),
-      icon: Activity,
-      path: "/showcase/activity",
-      badge: t('showcase.activity.badge'),
-      features: [
-        t('showcase.activity.features.realtime'),
-        t('showcase.activity.features.categories'),
-        t('showcase.activity.features.avatar')
-      ]
-    },
-    {
-      title: t('showcase.charts.title'),
-      description: t('showcase.charts.description'),
-      icon: BarChart3,
-      path: "/showcase/charts",
-      badge: t('showcase.charts.badge'),
-      features: [
-        t('showcase.charts.features.hover'),
-        t('showcase.charts.features.loading'),
-        t('showcase.charts.features.trend')
-      ]
-    },
-    {
-      title: t('showcase.features.title'),
-      description: t('showcase.features.description'),
+      title: t('showcase.index.items.featureCards'),
+      description: t('showcase.index.descriptions.featureCards'),
       icon: Star,
       path: "/showcase/features",
-      badge: t('showcase.features.badge'),
+      badge: t('showcase.index.badges.showcase'),
       features: [
-        t('showcase.features.features.hover'),
-        t('showcase.features.features.icons'),
-        t('showcase.features.features.cta')
+        t('showcase.index.features.hoverAnimations'),
+        t('showcase.index.features.iconIntegration'),
+        t('showcase.index.features.ctaButtons')
       ]
     },
     {
-      title: t('showcase.loading.title'),
-      description: t('showcase.loading.description'),
+      title: t('showcase.index.items.dataTables'),
+      description: t('showcase.index.descriptions.dataTables'),
+      icon: Table2,
+      path: "/showcase/tables",
+      badge: t('showcase.index.badges.fullFeatured'),
+      features: [
+        t('showcase.index.features.searchFiltering'),
+        t('showcase.index.features.sorting'),
+        t('showcase.index.features.exportFeature')
+      ]
+    },
+    {
+      title: t('showcase.index.items.activityFeeds'),
+      description: t('showcase.index.descriptions.activityFeeds'),
+      icon: Activity,
+      path: "/showcase/activity",
+      badge: t('showcase.index.badges.live'),
+      features: [
+        t('showcase.index.features.realTime'),
+        t('showcase.index.features.typeCategories'),
+        t('showcase.index.features.avatarSupport')
+      ]
+    },
+    {
+      title: t('showcase.index.items.metricCharts'),
+      description: t('showcase.index.descriptions.metricCharts'),
+      icon: BarChart3,
+      path: "/showcase/charts",
+      badge: t('showcase.index.badges.interactive'),
+      features: [
+        t('showcase.index.features.hoverInteraction'),
+        t('showcase.index.features.animatedLoading'),
+        t('showcase.index.features.trendAnalysis')
+      ]
+    },
+    {
+      title: t('showcase.index.items.loadingStates'),
+      description: t('showcase.index.descriptions.loadingStates'),
       icon: Loader2,
       path: "/showcase/loading",
-      badge: t('showcase.loading.badge'),
+      badge: t('showcase.index.badges.smooth'),
       features: [
-        t('showcase.loading.features.sizes'),
-        t('showcase.loading.features.messages'),
-        t('showcase.loading.features.theme')
+        t('showcase.index.features.differentSizes'),
+        t('showcase.index.features.customMessages'),
+        t('showcase.index.features.themeCompatible')
       ]
     },
     {
-      title: t('showcase.widgets.title'),
-      description: t('showcase.widgets.description'),
+      title: t('showcase.index.items.dashboardWidgets'),
+      description: t('showcase.index.descriptions.dashboardWidgets'),
       icon: BarChart3,
       path: "/showcase/widgets",
-      badge: t('showcase.widgets.badge'),
+      badge: t('showcase.index.badges.pro'),
       features: [
-        t('showcase.widgets.features.kpi'),
-        t('showcase.widgets.features.realtime'),
-        t('showcase.widgets.features.charts')
+        t('showcase.index.features.kpiCards'),
+        t('showcase.index.features.realTimeData'),
+        t('showcase.index.features.interactiveCharts')
       ]
     },
     {
-      title: t('showcase.gallery.title'),
-      description: t('showcase.gallery.description'),
+      title: t('showcase.index.items.modernGallery'),
+      description: t('showcase.index.descriptions.modernGallery'),
       icon: Palette,
       path: "/showcase/gallery",
-      badge: t('showcase.gallery.badge'),
+      badge: t('showcase.index.badges.media'),
       features: [
-        t('showcase.gallery.features.view'),
-        t('showcase.gallery.features.filter'),
-        t('showcase.gallery.features.preview')
+        t('showcase.index.features.gridView'),
+        t('showcase.index.features.filterSearch'),
+        t('showcase.index.features.mediaPreview')
       ]
     },
     {
-      title: t('showcase.animations.title'),
-      description: t('showcase.animations.description'),
+      title: t('showcase.index.items.animationShowcase'),
+      description: t('showcase.index.descriptions.animationShowcase'),
       icon: Star,
       path: "/showcase/animations",
-      badge: t('showcase.animations.badge'),
+      badge: t('showcase.index.badges.animated'),
       features: [
-        t('showcase.animations.features.hover'),
-        t('showcase.animations.features.loading'),
-        t('showcase.animations.features.interactive')
+        t('showcase.index.features.hoverEffects'),
+        t('showcase.index.features.loadingAnimations'),
+        t('showcase.index.features.interactiveElements')
+      ]
+    },
+    {
+      title: t('showcase.index.items.premiumComponents'),
+      description: t('showcase.index.descriptions.premiumComponents'),
+      icon: Star,
+      path: "/showcase/premium",
+      badge: t('showcase.index.badges.new'),
+      features: [
+        t('showcase.index.features.threeDInteractiveCards'),
+        t('showcase.index.features.parallaxHeroSections'),
+        t('showcase.index.features.interactiveTimelines')
+      ]
+    },
+    {
+      title: t('showcase.index.items.aiComponents'),
+      description: t('showcase.index.descriptions.aiComponents'),
+      icon: Star,
+      path: "/showcase/ai",
+      badge: t('showcase.index.badges.ai'),
+      features: [
+        t('showcase.index.features.aiChatAssistant'),
+        t('showcase.index.features.smartSearch'),
+        t('showcase.index.features.predictiveAnalytics')
+      ]
+    },
+    {
+      title: t('showcase.index.items.advancedComponents'),
+      description: t('showcase.index.descriptions.advancedComponents'),
+      icon: Rocket,
+      path: "/showcase/advanced",
+      badge: t('showcase.index.badges.adv'),
+      features: [
+        t('showcase.index.features.adaptiveCommandPalette'),
+        t('showcase.index.features.liveUserPresence'),
+        t('showcase.index.features.progressRoadmap')
+      ]
+    },
+    {
+      title: t('showcase.index.items.uniqueComponents'),
+      description: t('showcase.index.descriptions.uniqueComponents'),
+      icon: Sparkles,
+      path: "/showcase/unique",
+      badge: t('showcase.index.badges.exclusive'),
+      features: [
+        t('showcase.index.features.glassmorphismCards'),
+        t('showcase.index.features.holographicEffects'),
+        t('showcase.index.features.quantumLoaders')
+      ]
+    },
+    {
+      title: "Kanban Board",
+      description: "Drag-and-drop task management, labels, priority and avatar support",
+      icon: LayoutDashboard,
+      path: "/showcase/kanban",
+      badge: "New",
+      features: [
+        "Drag-and-Drop",
+        "Priority & Labels",
+        "User Assignment"
+      ]
+    },
+    {
+      title: "Authentication",
+      description: "Sign In/Up, Password flows, Lock Screen, 2FA and more",
+      icon: User,
+      path: "/showcase/auth",
+      badge: "Auth",
+      features: [
+        "Email/Password",
+        "2FA",
+        "Reset & Create"
       ]
     }
   ];
@@ -146,21 +220,21 @@ export default function ComponentShowcaseIndex() {
             <div className="flex items-center justify-center gap-3">
               <Sparkles className="h-8 w-8 text-blue-400" />
               <h1 className="text-5xl font-bold gradient-text-primary">
-                {t('showcase.mainTitle')}
+                {t('showcase.index.title')}
               </h1>
               <Sparkles className="h-8 w-8 text-purple-400" />
             </div>
             <p className="text-xl text-white/70 max-w-4xl mx-auto leading-relaxed">
-              {t('showcase.mainDescription')}
+              {t('showcase.index.description')}
             </p>
             <div className="flex items-center justify-center gap-4">
               <Button size="lg" className="button-glass hover:bg-blue-500/20">
                 <Zap className="w-5 h-5 mr-2" />
-                {t('showcase.cta.primaryButton')}
+                {t('showcase.index.buttons.getStarted')}
               </Button>
               <Button variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10">
                 <Eye className="w-5 h-5 mr-2" />
-                {t('showcase.cta.secondaryButton')}
+                {t('showcase.index.buttons.moreExamples')}
               </Button>
             </div>
           </div>
@@ -170,10 +244,10 @@ export default function ComponentShowcaseIndex() {
         <div className="space-y-6">
           <div className="text-center space-y-4">
             <h2 className="text-3xl font-bold gradient-text-secondary">
-              {t('showcase.categories.title')}
+              {t('showcase.index.sections.components')}
             </h2>
             <p className="text-lg text-white/60">
-              {t('showcase.categories.count').replace('{count}', showcasePages.length.toString())}
+              {showcasePages.length} {t('showcase.index.categories.available')}
             </p>
           </div>
 
@@ -204,7 +278,7 @@ export default function ComponentShowcaseIndex() {
                   {/* Features */}
                   <div className="space-y-2">
                     <h4 className="text-sm font-medium text-white/60 uppercase tracking-wider">
-                      {t('showcase.keyFeatures.title')}
+                      {t('showcase.index.sections.keyFeatures')}
                     </h4>
                     <ul className="space-y-1">
                       {page.features.map((feature, featureIndex) => (
@@ -220,7 +294,7 @@ export default function ComponentShowcaseIndex() {
                   <div className="pt-4">
                     <Link to={page.path}>
                       <Button className="w-full button-glass group-hover:bg-blue-500/20 transition-all duration-200">
-                        {t('showcase.viewButton')}
+                        {t('showcase.index.buttons.view')}
                         <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
                       </Button>
                     </Link>
@@ -235,19 +309,19 @@ export default function ComponentShowcaseIndex() {
         <div className="cta-section">
           <div className="space-y-6">
             <h2 className="text-3xl font-bold gradient-text-primary">
-              {t('showcase.cta.title')}
+              {t('showcase.index.sections.createImpressiveAdminPanels')}
             </h2>
             <p className="text-lg text-white/70 max-w-3xl mx-auto">
-              {t('showcase.cta.description')}
+              {t('showcase.index.descriptions.createImpressiveAdminPanels')}
             </p>
             <div className="flex items-center justify-center gap-4">
               <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white border-0">
                 <Rocket className="w-5 h-5 mr-2" />
-                {t('showcase.cta.primaryButton')}
+                {t('showcase.index.buttons.getStarted')}
               </Button>
               <Button variant="outline" size="lg" className="border-white/30 text-white hover:bg-white/10">
                 <Palette className="w-5 h-5 mr-2" />
-                {t('showcase.cta.secondaryButton')}
+                {t('showcase.index.buttons.moreExamples')}
               </Button>
             </div>
           </div>

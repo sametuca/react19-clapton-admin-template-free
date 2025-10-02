@@ -1,394 +1,395 @@
 import { Helmet } from "react-helmet-async";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useState, useEffect } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { StatsCard } from "@/components/ui/stats-card";
+import { DataTable } from "@/components/ui/data-table";
+import { ActivityFeed } from "@/components/ui/activity-feed";
+import { MetricChart } from "@/components/ui/metric-chart";
+import { LoadingSpinner } from "@/components/ui/loading-spinner";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { useApi } from "@/hooks/useApi";
+import { apiService, User } from "@/services/api";
 import { 
   Users, 
+  FileText, 
+  CheckCircle, 
+  Clock, 
   TrendingUp, 
-  ShoppingCart, 
-  DollarSign, 
-  Activity, 
   BarChart3, 
-  Calendar,
-  ArrowUpRight,
-  ArrowDownRight,
-  Star,
-  Clock,
-  Target,
-  CheckCircle,
-  AlertCircle,
-  TrendingDown,
+  Activity,
+  RefreshCw,
+  AlertTriangle,
   Eye,
-  MousePointer,
+  Mail,
+  Building,
+  Plus,
+  ArrowRight,
+  Target,
+  Award,
   Zap,
-  Shield,
   Globe,
-  Smartphone,
-  Palette,
-  Code,
+  Shield,
   Rocket,
-  Layers,
-  Sparkles,
-  FileText
+  Star,
+  Heart,
+  Download,
+  Share2
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Dashboard() {
-  const { t } = useLanguage();
+  // API Data
+  const { data: dashboardStats, loading: statsLoading, error: statsError, refetch: refetchStats } = useApi(() => apiService.getDashboardStats());
+  const { data: users, loading: usersLoading, error: usersError } = useApi(() => apiService.getUsers());
+  const { data: posts, loading: postsLoading } = useApi(() => apiService.getPosts());
 
-  const stats = [
+  // Sample data for charts and activities
+  const chartData = [
+    { label: "Ocak", value: 4500, color: "bg-blue-500" },
+    { label: "Şubat", value: 5200, color: "bg-green-500" },
+    { label: "Mart", value: 4800, color: "bg-purple-500" },
+    { label: "Nisan", value: 6100, color: "bg-orange-500" },
+    { label: "Mayıs", value: 6800, color: "bg-red-500" },
+    { label: "Haziran", value: 7200, color: "bg-indigo-500" }
+  ];
+
+  const activities = [
     {
-      title: t('dashboard.totalUsers'),
-      value: "12,345",
-      change: "+12.5%",
-      changeType: "positive",
-      icon: Users,
-      color: "from-blue-500 to-cyan-500"
+      id: "1",
+      user: { name: "Sistem", initials: "SY" },
+      action: "Yeni kullanıcı kaydı",
+      target: "API'den senkronize edildi",
+      time: "5 dakika önce",
+      type: "success" as const,
+      icon: Users
     },
     {
-      title: t('dashboard.totalRevenue'),
-      value: "$45,678",
-      change: "+8.2%",
-      changeType: "positive",
-      icon: DollarSign,
-      color: "from-green-500 to-emerald-500"
+      id: "2",
+      user: { name: "Admin", initials: "AD" },
+      action: "Veri güncellendi",
+      target: "Kullanıcı İstatistikleri",
+      time: "15 dakika önce",
+      type: "info" as const,
+      icon: RefreshCw
     },
     {
-      title: t('dashboard.activeProjects'),
-      value: "23",
-      change: "+5.1%",
-      changeType: "positive",
-      icon: Target,
-      color: "from-purple-500 to-pink-500"
-    },
-    {
-      title: t('dashboard.pendingTasks'),
-      value: "156",
-      change: "-2.3%",
-      changeType: "negative",
-      icon: Clock,
-      color: "from-orange-500 to-red-500"
+      id: "3",
+      user: { name: "Sistem", initials: "SY" },
+      action: "Yeni gönderi oluşturuldu",
+      target: "API'den alındı",
+      time: "30 dakika önce",
+      type: "success" as const,
+      icon: FileText
     }
   ];
 
-  const recentActivities = [
+  // User table columns for recent users
+  const userColumns = [
     {
-      user: "Ahmet Yılmaz",
-      action: t('dashboard.newUserRegistered'),
-      time: t('dashboard.2minutesAgo'),
-      icon: Users,
-      color: "text-blue-400"
+      key: 'name' as keyof User,
+      title: 'Kullanıcı',
+      render: (value: string, row: User) => (
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+            <span className="text-xs font-medium">{row.name.split(' ').map(n => n[0]).join('')}</span>
+          </div>
+          <div>
+            <div className="font-medium">{value}</div>
+            <div className="text-sm text-muted-foreground">@{row.username}</div>
+          </div>
+        </div>
+      )
     },
     {
-      user: "Fatma Demir",
-      action: t('dashboard.projectUpdated'),
-      time: t('dashboard.15minutesAgo'),
-      icon: Target,
-      color: "text-green-400"
+      key: 'email' as keyof User,
+      title: 'E-posta',
+      render: (value: string) => (
+        <div className="flex items-center gap-2">
+          <Mail className="h-4 w-4 text-muted-foreground" />
+          <span className="text-sm">{value}</span>
+        </div>
+      )
     },
     {
-      user: "Mehmet Kaya",
-      action: t('dashboard.reportCreated'),
-      time: t('dashboard.1hourAgo'),
-      icon: FileText,
-      color: "text-purple-400"
-    },
-    {
-      user: "Ayşe Özkan",
-      action: t('dashboard.systemErrorReported'),
-      time: t('dashboard.3hoursAgo'),
-      icon: AlertCircle,
-      color: "text-red-400"
-    }
-  ];
-
-  const quickActions = [
-    {
-      title: t('dashboard.addNewUser'),
-      description: "Yeni kullanıcı ekleyin",
-      icon: Users,
-      color: "from-blue-500 to-cyan-500",
-      url: "/users"
-    },
-    {
-      title: t('dashboard.createReport'),
-      description: "Rapor oluşturun",
-      icon: FileText,
-      color: "from-green-500 to-emerald-500",
-      url: "/analytics"
-    },
-    {
-      title: t('dashboard.startProject'),
-      description: "Yeni proje başlatın",
-      icon: Target,
-      color: "from-purple-500 to-pink-500",
-      url: "/projects"
-    },
-    {
-      title: t('dashboard.scheduleMeeting'),
-      description: "Toplantı planlayın",
-      icon: Calendar,
-      color: "from-orange-500 to-red-500",
-      url: "/calendar"
-    }
-  ];
-
-  const projectStatus = [
-    {
-      name: t('dashboard.ecommerceSite'),
-      progress: 75,
-      status: t('dashboard.ongoing'),
-      team: "Frontend Team",
-      color: "from-blue-500 to-cyan-500"
-    },
-    {
-      name: t('dashboard.mobileApp'),
-      progress: 45,
-      status: t('dashboard.ongoing'),
-      team: "Mobile Team",
-      color: "from-green-500 to-emerald-500"
-    },
-    {
-      name: t('dashboard.adminPanel'),
-      progress: 90,
-      status: t('dashboard.ongoing'),
-      team: "Backend Team",
-      color: "from-purple-500 to-pink-500"
-    }
-  ];
-
-  const systemStatus = [
-    {
-      service: t('dashboard.webServer'),
-      status: t('dashboard.running'),
-      uptime: "99.9%",
-      color: "text-green-400"
-    },
-    {
-      service: t('dashboard.database'),
-      status: t('dashboard.running'),
-      uptime: "99.8%",
-      color: "text-green-400"
-    },
-    {
-      service: t('dashboard.apiService'),
-      status: t('dashboard.running'),
-      uptime: "99.7%",
-      color: "text-green-400"
-    },
-    {
-      service: t('dashboard.emailService'),
-      status: t('dashboard.running'),
-      uptime: "99.5%",
-      color: "text-green-400"
+      key: 'company' as keyof User,
+      title: 'Şirket',
+      render: (value: User['company']) => (
+        <div className="flex items-center gap-2">
+          <Building className="h-4 w-4 text-muted-foreground" />
+          <span className="text-sm">{value.name}</span>
+        </div>
+      )
     }
   ];
 
   return (
     <>
       <Helmet>
-        <title>{t('dashboard.pageTitle')}</title>
-        <meta name="description" content={t('dashboard.metaDescription')} />
+        <title>Dashboard - React19 Admin</title>
+        <meta name="description" content="Ana dashboard sayfası - sistem genel bakışı ve önemli metrikleri" />
       </Helmet>
 
-      <div className="p-6 space-y-6">
-        {/* Hero Section */}
-        <div className="hero-section">
-          <div className="space-y-4">
-            <h1 className="text-4xl font-bold gradient-text-primary">
-              {t('dashboard.welcome')}, Samet! 👋
-            </h1>
-            <p className="text-xl text-white/70 max-w-3xl mx-auto">
-              {t('dashboard.projectOverview')}
+      <div className="space-y-8">
+        {/* Header */}
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
+            <p className="text-muted-foreground">
+              Sistem genel bakışı ve önemli metrikleri
             </p>
+          </div>
+          <div className="flex items-center gap-2">
+            <Button variant="outline" size="sm" onClick={refetchStats}>
+              <RefreshCw className="h-4 w-4 mr-2" />
+              Yenile
+            </Button>
+            <Link to="/services">
+              <Button size="sm">
+                <Eye className="h-4 w-4 mr-2" />
+                Servisler Örneği
+              </Button>
+            </Link>
           </div>
         </div>
 
         {/* Stats Cards */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {stats.map((stat, index) => (
-            <Card key={index} className="stats-card group">
-              <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <div className="space-y-2">
-                    <p className="text-sm font-medium text-white/60">
-                      {stat.title}
-                    </p>
-                    <p className="text-2xl font-bold text-white">
-                      {stat.value}
-                    </p>
-                  </div>
-                  <div className={`w-12 h-12 rounded-lg bg-gradient-to-br ${stat.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-200`}>
-                    <stat.icon className="w-6 h-6 text-white" />
-                  </div>
-                </div>
-                <div className="flex items-center gap-2 mt-4">
-                  {stat.changeType === "positive" ? (
-                    <ArrowUpRight className="w-4 h-4 text-green-400" />
-                  ) : (
-                    <ArrowDownRight className="w-4 h-4 text-red-400" />
-                  )}
-                  <span className={`text-sm font-medium ${
-                    stat.changeType === "positive" ? "text-green-400" : "text-red-400"
-                  }`}>
-                    {stat.change}
-                  </span>
-                  <span className="text-sm text-white/60">
-                    {t('dashboard.last30Days')}
-                  </span>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* Main Content Grid */}
-        <div className="grid gap-6 lg:grid-cols-3">
-          {/* Quick Actions */}
-          <div className="lg:col-span-2">
-            <Card className="glassmorphism-card">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-white">
-                  <Zap className="w-5 h-5 text-blue-400" />
-                  {t('dashboard.quickActions')}
-                </CardTitle>
-                <CardDescription className="text-white/60">
-                  {t('dashboard.frequentlyUsedOperations')}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="grid gap-4 md:grid-cols-2">
-                  {quickActions.map((action, index) => (
-                    <Link key={index} to={action.url}>
-                      <div className="group p-4 rounded-lg border border-white/10 hover:border-white/20 transition-all duration-200 hover:bg-white/5">
-                        <div className="flex items-center gap-3">
-                          <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${action.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-200`}>
-                            <action.icon className="w-5 h-5 text-white" />
-                          </div>
-                          <div className="flex-1">
-                            <h3 className="font-medium text-white group-hover:text-blue-300 transition-colors">
-                              {action.title}
-                            </h3>
-                            <p className="text-sm text-white/60">
-                              {action.description}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+        <section className="space-y-4">
+          <div className="flex items-center gap-2">
+            <h2 className="text-2xl font-semibold">Sistem İstatistikleri</h2>
+            <Badge variant="default">Canlı Veri</Badge>
           </div>
-
-          {/* Recent Activities */}
-          <div>
-            <Card className="glassmorphism-card">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-white">
-                  <Activity className="w-5 h-5 text-green-400" />
-                  {t('dashboard.recentActivities')}
-                </CardTitle>
-                <CardDescription className="text-white/60">
-                  {t('dashboard.systemRecentOperations')}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {recentActivities.map((activity, index) => (
-                    <div key={index} className="activity-item">
-                      <div className="flex items-start gap-3">
-                        <div className={`w-8 h-8 rounded-full bg-white/10 flex items-center justify-center ${activity.color}`}>
-                          <activity.icon className="w-4 h-4" />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-sm font-medium text-white">
-                            {activity.user}
-                          </p>
-                          <p className="text-sm text-white/60">
-                            {activity.action}
-                          </p>
-                          <p className="text-xs text-white/40">
-                            {activity.time}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-
-        {/* Project Status */}
-        <Card className="glassmorphism-card">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-white">
-              <Target className="w-5 h-5 text-purple-400" />
-              {t('dashboard.projectStatus')}
-            </CardTitle>
-            <CardDescription className="text-white/60">
-              {t('dashboard.activeProjectsGeneralStatus')}
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-6">
-              {projectStatus.map((project, index) => (
-                <div key={index} className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <h3 className="font-medium text-white">{project.name}</h3>
-                      <p className="text-sm text-white/60">{project.team}</p>
-                    </div>
-                    <Badge variant="secondary" className="badge-glass">
-                      {project.status}
-                    </Badge>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="text-white/60">Progress</span>
-                      <span className="text-white">{project.progress}%</span>
-                    </div>
-                    <Progress value={project.progress} className="h-2" />
-                  </div>
-                </div>
+          
+          {statsError && (
+            <Alert variant="destructive">
+              <AlertTriangle className="h-4 w-4" />
+              <AlertDescription>
+                İstatistikler yüklenirken hata oluştu: {statsError}
+              </AlertDescription>
+            </Alert>
+          )}
+          
+          {statsLoading ? (
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+              {[...Array(4)].map((_, i) => (
+                <Card key={i}>
+                  <CardContent className="p-6">
+                    <LoadingSpinner size="sm" text="Yükleniyor..." />
+                  </CardContent>
+                </Card>
               ))}
             </div>
-          </CardContent>
-        </Card>
+          ) : dashboardStats && (
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+              <StatsCard
+                title="Toplam Kullanıcı"
+                value={dashboardStats.totalUsers}
+                change={dashboardStats.userGrowth}
+                changeType="positive"
+                icon={Users}
+                description="API'den çekilen"
+                gradient={true}
+              />
+              <StatsCard
+                title="Toplam Gönderi"
+                value={dashboardStats.totalPosts}
+                change={dashboardStats.postGrowth}
+                changeType="positive"
+                icon={FileText}
+                description="Yayınlanmış"
+                gradient={true}
+              />
+              <StatsCard
+                title="Tamamlanan Görevler"
+                value={dashboardStats.completedTodos}
+                change={dashboardStats.todoCompletionRate}
+                changeType="positive"
+                icon={CheckCircle}
+                description="Başarı oranı"
+                decimals={1}
+                suffix="%"
+                gradient={true}
+              />
+              <StatsCard
+                title="Bekleyen Görevler"
+                value={dashboardStats.pendingTodos}
+                change={-5.2}
+                changeType="negative"
+                icon={Clock}
+                description="Tamamlanmamış"
+                gradient={true}
+              />
+            </div>
+          )}
+        </section>
 
-        {/* System Status */}
-        <Card className="glassmorphism-card">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-white">
-              <Shield className="w-5 h-5 text-blue-400" />
-              {t('dashboard.systemStatus')}
-            </CardTitle>
-            <CardDescription className="text-white/60">
-              {t('dashboard.serverAndServiceStatus')}
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-              {systemStatus.map((service, index) => (
-                <div key={index} className="p-4 rounded-lg border border-white/10 bg-white/5">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className={`w-3 h-3 rounded-full ${service.color} bg-current`}></div>
-                    <span className="text-sm font-medium text-white">
-                      {service.service}
-                    </span>
-                  </div>
-                  <div className="space-y-1">
-                    <p className="text-xs text-white/60">{service.status}</p>
-                    <p className="text-sm font-medium text-white">{service.uptime}</p>
-                  </div>
+        {/* Charts and Activity */}
+        <section className="space-y-4">
+          <div className="flex items-center gap-2">
+            <h2 className="text-2xl font-semibold">Performans ve Aktivite</h2>
+            <Badge variant="outline">Analitik</Badge>
+          </div>
+          <div className="grid gap-6 lg:grid-cols-2">
+            <MetricChart
+              title="Aylık Performans"
+              data={chartData}
+              total={34400}
+              change={15.3}
+              changeType="positive"
+            />
+            <ActivityFeed 
+              activities={activities}
+              title="Sistem Aktiviteleri"
+            />
+          </div>
+        </section>
+
+        {/* Recent Users */}
+        <section className="space-y-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <h2 className="text-2xl font-semibold">Son Kullanıcılar</h2>
+              <Badge variant="secondary">API Verisi</Badge>
+            </div>
+            <Link to="/services">
+              <Button variant="outline" size="sm">
+                <ArrowRight className="h-4 w-4 mr-2" />
+                Tüm Servisleri Gör
+              </Button>
+            </Link>
+          </div>
+
+          {usersError && (
+            <Alert variant="destructive">
+              <AlertTriangle className="h-4 w-4" />
+              <AlertDescription>
+                Kullanıcılar yüklenirken hata oluştu: {usersError}
+              </AlertDescription>
+            </Alert>
+          )}
+
+          {usersLoading ? (
+            <Card>
+              <CardContent className="p-6">
+                <LoadingSpinner size="md" text="Kullanıcılar yükleniyor..." />
+              </CardContent>
+            </Card>
+          ) : users && (
+            <DataTable
+              data={users.slice(0, 5)} // İlk 5 kullanıcı
+              columns={userColumns}
+              title="Son Kayıt Olan Kullanıcılar"
+              searchable={false}
+              filterable={false}
+              exportable={false}
+              pageSize={5}
+            />
+          )}
+        </section>
+
+        {/* Quick Actions */}
+        <section className="space-y-4">
+          <h2 className="text-2xl font-semibold">Hızlı İşlemler</h2>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            <Card className="hover:shadow-lg transition-all duration-300 hover:scale-[1.02] cursor-pointer">
+              <CardContent className="p-6 text-center">
+                <div className="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center mx-auto mb-4">
+                  <Users className="h-6 w-6 text-blue-500" />
                 </div>
-              ))}
+                <h3 className="font-semibold mb-2">Kullanıcı Yönetimi</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Kullanıcıları görüntüle ve yönet
+                </p>
+                <Link to="/users">
+                  <Button size="sm" className="w-full">
+                    <Users className="h-4 w-4 mr-2" />
+                    Kullanıcılara Git
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-lg transition-all duration-300 hover:scale-[1.02] cursor-pointer">
+              <CardContent className="p-6 text-center">
+                <div className="w-12 h-12 rounded-lg bg-green-500/10 flex items-center justify-center mx-auto mb-4">
+                  <BarChart3 className="h-6 w-6 text-green-500" />
+                </div>
+                <h3 className="font-semibold mb-2">Analitik</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Detaylı analitik raporları
+                </p>
+                <Link to="/analytics">
+                  <Button size="sm" className="w-full">
+                    <BarChart3 className="h-4 w-4 mr-2" />
+                    Analitiklere Git
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-lg transition-all duration-300 hover:scale-[1.02] cursor-pointer">
+              <CardContent className="p-6 text-center">
+                <div className="w-12 h-12 rounded-lg bg-purple-500/10 flex items-center justify-center mx-auto mb-4">
+                  <Star className="h-6 w-6 text-purple-500" />
+                </div>
+                <h3 className="font-semibold mb-2">Komponentler</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  UI komponentlerini keşfet
+                </p>
+                <Link to="/showcase">
+                  <Button size="sm" className="w-full">
+                    <Star className="h-4 w-4 mr-2" />
+                    Vitrine Git
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-lg transition-all duration-300 hover:scale-[1.02] cursor-pointer">
+              <CardContent className="p-6 text-center">
+                <div className="w-12 h-12 rounded-lg bg-orange-500/10 flex items-center justify-center mx-auto mb-4">
+                  <Rocket className="h-6 w-6 text-orange-500" />
+                </div>
+                <h3 className="font-semibold mb-2">Servisler</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  API servisleri örneği
+                </p>
+                <Link to="/services">
+                  <Button size="sm" className="w-full">
+                    <Rocket className="h-4 w-4 mr-2" />
+                    Servislere Git
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        {/* Welcome Message */}
+        <Card className="bg-gradient-to-r from-primary/10 to-accent/10 border-primary/20">
+          <CardContent className="p-8 text-center">
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <Rocket className="h-8 w-8 text-primary" />
+              <h3 className="text-2xl font-bold">React19 Admin Template'e Hoş Geldiniz!</h3>
+            </div>
+            <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+              Modern React 19 teknolojisi ile geliştirilmiş bu admin template, 
+              200+ komponent, AI destekli özellikler ve premium tasarım ile projelerinizi hızlandırır.
+            </p>
+            <div className="flex items-center justify-center gap-4">
+              <Link to="/get-started">
+                <Button size="lg" className="gap-2">
+                  <Rocket className="h-4 w-4" />
+                  Başlangıç Rehberi
+                </Button>
+              </Link>
+              <Link to="/showcase">
+                <Button variant="outline" size="lg">
+                  <Star className="h-4 w-4 mr-2" />
+                  Komponentleri Keşfet
+                </Button>
+              </Link>
             </div>
           </CardContent>
         </Card>

@@ -204,8 +204,8 @@ const Sidebar = React.forwardRef<
             }
             side={side}
             onInteractOutside={(e) => {
-              // Prevent auto-closing when clicking outside
-              e.preventDefault();
+              // Allow auto-closing when clicking outside on mobile
+              setOpenMobile(false);
             }}
           >
             <div className="flex h-full w-full flex-col">{children}</div>
@@ -692,7 +692,7 @@ const SidebarMenuSub = React.forwardRef<
     ref={ref}
     data-sidebar="menu-sub"
     className={cn(
-      "mx-3.5 flex min-w-0 translate-x-px flex-col gap-1 border-l border-sidebar-border px-2.5 py-0.5",
+      "mt-1 mx-3.5 flex min-w-0 translate-x-px flex-col gap-1 border-l border-sidebar-border px-2.5 py-0.5",
       "group-data-[collapsible=icon]:hidden",
       className
     )}

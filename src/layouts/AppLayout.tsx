@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { SidebarProvider, SidebarTrigger, SidebarInset } from "@/components/ui/sidebar";
 import AppSidebar from "@/components/AppSidebar";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
@@ -9,12 +9,16 @@ import { NotificationBell } from "@/components/ui/notification-bell";
 import { Helmet } from "react-helmet-async";
 import { useEffect } from "react";
 import { toast } from "@/hooks/use-toast";
-import { useTheme } from "@/contexts/ThemeContext";
-import { useLanguage } from "@/contexts/LanguageContext";
-import { Sun, Moon, Monitor, Globe } from "lucide-react";
+import { useLanguage } from "@/hooks/useLanguage";
+import { Toaster } from "sonner";
+import { ThemeSelector } from "@/components/ThemeSelector";
+import { ProfileDropdown } from "@/components/ProfileDropdown";
+import { Globe } from "lucide-react";
+import { useLayoutSettings } from "@/contexts/LayoutContext";
+import { ThemeCustomizer } from "@/components/ThemeCustomizer";
+import { TopNav } from "@/components/TopNav";
 
 export default function AppLayout() {
-  const { theme, setTheme } = useTheme();
   const { language, setLanguage } = useLanguage();
 
   const notifications = [
@@ -50,28 +54,15 @@ export default function AppLayout() {
     });
   }, []);
 
-  const handleThemeChange = (newTheme: 'light' | 'dark' | 'system') => {
-    setTheme(newTheme);
-  };
-
   const handleLanguageChange = (newLanguage: 'tr' | 'en') => {
     setLanguage(newLanguage);
   };
 
-  const getThemeIcon = () => {
-    switch (theme) {
-      case 'light':
-        return <Sun className="h-4 w-4" />;
-      case 'dark':
-        return <Moon className="h-4 w-4" />;
-      case 'system':
-        return <Monitor className="h-4 w-4" />;
-      default:
-        return <Monitor className="h-4 w-4" />;
-    }
-  };
-
   const { t } = useLanguage();
+
+  const { layoutWidth, layoutPosition, topbarTone, layoutType } = useLayoutSettings();
+  const isSemiBox = layoutType === 'semi-box';
+  const isBoxed = layoutWidth === 'boxed' || isSemiBox;
 
   return (
     <SidebarProvider>
@@ -80,17 +71,30 @@ export default function AppLayout() {
         <meta name="description" content="Modern React admin template with dashboard, tables, forms and user management." />
       </Helmet>
 
-      <div className="flex min-h-screen w-full">
-        <AppSidebar />
+      {layoutType !== 'horizontal' && <AppSidebar />}
+      <SidebarInset>
+        <header className={`${layoutPosition === 'fixed' ? 'sticky top-0' : 'relative'} z-50 h-14 flex items-center gap-2 sm:gap-3 px-2 sm:px-4 border-b ${topbarTone === 'light' ? 'bg-card text-foreground' : 'bg-background/80'} backdrop-blur supports-[backdrop-filter]:bg-background/60`}>
+          {layoutType !== 'horizontal' && <SidebarTrigger />}
+          <div className="flex items-center gap-2 font-semibold">
+            <span className="hidden sm:inline text-sm sm:text-base">React19 Admin</span>
+          </div>
+          <div className="ml-auto flex items-center gap-1 sm:gap-3">
+            {/* Mobile: Show only essential items */}
+            <div className="flex md:hidden items-center gap-1">
+              <ThemeCustomizer />
 
-        <div className="flex flex-1 flex-col">
-          <header className="sticky top-0 z-50 h-14 flex items-center gap-3 px-4 border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-            <SidebarTrigger />
-            <div className="flex items-center gap-2 font-semibold">
-              <span className="hidden sm:inline">React19 Admin</span>
+              <NotificationBell 
+                notifications={notifications}
+                onMarkAsRead={(id) => console.log('Mark as read:', id)}
+                onMarkAllAsRead={() => console.log('Mark all as read')}
+                onRemove={(id) => console.log('Remove:', id)}
+              />
+              <ProfileDropdown />
             </div>
-            <div className="ml-auto flex items-center gap-3">
-              <div className="hidden md:flex items-center gap-2">
+
+            {/* Desktop: Show all items */}
+            <div className="hidden md:flex items-center gap-3">
+              <div className="flex items-center gap-2">
                 <Select value={language} onValueChange={handleLanguageChange}>
                   <SelectTrigger className="w-24">
                     <SelectValue />
@@ -106,31 +110,14 @@ export default function AppLayout() {
                     </SelectItem>
                   </SelectContent>
                 </Select>
-                
-                <Select value={theme} onValueChange={handleThemeChange}>
-                  <SelectTrigger className="w-24">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="light" className="flex items-center gap-2">
-                      <Sun className="h-4 w-4" />
-                      {t('theme.light')}
-                    </SelectItem>
-                    <SelectItem value="dark" className="flex items-center gap-2">
-                      <Moon className="h-4 w-4" />
-                      {t('theme.dark')}
-                    </SelectItem>
-                    <SelectItem value="system" className="flex items-center gap-2">
-                      <Monitor className="h-4 w-4" />
-                      {t('theme.system')}
-                    </SelectItem>
-                  </SelectContent>
-                </Select>
+                <ThemeSelector />
               </div>
               
-              <div className="hidden md:flex items-center">
+              <div className="flex items-center">
                 <Input placeholder={t('search.placeholder')} className="w-64" />
               </div>
+              
+              <ThemeCustomizer />
               
               <NotificationBell 
                 notifications={notifications}
@@ -139,17 +126,41 @@ export default function AppLayout() {
                 onRemove={(id) => console.log('Remove:', id)}
               />
               
-              <Avatar>
-                <AvatarFallback>AA</AvatarFallback>
-              </Avatar>
+              <ProfileDropdown />
             </div>
-          </header>
-
-          <main className="flex-1 p-4 md:p-6">
+          </div>
+        </header>
+        {layoutType === 'horizontal' && <TopNav />}
+        {layoutType === 'two-column' ? (
+          <div className={`flex-1 p-2 sm:p-4 md:p-6 ${isBoxed ? 'max-w-[1200px] mx-auto' : ''}`}>
+            <div className={`grid gap-4 lg:grid-cols-[1fr_320px] ${isSemiBox ? 'rounded-xl border bg-card p-4 shadow-sm' : ''}`}>
+              <main>
+                <Outlet />
+              </main>
+              <aside className="hidden lg:block space-y-4">
+                {/* Simple secondary column with sample cards */}
+                <div className="border rounded-lg p-4 bg-background/50">
+                  <div className="font-semibold mb-2">Quick Actions</div>
+                  <div className="grid gap-2 text-sm">
+                    <button className="text-left hover:underline">Create Task</button>
+                    <button className="text-left hover:underline">Invite Member</button>
+                    <button className="text-left hover:underline">View Reports</button>
+                  </div>
+                </div>
+                <div className="border rounded-lg p-4 bg-background/50">
+                  <div className="font-semibold mb-2">Shortcuts</div>
+                  <p className="text-sm text-muted-foreground">Customize this panel for your app.</p>
+                </div>
+              </aside>
+            </div>
+          </div>
+        ) : (
+          <main className={`flex-1 p-2 sm:p-4 md:p-6 ${isBoxed ? 'max-w-[1200px] mx-auto' : ''} ${isSemiBox ? 'rounded-xl border bg-card shadow-sm' : ''}`}>
             <Outlet />
           </main>
-        </div>
-      </div>
+        )}
+      </SidebarInset>
+      <Toaster position="top-right" />
     </SidebarProvider>
   );
 }

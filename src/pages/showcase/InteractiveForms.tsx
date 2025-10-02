@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { useLanguage } from "@/hooks/useLanguage";
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -30,6 +31,7 @@ import {
 } from "lucide-react";
 
 export default function InteractiveForms() {
+  const { t } = useLanguage();
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
     // Personal Info
@@ -99,33 +101,33 @@ export default function InteractiveForms() {
           <div className="space-y-6">
             <div className="text-center space-y-2">
               <User className="h-12 w-12 mx-auto text-primary" />
-              <h3 className="text-2xl font-semibold">Kişisel Bilgiler</h3>
-              <p className="text-muted-foreground">Size özel deneyim sunabilmemiz için temel bilgilerinizi paylaşın</p>
+              <h3 className="text-2xl font-semibold">{t('showcase.forms.steps.personalInfo.title')}</h3>
+              <p className="text-muted-foreground">{t('showcase.forms.steps.personalInfo.description')}</p>
             </div>
             
             <div className="grid gap-4 md:grid-cols-2">
               <div className="space-y-2">
-                <Label htmlFor="firstName">Ad</Label>
+                <Label htmlFor="firstName">{t('showcase.forms.steps.personalInfo.firstName')}</Label>
                 <Input
                   id="firstName"
                   value={formData.firstName}
                   onChange={(e) => setFormData(prev => ({ ...prev, firstName: e.target.value }))}
-                  placeholder="Adınızı girin"
+                  placeholder={t('showcase.forms.steps.personalInfo.firstNamePlaceholder')}
                   className="transition-all focus:ring-2 focus:ring-primary/20"
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="lastName">Soyad</Label>
+                <Label htmlFor="lastName">{t('showcase.forms.steps.personalInfo.lastName')}</Label>
                 <Input
                   id="lastName"
                   value={formData.lastName}
                   onChange={(e) => setFormData(prev => ({ ...prev, lastName: e.target.value }))}
-                  placeholder="Soyadınızı girin"
+                  placeholder={t('showcase.forms.steps.personalInfo.lastNamePlaceholder')}
                   className="transition-all focus:ring-2 focus:ring-primary/20"
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="email">E-posta</Label>
+                <Label htmlFor="email">{t('showcase.forms.steps.personalInfo.email')}</Label>
                 <div className="relative">
                   <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                   <Input
@@ -133,18 +135,18 @@ export default function InteractiveForms() {
                     type="email"
                     value={formData.email}
                     onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                    placeholder="email@ornek.com"
+                    placeholder={t('showcase.forms.steps.personalInfo.emailPlaceholder')}
                     className="pl-10 transition-all focus:ring-2 focus:ring-primary/20"
                   />
                 </div>
               </div>
               <div className="space-y-2">
-                <Label htmlFor="phone">Telefon</Label>
+                <Label htmlFor="phone">{t('showcase.forms.steps.personalInfo.phone')}</Label>
                 <Input
                   id="phone"
                   value={formData.phone}
                   onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
-                  placeholder="+90 555 123 45 67"
+                  placeholder={t('showcase.forms.steps.personalInfo.phonePlaceholder')}
                   className="transition-all focus:ring-2 focus:ring-primary/20"
                 />
               </div>
@@ -157,53 +159,53 @@ export default function InteractiveForms() {
           <div className="space-y-6">
             <div className="text-center space-y-2">
               <Building className="h-12 w-12 mx-auto text-primary" />
-              <h3 className="text-2xl font-semibold">Şirket Bilgileri</h3>
-              <p className="text-muted-foreground">İş alanınız hakkında bilgi verin</p>
+              <h3 className="text-2xl font-semibold">{t('showcase.forms.steps.companyInfo.title')}</h3>
+              <p className="text-muted-foreground">{t('showcase.forms.steps.companyInfo.description')}</p>
             </div>
             
             <div className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="company">Şirket Adı</Label>
+                <Label htmlFor="company">{t('showcase.forms.steps.companyInfo.company')}</Label>
                 <Input
                   id="company"
                   value={formData.company}
                   onChange={(e) => setFormData(prev => ({ ...prev, company: e.target.value }))}
-                  placeholder="Şirket adınızı girin"
+                  placeholder={t('showcase.forms.steps.companyInfo.companyPlaceholder')}
                   className="transition-all focus:ring-2 focus:ring-primary/20"
                 />
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="position">Pozisyon</Label>
+                <Label htmlFor="position">{t('showcase.forms.steps.companyInfo.position')}</Label>
                 <Input
                   id="position"
                   value={formData.position}
                   onChange={(e) => setFormData(prev => ({ ...prev, position: e.target.value }))}
-                  placeholder="CEO, CTO, Developer vb."
+                  placeholder={t('showcase.forms.steps.companyInfo.positionPlaceholder')}
                   className="transition-all focus:ring-2 focus:ring-primary/20"
                 />
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="industry">Sektör</Label>
+                <Label htmlFor="industry">{t('showcase.forms.steps.companyInfo.industry')}</Label>
                 <Select value={formData.industry} onValueChange={(value) => setFormData(prev => ({ ...prev, industry: value }))}>
                   <SelectTrigger>
-                    <SelectValue placeholder="Sektörünüzü seçin" />
+                    <SelectValue placeholder={t('showcase.forms.steps.companyInfo.industryPlaceholder')} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="technology">Teknoloji</SelectItem>
-                    <SelectItem value="finance">Finans</SelectItem>
-                    <SelectItem value="healthcare">Sağlık</SelectItem>
-                    <SelectItem value="education">Eğitim</SelectItem>
-                    <SelectItem value="retail">Perakende</SelectItem>
-                    <SelectItem value="manufacturing">İmalat</SelectItem>
-                    <SelectItem value="other">Diğer</SelectItem>
+                    <SelectItem value="technology">{t('showcase.forms.steps.companyInfo.industryOptions.technology')}</SelectItem>
+                    <SelectItem value="finance">{t('showcase.forms.steps.companyInfo.industryOptions.finance')}</SelectItem>
+                    <SelectItem value="healthcare">{t('showcase.forms.steps.companyInfo.industryOptions.healthcare')}</SelectItem>
+                    <SelectItem value="education">{t('showcase.forms.steps.companyInfo.industryOptions.education')}</SelectItem>
+                    <SelectItem value="retail">{t('showcase.forms.steps.companyInfo.industryOptions.retail')}</SelectItem>
+                    <SelectItem value="manufacturing">{t('showcase.forms.steps.companyInfo.industryOptions.manufacturing')}</SelectItem>
+                    <SelectItem value="other">{t('showcase.forms.steps.companyInfo.industryOptions.other')}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
 
               <div className="space-y-4">
-                <Label>Bütçe Aralığı (Aylık - USD)</Label>
+                <Label>{t('showcase.forms.steps.companyInfo.budget')}</Label>
                 <div className="px-2">
                   <Slider
                     value={formData.budget}
@@ -229,19 +231,19 @@ export default function InteractiveForms() {
           <div className="space-y-6">
             <div className="text-center space-y-2">
               <Settings className="h-12 w-12 mx-auto text-primary" />
-              <h3 className="text-2xl font-semibold">Tercihler & Özellikler</h3>
-              <p className="text-muted-foreground">Size uygun özellikleri seçin</p>
+              <h3 className="text-2xl font-semibold">{t('showcase.forms.steps.preferences.title')}</h3>
+              <p className="text-muted-foreground">{t('showcase.forms.steps.preferences.description')}</p>
             </div>
             
             <div className="space-y-6">
               <div className="space-y-4">
-                <h4 className="text-lg font-medium">Plan Seçimi</h4>
+                <h4 className="text-lg font-medium">{t('showcase.forms.steps.preferences.plan')}</h4>
                 <RadioGroup value={formData.plan} onValueChange={(value) => setFormData(prev => ({ ...prev, plan: value }))}>
                   <div className="grid gap-4 md:grid-cols-3">
                     {[
-                      { id: 'basic', title: 'Başlangıç', price: '$29', features: ['5 Kullanıcı', 'Temel Raporlar'] },
-                      { id: 'pro', title: 'Profesyonel', price: '$79', features: ['25 Kullanıcı', 'Gelişmiş Raporlar', 'API Erişimi'] },
-                      { id: 'enterprise', title: 'Kurumsal', price: '$199', features: ['Sınırsız Kullanıcı', 'Özel Entegrasyonlar', '7/24 Destek'] }
+                      { id: 'basic', title: t('showcase.forms.steps.preferences.planOptions.basic.title'), price: t('showcase.forms.steps.preferences.planOptions.basic.price'), features: [t('showcase.forms.steps.preferences.planOptions.basic.features.feature1'), t('showcase.forms.steps.preferences.planOptions.basic.features.feature2')] },
+                      { id: 'pro', title: t('showcase.forms.steps.preferences.planOptions.pro.title'), price: t('showcase.forms.steps.preferences.planOptions.pro.price'), features: [t('showcase.forms.steps.preferences.planOptions.pro.features.feature1'), t('showcase.forms.steps.preferences.planOptions.pro.features.feature2'), t('showcase.forms.steps.preferences.planOptions.pro.features.feature3')] },
+                      { id: 'enterprise', title: t('showcase.forms.steps.preferences.planOptions.enterprise.title'), price: t('showcase.forms.steps.preferences.planOptions.enterprise.price'), features: [t('showcase.forms.steps.preferences.planOptions.enterprise.features.feature1'), t('showcase.forms.steps.preferences.planOptions.enterprise.features.feature2'), t('showcase.forms.steps.preferences.planOptions.enterprise.features.feature3')] }
                     ].map((plan) => (
                       <div key={plan.id} className={`border rounded-lg p-4 cursor-pointer transition-all ${formData.plan === plan.id ? 'border-primary bg-primary/5' : 'hover:border-primary/50'}`}>
                         <RadioGroupItem value={plan.id} id={plan.id} className="sr-only" />
@@ -265,15 +267,15 @@ export default function InteractiveForms() {
               <Separator />
 
               <div className="space-y-4">
-                <h4 className="text-lg font-medium">İstediğiniz Özellikler</h4>
+                <h4 className="text-lg font-medium">{t('showcase.forms.steps.preferences.features')}</h4>
                 <div className="grid gap-3 md:grid-cols-2">
                   {[
-                    'Dashboard & Analytics',
-                    'Kullanıcı Yönetimi',
-                    'Rapor Oluşturma',
-                    'API Entegrasyonu',
-                    'Mobil Uygulama',
-                    'Özel Tema Desteği'
+                    t('showcase.forms.steps.preferences.features.feature1'),
+                    t('showcase.forms.steps.preferences.features.feature2'),
+                    t('showcase.forms.steps.preferences.features.feature3'),
+                    t('showcase.forms.steps.preferences.features.feature4'),
+                    t('showcase.forms.steps.preferences.features.feature5'),
+                    t('showcase.forms.steps.preferences.features.feature6')
                   ].map((feature) => (
                     <div key={feature} className="flex items-center space-x-2">
                       <Checkbox
@@ -292,11 +294,11 @@ export default function InteractiveForms() {
               <Separator />
 
               <div className="space-y-4">
-                <h4 className="text-lg font-medium">Bildirim Tercihleri</h4>
+                <h4 className="text-lg font-medium">{t('showcase.forms.steps.preferences.notifications')}</h4>
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
                     <Label htmlFor="notifications" className="text-sm font-medium">
-                      E-posta Bildirimleri
+                      {t('showcase.forms.steps.preferences.notifications.email')}
                     </Label>
                     <Switch
                       id="notifications"
@@ -306,7 +308,7 @@ export default function InteractiveForms() {
                   </div>
                   <div className="flex items-center justify-between">
                     <Label htmlFor="newsletter" className="text-sm font-medium">
-                      Haber Bülteni
+                      {t('showcase.forms.steps.preferences.notifications.newsletter')}
                     </Label>
                     <Switch
                       id="newsletter"
@@ -325,28 +327,28 @@ export default function InteractiveForms() {
           <div className="space-y-6">
             <div className="text-center space-y-2">
               <CheckCircle className="h-12 w-12 mx-auto text-green-500" />
-              <h3 className="text-2xl font-semibold">Geri Bildirim & Tamamlama</h3>
-              <p className="text-muted-foreground">Deneyiminizi değerlendirin</p>
+              <h3 className="text-2xl font-semibold">{t('showcase.forms.steps.rating.title')}</h3>
+              <p className="text-muted-foreground">{t('showcase.forms.steps.rating.description')}</p>
             </div>
             
             <div className="space-y-6">
               <StarRating 
                 value={formData.satisfaction}
                 onChange={(value) => setFormData(prev => ({ ...prev, satisfaction: value }))}
-                label="Bu formu doldurmaktan ne kadar memnun kaldınız?"
+                label={t('showcase.forms.steps.rating.satisfaction')}
               />
               
               <StarRating 
                 value={formData.recommendation}
                 onChange={(value) => setFormData(prev => ({ ...prev, recommendation: value }))}
-                label="Bu sistemi arkadaşlarınıza tavsiye eder misiniz?"
+                label={t('showcase.forms.steps.rating.recommendation')}
               />
 
               <div className="space-y-2">
-                <Label htmlFor="feedback">Ek Yorumlarınız</Label>
+                <Label htmlFor="feedback">{t('showcase.forms.steps.rating.feedback')}</Label>
                 <Textarea
                   id="feedback"
-                  placeholder="Önerilerinizi, geri bildirimlerinizi paylaşın..."
+                  placeholder={t('showcase.forms.steps.rating.feedbackPlaceholder')}
                   className="min-h-[100px] transition-all focus:ring-2 focus:ring-primary/20"
                 />
               </div>
@@ -354,28 +356,32 @@ export default function InteractiveForms() {
               <div className="bg-muted/50 rounded-lg p-6 space-y-4">
                 <h4 className="font-semibold flex items-center gap-2">
                   <Sparkles className="h-5 w-5 text-primary" />
-                  Form Özeti
+                  {t('showcase.forms.steps.rating.summary')}
                 </h4>
                 <div className="grid gap-2 text-sm">
                   <div className="flex justify-between">
-                    <span className="text-muted-foreground">Ad Soyad:</span>
-                    <span>{formData.firstName} {formData.lastName}</span>
+                    <span className="text-muted-foreground">{t('showcase.forms.steps.rating.summary.firstName')}</span>
+                    <span>{formData.firstName}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-muted-foreground">E-posta:</span>
+                    <span className="text-muted-foreground">{t('showcase.forms.steps.rating.summary.lastName')}</span>
+                    <span>{formData.lastName}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">{t('showcase.forms.steps.rating.summary.email')}</span>
                     <span>{formData.email}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-muted-foreground">Şirket:</span>
-                    <span>{formData.company || 'Belirtilmedi'}</span>
+                    <span className="text-muted-foreground">{t('showcase.forms.steps.rating.summary.company')}</span>
+                    <span>{formData.company || t('showcase.forms.steps.rating.summary.companyNotProvided')}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-muted-foreground">Plan:</span>
+                    <span className="text-muted-foreground">{t('showcase.forms.steps.rating.summary.plan')}</span>
                     <Badge variant="secondary">{formData.plan}</Badge>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-muted-foreground">Seçilen Özellikler:</span>
-                    <span>{formData.features.length} özellik</span>
+                    <span className="text-muted-foreground">{t('showcase.forms.steps.rating.summary.features')}</span>
+                    <span>{formData.features.length} {t('showcase.forms.steps.rating.summary.featuresCount')}</span>
                   </div>
                 </div>
               </div>
@@ -391,25 +397,25 @@ export default function InteractiveForms() {
   return (
     <>
       <Helmet>
-        <title>İnteraktif Formlar - CodeMaze Admin</title>
-        <meta name="description" content="Gelişmiş form bileşenleri ve multi-step wizard örnekleri" />
+        <title>{t('showcase.forms.pageTitle')}</title>
+        <meta name="description" content={t('showcase.forms.metaDescription')} />
       </Helmet>
 
       <div className="space-y-8">
         <div className="text-center space-y-4">
           <h1 className="text-4xl font-bold tracking-tight bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-            İnteraktif Formlar
+            {t('showcase.forms.title')}
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Kullanıcı dostu ve etkileyici form deneyimleri oluşturun
+            {t('showcase.forms.description')}
           </p>
         </div>
 
         <Tabs defaultValue="wizard" className="space-y-6">
           <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="wizard">Multi-Step Wizard</TabsTrigger>
-            <TabsTrigger value="advanced">Gelişmiş Form Elements</TabsTrigger>
-            <TabsTrigger value="validation">Gerçek Zamanlı Validasyon</TabsTrigger>
+            <TabsTrigger value="wizard">{t('showcase.forms.sections.wizard')}</TabsTrigger>
+            <TabsTrigger value="advanced">{t('showcase.forms.sections.advanced')}</TabsTrigger>
+            <TabsTrigger value="validation">{t('showcase.forms.sections.validation')}</TabsTrigger>
           </TabsList>
 
           <TabsContent value="wizard" className="space-y-6">
@@ -417,8 +423,8 @@ export default function InteractiveForms() {
               <CardHeader>
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <CardTitle>Kullanıcı Kayıt Sihirbazı</CardTitle>
-                    <Badge variant="outline">Adım {currentStep}/{totalSteps}</Badge>
+                    <CardTitle>{t('showcase.forms.cardTitle')}</CardTitle>
+                    <Badge variant="outline">{t('showcase.forms.stepCounter', {current: currentStep, total: totalSteps})}</Badge>
                   </div>
                   <Progress value={progress} className="w-full" />
                 </div>
@@ -434,18 +440,18 @@ export default function InteractiveForms() {
                     className="flex items-center gap-2"
                   >
                     <ArrowLeft className="h-4 w-4" />
-                    Önceki
+                    {t('showcase.forms.buttons.previous')}
                   </Button>
                   
                   {currentStep < totalSteps ? (
                     <Button onClick={nextStep} className="flex items-center gap-2">
-                      Sonraki
+                      {t('showcase.forms.buttons.next')}
                       <ArrowRight className="h-4 w-4" />
                     </Button>
                   ) : (
                     <Button className="flex items-center gap-2 bg-green-600 hover:bg-green-700">
                       <CheckCircle className="h-4 w-4" />
-                      Tamamla
+                      {t('showcase.forms.buttons.finish')}
                     </Button>
                   )}
                 </div>
@@ -457,31 +463,31 @@ export default function InteractiveForms() {
             <div className="grid gap-6 md:grid-cols-2">
               <Card>
                 <CardHeader>
-                  <CardTitle>Gelişmiş Input Çeşitleri</CardTitle>
+                  <CardTitle>{t('showcase.forms.advanced.title')}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
-                    <Label>Kredi Kartı</Label>
+                    <Label>{t('showcase.forms.advanced.creditCard')}</Label>
                     <div className="relative">
                       <CreditCard className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                      <Input placeholder="**** **** **** 1234" className="pl-10" />
+                      <Input placeholder={t('showcase.forms.advanced.creditCardPlaceholder')} className="pl-10" />
                     </div>
                   </div>
                   
                   <div className="space-y-2">
-                    <Label>Güvenlik Kodu</Label>
+                    <Label>{t('showcase.forms.advanced.securityCode')}</Label>
                     <div className="relative">
                       <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                      <Input type="password" placeholder="••••" className="pl-10" maxLength={4} />
+                      <Input type="password" placeholder={t('showcase.forms.advanced.securityCodePlaceholder')} className="pl-10" maxLength={4} />
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <Label>Deneyim Seviyesi</Label>
+                    <Label>{t('showcase.forms.advanced.experienceLevel')}</Label>
                     <Slider defaultValue={[3]} max={5} min={1} step={1} />
                     <div className="flex justify-between text-xs text-muted-foreground">
-                      <span>Başlangıç</span>
-                      <span>Uzman</span>
+                      <span>{t('showcase.forms.advanced.experienceLevelBeginner')}</span>
+                      <span>{t('showcase.forms.advanced.experienceLevelExpert')}</span>
                     </div>
                   </div>
                 </CardContent>
@@ -489,12 +495,12 @@ export default function InteractiveForms() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle>Seçim Bileşenleri</CardTitle>
+                  <CardTitle>{t('showcase.forms.advanced.selectionComponents')}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-3">
-                    <Label>Favori Renkler</Label>
-                    {['Mavi', 'Yeşil', 'Kırmızı', 'Mor'].map((color) => (
+                    <Label>{t('showcase.forms.advanced.favoriteColors')}</Label>
+                    {[t('showcase.forms.advanced.favoriteColors.blue'), t('showcase.forms.advanced.favoriteColors.green'), t('showcase.forms.advanced.favoriteColors.red'), t('showcase.forms.advanced.favoriteColors.purple')].map((color) => (
                       <div key={color} className="flex items-center space-x-2">
                         <Checkbox id={color} />
                         <Label htmlFor={color}>{color}</Label>
@@ -503,19 +509,19 @@ export default function InteractiveForms() {
                   </div>
                   
                   <div className="space-y-3">
-                    <Label>Öncelik Seviyesi</Label>
+                    <Label>{t('showcase.forms.advanced.priorityLevel')}</Label>
                     <RadioGroup defaultValue="medium">
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="low" id="low" />
-                        <Label htmlFor="low">Düşük</Label>
+                        <Label htmlFor="low">{t('showcase.forms.advanced.priorityLevelLow')}</Label>
                       </div>
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="medium" id="medium" />
-                        <Label htmlFor="medium">Orta</Label>
+                        <Label htmlFor="medium">{t('showcase.forms.advanced.priorityLevelMedium')}</Label>
                       </div>
                       <div className="flex items-center space-x-2">
                         <RadioGroupItem value="high" id="high" />
-                        <Label htmlFor="high">Yüksek</Label>
+                        <Label htmlFor="high">{t('showcase.forms.advanced.priorityLevelHigh')}</Label>
                       </div>
                     </RadioGroup>
                   </div>
@@ -527,29 +533,29 @@ export default function InteractiveForms() {
           <TabsContent value="validation" className="space-y-6">
             <Card className="max-w-2xl mx-auto">
               <CardHeader>
-                <CardTitle>Gerçek Zamanlı Validasyon</CardTitle>
+                <CardTitle>{t('showcase.forms.validation.title')}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-2">
-                  <Label>E-posta Adresi</Label>
-                  <Input type="email" placeholder="ornek@email.com" />
-                  <p className="text-xs text-green-600">✓ Geçerli e-posta formatı</p>
+                  <Label>{t('showcase.forms.validation.email')}</Label>
+                  <Input type="email" placeholder={t('showcase.forms.validation.emailPlaceholder')} />
+                  <p className="text-xs text-green-600">{t('showcase.forms.validation.emailValid')}</p>
                 </div>
                 
                 <div className="space-y-2">
-                  <Label>Güçlü Şifre</Label>
-                  <Input type="password" placeholder="En az 8 karakter" />
+                  <Label>{t('showcase.forms.validation.strongPassword')}</Label>
+                  <Input type="password" placeholder={t('showcase.forms.validation.strongPasswordPlaceholder')} />
                   <div className="space-y-1">
-                    <p className="text-xs text-green-600">✓ En az 8 karakter</p>
-                    <p className="text-xs text-green-600">✓ Büyük harf içeriyor</p>
-                    <p className="text-xs text-red-600">✗ Özel karakter gerekli</p>
+                    <p className="text-xs text-green-600">{t('showcase.forms.validation.strongPasswordLength')}</p>
+                    <p className="text-xs text-green-600">{t('showcase.forms.validation.strongPasswordUppercase')}</p>
+                    <p className="text-xs text-red-600">{t('showcase.forms.validation.strongPasswordSpecialCharacter')}</p>
                   </div>
                 </div>
                 
                 <div className="space-y-2">
-                  <Label>Kullanıcı Adı</Label>
-                  <Input placeholder="kullanici_adi" />
-                  <p className="text-xs text-green-600">✓ Bu kullanıcı adı müsait</p>
+                  <Label>{t('showcase.forms.validation.username')}</Label>
+                  <Input placeholder={t('showcase.forms.validation.usernamePlaceholder')} />
+                  <p className="text-xs text-green-600">{t('showcase.forms.validation.usernameAvailable')}</p>
                 </div>
               </CardContent>
             </Card>

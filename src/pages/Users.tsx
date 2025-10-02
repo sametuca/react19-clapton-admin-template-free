@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useLanguage } from "@/hooks/useLanguage";
 import { 
   Users, 
   Mail, 
@@ -155,7 +155,6 @@ export default function UsersPage() {
         {canonical && <link rel="canonical" href={canonical} />}
       </Helmet>
 
-      {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
@@ -179,7 +178,6 @@ export default function UsersPage() {
         </div>
       </div>
 
-      {/* Stats Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {stats.map((stat, index) => (
           <Card key={index} className="bg-gradient-to-br from-white to-gray-50 hover:shadow-md transition-shadow">
@@ -196,7 +194,6 @@ export default function UsersPage() {
         ))}
       </div>
 
-      {/* Search Bar */}
       <Card>
         <CardContent className="p-4">
           <div className="relative">
@@ -209,7 +206,6 @@ export default function UsersPage() {
         </CardContent>
       </Card>
 
-      {/* Users Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
         {users.map((user) => (
           <Card key={user.id} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-gray-50/50">
@@ -251,13 +247,11 @@ export default function UsersPage() {
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
-              {/* Role and Status */}
               <div className="flex items-center justify-between">
                 {getRoleBadge(user.role)}
                 {getStatusBadge(user.status)}
               </div>
 
-              {/* Contact Info */}
               <div className="space-y-2">
                 <div className="flex items-center text-sm text-muted-foreground">
                   <Mail className="h-4 w-4 mr-2 text-blue-500" />
@@ -277,7 +271,6 @@ export default function UsersPage() {
                 </div>
               </div>
 
-              {/* Last Login */}
               <div className="pt-2 border-t">
                 <p className="text-xs text-muted-foreground">
                   Son giriş: <span className="font-medium">{user.lastLogin}</span>

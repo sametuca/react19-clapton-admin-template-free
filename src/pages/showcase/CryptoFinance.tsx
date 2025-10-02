@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { useLanguage } from "@/hooks/useLanguage";
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -23,6 +24,7 @@ import {
 } from "lucide-react";
 
 export default function CryptoFinance() {
+  const { t } = useLanguage();
   const [isPremiumUser] = useState(false);
 
   const cryptoData = [
@@ -46,10 +48,10 @@ export default function CryptoFinance() {
         <div className="absolute inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center rounded-lg">
           <div className="text-center space-y-2">
             <Crown className="h-8 w-8 text-yellow-500 mx-auto" />
-            <p className="text-sm font-medium">Premium Feature</p>
+            <p className="text-sm font-medium">{t('showcase.crypto.premiumFeature')}</p>
             <Button size="sm" className="gap-2">
               <Lock className="h-4 w-4" />
-              Unlock Premium
+              {t('showcase.crypto.unlockPremium')}
             </Button>
           </div>
         </div>
@@ -60,29 +62,29 @@ export default function CryptoFinance() {
   return (
     <>
       <Helmet>
-        <title>Crypto & Finance Components - React19 Admin</title>
-        <meta name="description" content="Professional cryptocurrency and financial dashboard components" />
+        <title>{t('showcase.crypto.pageTitle')}</title>
+        <meta name="description" content={t('showcase.crypto.metaDescription')} />
       </Helmet>
 
       <div className="space-y-8">
         <div className="text-center space-y-4">
           <h1 className="text-4xl font-bold tracking-tight bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500 bg-clip-text text-transparent">
-            Crypto & Finance Dashboard
+            {t('showcase.crypto.title')}
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Professional financial and cryptocurrency trading components
+            {t('showcase.crypto.description')}
           </p>
         </div>
 
         {/* Portfolio Overview */}
         <section className="space-y-4">
-          <h2 className="text-2xl font-semibold">Portfolio Overview</h2>
+          <h2 className="text-2xl font-semibold">{t('showcase.crypto.sections.portfolio')}</h2>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             <Card>
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-sm text-muted-foreground">Total Balance</p>
+                    <p className="text-sm text-muted-foreground">{t('showcase.crypto.portfolio.totalBalance')}</p>
                     <p className="text-2xl font-bold">$53,016</p>
                   </div>
                   <Wallet className="h-8 w-8 text-green-500" />
@@ -101,7 +103,7 @@ export default function CryptoFinance() {
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-muted-foreground">Today's P&L</p>
+                      <p className="text-sm text-muted-foreground">{t('showcase.crypto.portfolio.todaysPL')}</p>
                       <p className="text-2xl font-bold text-green-500">+$1,245</p>
                     </div>
                     <TrendingUp className="h-8 w-8 text-green-500" />
@@ -121,7 +123,7 @@ export default function CryptoFinance() {
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-muted-foreground">Total Invested</p>
+                      <p className="text-sm text-muted-foreground">{t('showcase.crypto.portfolio.totalInvested')}</p>
                       <p className="text-2xl font-bold">$48,500</p>
                     </div>
                     <CreditCard className="h-8 w-8 text-blue-500" />
@@ -139,14 +141,14 @@ export default function CryptoFinance() {
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm text-muted-foreground">Available Cash</p>
+                      <p className="text-sm text-muted-foreground">{t('showcase.crypto.portfolio.availableCash')}</p>
                       <p className="text-2xl font-bold">$4,516</p>
                     </div>
                     <Banknote className="h-8 w-8 text-purple-500" />
                   </div>
                   <div className="mt-4">
                     <div className="flex items-center gap-1 text-muted-foreground">
-                      <span className="text-sm">Ready to invest</span>
+                      <span className="text-sm">{t('showcase.crypto.portfolio.readyToInvest')}</span>
                     </div>
                   </div>
                 </CardContent>
@@ -157,12 +159,12 @@ export default function CryptoFinance() {
 
         {/* Crypto Market */}
         <section className="space-y-4">
-          <h2 className="text-2xl font-semibold">Market Overview</h2>
+          <h2 className="text-2xl font-semibold">{t('showcase.crypto.sections.market')}</h2>
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Bitcoin className="h-5 w-5 text-orange-500" />
-                Cryptocurrency Prices
+                {t('showcase.crypto.market.title')}
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -185,13 +187,13 @@ export default function CryptoFinance() {
 
         {/* Portfolio Allocation */}
         <section className="space-y-4">
-          <h2 className="text-2xl font-semibold">Portfolio Allocation</h2>
+          <h2 className="text-2xl font-semibold">{t('showcase.crypto.sections.allocation')}</h2>
           <div className="grid gap-6 md:grid-cols-2">
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <PieChart className="h-5 w-5" />
-                  Asset Distribution
+                  {t('showcase.crypto.allocation.title')}
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -216,14 +218,14 @@ export default function CryptoFinance() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <BarChart3 className="h-5 w-5" />
-                    Performance Chart
+                    {t('showcase.crypto.performance.title')}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="h-64 bg-muted rounded-lg flex items-center justify-center">
                     <div className="text-center">
                       <BarChart3 className="h-16 w-16 text-muted-foreground mx-auto mb-2" />
-                      <p className="text-muted-foreground">Interactive Chart</p>
+                      <p className="text-muted-foreground">{t('showcase.crypto.performance.placeholder')}</p>
                     </div>
                   </div>
                 </CardContent>
@@ -234,27 +236,27 @@ export default function CryptoFinance() {
 
         {/* Trading Tools */}
         <section className="space-y-4">
-          <h2 className="text-2xl font-semibold">Trading Tools</h2>
+          <h2 className="text-2xl font-semibold">{t('showcase.crypto.sections.trading')}</h2>
           <PremiumOverlay>
             <Tabs defaultValue="calculator" className="w-full">
               <TabsList className="grid w-full grid-cols-3">
-                <TabsTrigger value="calculator">Calculator</TabsTrigger>
-                <TabsTrigger value="converter">Converter</TabsTrigger>
-                <TabsTrigger value="analysis">Analysis</TabsTrigger>
+                <TabsTrigger value="calculator">{t('showcase.crypto.trading.calculator')}</TabsTrigger>
+                <TabsTrigger value="converter">{t('showcase.crypto.trading.converter')}</TabsTrigger>
+                <TabsTrigger value="analysis">{t('showcase.crypto.trading.analysis')}</TabsTrigger>
               </TabsList>
               <TabsContent value="calculator" className="space-y-4">
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <Calculator className="h-5 w-5" />
-                      Investment Calculator
+                      {t('showcase.crypto.trading.investmentCalculator')}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="grid gap-4 md:grid-cols-2">
                       <div className="space-y-4">
                         <div>
-                          <label className="text-sm font-medium">Initial Investment</label>
+                          <label className="text-sm font-medium">{t('showcase.crypto.trading.initialInvestment')}</label>
                           <div className="relative">
                             <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                             <input
@@ -265,7 +267,7 @@ export default function CryptoFinance() {
                           </div>
                         </div>
                         <div>
-                          <label className="text-sm font-medium">Monthly Contribution</label>
+                          <label className="text-sm font-medium">{t('showcase.crypto.trading.monthlyContribution')}</label>
                           <div className="relative">
                             <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                             <input
@@ -278,18 +280,18 @@ export default function CryptoFinance() {
                       </div>
                       <div className="space-y-4">
                         <div className="p-4 bg-muted rounded-lg">
-                          <h4 className="font-medium mb-2">Projected Returns</h4>
+                          <h4 className="font-medium mb-2">{t('showcase.crypto.trading.projectedReturns')}</h4>
                           <div className="space-y-2 text-sm">
                             <div className="flex justify-between">
-                              <span>1 Year:</span>
+                              <span>{t('showcase.crypto.trading.years.1')}</span>
                               <span className="font-medium text-green-500">$18,240</span>
                             </div>
                             <div className="flex justify-between">
-                              <span>5 Years:</span>
+                              <span>{t('showcase.crypto.trading.years.5')}</span>
                               <span className="font-medium text-green-500">$94,680</span>
                             </div>
                             <div className="flex justify-between">
-                              <span>10 Years:</span>
+                              <span>{t('showcase.crypto.trading.years.10')}</span>
                               <span className="font-medium text-green-500">$228,950</span>
                             </div>
                           </div>
@@ -308,13 +310,13 @@ export default function CryptoFinance() {
           <Card className="bg-gradient-to-r from-yellow-500/10 to-orange-500/10 border-yellow-500/20">
             <CardContent className="p-8 text-center">
               <Crown className="h-12 w-12 text-yellow-500 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold mb-2">Unlock Premium Finance Tools</h3>
+              <h3 className="text-2xl font-bold mb-2">{t('showcase.crypto.premiumFeatures')}</h3>
               <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                Access advanced portfolio tracking, real-time market data, trading calculators, and 30+ premium financial components
+                {t('showcase.crypto.premiumFeaturesDescription')}
               </p>
               <Button size="lg" className="gap-2">
                 <Crown className="h-4 w-4" />
-                Upgrade to Premium
+                {t('showcase.crypto.upgradeToPremium')}
               </Button>
             </CardContent>
           </Card>
