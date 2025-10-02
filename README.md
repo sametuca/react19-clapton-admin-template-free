@@ -573,20 +573,6 @@ const expensiveValue = useMemo(() => {
 
 This project is licensed under the **Premium License** - see the [LICENSE](LICENSE) file for details.
 
-## Support
-
-### **Getting Help**
-- **Email**: support@clapton-admin.com
-- **Discord**: [Join our community](https://discord.gg/clapton-admin)
-- **Documentation**: [docs.clapton-admin.com](https://docs.clapton-admin.com)
-- **Issues**: [GitHub Issues](https://github.com/your-repo/issues)
-
-### **Premium Support**
-- **Priority Support** - 24/7 response time
-- **Custom Development** - Tailored solutions
-- **Mobile Optimization** - Responsive design
-- **Security Audit** - Code review and security
-
 ## Acknowledgments
 
 - **React Team** - For the amazing framework
@@ -653,32 +639,3 @@ const AdvancedComponents = lazy(() => import("./pages/showcase/AdvancedComponent
   <AdvancedComponents />
 </Suspense>
 ```
-
-Kontrol listesi:
-- /showcase açılıyor mu?
-- /showcase/advanced sayfası Aurora arka plan & palette açılıyor mu?
-- /showcase/unique benzersiz efektli komponentleri gösteriyor mu?
-- /showcase/gallery modern galeri listeleniyor mu?
-
-Eğer layout (örn. <AppLayout />) kullanıyorsanız:
-
-```tsx
-<Route element={<AppLayout />}>
-  <Route path="/showcase" element={<ComponentShowcaseIndex />} />
-  <Route path="/showcase/advanced" element={<AdvancedComponents />} />
-  <Route path="/showcase/unique" element={<UniqueComponents />} />
-  <Route path="/showcase/gallery" element={<ModernGallery />} />
-</Route>
-```
-
-Sorun devam ederse `App.tsx` veya router yapılandırma dosyanızı paylaşın; doğrudan patch ekleyeyim.
-For support or questions:  
-- [Open an issue](https://github.com/sametuca/react19-clapton-admin-template-free/issues)
-- Check the documentation
-- Review existing issues and discussions
-
----
-
-_Built with ❤️ using React 19, TypeScript, and Tailwind CSS._
-
----
