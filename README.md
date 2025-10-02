@@ -8,7 +8,7 @@
 
 > **The most advanced React 19 admin template with premium components, modern design, and enterprise-grade architecture**
 
-![Clapton Admin Template]([https://via.placeholder.com/800x400/1f2937/ffffff?text=Clapton+Admin+Template](https://react19-clapton-admin-template-prem.vercel.app/))
+https://react19-clapton-admin-template-free.vercel.app/
 
 ## Features
 
