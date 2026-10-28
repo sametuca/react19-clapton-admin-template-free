@@ -135,7 +135,7 @@ export default function AnalyticsDashboard() {
       users: 52340,
       percentage: 48.5,
       sessions: 78920,
-      color: "text-blue-500"
+      color: "text-blue-700 dark:text-blue-400"
     },
     {
       device: "Mobil",
@@ -143,7 +143,7 @@ export default function AnalyticsDashboard() {
       users: 45680,
       percentage: 42.3,
       sessions: 89340,
-      color: "text-green-500"
+      color: "text-green-800 dark:text-green-400"
     },
     {
       device: "Tablet",
@@ -151,7 +151,7 @@ export default function AnalyticsDashboard() {
       users: 9920,
       percentage: 9.2,
       sessions: 15670,
-      color: "text-purple-500"
+      color: "text-purple-700 dark:text-purple-400"
     }
   ];
 
@@ -160,26 +160,26 @@ export default function AnalyticsDashboard() {
       metric: "Aktif Kullanıcı",
       value: "1,247",
       icon: Activity,
-      color: "text-green-500"
+      color: "text-green-800 dark:text-green-400"
     },
     {
       metric: "Sayfa/Oturum",
       value: "3.8",
       icon: Eye,
-      color: "text-blue-500"
+      color: "text-blue-700 dark:text-blue-400"
     },
     {
       metric: "Ortalama Oturum",
       value: "4:32",
       icon: Clock,
-      color: "text-purple-500"
+      color: "text-purple-700 dark:text-purple-400"
     }
   ];
 
   const getBounceRateColor = (rate: number) => {
-    if (rate < 30) return "text-green-600";
-    if (rate < 50) return "text-orange-600";
-    return "text-red-600";
+    if (rate < 30) return "text-green-800 dark:text-green-400";
+    if (rate < 50) return "text-orange-700 dark:text-orange-400";
+    return "text-red-600 dark:text-red-400";
   };
 
   return (
@@ -217,7 +217,7 @@ export default function AnalyticsDashboard() {
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-4">
                   <div className="space-y-3">
-                    <p className="text-sm font-medium text-foreground/60 uppercase tracking-wide">
+                    <p className="text-sm font-medium text-muted-foreground uppercase tracking-wide">
                       {stat.title}
                     </p>
                     <p className="text-3xl font-bold text-foreground">
@@ -225,21 +225,21 @@ export default function AnalyticsDashboard() {
                     </p>
                   </div>
                   <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${stat.color} flex items-center justify-center shadow-lg`}>
-                    <stat.icon className="w-7 h-7 text-white" />
+                    <stat.icon className="w-7 h-7 text-foreground" />
                   </div>
                 </div>
                 <div className="flex items-center gap-2 pt-3 border-t border-border/30">
                   {stat.changeType === "positive" ? (
-                    <ArrowUpRight className="w-4 h-4 text-green-400" />
+                    <ArrowUpRight className="w-4 h-4 text-green-600 dark:text-green-400" />
                   ) : (
-                    <ArrowDownRight className="w-4 h-4 text-red-400" />
+                    <ArrowDownRight className="w-4 h-4 text-red-600 dark:text-red-400" />
                   )}
                   <span className={`text-sm font-semibold ${
-                    stat.changeType === "positive" ? "text-green-400" : "text-red-400"
+                    stat.changeType === "positive" ? "text-green-800 dark:text-green-400" : "text-red-600 dark:text-red-400"
                   }`}>
                     {stat.change}
                   </span>
-                  <span className="text-sm text-foreground/60">
+                  <span className="text-sm text-muted-foreground">
                     son 30 gün
                   </span>
                 </div>
@@ -254,11 +254,11 @@ export default function AnalyticsDashboard() {
               <CardHeader className="pb-6">
                 <CardTitle className="flex items-center gap-3 text-foreground text-xl">
                   <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
-                    <TrendingUp className="w-4 h-4 text-white" />
+                    <TrendingUp className="w-4 h-4 text-foreground" />
                   </div>
                   Trafik Kaynakları
                 </CardTitle>
-                <CardDescription className="text-foreground/60 text-base">
+                <CardDescription className="text-muted-foreground text-base">
                   Ziyaretçilerinizin hangi kanallardan geldiğini görün
                 </CardDescription>
               </CardHeader>
@@ -277,12 +277,12 @@ export default function AnalyticsDashboard() {
                           </span>
                           <div className="flex items-center gap-1">
                             {source.changeType === "positive" ? (
-                              <ArrowUpRight className="w-3 h-3 text-green-400" />
+                              <ArrowUpRight className="w-3 h-3 text-green-600 dark:text-green-400" />
                             ) : (
-                              <ArrowDownRight className="w-3 h-3 text-red-400" />
+                              <ArrowDownRight className="w-3 h-3 text-red-600 dark:text-red-400" />
                             )}
                             <span className={`text-xs font-medium ${
-                              source.changeType === "positive" ? "text-green-400" : "text-red-400"
+                              source.changeType === "positive" ? "text-green-800 dark:text-green-400" : "text-red-600 dark:text-red-400"
                             }`}>
                               {source.change}
                             </span>
@@ -291,7 +291,7 @@ export default function AnalyticsDashboard() {
                       </div>
                       <div className="space-y-2">
                         <div className="flex justify-between text-sm">
-                          <span className="text-foreground/60">Oran</span>
+                          <span className="text-muted-foreground">Oran</span>
                           <span className="text-foreground">{source.percentage}%</span>
                         </div>
                         <Progress value={source.percentage} className="h-2" />
@@ -308,11 +308,11 @@ export default function AnalyticsDashboard() {
               <CardHeader className="pb-6">
                 <CardTitle className="flex items-center gap-3 text-foreground text-xl">
                   <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center">
-                    <Activity className="w-4 h-4 text-white" />
+                    <Activity className="w-4 h-4 text-foreground" />
                   </div>
                   Gerçek Zamanlı
                 </CardTitle>
-                <CardDescription className="text-foreground/60 text-base">
+                <CardDescription className="text-muted-foreground text-base">
                   Anlık site aktivitesi
                 </CardDescription>
               </CardHeader>
@@ -335,9 +335,9 @@ export default function AnalyticsDashboard() {
                 
                 <div className="mt-6 p-4 rounded-lg border border-border/30 bg-gradient-to-r from-primary/5 to-primary/10">
                   <div className="text-center">
-                    <p className="text-sm text-foreground/60 mb-1">Son 5 dakika</p>
+                    <p className="text-sm text-muted-foreground mb-1">Son 5 dakika</p>
                     <p className="text-2xl font-bold text-foreground">+247</p>
-                    <p className="text-sm text-green-600">yeni ziyaretçi</p>
+                    <p className="text-sm text-green-800 dark:text-green-400">yeni ziyaretçi</p>
                   </div>
                 </div>
               </CardContent>
@@ -350,11 +350,11 @@ export default function AnalyticsDashboard() {
             <CardHeader className="pb-6">
               <CardTitle className="flex items-center gap-3 text-foreground text-xl">
                 <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
-                  <Eye className="w-4 h-4 text-white" />
+                  <Eye className="w-4 h-4 text-foreground" />
                 </div>
                 En Popüler Sayfalar
               </CardTitle>
-              <CardDescription className="text-foreground/60 text-base">
+              <CardDescription className="text-muted-foreground text-base">
                 En çok ziyaret edilen sayfalar ve performansları
               </CardDescription>
             </CardHeader>
@@ -365,24 +365,24 @@ export default function AnalyticsDashboard() {
                     <div className="flex items-start justify-between mb-3">
                       <div>
                         <h3 className="font-semibold text-foreground">{page.title}</h3>
-                        <p className="text-sm text-foreground/60">{page.page}</p>
+                        <p className="text-sm text-muted-foreground">{page.page}</p>
                       </div>
                       <Badge variant="outline">{page.views.toLocaleString()} görüntüleme</Badge>
                     </div>
                     
                     <div className="grid grid-cols-3 gap-4 text-sm">
                       <div>
-                        <p className="text-foreground/60">Benzersiz</p>
+                        <p className="text-muted-foreground">Benzersiz</p>
                         <p className="font-semibold text-foreground">{page.uniqueViews.toLocaleString()}</p>
                       </div>
                       <div>
-                        <p className="text-foreground/60">Çıkış Oranı</p>
+                        <p className="text-muted-foreground">Çıkış Oranı</p>
                         <p className={`font-semibold ${getBounceRateColor(page.bounceRate)}`}>
                           %{page.bounceRate}
                         </p>
                       </div>
                       <div>
-                        <p className="text-foreground/60">Ort. Süre</p>
+                        <p className="text-muted-foreground">Ort. Süre</p>
                         <p className="font-semibold text-foreground">{page.avgTime}</p>
                       </div>
                     </div>
@@ -396,11 +396,11 @@ export default function AnalyticsDashboard() {
             <CardHeader className="pb-6">
               <CardTitle className="flex items-center gap-3 text-foreground text-xl">
                 <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center">
-                  <Monitor className="w-4 h-4 text-white" />
+                  <Monitor className="w-4 h-4 text-foreground" />
                 </div>
                 Cihaz Dağılımı
               </CardTitle>
-              <CardDescription className="text-foreground/60 text-base">
+              <CardDescription className="text-muted-foreground text-base">
                 Kullanıcıların hangi cihazları kullandığını görün
               </CardDescription>
             </CardHeader>
@@ -417,14 +417,14 @@ export default function AnalyticsDashboard() {
                         <p className="font-semibold text-foreground">
                           {device.users.toLocaleString()}
                         </p>
-                        <p className="text-sm text-foreground/60">
+                        <p className="text-sm text-muted-foreground">
                           {device.sessions.toLocaleString()} oturum
                         </p>
                       </div>
                     </div>
                     <div className="space-y-2">
                       <div className="flex justify-between text-sm">
-                        <span className="text-foreground/60">Kullanıcı Oranı</span>
+                        <span className="text-muted-foreground">Kullanıcı Oranı</span>
                         <span className="text-foreground">{device.percentage}%</span>
                       </div>
                       <Progress value={device.percentage} className="h-2" />
@@ -435,11 +435,11 @@ export default function AnalyticsDashboard() {
               
               <div className="mt-6 p-4 rounded-lg border border-border/30 bg-gradient-to-r from-background/80 to-foreground/5">
                 <div className="text-center">
-                  <p className="text-sm text-foreground/60 mb-2">Toplam Oturum</p>
+                  <p className="text-sm text-muted-foreground mb-2">Toplam Oturum</p>
                   <p className="text-2xl font-bold text-foreground">183,930</p>
                   <div className="flex items-center justify-center gap-1 mt-1">
-                    <ArrowUpRight className="w-4 h-4 text-green-400" />
-                    <span className="text-sm font-semibold text-green-400">+12.5%</span>
+                    <ArrowUpRight className="w-4 h-4 text-green-600 dark:text-green-400" />
+                    <span className="text-sm font-semibold text-green-800 dark:text-green-400">+12.5%</span>
                   </div>
                 </div>
               </div>

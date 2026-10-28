@@ -68,7 +68,7 @@ const AIComponents = () => {
         <meta name="description" content={t('showcase.ai.metaDescription')} />
       </Helmet>
 
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black">
+      <div className="min-h-screen bg-background">
         <div className="container mx-auto px-4 py-8">
           {/* Header */}
           <motion.div
@@ -83,21 +83,21 @@ const AIComponents = () => {
                 transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
                 className="mr-4"
               >
-                <Brain className="w-16 h-16 text-purple-500" />
+                <Brain className="w-16 h-16 text-purple-700 dark:text-purple-400" />
               </motion.div>
-              <Badge variant="secondary" className="px-6 py-2 text-sm bg-gradient-to-r from-purple-500 to-blue-500 text-white border-0">
+              <Badge variant="secondary" className="px-6 py-2 text-sm bg-gradient-to-r from-purple-600 to-blue-600 text-white border-0">
                 <Sparkles className="w-4 h-4 mr-2" />
                 {t('showcase.ai.badges.ai')}
               </Badge>
             </div>
             
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
+            <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-4">
               {t('showcase.ai.title')}
               <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
                 {' '}Components
               </span>
             </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               {t('showcase.ai.description')}
             </p>
           </motion.div>
@@ -125,10 +125,10 @@ const AIComponents = () => {
                   transition={{ duration: 0.2 }}
                 >
                   <Card className={`bg-gradient-to-br ${gradient} backdrop-blur-lg text-center p-6 group transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/25 border`}>
-                    <div className="text-3xl font-bold text-white mb-2 group-hover:scale-110 transition-transform duration-300">
+                    <div className="text-3xl font-bold text-foreground mb-2 group-hover:scale-110 transition-transform duration-300">
                       {stat.number}
                     </div>
-                    <div className="text-gray-200">{stat.label}</div>
+                    <div className="text-foreground">{stat.label}</div>
                   </Card>
                 </motion.div>
               );
@@ -143,10 +143,10 @@ const AIComponents = () => {
             className="mb-16"
           >
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-white mb-4">
+              <h2 className="text-4xl font-bold text-foreground mb-4">
                 {t('showcase.ai.sections.components')}
               </h2>
-              <p className="text-gray-300 text-lg">
+              <p className="text-muted-foreground text-lg">
                 {t('showcase.ai.sections.componentsDescription')}
               </p>
             </div>
@@ -161,16 +161,16 @@ const AIComponents = () => {
                   whileHover={{ scale: 1.02, y: -5 }}
                   className="group"
                 >
-                  <Card className="h-full p-6 hover:shadow-xl transition-all duration-300 border-2 hover:border-purple-200 bg-gray-800/50 border-gray-700/50">
+                  <Card className="h-full p-6 hover:shadow-xl transition-all duration-300 border-2 hover:border-purple-200 dark:hover:border-purple-500/30 dark:hover:border-purple-500/30 bg-muted/50 border-border">
                     <div className="flex items-start space-x-4 mb-4">
-                      <div className="p-3 rounded-xl bg-gradient-to-r from-purple-500 to-blue-500 text-white group-hover:scale-110 transition-transform duration-300">
+                      <div className="p-3 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white group-hover:scale-110 transition-transform duration-300">
                         {feature.icon}
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-purple-300 transition-colors">
+                        <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-300 transition-colors">
                           {feature.title}
                         </h3>
-                        <p className="text-gray-300 leading-relaxed">
+                        <p className="text-muted-foreground leading-relaxed">
                           {feature.description}
                         </p>
                       </div>
@@ -178,8 +178,8 @@ const AIComponents = () => {
                     
                     <div className="space-y-2">
                       {feature.features.map((feat, idx) => (
-                        <div key={idx} className="flex items-center text-sm text-gray-400">
-                          <Zap className="w-4 h-4 mr-2 text-purple-500" />
+                        <div key={idx} className="flex items-center text-sm text-muted-foreground">
+                          <Zap className="w-4 h-4 mr-2 text-purple-700 dark:text-purple-400" />
                           {feat}
                         </div>
                       ))}
@@ -192,7 +192,7 @@ const AIComponents = () => {
 
           {/* Interactive AI Demos */}
           <Tabs value={activeTab} onValueChange={setActiveTab} className="mb-12">
-            <TabsList className="grid w-full grid-cols-3 mb-8 bg-gray-800/50 border border-gray-700/50">
+            <TabsList className="grid w-full grid-cols-3 mb-8 bg-muted/50 border border-border">
               <TabsTrigger value="ai-chat" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-blue-600 data-[state=active]:text-white">{t('showcase.ai.tabs.aiChat')}</TabsTrigger>
               <TabsTrigger value="ai-search" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-blue-600 data-[state=active]:text-white">{t('showcase.ai.tabs.aiSearch')}</TabsTrigger>
               <TabsTrigger value="ai-insights" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-blue-600 data-[state=active]:text-white">{t('showcase.ai.tabs.aiInsights')}</TabsTrigger>
@@ -201,20 +201,20 @@ const AIComponents = () => {
             {/* AI Chat Demo */}
             <TabsContent value="ai-chat" className="space-y-8">
               <div className="text-center mb-8">
-                <h2 className="text-3xl font-bold text-white mb-4">{t('showcase.ai.tabs.aiChat')}</h2>
-                <p className="text-gray-300">{t('showcase.ai.tabs.aiChatDescription')}</p>
+                <h2 className="text-3xl font-bold text-foreground mb-4">{t('showcase.ai.tabs.aiChat')}</h2>
+                <p className="text-muted-foreground">{t('showcase.ai.tabs.aiChatDescription')}</p>
               </div>
 
-              <Card className="p-8 bg-gray-800/50 border border-gray-700/50">
+              <Card className="p-8 bg-muted/50 border border-border">
                 <div className="text-center space-y-6">
                   <div className="flex items-center justify-center mb-6">
-                    <div className="p-4 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 text-white">
+                    <div className="p-4 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 text-white">
                       <Bot className="w-8 h-8" />
                     </div>
                   </div>
                   
-                  <h3 className="text-2xl font-semibold text-white">{t('showcase.ai.tabs.aiChatTitle')}</h3>
-                  <p className="text-gray-300 max-w-2xl mx-auto">
+                  <h3 className="text-2xl font-semibold text-foreground">{t('showcase.ai.tabs.aiChatTitle')}</h3>
+                  <p className="text-muted-foreground max-w-2xl mx-auto">
                     {t('showcase.ai.tabs.aiChatDescriptionLong')}
                   </p>
                   
@@ -228,20 +228,20 @@ const AIComponents = () => {
                   </Button>
                   
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
-                    <div className="p-4 bg-purple-900/20 rounded-lg border border-purple-500/30">
-                      <Shield className="w-6 h-6 text-purple-400 mx-auto mb-2" />
-                      <h4 className="font-semibold text-white mb-1">{t('showcase.ai.tabs.aiChatSecure')}</h4>
-                      <p className="text-sm text-gray-300">{t('showcase.ai.tabs.aiChatSecureDescription')}</p>
+                    <div className="p-4 bg-purple-500/10 rounded-lg border border-purple-500/30">
+                      <Shield className="w-6 h-6 text-purple-700 dark:text-purple-400 mx-auto mb-2" />
+                      <h4 className="font-semibold text-foreground mb-1">{t('showcase.ai.tabs.aiChatSecure')}</h4>
+                      <p className="text-sm text-muted-foreground">{t('showcase.ai.tabs.aiChatSecureDescription')}</p>
                     </div>
-                    <div className="p-4 bg-blue-900/20 rounded-lg border border-blue-500/30">
-                      <Globe className="w-6 h-6 text-blue-400 mx-auto mb-2" />
-                      <h4 className="font-semibold text-white mb-1">{t('showcase.ai.tabs.aiChatMultiLanguage')}</h4>
-                      <p className="text-sm text-gray-300">{t('showcase.ai.tabs.aiChatMultiLanguageDescription')}</p>
+                    <div className="p-4 bg-blue-500/10 rounded-lg border border-blue-500/30">
+                      <Globe className="w-6 h-6 text-blue-700 dark:text-blue-400 mx-auto mb-2" />
+                      <h4 className="font-semibold text-foreground mb-1">{t('showcase.ai.tabs.aiChatMultiLanguage')}</h4>
+                      <p className="text-sm text-muted-foreground">{t('showcase.ai.tabs.aiChatMultiLanguageDescription')}</p>
                     </div>
-                    <div className="p-4 bg-green-900/20 rounded-lg border border-green-500/30">
-                      <Users className="w-6 h-6 text-green-400 mx-auto mb-2" />
-                      <h4 className="font-semibold text-white mb-1">{t('showcase.ai.tabs.aiChatCollaborative')}</h4>
-                      <p className="text-sm text-gray-300">{t('showcase.ai.tabs.aiChatCollaborativeDescription')}</p>
+                    <div className="p-4 bg-green-500/10 rounded-lg border border-green-500/30">
+                      <Users className="w-6 h-6 text-green-600 dark:text-green-400 mx-auto mb-2" />
+                      <h4 className="font-semibold text-foreground mb-1">{t('showcase.ai.tabs.aiChatCollaborative')}</h4>
+                      <p className="text-sm text-muted-foreground">{t('showcase.ai.tabs.aiChatCollaborativeDescription')}</p>
                     </div>
                   </div>
                 </div>
@@ -254,37 +254,37 @@ const AIComponents = () => {
             {/* AI Search Demo */}
             <TabsContent value="ai-search" className="space-y-8">
               <div className="text-center mb-8">
-                <h2 className="text-3xl font-bold text-white mb-4">{t('showcase.ai.tabs.aiSearch')}</h2>
-                <p className="text-gray-300">{t('showcase.ai.tabs.aiSearchDescription')}</p>
+                <h2 className="text-3xl font-bold text-foreground mb-4">{t('showcase.ai.tabs.aiSearch')}</h2>
+                <p className="text-muted-foreground">{t('showcase.ai.tabs.aiSearchDescription')}</p>
               </div>
 
-              <Card className="p-8 bg-gray-800/50 border border-gray-700/50">
+              <Card className="p-8 bg-muted/50 border border-border">
                 <div className="max-w-2xl mx-auto">
-                  <h3 className="text-2xl font-semibold text-white mb-6 text-center">{t('showcase.ai.tabs.aiSearchTitle')}</h3>
+                  <h3 className="text-2xl font-semibold text-foreground mb-6 text-center">{t('showcase.ai.tabs.aiSearchTitle')}</h3>
                   <AISearch />
                   
                   <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-4">
-                      <h4 className="font-semibold text-white">{t('showcase.ai.tabs.aiSearchFeatures')}</h4>
-                      <ul className="space-y-2 text-sm text-gray-300">
+                      <h4 className="font-semibold text-foreground">{t('showcase.ai.tabs.aiSearchFeatures')}</h4>
+                      <ul className="space-y-2 text-sm text-muted-foreground">
                         <li className="flex items-center">
-                          <Sparkles className="w-4 h-4 mr-2 text-purple-500" />
+                          <Sparkles className="w-4 h-4 mr-2 text-purple-700 dark:text-purple-400" />
                           {t('showcase.ai.tabs.aiSearchFeaturesSemantic')}
                         </li>
                         <li className="flex items-center">
-                          <Lightbulb className="w-4 h-4 mr-2 text-yellow-500" />
+                          <Lightbulb className="w-4 h-4 mr-2 text-yellow-600 dark:text-yellow-400" />
                           {t('showcase.ai.tabs.aiSearchFeaturesIntelligent')}
                         </li>
                         <li className="flex items-center">
-                          <Zap className="w-4 h-4 mr-2 text-blue-500" />
+                          <Zap className="w-4 h-4 mr-2 text-blue-700 dark:text-blue-400" />
                           {t('showcase.ai.tabs.aiSearchFeaturesRealTime')}
                         </li>
                       </ul>
                     </div>
                     
                     <div className="space-y-4">
-                      <h4 className="font-semibold text-white">{t('showcase.ai.tabs.aiSearchUseCases')}</h4>
-                      <ul className="space-y-2 text-sm text-gray-300">
+                      <h4 className="font-semibold text-foreground">{t('showcase.ai.tabs.aiSearchUseCases')}</h4>
+                      <ul className="space-y-2 text-sm text-muted-foreground">
                         <li>• {t('showcase.ai.tabs.aiSearchUseCasesGlobal')}</li>
                         <li>• {t('showcase.ai.tabs.aiSearchUseCasesDocument')}</li>
                         <li>• {t('showcase.ai.tabs.aiSearchUseCasesUser')}</li>
@@ -299,8 +299,8 @@ const AIComponents = () => {
             {/* AI Insights Demo */}
             <TabsContent value="ai-insights" className="space-y-8">
               <div className="text-center mb-8">
-                <h2 className="text-3xl font-bold text-white mb-4">{t('showcase.ai.tabs.aiInsights')}</h2>
-                <p className="text-gray-300">{t('showcase.ai.tabs.aiInsightsDescription')}</p>
+                <h2 className="text-3xl font-bold text-foreground mb-4">{t('showcase.ai.tabs.aiInsights')}</h2>
+                <p className="text-muted-foreground">{t('showcase.ai.tabs.aiInsightsDescription')}</p>
               </div>
 
               <AIInsights />
@@ -318,13 +318,13 @@ const AIComponents = () => {
             <Card className="bg-gradient-to-r from-purple-600 to-blue-600 p-8 text-white">
               <div className="flex items-center justify-center mb-4">
                 <Brain className="w-12 h-12 mr-4" />
-                <Star className="w-8 h-8 text-yellow-300" />
+                <Star className="w-8 h-8 text-yellow-600 dark:text-yellow-300" />
               </div>
               <h2 className="text-3xl font-bold mb-4">{t('showcase.ai.footer.title')}</h2>
               <p className="text-xl text-purple-100 mb-6">
                 {t('showcase.ai.footer.description')}
               </p>
-              <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-100">
+              <Button size="lg" className="bg-card text-purple-700 dark:text-purple-400 hover:bg-muted">
                 {t('showcase.ai.footer.button')}
               </Button>
             </Card>

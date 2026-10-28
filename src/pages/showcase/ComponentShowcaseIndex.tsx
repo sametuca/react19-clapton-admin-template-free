@@ -218,13 +218,13 @@ export default function ComponentShowcaseIndex() {
         <div className="hero-section">
           <div className="space-y-6">
             <div className="flex items-center justify-center gap-3">
-              <Sparkles className="h-8 w-8 text-blue-400" />
+              <Sparkles className="h-8 w-8 text-blue-700 dark:text-blue-400" />
               <h1 className="text-5xl font-bold gradient-text-primary">
                 {t('showcase.index.title')}
               </h1>
-              <Sparkles className="h-8 w-8 text-purple-400" />
+              <Sparkles className="h-8 w-8 text-purple-700 dark:text-purple-400" />
             </div>
-            <p className="text-xl text-white/70 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
               {t('showcase.index.description')}
             </p>
             <div className="flex items-center justify-center gap-4">
@@ -232,7 +232,7 @@ export default function ComponentShowcaseIndex() {
                 <Zap className="w-5 h-5 mr-2" />
                 {t('showcase.index.buttons.getStarted')}
               </Button>
-              <Button variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10">
+              <Button variant="outline" size="lg" className="border-border text-foreground hover:bg-foreground/10">
                 <Eye className="w-5 h-5 mr-2" />
                 {t('showcase.index.buttons.moreExamples')}
               </Button>
@@ -246,7 +246,7 @@ export default function ComponentShowcaseIndex() {
             <h2 className="text-3xl font-bold gradient-text-secondary">
               {t('showcase.index.sections.components')}
             </h2>
-            <p className="text-lg text-white/60">
+            <p className="text-lg text-muted-foreground">
               {showcasePages.length} {t('showcase.index.categories.available')}
             </p>
           </div>
@@ -258,7 +258,7 @@ export default function ComponentShowcaseIndex() {
                   {/* Header */}
                   <div className="flex items-start justify-between">
                     <div className={`w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-200`}>
-                      <page.icon className="w-6 h-6 text-blue-400" />
+                      <page.icon className="w-6 h-6 text-blue-700 dark:text-blue-400" />
                     </div>
                     <Badge variant="secondary" className="badge-glass">
                       {page.badge}
@@ -267,22 +267,22 @@ export default function ComponentShowcaseIndex() {
 
                   {/* Content */}
                   <div className="space-y-3">
-                    <h3 className="text-xl font-bold text-white group-hover:text-blue-300 transition-colors">
+                    <h3 className="text-xl font-bold text-foreground group-hover:text-blue-600 dark:group-hover:text-blue-300 transition-colors">
                       {page.title}
                     </h3>
-                    <p className="text-white/70 leading-relaxed">
+                    <p className="text-muted-foreground leading-relaxed">
                       {page.description}
                     </p>
                   </div>
 
                   {/* Features */}
                   <div className="space-y-2">
-                    <h4 className="text-sm font-medium text-white/60 uppercase tracking-wider">
+                    <h4 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
                       {t('showcase.index.sections.keyFeatures')}
                     </h4>
                     <ul className="space-y-1">
                       {page.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-center gap-2 text-sm text-white/70">
+                        <li key={featureIndex} className="flex items-center gap-2 text-sm text-muted-foreground">
                           <div className="w-1.5 h-1.5 rounded-full bg-blue-400"></div>
                           {feature}
                         </li>
@@ -311,15 +311,15 @@ export default function ComponentShowcaseIndex() {
             <h2 className="text-3xl font-bold gradient-text-primary">
               {t('showcase.index.sections.createImpressiveAdminPanels')}
             </h2>
-            <p className="text-lg text-white/70 max-w-3xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               {t('showcase.index.descriptions.createImpressiveAdminPanels')}
             </p>
             <div className="flex items-center justify-center gap-4">
-              <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white border-0">
+              <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white border-0">
                 <Rocket className="w-5 h-5 mr-2" />
                 {t('showcase.index.buttons.getStarted')}
               </Button>
-              <Button variant="outline" size="lg" className="border-white/30 text-white hover:bg-white/10">
+              <Button variant="outline" size="lg" className="border-border text-foreground hover:bg-foreground/10">
                 <Palette className="w-5 h-5 mr-2" />
                 {t('showcase.index.buttons.moreExamples')}
               </Button>

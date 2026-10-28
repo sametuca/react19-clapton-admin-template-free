@@ -46,7 +46,7 @@ export default function DashboardWidgets() {
       changeType: "positive" as const,
       icon: DollarSign,
       prefix: "$",
-      color: "text-green-600",
+      color: "text-green-800 dark:text-green-400",
       description: t('showcase.dashboard.kpis.last30Days')
     },
     {
@@ -56,7 +56,7 @@ export default function DashboardWidgets() {
       changeType: "negative" as const,
       icon: Users,
       suffix: "",
-      color: "text-blue-600",
+      color: "text-blue-700 dark:text-blue-400",
       description: t('showcase.dashboard.kpis.thisMonth')
     },
     {
@@ -66,7 +66,7 @@ export default function DashboardWidgets() {
       changeType: "positive" as const,
       icon: ShoppingCart,
       suffix: "",
-      color: "text-purple-600",
+      color: "text-purple-700 dark:text-purple-400",
       description: t('showcase.dashboard.kpis.ongoing')
     },
     {
@@ -76,7 +76,7 @@ export default function DashboardWidgets() {
       changeType: "positive" as const,
       icon: Eye,
       suffix: "",
-      color: "text-orange-600",
+      color: "text-orange-700 dark:text-orange-400",
       description: t('showcase.dashboard.kpis.thisWeek')
     }
   ];
@@ -175,7 +175,7 @@ export default function DashboardWidgets() {
                     />
                   </div>
                   <div className={`flex items-center gap-1 text-sm ${
-                    item.changeType === "positive" ? "text-green-600" : "text-red-600"
+                    item.changeType === "positive" ? "text-green-800 dark:text-green-400" : "text-red-600 dark:text-red-400"
                   }`}>
                     {item.changeType === "positive" ? 
                       <TrendingUp className="h-4 w-4" /> : 
@@ -281,7 +281,7 @@ export default function DashboardWidgets() {
                   <div className="text-right">
                     <p className="font-semibold">${product.revenue.toLocaleString()}</p>
                     <p className={`text-sm flex items-center gap-1 ${
-                      product.growth > 0 ? "text-green-600" : "text-red-600"
+                      product.growth > 0 ? "text-green-800 dark:text-green-400" : "text-red-600 dark:text-red-400"
                     }`}>
                       {product.growth > 0 ? 
                         <TrendingUp className="h-3 w-3" /> : 
@@ -337,8 +337,8 @@ export default function DashboardWidgets() {
           spotlightColor="orange"
         >
           <div className="grid gap-4 md:grid-cols-3">
-            <div className="p-4 rounded-lg bg-green-50 dark:bg-green-950 border border-green-200 dark:border-green-800">
-              <div className="flex items-center gap-2 text-green-700 dark:text-green-300">
+            <div className="p-4 rounded-lg bg-green-500/10 dark:bg-green-950 border border-green-200 dark:border-green-800">
+              <div className="flex items-center gap-2 text-green-800 dark:text-green-300">
                 <CheckCircle className="h-4 w-4" />
                 <span className="font-medium">{t('showcase.dashboard.notifications.systemOnline')}</span>
               </div>
@@ -347,8 +347,8 @@ export default function DashboardWidgets() {
               </p>
             </div>
             
-            <div className="p-4 rounded-lg bg-yellow-50 dark:bg-yellow-950 border border-yellow-200 dark:border-yellow-800">
-              <div className="flex items-center gap-2 text-yellow-700 dark:text-yellow-300">
+            <div className="p-4 rounded-lg bg-yellow-500/10 dark:bg-yellow-950 border border-yellow-200 dark:border-yellow-800">
+              <div className="flex items-center gap-2 text-yellow-800 dark:text-yellow-300">
                 <AlertTriangle className="h-4 w-4" />
                 <span className="font-medium">{t('showcase.dashboard.notifications.maintenanceScheduled')}</span>
               </div>
@@ -357,12 +357,12 @@ export default function DashboardWidgets() {
               </p>
             </div>
             
-            <div className="p-4 rounded-lg bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800">
+            <div className="p-4 rounded-lg bg-blue-500/10 dark:bg-blue-950 border border-blue-200 dark:border-blue-800">
               <div className="flex items-center gap-2 text-blue-700 dark:text-blue-300">
                 <Activity className="h-4 w-4" />
                 <span className="font-medium">{t('showcase.dashboard.notifications.highTraffic')}</span>
               </div>
-              <p className="text-sm text-blue-600 dark:text-blue-400 mt-1">
+              <p className="text-sm text-blue-700 dark:text-blue-400 mt-1">
                 {t('showcase.dashboard.notifications.normalLevel')}: %150
               </p>
             </div>

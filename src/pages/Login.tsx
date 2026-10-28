@@ -29,20 +29,20 @@ export default function Login() {
   };
 
   const socialLogins = [
-    { name: "Google", icon: Chrome, color: "bg-red-500 hover:bg-red-600" },
-    { name: "GitHub", icon: Github, color: "bg-gray-800 hover:bg-gray-900" },
-    { name: "Facebook", icon: Facebook, color: "bg-blue-600 hover:bg-blue-700" },
-    { name: "Twitter", icon: Twitter, color: "bg-sky-500 hover:bg-sky-600" },
+    { name: "Google", icon: Chrome, color: "" },
+    { name: "GitHub", icon: Github, color: "" },
+    { name: "Facebook", icon: Facebook, color: "" },
+    { name: "Twitter", icon: Twitter, color: "" },
   ];
 
   return (
     <>
       <Helmet>
-        <title>Giriş Yap - React19 Admin</title>
-        <meta name="description" content="Hesabınıza giriş yapın" />
+        <title>{t('auth.loginTitle')}</title>
+        <meta name="description" content={t('auth.loginMeta')} />
       </Helmet>
 
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 p-4">
+      <div className="min-h-screen flex items-center justify-center  p-4">
         <div className="w-full max-w-md">
           {/* Dashboard Return Button */}
           <div className="mb-6">
@@ -50,36 +50,36 @@ export default function Login() {
               variant="ghost"
               size="sm"
               asChild
-              className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
+              className="text-muted-foreground hover:text-foreground"
             >
               <Link to="/" className="flex items-center gap-2">
                 <ArrowLeft className="h-4 w-4" />
-                Ana Sayfaya Dön
+                {t('auth.backHome')}
               </Link>
             </Button>
           </div>
 
           {/* Logo and Title */}
           <div className="text-center mb-8">
-            <div className="mx-auto w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
-              <span className="text-2xl font-bold text-white">A</span>
+            <div className="mx-auto w-16 h-16 bg-gradient-to-br from-primary to-brand-2 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
+              <span className="text-2xl font-bold text-primary-foreground">A</span>
             </div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-              Hoş Geldiniz
+            <h1 className="text-3xl font-bold text-foreground mb-2">
+              {t('auth.welcomeBack')}
             </h1>
-            <p className="text-gray-600 dark:text-gray-400">
-              Hesabınıza giriş yaparak devam edin
+            <p className="text-muted-foreground">
+              {t('auth.loginSubtitle')}
             </p>
           </div>
 
           {/* Login Card */}
-          <Card className="shadow-xl border-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
+          <Card className="shadow-xl border-0 bg-card/95 backdrop-blur-sm">
             <CardHeader className="space-y-1 pb-4">
               <CardTitle className="text-2xl font-semibold text-center">
-                Giriş Yap
+                {t('auth.signIn')}
               </CardTitle>
               <CardDescription className="text-center">
-                E-posta ve şifrenizi girin
+                {t('auth.signInDesc')}
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
@@ -89,7 +89,7 @@ export default function Login() {
                   <Button
                     key={social.name}
                     variant="outline"
-                    className={`${social.color} text-white border-0 hover:scale-105 transition-transform`}
+                    className="hover:bg-muted"
                     size="sm"
                   >
                     <social.icon className="h-4 w-4 mr-2" />
@@ -103,8 +103,8 @@ export default function Login() {
                   <Separator className="w-full" />
                 </div>
                 <div className="relative flex justify-center text-xs uppercase">
-                  <span className="bg-white dark:bg-gray-800 px-2 text-muted-foreground">
-                    veya e-posta ile giriş
+                  <span className="bg-card px-2 text-muted-foreground">
+                    {t('auth.orEmailLogin')}
                   </span>
                 </div>
               </div>
@@ -112,13 +112,13 @@ export default function Login() {
               {/* Login Form */}
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="email">E-posta</Label>
+                  <Label htmlFor="email">{t('auth.email')}</Label>
                   <div className="relative">
                     <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                     <Input
                       id="email"
                       type="email"
-                      placeholder="ornek@email.com"
+                      placeholder={t('auth.emailPlaceholder')}
                       className="pl-10 h-11"
                       required
                     />
@@ -126,7 +126,7 @@ export default function Login() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="password">Şifre</Label>
+                  <Label htmlFor="password">{t('auth.password')}</Label>
                   <div className="relative">
                     <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                     <Input
@@ -160,29 +160,29 @@ export default function Login() {
                       onCheckedChange={(checked) => setRememberMe(checked as boolean)}
                     />
                     <Label htmlFor="remember" className="text-sm">
-                      Beni hatırla
+                      {t('auth.rememberMe')}
                     </Label>
                   </div>
                   <Link
                     to="/forgot-password"
-                    className="text-sm text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 transition-colors"
+                    className="text-sm text-primary hover:underline transition-colors"
                   >
-                    Şifremi unuttum
+                    {t('auth.forgot')}
                   </Link>
                 </div>
 
                 <Button
                   type="submit"
-                  className="w-full h-11 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-[1.02]"
+                  className="w-full h-11 bg-gradient-to-r from-primary to-brand-2 text-primary-foreground hover:opacity-90 font-medium shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-[1.02]"
                   disabled={isLoading}
                 >
                   {isLoading ? (
                     <div className="flex items-center gap-2">
-                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                      Giriş yapılıyor...
+                      <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin"></div>
+                      {t('auth.signingIn')}
                     </div>
                   ) : (
-                    "Giriş Yap"
+                    t('auth.signIn')
                   )}
                 </Button>
               </form>
@@ -190,13 +190,13 @@ export default function Login() {
               {/* Sign Up Link */}
               <div className="text-center text-sm">
                 <span className="text-muted-foreground">
-                  Hesabınız yok mu?{" "}
+                  {t('auth.noAccount')}{" "}
                 </span>
                 <Link
                   to="/register"
-                  className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-medium transition-colors"
+                  className="text-primary hover:underline font-medium transition-colors"
                 >
-                  Hemen kayıt olun
+                  {t('auth.signUpNow')}
                 </Link>
               </div>
             </CardContent>
@@ -204,16 +204,16 @@ export default function Login() {
 
           {/* Footer */}
           <div className="text-center mt-8 text-xs text-muted-foreground">
-            <p>© 2024 React19 Admin. Tüm hakları saklıdır.</p>
+            <p>{t('auth.rights')}</p>
             <div className="flex justify-center gap-4 mt-2">
-              <Link to="/privacy" className="hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
-                Gizlilik
+              <Link to="/privacy" className="hover:text-muted-foreground transition-colors">
+                {t('auth.privacy')}
               </Link>
-              <Link to="/terms" className="hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
-                Şartlar
+              <Link to="/terms" className="hover:text-muted-foreground transition-colors">
+                {t('auth.terms')}
               </Link>
-              <Link to="/help" className="hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
-                Yardım
+              <Link to="/help" className="hover:text-muted-foreground transition-colors">
+                {t('auth.help')}
               </Link>
             </div>
           </div>

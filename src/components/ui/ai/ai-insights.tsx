@@ -126,13 +126,13 @@ export function AIInsights() {
   const getImportanceColor = (importance: string) => {
     switch (importance) {
       case 'high':
-        return 'text-red-400 bg-red-500/10 border-red-500/20';
+        return 'text-red-600 dark:text-red-400 bg-red-500/10 border-red-500/20';
       case 'medium':
-        return 'text-yellow-400 bg-yellow-500/10 border-yellow-500/20';
+        return 'text-yellow-800 dark:text-yellow-400 bg-yellow-500/10 border-yellow-500/20';
       case 'low':
-        return 'text-green-400 bg-green-500/10 border-green-500/20';
+        return 'text-green-800 dark:text-green-400 bg-green-500/10 border-green-500/20';
       default:
-        return 'text-gray-400 bg-gray-500/10 border-gray-500/20';
+        return 'text-muted-foreground bg-gray-500/10 border-border';
     }
   };
 
@@ -214,7 +214,7 @@ export function AIInsights() {
                     {getTypeIcon(insight.type)}
                   </div>
                   <div>
-                    <CardTitle className="text-foreground group-hover:text-purple-300 transition-colors">
+                    <CardTitle className="text-foreground group-hover:text-purple-600 dark:group-hover:text-purple-300 transition-colors">
                       {insight.title}
                     </CardTitle>
                     <CardDescription className="text-muted-foreground">
@@ -238,7 +238,7 @@ export function AIInsights() {
                 
                 {insight.suggestions && insight.suggestions.length > 0 && (
                   <div className="space-y-2">
-                    <div className="flex items-center space-x-2 text-sm font-medium text-purple-300">
+                    <div className="flex items-center space-x-2 text-sm font-medium text-purple-700 dark:text-purple-300">
                       <Lightbulb className="h-4 w-4" />
                       <span>AI Suggestions</span>
                     </div>

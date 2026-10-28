@@ -422,7 +422,7 @@ export default function NavigationComponents() {
                 <div className="flex flex-col items-center">
                   <div className={`w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${
                     step.completed 
-                      ? 'bg-green-500 border-green-500 text-white' 
+                      ? 'bg-green-700 border-green-500 text-white' 
                       : step.active 
                         ? 'bg-primary border-primary text-primary-foreground animate-pulse' 
                         : 'border-muted-foreground text-muted-foreground'
@@ -435,7 +435,7 @@ export default function NavigationComponents() {
                   </div>
                   <div className="text-center mt-2">
                     <p className={`text-sm font-medium ${
-                      step.active ? 'text-primary' : step.completed ? 'text-green-600' : 'text-muted-foreground'
+                      step.active ? 'text-primary' : step.completed ? 'text-green-800 dark:text-green-400' : 'text-muted-foreground'
                     }`}>
                       {step.title}
                     </p>
@@ -587,7 +587,7 @@ export default function NavigationComponents() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Layers className="h-5 w-5 text-blue-500" />
+                  <Layers className="h-5 w-5 text-blue-700 dark:text-blue-400" />
                   Çok Seviyeli
                 </CardTitle>
               </CardHeader>
@@ -601,7 +601,7 @@ export default function NavigationComponents() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Zap className="h-5 w-5 text-green-500" />
+                  <Zap className="h-5 w-5 text-green-600 dark:text-green-400" />
                   Hızlı Erişim
                 </CardTitle>
               </CardHeader>
@@ -615,7 +615,7 @@ export default function NavigationComponents() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Globe className="h-5 w-5 text-purple-500" />
+                  <Globe className="h-5 w-5 text-purple-700 dark:text-purple-400" />
                   Responsive
                 </CardTitle>
               </CardHeader>
@@ -629,7 +629,7 @@ export default function NavigationComponents() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Shield className="h-5 w-5 text-orange-500" />
+                  <Shield className="h-5 w-5 text-orange-600 dark:text-orange-400" />
                   Erişilebilir
                 </CardTitle>
               </CardHeader>

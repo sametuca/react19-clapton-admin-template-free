@@ -108,8 +108,8 @@ export function PostCard({
               variant="ghost" 
               size="sm" 
               className={cn(
-                "flex items-center gap-2 text-muted-foreground hover:text-red-500 transition-colors",
-                isLiked && "text-red-500"
+                "flex items-center gap-2 text-muted-foreground hover:text-red-600 dark:hover:text-red-400 transition-colors",
+                isLiked && "text-red-600 dark:text-red-400"
               )}
             >
               <Heart className={cn("h-4 w-4", isLiked && "fill-current")} />
@@ -119,7 +119,7 @@ export function PostCard({
             <Button 
               variant="ghost" 
               size="sm" 
-              className="flex items-center gap-2 text-muted-foreground hover:text-blue-500 transition-colors"
+              className="flex items-center gap-2 text-muted-foreground hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
             >
               <MessageSquare className="h-4 w-4" />
               <span className="text-sm font-medium">{comments}</span>
@@ -128,7 +128,7 @@ export function PostCard({
             <Button 
               variant="ghost" 
               size="sm" 
-              className="flex items-center gap-2 text-muted-foreground hover:text-green-500 transition-colors"
+              className="flex items-center gap-2 text-muted-foreground hover:text-green-700 dark:hover:text-green-400 transition-colors"
             >
               <Share2 className="h-4 w-4" />
               <span className="text-sm font-medium">{shares}</span>

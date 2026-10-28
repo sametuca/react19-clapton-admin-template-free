@@ -82,9 +82,9 @@ export default function SocialMedia() {
       {!isPremiumUser && (
         <div className="absolute inset-0 bg-background/40 backdrop-blur-[1px] flex items-center justify-center rounded-lg z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <div className="text-center space-y-2 p-3 bg-background/80 rounded-lg border border-yellow-500/30 shadow-lg backdrop-blur-sm">
-            <Crown className="h-6 w-6 text-yellow-500 mx-auto" />
+            <Crown className="h-6 w-6 text-yellow-600 dark:text-yellow-400 mx-auto" />
             <p className="text-xs font-medium text-foreground">{t('showcase.socialMedia.premiumOverlay')}</p>
-            <Button size="sm" className="gap-1 h-7 px-2 text-xs bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white border-0">
+            <Button size="sm" className="gap-1 h-7 px-2 text-xs bg-gradient-to-r from-yellow-700 to-orange-700 hover:from-yellow-600 hover:to-orange-600 text-white border-0">
               <Lock className="h-3 w-3" />
               {t('showcase.socialMedia.unlock')}
             </Button>
@@ -122,7 +122,7 @@ export default function SocialMedia() {
                     <StoryItem story={story} />
                     <div className="absolute inset-0 bg-background/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                       <div className="text-center space-y-1">
-                        <Crown className="h-4 w-4 text-yellow-500 mx-auto" />
+                        <Crown className="h-4 w-4 text-yellow-600 dark:text-yellow-400 mx-auto" />
                         <p className="text-xs font-medium text-foreground">{t('showcase.socialMedia.premium')}</p>
                       </div>
                     </div>
@@ -167,7 +167,7 @@ export default function SocialMedia() {
                         </Button>
                         <div className="absolute inset-0 bg-background/20 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                           <div className="text-center space-y-1">
-                            <Crown className="h-3 w-3 text-yellow-500 mx-auto" />
+                            <Crown className="h-3 w-3 text-yellow-600 dark:text-yellow-400 mx-auto" />
                             <p className="text-xs font-medium text-foreground">{t('showcase.socialMedia.premium')}</p>
                           </div>
                         </div>
@@ -210,10 +210,10 @@ export default function SocialMedia() {
                     <p className="text-sm text-muted-foreground">{t('showcase.socialMedia.analytics.followers')}</p>
                     <p className="text-2xl font-bold">12.4K</p>
                   </div>
-                  <Users className="h-8 w-8 text-blue-500" />
+                  <Users className="h-8 w-8 text-blue-700 dark:text-blue-400" />
                 </div>
                 <div className="mt-4">
-                  <div className="flex items-center gap-1 text-green-500">
+                  <div className="flex items-center gap-1 text-green-800 dark:text-green-400">
                     <TrendingUp className="h-4 w-4" />
                     <span className="text-sm font-medium">+15.2%</span>
                   </div>
@@ -229,10 +229,10 @@ export default function SocialMedia() {
                       <p className="text-sm text-muted-foreground">{t('showcase.socialMedia.analytics.engagement')}</p>
                       <p className="text-2xl font-bold">4.8%</p>
                     </div>
-                    <Heart className="h-8 w-8 text-red-500" />
+                    <Heart className="h-8 w-8 text-red-600 dark:text-red-400" />
                   </div>
                   <div className="mt-4">
-                    <div className="flex items-center gap-1 text-green-500">
+                    <div className="flex items-center gap-1 text-green-800 dark:text-green-400">
                       <TrendingUp className="h-4 w-4" />
                       <span className="text-sm font-medium">+2.1%</span>
                     </div>
@@ -255,10 +255,10 @@ export default function SocialMedia() {
                       <p className="text-sm text-muted-foreground">{t('showcase.socialMedia.analytics.reach')}</p>
                       <p className="text-2xl font-bold">89.2K</p>
                     </div>
-                    <Globe className="h-8 w-8 text-green-500" />
+                    <Globe className="h-8 w-8 text-green-600 dark:text-green-400" />
                   </div>
                   <div className="mt-4">
-                    <div className="flex items-center gap-1 text-green-500">
+                    <div className="flex items-center gap-1 text-green-800 dark:text-green-400">
                       <TrendingUp className="h-4 w-4" />
                       <span className="text-sm font-medium">+8.7%</span>
                     </div>
@@ -281,10 +281,10 @@ export default function SocialMedia() {
                       <p className="text-sm text-muted-foreground">{t('showcase.socialMedia.analytics.newFollowers')}</p>
                       <p className="text-2xl font-bold">+234</p>
                     </div>
-                    <UserPlus className="h-8 w-8 text-purple-500" />
+                    <UserPlus className="h-8 w-8 text-purple-700 dark:text-purple-400" />
                   </div>
                   <div className="mt-4">
-                    <div className="flex items-center gap-1 text-green-500">
+                    <div className="flex items-center gap-1 text-green-800 dark:text-green-400">
                       <TrendingUp className="h-4 w-4" />
                       <span className="text-sm font-medium">{t('showcase.socialMedia.analytics.today')}</span>
                     </div>
@@ -350,7 +350,7 @@ export default function SocialMedia() {
                     </Avatar>
                     <div>
                       <p className="font-medium">{t('showcase.socialMedia.chat.user')} 1</p>
-                      <p className="text-sm text-green-500">{t('showcase.socialMedia.chat.online')}</p>
+                      <p className="text-sm text-green-800 dark:text-green-400">{t('showcase.socialMedia.chat.online')}</p>
                     </div>
                   </div>
                 </CardHeader>
@@ -394,7 +394,7 @@ export default function SocialMedia() {
         {!isPremiumUser && (
           <Card className="bg-gradient-to-r from-pink-500/10 to-purple-500/10 border-pink-500/20">
             <CardContent className="p-8 text-center">
-              <Crown className="h-12 w-12 text-pink-500 mx-auto mb-4" />
+              <Crown className="h-12 w-12 text-pink-600 dark:text-pink-400 mx-auto mb-4" />
               <h3 className="text-2xl font-bold mb-2">{t('showcase.socialMedia.premiumFeatures')}</h3>
               <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
                 {t('showcase.socialMedia.premiumFeaturesDescription')}

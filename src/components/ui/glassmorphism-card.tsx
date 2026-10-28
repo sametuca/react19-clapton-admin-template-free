@@ -25,10 +25,10 @@ export function GlassmorphismCard({
   opacity = 0.1
 }: GlassmorphismCardProps) {
   const variants = {
-    default: 'bg-white/10 border-white/20 text-foreground',
-    primary: 'bg-primary/10 border-primary/20 text-primary-foreground',
-    secondary: 'bg-secondary/10 border-secondary/20 text-secondary-foreground',
-    accent: 'bg-accent/10 border-accent/20 text-accent-foreground'
+    default: 'bg-foreground/10 border-border text-foreground',
+    primary: 'bg-primary/10 border-primary/20 text-foreground',
+    secondary: 'bg-secondary/10 border-secondary/20 text-foreground',
+    accent: 'bg-accent/10 border-accent/20 text-foreground'
   };
 
   const blurClasses = {
@@ -47,7 +47,7 @@ export function GlassmorphismCard({
     )}>
       {/* Animated background gradient */}
       <div 
-        className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-white/5 animate-pulse"
+        className="absolute inset-0 bg-card via-transparent animate-pulse"
         style={{ opacity }}
       />
       
@@ -56,7 +56,7 @@ export function GlassmorphismCard({
         {[...Array(6)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-1 h-1 bg-white/30 rounded-full animate-bounce"
+            className="absolute w-1 h-1 bg-foreground/30 rounded-full animate-bounce"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -70,7 +70,7 @@ export function GlassmorphismCard({
       <CardHeader className="relative z-10">
         <div className="flex items-center gap-3">
           {Icon && (
-            <div className="p-2 rounded-lg bg-white/10 backdrop-blur-sm">
+            <div className="p-2 rounded-lg bg-foreground/10 backdrop-blur-sm">
               <Icon className="h-5 w-5" />
             </div>
           )}

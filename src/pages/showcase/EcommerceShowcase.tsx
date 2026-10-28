@@ -98,7 +98,7 @@ export default function EcommerceShowcase() {
       {!isPremiumUser && (
         <div className="absolute inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center rounded-lg">
           <div className="text-center space-y-2">
-            <Crown className="h-8 w-8 text-yellow-500 mx-auto" />
+            <Crown className="h-8 w-8 text-yellow-600 dark:text-yellow-400 mx-auto" />
             <p className="text-sm font-medium">{t('showcase.ecommerce.premiumOverlay')}</p>
             <Button size="sm" className="gap-2">
               <Lock className="h-4 w-4" />
@@ -210,7 +210,7 @@ export default function EcommerceShowcase() {
                     <p className="text-sm text-muted-foreground">{t('showcase.ecommerce.salesDashboard.totalSales')}</p>
                     <p className="text-2xl font-bold">$24,567</p>
                   </div>
-                  <TrendingUp className="h-8 w-8 text-green-500" />
+                  <TrendingUp className="h-8 w-8 text-green-600 dark:text-green-400" />
                 </div>
                 <div className="mt-4">
                   <Progress value={75} className="h-2" />
@@ -227,7 +227,7 @@ export default function EcommerceShowcase() {
                       <p className="text-sm text-muted-foreground">{t('showcase.ecommerce.salesDashboard.orders')}</p>
                       <p className="text-2xl font-bold">1,234</p>
                     </div>
-                    <Package className="h-8 w-8 text-blue-500" />
+                    <Package className="h-8 w-8 text-blue-700 dark:text-blue-400" />
                   </div>
                   <div className="mt-4">
                     <Progress value={60} className="h-2" />
@@ -245,7 +245,7 @@ export default function EcommerceShowcase() {
                       <p className="text-sm text-muted-foreground">{t('showcase.ecommerce.salesDashboard.customers')}</p>
                       <p className="text-2xl font-bold">8,942</p>
                     </div>
-                    <Users className="h-8 w-8 text-purple-500" />
+                    <Users className="h-8 w-8 text-purple-700 dark:text-purple-400" />
                   </div>
                   <div className="mt-4">
                     <Progress value={90} className="h-2" />
@@ -263,7 +263,7 @@ export default function EcommerceShowcase() {
                       <p className="text-sm text-muted-foreground">{t('showcase.ecommerce.salesDashboard.revenue')}</p>
                       <p className="text-2xl font-bold">$89,432</p>
                     </div>
-                    <CreditCard className="h-8 w-8 text-green-500" />
+                    <CreditCard className="h-8 w-8 text-green-600 dark:text-green-400" />
                   </div>
                   <div className="mt-4">
                     <Progress value={85} className="h-2" />
@@ -292,7 +292,7 @@ export default function EcommerceShowcase() {
                         <p className="font-medium">{t('showcase.ecommerce.customerReviews.user')} {review}</p>
                         <div className="flex items-center gap-1">
                           {[...Array(5)].map((_, i) => (
-                            <Star key={i} className="h-4 w-4 fill-yellow-500 text-yellow-500" />
+                            <Star key={i} className="h-4 w-4 fill-yellow-500 text-yellow-800 dark:text-yellow-400" />
                           ))}
                         </div>
                       </div>
@@ -311,7 +311,7 @@ export default function EcommerceShowcase() {
         {!isPremiumUser && (
           <Card className="bg-gradient-to-r from-yellow-500/10 to-orange-500/10 border-yellow-500/20">
             <CardContent className="p-8 text-center">
-              <Crown className="h-12 w-12 text-yellow-500 mx-auto mb-4" />
+              <Crown className="h-12 w-12 text-yellow-600 dark:text-yellow-400 mx-auto mb-4" />
               <h3 className="text-2xl font-bold mb-2">{t('showcase.ecommerce.premiumFeaturesBanner.title')}</h3>
               <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
                 {t('showcase.ecommerce.premiumFeaturesBanner.description')}
@@ -337,7 +337,7 @@ function ProductCard({ product, t }: { product: any; t: (key: string) => string 
           <img src={product.image} alt={product.name} />
         </div>
         {product.discount > 0 && (
-          <Badge className="absolute top-2 left-2 bg-red-500">
+          <Badge className="absolute top-2 left-2 bg-red-600 text-white">
             -{product.discount}%
           </Badge>
         )}
@@ -348,7 +348,7 @@ function ProductCard({ product, t }: { product: any; t: (key: string) => string 
       <CardContent className="p-4">
         <h3 className="font-semibold mb-2 line-clamp-2">{product.name}</h3>
         <div className="flex items-center gap-1 mb-2">
-          <Star className="h-4 w-4 fill-yellow-500 text-yellow-500" />
+          <Star className="h-4 w-4 fill-yellow-500 text-yellow-800 dark:text-yellow-400" />
           <span className="text-sm font-medium">{product.rating}</span>
           <span className="text-sm text-muted-foreground">({product.reviews})</span>
         </div>

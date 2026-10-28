@@ -37,16 +37,16 @@ export default function Register() {
   };
 
   const socialLogins = [
-    { name: "Google", icon: Chrome, color: "bg-red-500 hover:bg-red-600" },
-    { name: "GitHub", icon: Github, color: "bg-gray-800 hover:bg-gray-900" },
-    { name: "Facebook", icon: Facebook, color: "bg-blue-600 hover:bg-blue-700" },
-    { name: "Twitter", icon: Twitter, color: "bg-sky-500 hover:bg-sky-600" },
+    { name: "Google", icon: Chrome, color: "" },
+    { name: "GitHub", icon: Github, color: "" },
+    { name: "Facebook", icon: Facebook, color: "" },
+    { name: "Twitter", icon: Twitter, color: "" },
   ];
 
   const steps = [
-    { number: 1, title: "Kişisel Bilgiler", description: "Ad, e-posta ve şifre" },
-    { number: 2, title: "İletişim Bilgileri", description: "Telefon ve adres" },
-    { number: 3, title: "Hesap Onayı", description: "Şartları kabul et ve kayıt ol" },
+    { number: 1, title: t('auth.step1Title'), description: t('auth.step1Desc') },
+    { number: 2, title: t('auth.step2Title'), description: t('auth.step2Desc') },
+    { number: 3, title: t('auth.step3Title'), description: t('auth.step3Desc') },
   ];
 
   const renderStepContent = () => {
@@ -56,26 +56,26 @@ export default function Register() {
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="firstName">Ad</Label>
+                <Label htmlFor="firstName">{t('auth.firstName')}</Label>
                 <div className="relative">
                   <User className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                   <Input
                     id="firstName"
                     type="text"
-                    placeholder="Adınız"
+                    placeholder={t('auth.firstNamePh')}
                     className="pl-10 h-11"
                     required
                   />
                 </div>
               </div>
               <div className="space-y-2">
-                <Label htmlFor="lastName">Soyad</Label>
+                <Label htmlFor="lastName">{t('auth.lastName')}</Label>
                 <div className="relative">
                   <User className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                   <Input
                     id="lastName"
                     type="text"
-                    placeholder="Soyadınız"
+                    placeholder={t('auth.lastNamePh')}
                     className="pl-10 h-11"
                     required
                   />
@@ -84,13 +84,13 @@ export default function Register() {
             </div>
             
             <div className="space-y-2">
-              <Label htmlFor="email">E-posta</Label>
+              <Label htmlFor="email">{t('auth.email')}</Label>
               <div className="relative">
                 <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                 <Input
                   id="email"
                   type="email"
-                  placeholder="ornek@email.com"
+                  placeholder={t('auth.emailPlaceholder')}
                   className="pl-10 h-11"
                   required
                 />
@@ -98,7 +98,7 @@ export default function Register() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="password">Şifre</Label>
+              <Label htmlFor="password">{t('auth.password')}</Label>
               <div className="relative">
                 <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                 <Input
@@ -123,12 +123,12 @@ export default function Register() {
                 </Button>
               </div>
               <p className="text-xs text-muted-foreground">
-                En az 8 karakter, büyük harf, küçük harf ve rakam içermelidir
+                {t('auth.passwordHint')}
               </p>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="confirmPassword">Şifre Tekrarı</Label>
+              <Label htmlFor="confirmPassword">{t('auth.confirmPassword')}</Label>
               <div className="relative">
                 <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                 <Input
@@ -160,7 +160,7 @@ export default function Register() {
         return (
           <div className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="phone">Telefon Numarası</Label>
+              <Label htmlFor="phone">{t('auth.phone')}</Label>
               <div className="relative">
                 <Phone className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                 <Input
@@ -174,30 +174,30 @@ export default function Register() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="company">Şirket (Opsiyonel)</Label>
+              <Label htmlFor="company">{t('auth.company')}</Label>
               <div className="relative">
                 <Building className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                 <Input
                   id="company"
                   type="text"
-                  placeholder="Şirket adı"
+                  placeholder={t('auth.companyPh')}
                   className="pl-10 h-11"
                 />
               </div>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="position">Pozisyon (Opsiyonel)</Label>
+              <Label htmlFor="position">{t('auth.position')}</Label>
               <Input
                 id="position"
                 type="text"
-                placeholder="İş pozisyonunuz"
+                placeholder={t('auth.positionPh')}
                 className="h-11"
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="website">Website (Opsiyonel)</Label>
+              <Label htmlFor="website">{t('auth.website')}</Label>
               <Input
                 id="website"
                 type="url"
@@ -212,12 +212,12 @@ export default function Register() {
         return (
           <div className="space-y-6">
             <div className="text-center space-y-2">
-              <div className="mx-auto w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center">
-                <CheckCircle className="h-8 w-8 text-green-600 dark:text-green-400" />
+              <div className="mx-auto w-16 h-16 bg-success/15 rounded-full flex items-center justify-center">
+                <CheckCircle className="h-8 w-8 text-success" />
               </div>
-              <h3 className="text-lg font-semibold">Hemen Tamamlanıyor!</h3>
+              <h3 className="text-lg font-semibold">{t('auth.almostDone')}</h3>
               <p className="text-sm text-muted-foreground">
-                Son adımı tamamlayarak hesabınızı oluşturun
+                {t('auth.almostDoneDesc')}
               </p>
             </div>
 
@@ -231,11 +231,11 @@ export default function Register() {
                 />
                 <div className="space-y-1">
                   <Label htmlFor="terms" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                    Kullanım şartlarını ve gizlilik politikasını kabul ediyorum
+                    {t('auth.acceptTerms')}
                   </Label>
                   <p className="text-xs text-muted-foreground">
-                    <Link to="/terms" className="text-blue-600 hover:underline">Kullanım Şartları</Link> ve{" "}
-                    <Link to="/privacy" className="text-blue-600 hover:underline">Gizlilik Politikası</Link>nı okudum ve kabul ediyorum.
+                    <Link to="/terms" className="text-primary hover:underline">{t('auth.termsOfUse')}</Link>{" & "}
+                    <Link to="/privacy" className="text-primary hover:underline">{t('auth.privacyPolicy')}</Link>{" "}{t('auth.termsRead')}
                   </p>
                 </div>
               </div>
@@ -248,10 +248,10 @@ export default function Register() {
                 />
                 <div className="space-y-1">
                   <Label htmlFor="newsletter" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                    E-posta bültenine abone ol
+                    {t('auth.newsletter')}
                   </Label>
                   <p className="text-xs text-muted-foreground">
-                    Yeni özellikler ve güncellemeler hakkında bilgi almak istiyorum.
+                    {t('auth.newsletterDesc')}
                   </p>
                 </div>
               </div>
@@ -267,11 +267,11 @@ export default function Register() {
   return (
     <>
       <Helmet>
-        <title>Kayıt Ol - React19 Admin</title>
-        <meta name="description" content="Yeni hesap oluşturun" />
+        <title>{t('auth.registerTitle')}</title>
+        <meta name="description" content={t('auth.registerMeta')} />
       </Helmet>
 
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 p-4">
+      <div className="min-h-screen flex items-center justify-center  p-4">
         <div className="w-full max-w-2xl">
           {/* Dashboard Return Button */}
           <div className="mb-6">
@@ -279,25 +279,25 @@ export default function Register() {
               variant="ghost"
               size="sm"
               asChild
-              className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
+              className="text-muted-foreground hover:text-foreground"
             >
               <Link to="/" className="flex items-center gap-2">
                 <ArrowLeft className="h-4 w-4" />
-                Ana Sayfaya Dön
+                {t('auth.backHome')}
               </Link>
             </Button>
           </div>
 
           {/* Logo and Title */}
           <div className="text-center mb-8">
-            <div className="mx-auto w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
-              <span className="text-2xl font-bold text-white">A</span>
+            <div className="mx-auto w-16 h-16 bg-gradient-to-br from-primary to-brand-2 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
+              <span className="text-2xl font-bold text-primary-foreground">A</span>
             </div>
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-              Hesap Oluşturun
+            <h1 className="text-3xl font-bold text-foreground mb-2">
+              {t('auth.createAccount')}
             </h1>
-            <p className="text-gray-600 dark:text-gray-400">
-              React19 Admin'e katılarak yönetim panelini keşfedin
+            <p className="text-muted-foreground">
+              {t('auth.registerSubtitle')}
             </p>
           </div>
 
@@ -308,8 +308,8 @@ export default function Register() {
                 <div key={step.number} className="flex items-center">
                   <div className={`flex items-center justify-center w-10 h-10 rounded-full border-2 ${
                     currentStep >= step.number
-                      ? "bg-blue-600 border-blue-600 text-white"
-                      : "border-gray-300 text-gray-500"
+                      ? "bg-primary border-primary text-primary-foreground"
+                      : "border-border text-muted-foreground"
                   }`}>
                     {currentStep > step.number ? (
                       <CheckCircle className="h-5 w-5" />
@@ -319,7 +319,7 @@ export default function Register() {
                   </div>
                   {index < steps.length - 1 && (
                     <div className={`w-16 h-0.5 mx-4 ${
-                      currentStep > step.number ? "bg-blue-600" : "bg-gray-300"
+                      currentStep > step.number ? "bg-primary" : "bg-border"
                     }`} />
                   )}
                 </div>
@@ -329,11 +329,11 @@ export default function Register() {
               {steps.map((step) => (
                 <div key={step.number} className="text-center flex-1">
                   <p className={`text-xs font-medium ${
-                    currentStep >= step.number ? "text-blue-600" : "text-gray-500"
+                    currentStep >= step.number ? "text-primary" : "text-muted-foreground"
                   }`}>
                     {step.title}
                   </p>
-                  <p className="text-xs text-gray-400 mt-1">
+                  <p className="text-xs text-muted-foreground mt-1">
                     {step.description}
                   </p>
                 </div>
@@ -342,7 +342,7 @@ export default function Register() {
           </div>
 
           {/* Register Card */}
-          <Card className="shadow-xl border-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
+          <Card className="shadow-xl border-0 bg-card/95 backdrop-blur-sm">
             <CardHeader className="space-y-1 pb-4">
               <CardTitle className="text-2xl font-semibold text-center">
                 {steps[currentStep - 1].title}
@@ -360,7 +360,7 @@ export default function Register() {
                       <Button
                         key={social.name}
                         variant="outline"
-                        className={`${social.color} text-white border-0 hover:scale-105 transition-transform`}
+                        className="hover:bg-muted"
                         size="sm"
                       >
                         <social.icon className="h-4 w-4 mr-2" />
@@ -374,8 +374,8 @@ export default function Register() {
                       <Separator className="w-full" />
                     </div>
                     <div className="relative flex justify-center text-xs uppercase">
-                      <span className="bg-white dark:bg-gray-800 px-2 text-muted-foreground">
-                        veya e-posta ile kayıt ol
+                      <span className="bg-card px-2 text-muted-foreground">
+                        {t('auth.orEmailRegister')}
                       </span>
                     </div>
                   </div>
@@ -395,7 +395,7 @@ export default function Register() {
                       onClick={() => setCurrentStep(currentStep - 1)}
                       className="px-6"
                     >
-                      Geri
+                      {t('auth.back')}
                     </Button>
                   )}
                   
@@ -403,18 +403,18 @@ export default function Register() {
                     type="submit"
                     className={`${
                       currentStep === 1 ? "ml-auto" : ""
-                    } px-6 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-medium shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-[1.02]`}
+                    } px-6 bg-gradient-to-r from-primary to-brand-2 text-primary-foreground hover:opacity-90 font-medium shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-[1.02]`}
                     disabled={isLoading}
                   >
                     {isLoading ? (
                       <div className="flex items-center gap-2">
-                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                        {currentStep === 3 ? "Hesap oluşturuluyor..." : "İşleniyor..."}
+                        <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin"></div>
+                        {currentStep === 3 ? t('auth.creating') : t('auth.processing')}
                       </div>
                     ) : currentStep === 3 ? (
-                      "Hesabı Oluştur"
+                      t('auth.createBtn')
                     ) : (
-                      "Devam Et"
+                      t('auth.continue')
                     )}
                   </Button>
                 </div>
@@ -423,13 +423,13 @@ export default function Register() {
               {/* Sign In Link */}
               <div className="text-center text-sm">
                 <span className="text-muted-foreground">
-                  Zaten hesabınız var mı?{" "}
+                  {t('auth.haveAccount')}{" "}
                 </span>
                 <Link
                   to="/login"
-                  className="text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 font-medium transition-colors"
+                  className="text-primary hover:underline font-medium transition-colors"
                 >
-                  Giriş yapın
+                  {t('auth.signInLink')}
                 </Link>
               </div>
             </CardContent>
@@ -437,16 +437,16 @@ export default function Register() {
 
           {/* Footer */}
           <div className="text-center mt-8 text-xs text-muted-foreground">
-            <p>© 2024 React19 Admin. Tüm hakları saklıdır.</p>
+            <p>{t('auth.rights')}</p>
             <div className="flex justify-center gap-4 mt-2">
-              <Link to="/privacy" className="hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
-                Gizlilik
+              <Link to="/privacy" className="hover:text-muted-foreground transition-colors">
+                {t('auth.privacy')}
               </Link>
-              <Link to="/terms" className="hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
-                Şartlar
+              <Link to="/terms" className="hover:text-muted-foreground transition-colors">
+                {t('auth.terms')}
               </Link>
-              <Link to="/help" className="hover:text-gray-600 dark:hover:text-gray-300 transition-colors">
-                Yardım
+              <Link to="/help" className="hover:text-muted-foreground transition-colors">
+                {t('auth.help')}
               </Link>
             </div>
           </div>

@@ -37,7 +37,7 @@ export function TestimonialCard({
           key={i}
           className={cn(
             "h-4 w-4",
-            i < rating ? "text-yellow-500 fill-current" : "text-muted-foreground"
+            i < rating ? "text-yellow-800 dark:text-yellow-400 fill-current" : "text-muted-foreground"
           )}
         />
       ))}
@@ -96,7 +96,7 @@ export function TestimonialCard({
             <div className="flex items-center justify-between">
               {renderStars()}
               {featured && (
-                <Badge className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white border-0">
+                <Badge className="bg-gradient-to-r from-yellow-700 to-orange-700 text-white border-0">
                   <Star className="h-3 w-3 mr-1" />
                   Öne Çıkan
                 </Badge>
@@ -120,7 +120,7 @@ export function TestimonialCard({
                 <div className="flex items-center gap-2">
                   <h4 className="font-semibold">{name}</h4>
                   {verified && (
-                    <Badge variant="secondary" className="h-5 px-2 text-xs bg-green-100 text-green-800 border-green-200">
+                    <Badge variant="secondary" className="h-5 px-2 text-xs bg-green-500/15 dark:bg-green-500/20 text-green-800 dark:text-green-300 border-green-200 dark:border-green-500/30">
                       ✓ Doğrulanmış
                     </Badge>
                   )}

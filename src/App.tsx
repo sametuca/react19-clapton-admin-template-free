@@ -10,7 +10,7 @@ import UsersPage from "./pages/Users";
 import RolesPage from "./pages/Roles";
 import Analytics from "./pages/Analytics";
 import Settings from "./pages/Settings";
-import Profile from "./pages/Profile";
+import Dashboard from "./pages/Dashboard";
 import Notifications from "./pages/Notifications";
 import ComponentShowcase from "./pages/ComponentShowcase";
 import ComponentShowcaseIndex from "./pages/showcase/ComponentShowcaseIndex";
@@ -48,6 +48,7 @@ import Welcome from "./pages/Welcome";
 import GetStarted from "./pages/GetStarted";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import StaticPage from "./pages/StaticPage";
 import NotFound from "./pages/NotFound";
 import { HelmetProvider } from "react-helmet-async";
 import { ThemeProvider } from "./contexts/ThemeContext";
@@ -73,9 +74,14 @@ const App = () => (
                   {/* Auth Routes - Outside AppLayout */}
                   <Route path="/login" element={<Login />} />
                   <Route path="/register" element={<Register />} />
+                  <Route path="/forgot-password" element={<StaticPage page="forgotPassword" />} />
+                  <Route path="/privacy" element={<StaticPage page="privacy" />} />
+                  <Route path="/terms" element={<StaticPage page="terms" />} />
+                  <Route path="/help" element={<StaticPage page="help" />} />
                   
                   {/* Protected Routes - Inside AppLayout */}
                   <Route element={<AppLayout />}>
+                    <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/get-started" element={<GetStarted />} />
                     <Route path="/profile" element={<ProfilePage />} />
                     <Route path="/services" element={<ServicesExample />} />
@@ -85,7 +91,7 @@ const App = () => (
                     <Route path="/roles" element={<RolesPage />} />
                     <Route path="/analytics" element={<Analytics />} />
                     <Route path="/settings" element={<Settings />} />
-                    <Route path="/profile" element={<Profile />} />
+
                     <Route path="/notifications" element={<Notifications />} />
                     <Route path="/showcase" element={<ComponentShowcaseIndex />} />
                     <Route path="/showcase/stats" element={<StatsCards />} />

@@ -160,18 +160,18 @@ export default function FeatureCards() {
         <section className="space-y-6">
           <div className="flex items-center gap-2">
             <h2 className="text-2xl font-semibold">{t('showcase.features.sections.premium')}</h2>
-            <Badge className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white border-0">{t('showcase.features.badges.premium')}</Badge>
+            <Badge className="bg-gradient-to-r from-yellow-700 to-orange-700 text-white border-0">{t('showcase.features.badges.premium')}</Badge>
           </div>
           
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            <Card className="relative overflow-hidden bg-gradient-to-br from-yellow-50 to-orange-50 border-yellow-200 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
+            <Card className="relative overflow-hidden bg-gradient-to-br from-yellow-500/10 to-orange-500/10 border-yellow-200 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-yellow-400/20 to-transparent rounded-full -translate-y-16 translate-x-16" />
               <CardHeader className="pb-4">
                 <div className="flex items-center justify-between">
                   <div className="p-3 rounded-xl bg-gradient-to-br from-yellow-500 to-orange-500 shadow-lg">
-                    <Trophy className="w-6 h-6 text-white" />
+                    <Trophy className="w-6 h-6 text-foreground" />
                   </div>
-                  <Badge className="bg-yellow-500 text-white border-0">{t('showcase.features.premium.achievement.badge')}</Badge>
+                  <Badge className="bg-yellow-700 text-white border-0">{t('showcase.features.premium.achievement.badge')}</Badge>
                 </div>
                 <CardTitle className="text-xl mt-4">{t('showcase.features.premium.achievement.title')}</CardTitle>
                 <CardDescription>
@@ -181,7 +181,7 @@ export default function FeatureCards() {
               <CardContent className="space-y-4">
                 <div className="flex items-center gap-3">
                   <Avatar className="w-10 h-10">
-                    <AvatarFallback className="bg-yellow-500 text-white">AK</AvatarFallback>
+                    <AvatarFallback className="bg-yellow-700 text-white">AK</AvatarFallback>
                   </Avatar>
                   <div>
                     <p className="font-semibold">Ahmet Kaya</p>
@@ -196,7 +196,7 @@ export default function FeatureCards() {
                   <Progress value={85} className="h-2" />
                 </div>
                 <div className="flex items-center justify-between pt-2">
-                  <div className="flex items-center gap-1 text-yellow-600">
+                  <div className="flex items-center gap-1 text-yellow-800 dark:text-yellow-400">
                     <Star className="w-4 h-4 fill-current" />
                     <span className="text-sm font-semibold">4.9</span>
                   </div>
@@ -208,14 +208,14 @@ export default function FeatureCards() {
               </CardContent>
             </Card>
 
-            <Card className="relative overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-50 border-blue-200 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
+            <Card className="relative overflow-hidden bg-gradient-to-br from-blue-500/10 to-indigo-500/10 border-blue-200 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-400/20 to-transparent rounded-full -translate-y-16 translate-x-16" />
               <CardHeader className="pb-4">
                 <div className="flex items-center justify-between">
                   <div className="p-3 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-500 shadow-lg">
-                    <TrendingUp className="w-6 h-6 text-white" />
+                    <TrendingUp className="w-6 h-6 text-foreground" />
                   </div>
-                  <Badge className="bg-blue-500 text-white border-0">{t('showcase.features.premium.analytics.badge')}</Badge>
+                  <Badge className="bg-blue-600 text-white border-0">{t('showcase.features.premium.analytics.badge')}</Badge>
                 </div>
                 <CardTitle className="text-xl mt-4">{t('showcase.features.premium.analytics.title')}</CardTitle>
                 <CardDescription>
@@ -224,12 +224,12 @@ export default function FeatureCards() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="text-center p-3 rounded-lg bg-blue-50">
-                    <div className="text-2xl font-bold text-blue-600">2.4K</div>
+                  <div className="text-center p-3 rounded-lg bg-blue-500/10 dark:bg-blue-500/20">
+                    <div className="text-2xl font-bold text-blue-700 dark:text-blue-400">2.4K</div>
                     <div className="text-xs text-muted-foreground">{t('showcase.features.premium.analytics.views')}</div>
                   </div>
-                  <div className="text-center p-3 rounded-lg bg-indigo-50">
-                    <div className="text-2xl font-bold text-indigo-600">+12%</div>
+                  <div className="text-center p-3 rounded-lg bg-indigo-500/10 dark:bg-indigo-500/20">
+                    <div className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">+12%</div>
                     <div className="text-xs text-muted-foreground">{t('showcase.features.premium.analytics.increase')}</div>
                   </div>
                 </div>
@@ -241,11 +241,11 @@ export default function FeatureCards() {
                   <Progress value={68} className="h-2" />
                 </div>
                 <div className="flex items-center justify-between pt-2">
-                  <div className="flex items-center gap-1 text-green-600">
+                  <div className="flex items-center gap-1 text-green-800 dark:text-green-400">
                     <TrendingUp className="w-4 h-4" />
                     <span className="text-sm font-semibold">+5.2%</span>
                   </div>
-                  <Button size="sm" variant="outline" className="border-blue-200 hover:bg-blue-50">
+                  <Button size="sm" variant="outline" className="border-blue-200 dark:border-blue-500/30 hover:bg-blue-50 dark:hover:bg-blue-500/20">
                     {t('showcase.features.premium.analytics.report')}
                     <BarChart3 className="w-4 h-4 ml-1" />
                   </Button>
@@ -253,14 +253,14 @@ export default function FeatureCards() {
               </CardContent>
             </Card>
 
-            <Card className="relative overflow-hidden bg-gradient-to-br from-pink-50 to-rose-50 border-pink-200 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
+            <Card className="relative overflow-hidden bg-gradient-to-br from-pink-500/10 to-rose-500/10 border-pink-200 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]">
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-pink-400/20 to-transparent rounded-full -translate-y-16 translate-x-16" />
               <CardHeader className="pb-4">
                 <div className="flex items-center justify-between">
                   <div className="p-3 rounded-xl bg-gradient-to-br from-pink-500 to-rose-500 shadow-lg">
-                    <Heart className="w-6 h-6 text-white" />
+                    <Heart className="w-6 h-6 text-foreground" />
                   </div>
-                  <Badge className="bg-pink-500 text-white border-0">{t('showcase.features.premium.social.badge')}</Badge>
+                  <Badge className="bg-pink-600 text-white border-0">{t('showcase.features.premium.social.badge')}</Badge>
                 </div>
                 <CardTitle className="text-xl mt-4">{t('showcase.features.premium.social.title')}</CardTitle>
                 <CardDescription>
@@ -271,28 +271,28 @@ export default function FeatureCards() {
                 <div className="flex items-center gap-2">
                   <div className="flex -space-x-2">
                     <Avatar className="w-8 h-8 border-2 border-white">
-                      <AvatarFallback className="bg-pink-500 text-white text-xs">MK</AvatarFallback>
+                      <AvatarFallback className="bg-pink-600 text-white text-xs">MK</AvatarFallback>
                     </Avatar>
                     <Avatar className="w-8 h-8 border-2 border-white">
-                      <AvatarFallback className="bg-rose-500 text-white text-xs">SY</AvatarFallback>
+                      <AvatarFallback className="bg-rose-600 text-white text-xs">SY</AvatarFallback>
                     </Avatar>
                     <Avatar className="w-8 h-8 border-2 border-white">
-                      <AvatarFallback className="bg-purple-500 text-white text-xs">+5</AvatarFallback>
+                      <AvatarFallback className="bg-purple-600 text-white text-xs">+5</AvatarFallback>
                     </Avatar>
                   </div>
                   <span className="text-sm text-muted-foreground">{t('showcase.features.premium.social.likes')} 8</span>
                 </div>
                 <div className="flex items-center justify-between py-2">
                   <div className="flex items-center gap-4">
-                    <div className="flex items-center gap-1 text-pink-600">
+                    <div className="flex items-center gap-1 text-pink-700 dark:text-pink-400">
                       <Heart className="w-4 h-4" />
                       <span className="text-sm">124</span>
                     </div>
-                    <div className="flex items-center gap-1 text-blue-600">
+                    <div className="flex items-center gap-1 text-blue-700 dark:text-blue-400">
                       <MessageCircle className="w-4 h-4" />
                       <span className="text-sm">32</span>
                     </div>
-                    <div className="flex items-center gap-1 text-green-600">
+                    <div className="flex items-center gap-1 text-green-800 dark:text-green-400">
                       <Share className="w-4 h-4" />
                       <span className="text-sm">18</span>
                     </div>
@@ -310,14 +310,14 @@ export default function FeatureCards() {
         <section className="space-y-6">
           <div className="flex items-center gap-2">
             <h2 className="text-2xl font-semibold">{t('showcase.features.sections.creative')}</h2>
-            <Badge variant="secondary" className="bg-gradient-to-r from-purple-500 to-pink-500 text-white border-0">{t('showcase.features.badges.creative')}</Badge>
+            <Badge variant="secondary" className="bg-gradient-to-r from-purple-600 to-pink-600 text-white border-0">{t('showcase.features.badges.creative')}</Badge>
           </div>
           
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             <Card className="glassmorphism-card border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.05] bg-gradient-to-br from-purple-500/10 to-pink-500/10">
               <CardHeader className="text-center pb-4">
                 <div className="mx-auto p-4 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 shadow-lg w-fit">
-                  <Music className="w-8 h-8 text-white" />
+                  <Music className="w-8 h-8 text-foreground" />
                 </div>
                 <CardTitle className="text-lg mt-4">{t('showcase.features.creative.music.title')}</CardTitle>
                 <CardDescription>
@@ -347,7 +347,7 @@ export default function FeatureCards() {
             <Card className="glassmorphism-card border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.05] bg-gradient-to-br from-blue-500/10 to-cyan-500/10">
               <CardHeader className="text-center pb-4">
                 <div className="mx-auto p-4 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 shadow-lg w-fit">
-                  <Sun className="w-8 h-8 text-white" />
+                  <Sun className="w-8 h-8 text-foreground" />
                 </div>
                 <CardTitle className="text-lg mt-4">{t('showcase.features.creative.weather.title')}</CardTitle>
                 <CardDescription>
@@ -375,7 +375,7 @@ export default function FeatureCards() {
             <Card className="glassmorphism-card border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.05] bg-gradient-to-br from-amber-500/10 to-orange-500/10">
               <CardHeader className="text-center pb-4">
                 <div className="mx-auto p-4 rounded-full bg-gradient-to-br from-amber-500 to-orange-500 shadow-lg w-fit">
-                  <Coffee className="w-8 h-8 text-white" />
+                  <Coffee className="w-8 h-8 text-foreground" />
                 </div>
                 <CardTitle className="text-lg mt-4">{t('showcase.features.creative.coffee.title')}</CardTitle>
                 <CardDescription>
@@ -398,7 +398,7 @@ export default function FeatureCards() {
             <Card className="glassmorphism-card border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.05] bg-gradient-to-br from-green-500/10 to-emerald-500/10">
               <CardHeader className="text-center pb-4">
                 <div className="mx-auto p-4 rounded-full bg-gradient-to-br from-green-500 to-emerald-500 shadow-lg w-fit">
-                  <Palette className="w-8 h-8 text-white" />
+                  <Palette className="w-8 h-8 text-foreground" />
                 </div>
                 <CardTitle className="text-lg mt-4">{t('showcase.features.creative.design.title')}</CardTitle>
                 <CardDescription>
@@ -407,15 +407,15 @@ export default function FeatureCards() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="grid grid-cols-3 gap-2">
-                  <div className="aspect-square rounded bg-red-200"></div>
-                  <div className="aspect-square rounded bg-blue-200"></div>
-                  <div className="aspect-square rounded bg-green-200"></div>
+                  <div className="aspect-square rounded bg-red-200 dark:bg-red-500/20"></div>
+                  <div className="aspect-square rounded bg-blue-200 dark:bg-blue-500/20"></div>
+                  <div className="aspect-square rounded bg-green-200 dark:bg-green-500/20"></div>
                 </div>
                 <div className="text-center">
                   <div className="text-lg font-bold">12</div>
                   <p className="text-sm text-muted-foreground">{t('showcase.features.creative.design.activeProjects')}</p>
                 </div>
-                <Button size="sm" variant="outline" className="w-full border-green-200 hover:bg-green-50">
+                <Button size="sm" variant="outline" className="w-full border-green-200 dark:border-green-500/30 hover:bg-green-50 dark:hover:bg-green-500/20">
                   {t('showcase.features.creative.design.gallery')}
                   <Eye className="w-4 h-4 ml-1" />
                 </Button>
@@ -427,15 +427,15 @@ export default function FeatureCards() {
         <section className="space-y-6">
           <div className="flex items-center gap-2">
             <h2 className="text-2xl font-semibold">{t('showcase.features.sections.interactive')}</h2>
-            <Badge className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white border-0">{t('showcase.features.badges.interactive')}</Badge>
+            <Badge className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white border-0">{t('showcase.features.badges.interactive')}</Badge>
           </div>
           
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <Card className="hover:shadow-lg transition-all duration-300 hover:scale-[1.02] border-2 hover:border-blue-200">
+            <Card className="hover:shadow-lg transition-all duration-300 hover:scale-[1.02] border-2 hover:border-blue-200 dark:hover:border-blue-500/30 dark:hover:border-blue-500/30">
               <CardHeader>
                 <div className="flex items-center justify-between">
-                  <div className="p-2 rounded-lg bg-blue-100">
-                    <Download className="w-5 h-5 text-blue-600" />
+                  <div className="p-2 rounded-lg bg-blue-500/15 dark:bg-blue-500/20">
+                    <Download className="w-5 h-5 text-blue-700 dark:text-blue-400" />
                   </div>
                   <Badge variant="outline">{t('showcase.features.interactive.download.badge')}</Badge>
                 </div>
@@ -459,11 +459,11 @@ export default function FeatureCards() {
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-lg transition-all duration-300 hover:scale-[1.02] border-2 hover:border-yellow-200">
+            <Card className="hover:shadow-lg transition-all duration-300 hover:scale-[1.02] border-2 hover:border-yellow-200 dark:hover:border-yellow-500/30 dark:hover:border-yellow-500/30">
               <CardHeader>
                 <div className="flex items-center justify-between">
-                  <div className="p-2 rounded-lg bg-yellow-100">
-                    <Bookmark className="w-5 h-5 text-yellow-600" />
+                  <div className="p-2 rounded-lg bg-yellow-500/15 dark:bg-yellow-500/20">
+                    <Bookmark className="w-5 h-5 text-yellow-600 dark:text-yellow-400" />
                   </div>
                   <Badge variant="outline">{t('showcase.features.interactive.bookmark.badge')}</Badge>
                 </div>
@@ -484,11 +484,11 @@ export default function FeatureCards() {
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-lg transition-all duration-300 hover:scale-[1.02] border-2 hover:border-green-200">
+            <Card className="hover:shadow-lg transition-all duration-300 hover:scale-[1.02] border-2 hover:border-green-200 dark:hover:border-green-500/30 dark:hover:border-green-500/30">
               <CardHeader>
                 <div className="flex items-center justify-between">
-                  <div className="p-2 rounded-lg bg-green-100">
-                    <Clock className="w-5 h-5 text-green-600" />
+                  <div className="p-2 rounded-lg bg-green-500/15 dark:bg-green-500/20">
+                    <Clock className="w-5 h-5 text-green-600 dark:text-green-400" />
                   </div>
                   <Badge variant="outline">{t('showcase.features.interactive.timer.badge')}</Badge>
                 </div>

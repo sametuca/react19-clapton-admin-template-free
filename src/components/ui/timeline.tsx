@@ -31,10 +31,10 @@ interface TimelineProps {
 }
 
 const statusColors = {
-  completed: 'bg-green-500 text-green-500',
-  'in-progress': 'bg-blue-500 text-blue-500',
-  pending: 'bg-yellow-500 text-yellow-500',
-  cancelled: 'bg-red-500 text-red-500'
+  completed: 'bg-green-500 text-green-800 dark:text-green-400',
+  'in-progress': 'bg-blue-500 text-blue-700 dark:text-blue-400',
+  pending: 'bg-yellow-500 text-yellow-800 dark:text-yellow-400',
+  cancelled: 'bg-red-500 text-red-700 dark:text-red-400'
 };
 
 const statusLabels = {
@@ -62,7 +62,7 @@ export function Timeline({ items, variant = 'default', className }: TimelineProp
                 "relative z-10 flex h-12 w-12 items-center justify-center rounded-full border-4 border-background shadow-lg transition-all duration-300 hover:scale-110",
                 statusColor.split(' ')[0]
               )}>
-                <Icon className="h-5 w-5 text-white" />
+                <Icon className="h-5 w-5 text-foreground" />
               </div>
               
               {/* Content */}

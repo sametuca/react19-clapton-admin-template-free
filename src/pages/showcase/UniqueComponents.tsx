@@ -115,8 +115,8 @@ export default function UniqueComponents() {
                   <span>{t('showcase.unique.glassmorphism.primary.performance')}</span>
                   <span>95%</span>
                 </div>
-                <div className="w-full bg-white/20 rounded-full h-2">
-                  <div className="bg-white h-2 rounded-full w-[95%]" />
+                <div className="w-full bg-foreground/20 rounded-full h-2">
+                  <div className="bg-card h-2 rounded-full w-[95%]" />
                 </div>
               </div>
             </GlassmorphismCard>
@@ -149,11 +149,11 @@ export default function UniqueComponents() {
               icon={Cpu}
             >
               <div className="space-y-3">
-                <div className="flex items-center gap-2 text-cyan-400">
+                <div className="flex items-center gap-2 text-cyan-700 dark:text-cyan-400">
                   <Atom className="h-4 w-4" />
                   <span className="text-sm">{t('showcase.unique.holographic.quantum.processor')}</span>
                 </div>
-                <div className="text-xs text-slate-400">
+                <div className="text-xs text-muted-foreground">
                   {t('showcase.unique.holographic.quantum.capacity')}
                 </div>
               </div>
@@ -165,11 +165,11 @@ export default function UniqueComponents() {
               icon={Database}
             >
               <div className="space-y-3">
-                <div className="flex items-center gap-2 text-purple-400">
+                <div className="flex items-center gap-2 text-purple-700 dark:text-purple-400">
                   <Globe className="h-4 w-4" />
                   <span className="text-sm">{t('showcase.unique.holographic.neural.connection')}</span>
                 </div>
-                <div className="text-xs text-slate-400">
+                <div className="text-xs text-muted-foreground">
                   {t('showcase.unique.holographic.neural.technology')}
                 </div>
               </div>
@@ -181,11 +181,11 @@ export default function UniqueComponents() {
               icon={Shield}
             >
               <div className="space-y-3">
-                <div className="flex items-center gap-2 text-green-400">
+                <div className="flex items-center gap-2 text-green-800 dark:text-green-400">
                   <Shield className="h-4 w-4" />
                   <span className="text-sm">{t('showcase.unique.holographic.cyber.encryption')}</span>
                 </div>
-                <div className="text-xs text-slate-400">
+                <div className="text-xs text-muted-foreground">
                   {t('showcase.unique.holographic.cyber.technology')}
                 </div>
               </div>
@@ -438,7 +438,7 @@ export default function UniqueComponents() {
                   <div className="p-4 space-y-3">
                     <div className="flex items-center justify-between">
                       <span className="text-sm font-medium">{t('showcase.unique.mixed.neon.status')}</span>
-                      <Badge className="bg-green-500">{t('showcase.unique.mixed.neon.online')}</Badge>
+                      <Badge className="bg-green-700 text-white">{t('showcase.unique.mixed.neon.online')}</Badge>
                     </div>
                     <div className="flex justify-center">
                       <QuantumLoader size="sm" color="#00ff88" />
@@ -469,7 +469,7 @@ export default function UniqueComponents() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Sparkles className="h-5 w-5 text-yellow-500" />
+                  <Sparkles className="h-5 w-5 text-yellow-600 dark:text-yellow-400" />
                   {t('showcase.unique.features.unique')}
                 </CardTitle>
               </CardHeader>
@@ -483,7 +483,7 @@ export default function UniqueComponents() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Zap className="h-5 w-5 text-blue-500" />
+                  <Zap className="h-5 w-5 text-blue-700 dark:text-blue-400" />
                   {t('showcase.unique.features.performance')}
                 </CardTitle>
               </CardHeader>
@@ -497,7 +497,7 @@ export default function UniqueComponents() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Palette className="h-5 w-5 text-purple-500" />
+                  <Palette className="h-5 w-5 text-purple-700 dark:text-purple-400" />
                   {t('showcase.unique.features.customizable')}
                 </CardTitle>
               </CardHeader>
@@ -511,7 +511,7 @@ export default function UniqueComponents() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Globe className="h-5 w-5 text-green-500" />
+                  <Globe className="h-5 w-5 text-green-600 dark:text-green-400" />
                   {t('showcase.unique.features.responsive')}
                 </CardTitle>
               </CardHeader>

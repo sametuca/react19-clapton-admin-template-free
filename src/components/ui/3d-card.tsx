@@ -88,7 +88,7 @@ export const Card3D: React.FC<Card3DProps> = ({
       <motion.div
         className={cn(
           "relative w-full h-full transition-all duration-300",
-          border && "border border-white/20",
+          border && "border border-border",
           shadow && "shadow-2xl"
         )}
         style={{
@@ -117,7 +117,7 @@ export const Card3D: React.FC<Card3DProps> = ({
         {/* Shadow Effect */}
         {shadow && (
           <motion.div
-            className="absolute inset-0 rounded-xl bg-black/20 pointer-events-none"
+            className="absolute inset-0 rounded-xl bg-foreground/20 pointer-events-none"
             style={{
               opacity: shadowIntensity,
               transform: "translateZ(-10px)",
@@ -164,16 +164,16 @@ export const ImageCard3D: React.FC<ImageCard3DProps> = ({
         {/* Badge */}
         {badge && (
           <div className="absolute top-4 right-4">
-            <span className="px-3 py-1 bg-purple-500 text-white text-xs font-semibold rounded-full">
+            <span className="px-3 py-1 bg-purple-600 text-white text-xs font-semibold rounded-full">
               {badge}
             </span>
           </div>
         )}
         
         {/* Content */}
-        <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+        <div className="absolute bottom-0 left-0 right-0 p-6 text-foreground">
           <h3 className="text-xl font-bold mb-2">{title}</h3>
-          <p className="text-sm text-gray-200 opacity-90">{description}</p>
+          <p className="text-sm text-foreground opacity-90">{description}</p>
         </div>
       </div>
     </Card3D>

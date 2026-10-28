@@ -259,24 +259,24 @@ export default function GetStarted() {
         <div className="hero-section">
           <div className="space-y-6">
             <div className="flex items-center justify-center gap-3">
-              <Rocket className="h-8 w-8 text-blue-400" />
+              <Rocket className="h-8 w-8 text-blue-700 dark:text-blue-400" />
               <h1 className="text-5xl font-bold gradient-text-primary">
                 {t('showcase.getStarted.hero.title')}
               </h1>
-              <Rocket className="h-8 w-8 text-purple-400" />
+              <Rocket className="h-8 w-8 text-purple-700 dark:text-purple-400" />
             </div>
-            <p className="text-xl text-white/70 max-w-4xl mx-auto text-center leading-relaxed">
+            <p className="text-xl text-muted-foreground max-w-4xl mx-auto text-center leading-relaxed">
               {t('showcase.getStarted.hero.description')}
             </p>
             <div className="flex items-center justify-center gap-4">
               <Link to="/dashboard">
-                <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white border-0">
+                <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white border-0">
                   <BarChart3 className="w-5 h-5 mr-2" />
                   {t('showcase.getStarted.hero.buttons.viewDashboard')}
                 </Button>
               </Link>
               <Link to="/showcase">
-                <Button variant="outline" size="lg" className="border-white/30 text-white hover:bg-white/10">
+                <Button variant="outline" size="lg" className="border-border text-foreground hover:bg-foreground/10">
                   <Palette className="w-5 h-5 mr-2" />
                   {t('showcase.getStarted.hero.buttons.browseComponents')}
                 </Button>
@@ -287,7 +287,7 @@ export default function GetStarted() {
 
         {/* Quick Start Tabs */}
         <Tabs defaultValue="installation" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-5 bg-gray-800/50 border border-gray-700/50">
+          <TabsList className="grid w-full grid-cols-5 bg-muted/50 border border-border">
             <TabsTrigger value="installation">{t('showcase.getStarted.tabs.installation')}</TabsTrigger>
             <TabsTrigger value="structure">{t('showcase.getStarted.tabs.structure')}</TabsTrigger>
             <TabsTrigger value="customization">{t('showcase.getStarted.tabs.customization')}</TabsTrigger>
@@ -302,7 +302,7 @@ export default function GetStarted() {
                 <CardTitle className="text-3xl font-bold gradient-text-primary">
                   {t('showcase.getStarted.installation.title')}
                 </CardTitle>
-                <p className="text-lg text-white/60">
+                <p className="text-lg text-muted-foreground">
                   {t('showcase.getStarted.installation.subtitle')}
                 </p>
               </CardHeader>
@@ -315,29 +315,29 @@ export default function GetStarted() {
                       )}
                       
                       <div className="flex items-start gap-6">
-                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center text-white font-bold text-lg shadow-lg">
                           {step.step}
                         </div>
                         
                         <div className="flex-1 space-y-4">
                           <div className="flex items-center gap-3">
-                            <step.icon className="w-6 h-6 text-blue-400" />
-                            <h3 className="text-2xl font-bold text-white">
+                            <step.icon className="w-6 h-6 text-blue-700 dark:text-blue-400" />
+                            <h3 className="text-2xl font-bold text-foreground">
                               {step.title}
                             </h3>
                           </div>
                           
-                          <p className="text-white/70 text-lg">
+                          <p className="text-muted-foreground text-lg">
                             {step.description}
                           </p>
 
                           {step.requirements && (
                             <div className="space-y-2">
-                              <h4 className="font-semibold text-white">Requirements:</h4>
+                              <h4 className="font-semibold text-foreground">Requirements:</h4>
                               <ul className="space-y-1">
                                 {step.requirements.map((req, reqIndex) => (
-                                  <li key={reqIndex} className="flex items-center gap-2 text-white/70">
-                                    <CheckCircle className="w-4 h-4 text-green-400" />
+                                  <li key={reqIndex} className="flex items-center gap-2 text-muted-foreground">
+                                    <CheckCircle className="w-4 h-4 text-green-600 dark:text-green-400" />
                                     {req}
                                   </li>
                                 ))}
@@ -347,14 +347,14 @@ export default function GetStarted() {
                           
                           {step.commands && (
                             <div className="space-y-2">
-                              <h4 className="font-semibold text-white">Commands:</h4>
-                              <div className="bg-black/40 rounded-lg p-4 border border-white/10 space-y-2">
+                              <h4 className="font-semibold text-foreground">Commands:</h4>
+                              <div className="bg-muted rounded-lg p-4 border border-border space-y-2">
                                 {step.commands.map((command, cmdIndex) => (
                                   <div key={cmdIndex}>
                                     {command.startsWith('#') ? (
-                                      <p className="text-gray-400 text-sm italic">{command}</p>
+                                      <p className="text-muted-foreground text-sm italic">{command}</p>
                                     ) : (
-                                      <code className="text-green-400 font-mono text-sm block">
+                                      <code className="text-green-800 dark:text-green-400 font-mono text-sm block">
                                         $ {command}
                                       </code>
                                     )}
@@ -365,8 +365,8 @@ export default function GetStarted() {
                           )}
 
                           {step.note && (
-                            <div className="bg-blue-900/20 border border-blue-500/30 rounded-lg p-3">
-                              <p className="text-blue-300 text-sm">
+                            <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-3">
+                              <p className="text-blue-700 dark:text-blue-300 text-sm">
                                 <Lightbulb className="w-4 h-4 inline mr-2" />
                                 <strong>Note:</strong> {step.note}
                               </p>
@@ -388,7 +388,7 @@ export default function GetStarted() {
                 <CardTitle className="text-3xl font-bold gradient-text-primary text-center">
                   {t('showcase.getStarted.structure.title')}
                 </CardTitle>
-                <p className="text-lg text-white/60 text-center">
+                <p className="text-lg text-muted-foreground text-center">
                   {t('showcase.getStarted.structure.subtitle')}
                 </p>
               </CardHeader>
@@ -396,23 +396,23 @@ export default function GetStarted() {
                 <div className="space-y-6">
                   {projectStructure.map((folder, index) => (
                     <div key={index} className="space-y-3">
-                      <div className="flex items-center gap-3 p-3 bg-white/5 rounded-lg border border-white/10">
-                        <FolderOpen className="w-5 h-5 text-blue-400" />
+                      <div className="flex items-center gap-3 p-3 bg-foreground/5 rounded-lg border border-border">
+                        <FolderOpen className="w-5 h-5 text-blue-700 dark:text-blue-400" />
                         <div>
-                          <h3 className="font-bold text-white">{folder.path}</h3>
-                          <p className="text-white/70 text-sm">{folder.description}</p>
+                          <h3 className="font-bold text-foreground">{folder.path}</h3>
+                          <p className="text-muted-foreground text-sm">{folder.description}</p>
                         </div>
                       </div>
                       
                       {folder.children && (
                         <div className="ml-8 space-y-2">
                           {folder.children.map((child, childIndex) => (
-                            <div key={childIndex} className="flex items-center gap-3 p-2 hover:bg-white/5 rounded transition-colors">
-                              <div className="w-px h-4 bg-white/20 mr-2"></div>
-                              <FileText className="w-4 h-4 text-gray-400" />
+                            <div key={childIndex} className="flex items-center gap-3 p-2 hover:bg-foreground/5 rounded transition-colors">
+                              <div className="w-px h-4 bg-foreground/20 mr-2"></div>
+                              <FileText className="w-4 h-4 text-muted-foreground" />
                               <div>
-                                <span className="text-white/90 font-mono text-sm">{child.path}</span>
-                                <p className="text-white/60 text-xs">{child.description}</p>
+                                <span className="text-foreground font-mono text-sm">{child.path}</span>
+                                <p className="text-muted-foreground text-xs">{child.description}</p>
                               </div>
                             </div>
                           ))}
@@ -432,7 +432,7 @@ export default function GetStarted() {
                 <CardTitle className="text-3xl font-bold gradient-text-primary text-center">
                   {t('showcase.getStarted.customization.title')}
                 </CardTitle>
-                <p className="text-lg text-white/60 text-center">
+                <p className="text-lg text-muted-foreground text-center">
                   {t('showcase.getStarted.customization.subtitle')}
                 </p>
               </CardHeader>
@@ -443,23 +443,23 @@ export default function GetStarted() {
                       <div className="space-y-4">
                         <div className="flex items-center gap-3">
                           <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
-                            <guide.icon className="w-6 h-6 text-blue-400" />
+                            <guide.icon className="w-6 h-6 text-blue-700 dark:text-blue-400" />
                           </div>
                           <div>
-                            <h3 className="text-xl font-bold text-white">
+                            <h3 className="text-xl font-bold text-foreground">
                               {guide.title}
                             </h3>
-                            <p className="text-white/70">
+                            <p className="text-muted-foreground">
                               {guide.description}
                             </p>
                           </div>
                         </div>
 
                         <div className="space-y-2">
-                          <h4 className="font-semibold text-white">Steps:</h4>
+                          <h4 className="font-semibold text-foreground">Steps:</h4>
                           <ol className="space-y-2">
                             {translations[language].showcase.getStarted.customization.guides[guide.key].steps.map((step, stepIndex) => (
-                              <li key={stepIndex} className="flex items-start gap-2 text-white/70">
+                              <li key={stepIndex} className="flex items-start gap-2 text-muted-foreground">
                                 <span className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center text-xs font-bold text-primary mt-0.5">
                                   {stepIndex + 1}
                                 </span>
@@ -483,7 +483,7 @@ export default function GetStarted() {
                 <CardTitle className="text-3xl font-bold gradient-text-primary text-center">
                   {t('showcase.getStarted.deployment.title')}
                 </CardTitle>
-                <p className="text-lg text-white/60 text-center">
+                <p className="text-lg text-muted-foreground text-center">
                   {t('showcase.getStarted.deployment.subtitle')}
                 </p>
               </CardHeader>
@@ -493,13 +493,13 @@ export default function GetStarted() {
                     <div className="showcase-item text-center">
                       <div className="space-y-4">
                         <div className="w-16 h-16 rounded-full bg-gradient-to-br from-green-500/20 to-emerald-500/20 flex items-center justify-center mx-auto">
-                          <Globe className="w-8 h-8 text-green-400" />
+                          <Globe className="w-8 h-8 text-green-600 dark:text-green-400" />
                         </div>
-                        <h3 className="text-xl font-bold text-white">{t('showcase.getStarted.deployment.platforms.netlify.name')}</h3>
-                        <p className="text-white/70">{t('showcase.getStarted.deployment.platforms.netlify.description')}</p>
-                        <div className="bg-black/40 rounded-lg p-3 border border-white/10">
+                        <h3 className="text-xl font-bold text-foreground">{t('showcase.getStarted.deployment.platforms.netlify.name')}</h3>
+                        <p className="text-muted-foreground">{t('showcase.getStarted.deployment.platforms.netlify.description')}</p>
+                        <div className="bg-muted rounded-lg p-3 border border-border">
                           {translations[language].showcase.getStarted.deployment.platforms.netlify.commands.map((command, idx) => (
-                            <code key={idx} className="text-green-400 font-mono text-sm block">
+                            <code key={idx} className="text-green-800 dark:text-green-400 font-mono text-sm block">
                               {command}
                             </code>
                           ))}
@@ -510,13 +510,13 @@ export default function GetStarted() {
                     <div className="showcase-item text-center">
                       <div className="space-y-4">
                         <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center mx-auto">
-                          <Shield className="w-8 h-8 text-purple-400" />
+                          <Shield className="w-8 h-8 text-purple-700 dark:text-purple-400" />
                         </div>
-                        <h3 className="text-xl font-bold text-white">{t('showcase.getStarted.deployment.platforms.docker.name')}</h3>
-                        <p className="text-white/70">{t('showcase.getStarted.deployment.platforms.docker.description')}</p>
-                        <div className="bg-black/40 rounded-lg p-3 border border-white/10">
+                        <h3 className="text-xl font-bold text-foreground">{t('showcase.getStarted.deployment.platforms.docker.name')}</h3>
+                        <p className="text-muted-foreground">{t('showcase.getStarted.deployment.platforms.docker.description')}</p>
+                        <div className="bg-muted rounded-lg p-3 border border-border">
                           {translations[language].showcase.getStarted.deployment.platforms.docker.commands.map((command, idx) => (
-                            <code key={idx} className="text-green-400 font-mono text-sm block">
+                            <code key={idx} className="text-green-800 dark:text-green-400 font-mono text-sm block">
                               {command}
                             </code>
                           ))}
@@ -526,11 +526,11 @@ export default function GetStarted() {
                   </div>
 
                   <div className="space-y-4">
-                    <h3 className="text-2xl font-bold text-white">{t('showcase.getStarted.deployment.buildProcess.title')}</h3>
-                    <div className="bg-black/40 rounded-lg p-4 border border-white/10">
+                    <h3 className="text-2xl font-bold text-foreground">{t('showcase.getStarted.deployment.buildProcess.title')}</h3>
+                    <div className="bg-muted rounded-lg p-4 border border-border">
                       <div className="space-y-2">
                         {translations[language].showcase.getStarted.deployment.buildProcess.commands.map((command, idx) => (
-                          <code key={idx} className={command.startsWith('#') ? "text-gray-400 font-mono text-sm block" : "text-green-400 font-mono text-sm block"}>
+                          <code key={idx} className={command.startsWith('#') ? "text-muted-foreground font-mono text-sm block" : "text-green-800 dark:text-green-400 font-mono text-sm block"}>
                             {command}
                           </code>
                         ))}
@@ -549,22 +549,22 @@ export default function GetStarted() {
                 <CardTitle className="text-3xl font-bold gradient-text-primary text-center">
                   {t('showcase.getStarted.troubleshooting.title')}
                 </CardTitle>
-                <p className="text-lg text-white/60 text-center">
+                <p className="text-lg text-muted-foreground text-center">
                   {t('showcase.getStarted.troubleshooting.subtitle')}
                 </p>
               </CardHeader>
               <CardContent>
                 <div className="space-y-6">
                   {troubleshooting.map((item, index) => (
-                    <div key={index} className="p-4 bg-white/5 rounded-lg border border-white/10">
+                    <div key={index} className="p-4 bg-foreground/5 rounded-lg border border-border">
                       <div className="flex items-start gap-4">
                         <div className="w-10 h-10 rounded-lg bg-red-500/20 flex items-center justify-center">
-                          <item.icon className="w-5 h-5 text-red-400" />
+                          <item.icon className="w-5 h-5 text-red-600 dark:text-red-400" />
                         </div>
                         <div className="flex-1">
-                          <h4 className="font-bold text-white mb-2">{item.issue}</h4>
-                          <div className="bg-black/40 rounded-lg p-3 border border-white/10">
-                            <code className="text-green-400 font-mono text-sm">
+                          <h4 className="font-bold text-foreground mb-2">{item.issue}</h4>
+                          <div className="bg-muted rounded-lg p-3 border border-border">
+                            <code className="text-green-800 dark:text-green-400 font-mono text-sm">
                               {item.solution}
                             </code>
                           </div>
@@ -584,7 +584,7 @@ export default function GetStarted() {
             <h2 className="text-3xl font-bold gradient-text-secondary">
               {t('showcase.getStarted.features.title')}
             </h2>
-            <p className="text-lg text-white/60 max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               {t('showcase.getStarted.features.subtitle')}
             </p>
           </div>
@@ -594,12 +594,12 @@ export default function GetStarted() {
               <div key={index} className="feature-card p-6 rounded-xl">
                 <div className="space-y-4">
                   <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${feature.color} flex items-center justify-center`}>
-                    <feature.icon className="w-6 h-6 text-white" />
+                    <feature.icon className="w-6 h-6 text-foreground" />
                   </div>
-                  <h3 className="text-xl font-bold text-white">
+                  <h3 className="text-xl font-bold text-foreground">
                     {feature.title}
                   </h3>
-                  <p className="text-white/70 leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed">
                     {feature.description}
                   </p>
                 </div>
@@ -614,7 +614,7 @@ export default function GetStarted() {
             <h2 className="text-3xl font-bold gradient-text-secondary">
               {t('showcase.getStarted.techStack.title')}
             </h2>
-            <p className="text-lg text-white/60 max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               {t('showcase.getStarted.techStack.subtitle')}
             </p>
           </div>
@@ -625,17 +625,17 @@ export default function GetStarted() {
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
-                      <tech.icon className="w-6 h-6 text-blue-400" />
+                      <tech.icon className="w-6 h-6 text-blue-700 dark:text-blue-400" />
                     </div>
                     <Badge variant="outline" className="text-xs">
                       v{tech.version}
                     </Badge>
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-white group-hover:text-blue-300 transition-colors">
+                    <h3 className="text-xl font-bold text-foreground group-hover:text-blue-600 dark:group-hover:text-blue-300 transition-colors">
                       {tech.name}
                     </h3>
-                    <p className="text-white/70 leading-relaxed">
+                    <p className="text-muted-foreground leading-relaxed">
                       {tech.description}
                     </p>
                   </div>
@@ -651,22 +651,22 @@ export default function GetStarted() {
             <CardTitle className="text-3xl font-bold gradient-text-primary">
               {t('showcase.getStarted.nextSteps.title')}
             </CardTitle>
-            <p className="text-lg text-white/60">
+            <p className="text-lg text-muted-foreground">
               {t('showcase.getStarted.nextSteps.subtitle')}
             </p>
           </CardHeader>
           <CardContent>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
               {nextSteps.map((step, index) => (
-                <div key={index} className="text-center space-y-4 p-6 rounded-lg border border-white/10 hover:border-white/20 transition-all duration-200 hover:bg-white/5 group">
+                <div key={index} className="text-center space-y-4 p-6 rounded-lg border border-border hover:border-border transition-all duration-200 hover:bg-foreground/5 group">
                   <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${step.color} flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-200`}>
-                    <step.icon className="w-8 h-8 text-white" />
+                    <step.icon className="w-8 h-8 text-foreground" />
                   </div>
                   <div className="space-y-2">
-                    <h3 className="text-xl font-bold text-white group-hover:text-blue-300 transition-colors">
+                    <h3 className="text-xl font-bold text-foreground group-hover:text-blue-600 dark:group-hover:text-blue-300 transition-colors">
                       {step.title}
                     </h3>
-                    <p className="text-white/70">
+                    <p className="text-muted-foreground">
                       {step.description}
                     </p>
                   </div>
@@ -699,14 +699,14 @@ export default function GetStarted() {
           <CardContent>
             <div className="grid gap-6 md:grid-cols-2">
               <div className="space-y-4">
-                <h3 className="text-xl font-bold text-white flex items-center gap-2">
-                  <Coffee className="w-5 h-5 text-orange-400" />
+                <h3 className="text-xl font-bold text-foreground flex items-center gap-2">
+                  <Coffee className="w-5 h-5 text-orange-600 dark:text-orange-400" />
                   {t('showcase.getStarted.tips.workflow.title')}
                 </h3>
                 <ul className="space-y-2">
                   {translations[language].showcase.getStarted.tips.workflow.tips.map((tip, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-white/70">
-                      <CheckCircle className="w-4 h-4 text-green-400 mt-0.5" />
+                    <li key={idx} className="flex items-start gap-2 text-muted-foreground">
+                      <CheckCircle className="w-4 h-4 text-green-600 dark:text-green-400 mt-0.5" />
                       {tip}
                     </li>
                   ))}
@@ -714,14 +714,14 @@ export default function GetStarted() {
               </div>
 
               <div className="space-y-4">
-                <h3 className="text-xl font-bold text-white flex items-center gap-2">
-                  <Target className="w-5 h-5 text-purple-400" />
+                <h3 className="text-xl font-bold text-foreground flex items-center gap-2">
+                  <Target className="w-5 h-5 text-purple-700 dark:text-purple-400" />
                   {t('showcase.getStarted.tips.performance.title')}
                 </h3>
                 <ul className="space-y-2">
                   {translations[language].showcase.getStarted.tips.performance.tips.map((tip, idx) => (
-                    <li key={idx} className="flex items-start gap-2 text-white/70">
-                      <CheckCircle className="w-4 h-4 text-green-400 mt-0.5" />
+                    <li key={idx} className="flex items-start gap-2 text-muted-foreground">
+                      <CheckCircle className="w-4 h-4 text-green-600 dark:text-green-400 mt-0.5" />
                       {tip}
                     </li>
                   ))}
@@ -735,24 +735,24 @@ export default function GetStarted() {
         <div className="cta-section">
           <div className="space-y-6 text-center">
             <div className="flex items-center justify-center gap-3">
-              <Heart className="h-8 w-8 text-red-400" />
+              <Heart className="h-8 w-8 text-red-600 dark:text-red-400" />
               <h2 className="text-3xl font-bold gradient-text-primary">
                 {t('showcase.getStarted.cta.title')}
               </h2>
-              <Heart className="h-8 w-8 text-red-400" />
+              <Heart className="h-8 w-8 text-red-600 dark:text-red-400" />
             </div>
-            <p className="text-lg text-white/70 max-w-3xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               {t('showcase.getStarted.cta.description')}
             </p>
             <div className="flex items-center justify-center gap-4">
               <Link to="/dashboard">
-                <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white border-0">
+                <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white border-0">
                   <Rocket className="w-5 h-5 mr-2" />
                   {t('showcase.getStarted.cta.buttons.start')}
                 </Button>
               </Link>
               <Link to="/showcase">
-                <Button variant="outline" size="lg" className="border-white/30 text-white hover:bg-white/10">
+                <Button variant="outline" size="lg" className="border-border text-foreground hover:bg-foreground/10">
                   <BookOpen className="w-5 h-5 mr-2" />
                   {t('showcase.getStarted.cta.buttons.explore')}
                 </Button>

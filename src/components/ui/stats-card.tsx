@@ -35,7 +35,7 @@ export function StatsCard({
   return (
     <Card className={cn(
       "relative overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-[1.02] border-0",
-      gradient && "bg-gradient-to-br from-white to-gray-50/50 dark:from-gray-900 dark:to-gray-800/50",
+      gradient && "bg-card",
       className
     )}>
       <CardContent className="p-6">
@@ -53,9 +53,9 @@ export function StatsCard({
             {change !== undefined && (
               <div className="flex items-center gap-1">
                 {changeType === 'positive' ? (
-                  <TrendingUp className="h-4 w-4 text-green-500" />
+                  <TrendingUp className="h-4 w-4 text-green-600 dark:text-green-400" />
                 ) : (
-                  <TrendingDown className="h-4 w-4 text-red-500" />
+                  <TrendingDown className="h-4 w-4 text-red-600 dark:text-red-400" />
                 )}
                 <Badge 
                   variant={changeType === 'positive' ? 'default' : 'destructive'}

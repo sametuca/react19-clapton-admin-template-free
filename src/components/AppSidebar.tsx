@@ -74,8 +74,20 @@ export default function AppSidebar() {
   const { state } = useSidebar();
 
   const mainItems = [
+    { title: t('nav.dashboard'), url: "/dashboard", icon: LayoutDashboard, badge: undefined },
     { title: t('nav.getStarted'), url: "/get-started", icon: Rocket, badge: t('nav.guide') },
     { title: t('nav.exampleServices'), url: "/services", icon: Database, badge: "API" },
+  ];
+
+  const manageItems = [
+    { title: t('nav.users'), url: "/users", icon: Users },
+    { title: t('nav.roles'), url: "/roles", icon: Shield },
+    { title: t('nav.analytics'), url: "/analytics", icon: BarChart3 },
+    { title: t('nav.tables'), url: "/tables", icon: Table2 },
+    { title: t('nav.forms'), url: "/forms", icon: FileText },
+    { title: t('nav.notifications'), url: "/notifications", icon: Bell },
+    { title: t('nav.profile'), url: "/profile", icon: User },
+    { title: t('nav.settings'), url: "/settings", icon: Settings },
   ];
 
   const showcaseChildItems = [
@@ -118,16 +130,12 @@ export default function AppSidebar() {
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild>
               <Link to="/">
-                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-600 via-blue-500 to-purple-600 text-sidebar-primary-foreground shadow-lg border border-white/20">
-                  <span className="text-white font-bold text-lg tracking-wider" style={{fontFamily: 'system-ui, -apple-system, sans-serif'}}>C</span>
+                <div className="flex aspect-square size-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-brand-2 text-primary-foreground shadow-md">
+                  <span className="text-lg font-bold tracking-wide">C</span>
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-semibold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                    React19 Admin
-                  </span>
-                  <span className="truncate text-xs text-sidebar-foreground/60">
-                    Premium Template for React19
-                  </span>
+                  <span className="truncate font-semibold text-sidebar-foreground">React19 Admin</span>
+                  <span className="truncate text-xs text-muted-foreground">{t('layout.tagline')}</span>
                 </div>
               </Link>
             </SidebarMenuButton>
@@ -143,11 +151,30 @@ export default function AppSidebar() {
             <SidebarMenu>
               {mainItems.map((item) => (
                 <SidebarMenuItem key={item.url}>
-                  <SidebarMenuButton asChild isActive={isActive(item.url)}>
+                  <SidebarMenuButton asChild isActive={isActive(item.url)} tooltip={item.title}>
                     <Link to={item.url}>
                       <item.icon />
                       <span>{item.title}</span>
                       {item.badge && <Badge variant="secondary" className="ml-auto">{item.badge}</Badge>}
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        {/* Management */}
+        <SidebarGroup>
+          <SidebarGroupLabel>{t('nav.management')}</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {manageItems.map((item) => (
+                <SidebarMenuItem key={item.url}>
+                  <SidebarMenuButton asChild isActive={isActive(item.url)} tooltip={item.title}>
+                    <Link to={item.url}>
+                      <item.icon />
+                      <span>{item.title}</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>

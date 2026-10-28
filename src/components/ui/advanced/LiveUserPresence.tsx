@@ -11,10 +11,10 @@ interface PresenceUser {
 }
 
 const seedUsers: Omit<PresenceUser,"x"|"y">[] = [
-  { id: "u1", name: "Ada", color: "bg-cyan-500", status: "active" },
-  { id: "u2", name: "Berk", color: "bg-pink-500", status: "active" },
-  { id: "u3", name: "Cem", color: "bg-violet-500", status: "idle" },
-  { id: "u4", name: "Deniz", color: "bg-emerald-500", status: "active" }
+  { id: "u1", name: "Ada", color: "bg-cyan-700", status: "active" },
+  { id: "u2", name: "Berk", color: "bg-pink-700", status: "active" },
+  { id: "u3", name: "Cem", color: "bg-violet-700", status: "idle" },
+  { id: "u4", name: "Deniz", color: "bg-emerald-700", status: "active" }
 ];
 
 export function LiveUserPresence() {
@@ -61,7 +61,7 @@ export function LiveUserPresence() {
               {u.name.slice(0,2).toUpperCase()}
             </div>
             {u.status === "typing" && (
-              <div className="absolute left-1/2 -translate-x-1/2 top-9 text-[9px] px-1 py-0.5 rounded bg-black/40 text-white backdrop-blur-sm">
+              <div className="absolute left-1/2 -translate-x-1/2 top-9 text-[9px] px-1 py-0.5 rounded bg-black/40 text-foreground backdrop-blur-sm">
                 yazıyor...
               </div>
             )}

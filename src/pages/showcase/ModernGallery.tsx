@@ -163,27 +163,27 @@ export default function ModernGallery() {
         {/* Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <div className="absolute bottom-4 left-4 right-4">
-            <div className="flex items-center justify-between text-white">
+            <div className="flex items-center justify-between text-foreground">
               <div className="flex items-center gap-2">
                 <Button
                   size="sm"
                   variant="ghost"
                   onClick={() => toggleLike(item.id)}
-                  className={`text-white hover:text-red-400 ${likedItems.includes(item.id) ? 'text-red-400' : ''}`}
+                  className={`text-foreground hover:text-red-600 dark:hover:text-red-400 ${likedItems.includes(item.id) ? 'text-red-600 dark:text-red-400' : ''}`}
                 >
                   <Heart className={`h-4 w-4 ${likedItems.includes(item.id) ? 'fill-current' : ''}`} />
                   {item.likes + (likedItems.includes(item.id) ? 1 : 0)}
                 </Button>
-                <Button size="sm" variant="ghost" className="text-white hover:text-blue-400">
+                <Button size="sm" variant="ghost" className="text-foreground hover:text-blue-600 dark:hover:text-blue-400">
                   <Eye className="h-4 w-4" />
                   {item.views}
                 </Button>
               </div>
               <div className="flex items-center gap-2">
-                <Button size="sm" variant="ghost" className="text-white hover:text-green-400">
+                <Button size="sm" variant="ghost" className="text-foreground hover:text-green-700 dark:hover:text-green-400">
                   <Share2 className="h-4 w-4" />
                 </Button>
-                <Button size="sm" variant="ghost" className="text-white hover:text-yellow-400">
+                <Button size="sm" variant="ghost" className="text-foreground hover:text-yellow-700 dark:hover:text-yellow-400">
                   <Download className="h-4 w-4" />
                 </Button>
               </div>
@@ -302,7 +302,7 @@ export default function ModernGallery() {
                   size="sm"
                   variant="ghost"
                   onClick={() => toggleLike(item.id)}
-                  className={likedItems.includes(item.id) ? 'text-red-500' : ''}
+                  className={likedItems.includes(item.id) ? 'text-red-600 dark:text-red-400' : ''}
                 >
                   <Heart className={`h-4 w-4 ${likedItems.includes(item.id) ? 'fill-current' : ''}`} />
                   {item.likes + (likedItems.includes(item.id) ? 1 : 0)}
@@ -463,7 +463,7 @@ export default function ModernGallery() {
                           <Button
                             variant="outline"
                             onClick={() => toggleLike(item.id)}
-                            className={likedItems.includes(item.id) ? 'text-red-500 border-red-500' : ''}
+                            className={likedItems.includes(item.id) ? 'text-red-600 dark:text-red-400 border-red-500' : ''}
                           >
                             <Heart className={`h-4 w-4 mr-2 ${likedItems.includes(item.id) ? 'fill-current' : ''}`} />
                             {item.likes + (likedItems.includes(item.id) ? 1 : 0)} Beğeni

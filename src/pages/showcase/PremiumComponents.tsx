@@ -171,7 +171,7 @@ const PremiumComponents = () => {
       value: 12543,
       change: 12.5,
       changeType: 'increase' as const,
-      icon: <Users className="w-6 h-6 text-white" />,
+      icon: <Users className="w-6 h-6 text-foreground" />,
       color: 'purple'
     },
     {
@@ -179,7 +179,7 @@ const PremiumComponents = () => {
       value: 45678,
       change: 8.2,
       changeType: 'increase' as const,
-      icon: <DollarSign className="w-6 h-6 text-white" />,
+      icon: <DollarSign className="w-6 h-6 text-foreground" />,
       color: 'green'
     },
     {
@@ -187,7 +187,7 @@ const PremiumComponents = () => {
       value: 892,
       change: 3.1,
       changeType: 'decrease' as const,
-      icon: <ShoppingCart className="w-6 h-6 text-white" />,
+      icon: <ShoppingCart className="w-6 h-6 text-foreground" />,
       color: 'blue'
     },
     {
@@ -195,7 +195,7 @@ const PremiumComponents = () => {
       value: 23.4,
       change: 15.7,
       changeType: 'increase' as const,
-      icon: <TrendingUp className="w-6 h-6 text-white" />,
+      icon: <TrendingUp className="w-6 h-6 text-foreground" />,
       color: 'orange'
     }
   ];
@@ -373,21 +373,21 @@ const PremiumComponents = () => {
           className="text-center mb-12"
         >
           <div className="flex items-center justify-center gap-3 mb-6">
-            <Crown className="h-10 w-10 text-yellow-500 animate-pulse" />
-            <Badge variant="secondary" className="px-6 py-2 text-sm bg-gradient-to-r from-purple-500 to-blue-500 text-white border-0">
+            <Crown className="h-10 w-10 text-yellow-600 dark:text-yellow-400 animate-pulse" />
+            <Badge variant="secondary" className="px-6 py-2 text-sm bg-gradient-to-r from-purple-600 to-blue-600 text-white border-0">
               <Star className="w-4 h-4 mr-2" />
               {t('showcase.premium.badges.premium')}
             </Badge>
-            <Crown className="h-10 w-10 text-yellow-500 animate-pulse" />
+            <Crown className="h-10 w-10 text-yellow-600 dark:text-yellow-400 animate-pulse" />
           </div>
           
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-4">
+          <h1 className="text-4xl md:text-6xl font-bold text-foreground dark:text-white mb-4">
             {t('showcase.premium.title')}
             <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
               {' '} {t('showcase.premium.titleSuffix')}
             </span>
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             {t('showcase.premium.description')}
           </p>
         </motion.div>
@@ -410,7 +410,7 @@ const PremiumComponents = () => {
                 <Card className="h-full hover:shadow-xl transition-all duration-300 hover:scale-105 group">
                   <CardHeader>
                     <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${feature.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                      <feature.icon className="w-6 h-6 text-white" />
+                      <feature.icon className="w-6 h-6 text-foreground" />
                     </div>
                     <CardTitle className="group-hover:text-primary transition-colors">{feature.title}</CardTitle>
                     <p className="text-sm text-muted-foreground">{feature.description}</p>
@@ -472,8 +472,8 @@ const PremiumComponents = () => {
           {/* 3D Cards Tab */}
           <TabsContent value="3d-cards" className="space-y-8">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">{t('showcase.premium.sections.3dCards')}</h2>
-              <p className="text-gray-600 dark:text-gray-300">{t('showcase.premium.sections.3dCardsDescription')}</p>
+              <h2 className="text-3xl font-bold text-foreground dark:text-white mb-4">{t('showcase.premium.sections.3dCards')}</h2>
+              <p className="text-muted-foreground">{t('showcase.premium.sections.3dCardsDescription')}</p>
             </div>
             {/* Holographic Cards */}
             <div className="space-y-6">
@@ -485,11 +485,11 @@ const PremiumComponents = () => {
                   icon={Cpu}
                 >
                   <div className="space-y-3">
-                    <div className="flex items-center gap-2 text-cyan-400">
+                    <div className="flex items-center gap-2 text-cyan-700 dark:text-cyan-400">
                       <Atom className="h-4 w-4" />
                       <span className="text-sm">Quantum Processor</span>
                     </div>
-                    <div className="text-xs text-slate-400">
+                    <div className="text-xs text-muted-foreground">
                       1024 Qubit Capacity
                     </div>
                   </div>
@@ -501,11 +501,11 @@ const PremiumComponents = () => {
                   icon={Database}
                 >
                   <div className="space-y-3">
-                    <div className="flex items-center gap-2 text-purple-400">
+                    <div className="flex items-center gap-2 text-purple-700 dark:text-purple-400">
                       <Globe className="h-4 w-4" />
                       <span className="text-sm">Global Connection</span>
                     </div>
-                    <div className="text-xs text-slate-400">
+                    <div className="text-xs text-muted-foreground">
                       Advanced AI Technology
                     </div>
                   </div>
@@ -517,11 +517,11 @@ const PremiumComponents = () => {
                   icon={Shield}
                 >
                   <div className="space-y-3">
-                    <div className="flex items-center gap-2 text-green-400">
+                    <div className="flex items-center gap-2 text-green-800 dark:text-green-400">
                       <Shield className="h-4 w-4" />
                       <span className="text-sm">256-bit Encryption</span>
                     </div>
-                    <div className="text-xs text-slate-400">
+                    <div className="text-xs text-muted-foreground">
                       Military Grade Security
                     </div>
                   </div>
@@ -533,13 +533,13 @@ const PremiumComponents = () => {
           {/* Parallax Hero Tab */}
           <TabsContent value="parallax" className="space-y-8">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">{t('showcase.premium.sections.parallaxHero')}</h2>
-              <p className="text-gray-600 dark:text-gray-300">{t('showcase.premium.sections.parallaxHeroDescription')}</p>
+              <h2 className="text-3xl font-bold text-foreground dark:text-white mb-4">{t('showcase.premium.sections.parallaxHero')}</h2>
+              <p className="text-muted-foreground">{t('showcase.premium.sections.parallaxHeroDescription')}</p>
             </div>
 
             <div className="space-y-12">
               <div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">{t('showcase.premium.sections.basicParallaxHero')}</h3>
+                <h3 className="text-2xl font-bold text-foreground dark:text-white mb-4">{t('showcase.premium.sections.basicParallaxHero')}</h3>
                 <ParallaxHero
                   title={t('showcase.premium.sections.basicParallaxHeroTitle')}
                   subtitle={t('showcase.premium.sections.basicParallaxHeroSubtitle')}
@@ -553,7 +553,7 @@ const PremiumComponents = () => {
               </div>
 
               <div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">{t('showcase.premium.sections.parallaxHeroWithStats')}</h3>
+                <h3 className="text-2xl font-bold text-foreground dark:text-white mb-4">{t('showcase.premium.sections.parallaxHeroWithStats')}</h3>
                 <ParallaxHeroWithStats
                   title={t('showcase.premium.sections.parallaxHeroWithStatsTitle')}
                   subtitle={t('showcase.premium.sections.parallaxHeroWithStatsSubtitle')}
@@ -575,13 +575,13 @@ const PremiumComponents = () => {
           {/* Interactive Timeline Tab */}
           <TabsContent value="timeline" className="space-y-8">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">{t('showcase.premium.sections.interactiveTimeline')}</h2>
-              <p className="text-gray-600 dark:text-gray-300">{t('showcase.premium.sections.interactiveTimelineDescription')}</p>
+              <h2 className="text-3xl font-bold text-foreground dark:text-white mb-4">{t('showcase.premium.sections.interactiveTimeline')}</h2>
+              <p className="text-muted-foreground">{t('showcase.premium.sections.interactiveTimelineDescription')}</p>
             </div>
 
             <div className="space-y-12">
               <div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">{t('showcase.premium.sections.verticalTimeline')}</h3>
+                <h3 className="text-2xl font-bold text-foreground dark:text-white mb-4">{t('showcase.premium.sections.verticalTimeline')}</h3>
                 <InteractiveTimeline
                   items={timelineItems}
                   variant="vertical"
@@ -592,7 +592,7 @@ const PremiumComponents = () => {
               </div>
 
               <div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">{t('showcase.premium.sections.horizontalTimeline')}</h3>
+                <h3 className="text-2xl font-bold text-foreground dark:text-white mb-4">{t('showcase.premium.sections.horizontalTimeline')}</h3>
                 <InteractiveTimeline
                   items={timelineItems}
                   variant="horizontal"
@@ -603,7 +603,7 @@ const PremiumComponents = () => {
               </div>
 
               <div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">{t('showcase.premium.sections.cardTimeline')}</h3>
+                <h3 className="text-2xl font-bold text-foreground dark:text-white mb-4">{t('showcase.premium.sections.cardTimeline')}</h3>
                 <InteractiveTimeline
                   items={timelineItems}
                   variant="cards"
@@ -618,19 +618,19 @@ const PremiumComponents = () => {
           {/* Dashboard Widgets Tab */}
           <TabsContent value="widgets" className="space-y-8">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">{t('showcase.premium.sections.dashboardWidgets')}</h2>
-              <p className="text-gray-600 dark:text-gray-300">{t('showcase.premium.sections.dashboardWidgetsDescription')}</p>
+              <h2 className="text-3xl font-bold text-foreground dark:text-white mb-4">{t('showcase.premium.sections.dashboardWidgets')}</h2>
+              <p className="text-muted-foreground">{t('showcase.premium.sections.dashboardWidgetsDescription')}</p>
             </div>
 
             <div className="space-y-12">
               <div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">{t('showcase.premium.sections.metricCards')}</h3>
+                <h3 className="text-2xl font-bold text-foreground dark:text-white mb-4">{t('showcase.premium.sections.metricCards')}</h3>
                 <AnimatedStatsGrid stats={statsData} />
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">{t('showcase.premium.sections.chartWidget')}</h3>
+                  <h3 className="text-2xl font-bold text-foreground dark:text-white mb-4">{t('showcase.premium.sections.chartWidget')}</h3>
                   <AnimatedChartWidget
                     title={t('showcase.premium.sections.chartWidgetTitle')}
                     data={chartData}
@@ -638,7 +638,7 @@ const PremiumComponents = () => {
                 </div>
 
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">{t('showcase.premium.sections.progressRing')}</h3>
+                  <h3 className="text-2xl font-bold text-foreground dark:text-white mb-4">{t('showcase.premium.sections.progressRing')}</h3>
                   <div className="flex justify-center">
                     <AnimatedProgressRing
                       progress={75}
@@ -651,12 +651,12 @@ const PremiumComponents = () => {
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">{t('showcase.premium.sections.activityFeed')}</h3>
+                  <h3 className="text-2xl font-bold text-foreground dark:text-white mb-4">{t('showcase.premium.sections.activityFeed')}</h3>
                   <AnimatedActivityFeed activities={activities} />
                 </div>
 
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">{t('showcase.premium.sections.goalTracker')}</h3>
+                  <h3 className="text-2xl font-bold text-foreground dark:text-white mb-4">{t('showcase.premium.sections.goalTracker')}</h3>
                   <AnimatedGoalTracker goals={goals} />
                 </div>
               </div>
@@ -673,15 +673,15 @@ const PremiumComponents = () => {
           
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {/* Advanced Cards */}
-            <Card className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-950/50 dark:to-indigo-950/50 border-blue-200 dark:border-blue-800">
+            <Card className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 bg-gradient-to-br from-blue-500/10 to-indigo-500/15 dark:from-blue-950/50 dark:to-indigo-950/50 border-blue-200 dark:border-blue-800">
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                    <Monitor className="w-6 h-6 text-white" />
+                    <Monitor className="w-6 h-6 text-foreground" />
                   </div>
-                  <Badge className="bg-blue-500 text-white">Pro</Badge>
+                  <Badge className="bg-blue-600 text-white">Pro</Badge>
                 </div>
-                <CardTitle className="group-hover:text-blue-600 transition-colors">System Monitor</CardTitle>
+                <CardTitle className="group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">System Monitor</CardTitle>
                 <p className="text-sm text-muted-foreground">Real-time system performance tracking</p>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -699,60 +699,60 @@ const PremiumComponents = () => {
                   </div>
                   <Progress value={67} className="h-2" />
                 </div>
-                <div className="flex items-center gap-2 text-green-600">
+                <div className="flex items-center gap-2 text-green-800 dark:text-green-400">
                   <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                   <span className="text-sm font-medium">System Healthy</span>
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 bg-gradient-to-br from-purple-50 to-pink-100 dark:from-purple-950/50 dark:to-pink-950/50 border-purple-200 dark:border-purple-800">
+            <Card className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 bg-gradient-to-br from-purple-500/10 to-pink-500/15 dark:from-purple-950/50 dark:to-pink-950/50 border-purple-200 dark:border-purple-800">
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                    <Heart className="w-6 h-6 text-white" />
+                    <Heart className="w-6 h-6 text-foreground" />
                   </div>
-                  <Badge className="bg-pink-500 text-white">Social</Badge>
+                  <Badge className="bg-pink-600 text-white">Social</Badge>
                 </div>
-                <CardTitle className="group-hover:text-purple-600 transition-colors">Engagement Hub</CardTitle>
+                <CardTitle className="group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">Engagement Hub</CardTitle>
                 <p className="text-sm text-muted-foreground">Social media engagement analytics</p>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="grid grid-cols-3 gap-2 text-center">
                   <div>
-                    <div className="text-lg font-bold text-purple-600">2.4K</div>
+                    <div className="text-lg font-bold text-purple-700 dark:text-purple-400">2.4K</div>
                     <div className="text-xs text-muted-foreground">Likes</div>
                   </div>
                   <div>
-                    <div className="text-lg font-bold text-pink-600">892</div>
+                    <div className="text-lg font-bold text-pink-700 dark:text-pink-400">892</div>
                     <div className="text-xs text-muted-foreground">Shares</div>
                   </div>
                   <div>
-                    <div className="text-lg font-bold text-blue-600">156</div>
+                    <div className="text-lg font-bold text-blue-700 dark:text-blue-400">156</div>
                     <div className="text-xs text-muted-foreground">Comments</div>
                   </div>
                 </div>
                 <div className="flex items-center justify-center gap-2">
-                  <TrendingUp className="h-4 w-4 text-green-500" />
-                  <span className="text-sm font-medium text-green-600">+18.5% this week</span>
+                  <TrendingUp className="h-4 w-4 text-green-600 dark:text-green-400" />
+                  <span className="text-sm font-medium text-green-800 dark:text-green-400">+18.5% this week</span>
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 bg-gradient-to-br from-green-50 to-emerald-100 dark:from-green-950/50 dark:to-emerald-950/50 border-green-200 dark:border-green-800">
+            <Card className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 bg-gradient-to-br from-green-500/10 to-emerald-500/15 dark:from-green-950/50 dark:to-emerald-950/50 border-green-200 dark:border-green-800">
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                    <Rocket className="w-6 h-6 text-white" />
+                    <Rocket className="w-6 h-6 text-foreground" />
                   </div>
-                  <Badge className="bg-green-500 text-white">Launch</Badge>
+                  <Badge className="bg-green-700 text-white">Launch</Badge>
                 </div>
-                <CardTitle className="group-hover:text-green-600 transition-colors">Project Velocity</CardTitle>
+                <CardTitle className="group-hover:text-green-700 dark:group-hover:text-green-400 transition-colors">Project Velocity</CardTitle>
                 <p className="text-sm text-muted-foreground">Development speed and efficiency</p>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-green-600 mb-1">94%</div>
+                  <div className="text-3xl font-bold text-green-800 dark:text-green-400 mb-1">94%</div>
                   <div className="text-sm text-muted-foreground">Completion Rate</div>
                 </div>
                 <div className="space-y-2">
@@ -762,7 +762,7 @@ const PremiumComponents = () => {
                   </div>
                   <Progress value={80} className="h-2" />
                 </div>
-                <div className="flex items-center justify-center gap-2 text-green-600">
+                <div className="flex items-center justify-center gap-2 text-green-800 dark:text-green-400">
                   <Target className="h-4 w-4" />
                   <span className="text-sm font-medium">On Track</span>
                 </div>
@@ -781,19 +781,19 @@ const PremiumComponents = () => {
         >
           <Card className="bg-gradient-to-r from-purple-600 to-blue-600 p-8 text-white">
             <div className="flex items-center justify-center mb-4">
-              <Crown className="h-12 w-12 mr-4 text-yellow-300" />
-              <Star className="h-8 w-8 text-yellow-300" />
+              <Crown className="h-12 w-12 mr-4 text-yellow-600 dark:text-yellow-300" />
+              <Star className="h-8 w-8 text-yellow-600 dark:text-yellow-300" />
             </div>
             <h2 className="text-3xl font-bold mb-4">{t('showcase.premium.footerCta.title')}</h2>
             <p className="text-xl text-purple-100 mb-6 max-w-2xl mx-auto">
               {t('showcase.premium.footerCta.description')}
             </p>
             <div className="flex items-center justify-center gap-4">
-              <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-100">
+              <Button size="lg" className="bg-card text-purple-700 dark:text-purple-400 hover:bg-muted">
                 <Crown className="h-4 w-4 mr-2" />
                 {t('showcase.premium.footerCta.button')}
               </Button>
-              <Button variant="outline" size="lg" className="border-white/30 text-white hover:bg-white/10">
+              <Button variant="outline" size="lg" className="border-border text-foreground hover:bg-foreground/10">
                 <Eye className="h-4 w-4 mr-2" />
                 Daha Fazla Örnek
               </Button>

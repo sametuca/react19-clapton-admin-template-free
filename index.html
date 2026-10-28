@@ -7,7 +7,22 @@
     <title>React19 Admin Template</title>
     <meta name="description" content="Modern React 19 Admin Dashboard Template with TypeScript, Tailwind CSS & Shadcn/ui" />
     <meta name="author" content="React19 Admin Template" />
-    
+    <script>
+      // Apply the saved color mode before first paint to avoid a light/dark flash.
+      (function () {
+        try {
+          var saved = localStorage.getItem('theme');
+          var dark = saved
+            ? saved !== 'light'
+            : window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var root = document.documentElement;
+          root.classList.toggle('dark', dark);
+          root.style.colorScheme = dark ? 'dark' : 'light';
+          var lang = localStorage.getItem('language');
+          if (lang === 'tr' || lang === 'en') root.lang = lang;
+        } catch (e) {}
+      })();
+    </script>
 
 
     <meta property="og:title" content="React19 Admin Template" />

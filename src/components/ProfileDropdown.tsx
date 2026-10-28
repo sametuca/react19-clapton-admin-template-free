@@ -80,7 +80,7 @@ export function ProfileDropdown({ className }: ProfileDropdownProps) {
                 <div className="flex items-center gap-2">
                   <p className="text-sm font-medium leading-none">{user.name}</p>
                   {user.isPremium && (
-                    <Badge variant="secondary" className="h-5 px-2 text-xs bg-gradient-to-r from-yellow-500 to-orange-500 text-white border-0">
+                    <Badge variant="secondary" className="h-5 px-2 text-xs bg-gradient-to-r from-yellow-700 to-orange-700 text-white border-0">
                       <Crown className="h-3 w-3 mr-1" />
                       Premium
                     </Badge>
@@ -97,13 +97,13 @@ export function ProfileDropdown({ className }: ProfileDropdownProps) {
             
             <div className="flex items-center justify-between text-xs">
               <div className="flex items-center gap-1">
-                <Star className="h-3 w-3 text-yellow-500 fill-current" />
+                <Star className="h-3 w-3 text-yellow-800 dark:text-yellow-400 fill-current" />
                 <span className="font-medium">{user.reputation}</span>
                 <span className="text-muted-foreground">Reputasyon</span>
               </div>
               <div className="flex items-center gap-1">
-                <Activity className="h-3 w-3 text-green-500" />
-                <span className="text-green-600 font-medium">Aktif</span>
+                <Activity className="h-3 w-3 text-green-600 dark:text-green-400" />
+                <span className="text-green-800 dark:text-green-400 font-medium">Aktif</span>
               </div>
             </div>
           </div>
@@ -158,7 +158,7 @@ export function ProfileDropdown({ className }: ProfileDropdownProps) {
         
         <DropdownMenuSeparator />
         
-        <DropdownMenuItem onClick={handleLogout} className="text-red-600 focus:text-red-600">
+        <DropdownMenuItem onClick={handleLogout} className="text-red-600 dark:text-red-400 focus:text-red-600 dark:focus:text-red-400">
           <LogOut className="h-4 w-4 mr-2" />
           <span>Çıkış Yap</span>
         </DropdownMenuItem>

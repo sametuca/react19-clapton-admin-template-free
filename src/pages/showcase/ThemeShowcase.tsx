@@ -1,10 +1,12 @@
 import { Helmet } from "react-helmet-async";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ThemeSelector } from "@/components/ThemeSelector";
-import { useTheme, themes } from "@/contexts/ThemeContext";
+import { useTheme, themes, type Theme } from "@/contexts/ThemeContext";
+import { useLanguage } from "@/hooks/useLanguage";
+import { themeChipClasses, themeIcons } from "@/components/theme-meta";
 import { StatsCard } from "@/components/ui/stats-card";
 import { Progress } from "@/components/ui/progress";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -15,11 +17,6 @@ import {
   Sparkles, 
   Star, 
   Zap,
-  Moon,
-  Atom,
-  Gem,
-  Flame,
-  Waves,
   Users,
   DollarSign,
   Activity,
@@ -39,7 +36,6 @@ import {
   Code,
   Brush,
   Layers,
-  Sun,
   Droplets,
   Wind,
   Mountain
@@ -47,6 +43,7 @@ import {
 
 export default function ThemeShowcase() {
   const { theme, setTheme } = useTheme();
+  const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState("overview");
 
   const currentTheme = themes[theme];
@@ -119,28 +116,6 @@ export default function ThemeShowcase() {
     }
   ];
 
-  const themeIcons = {
-    dark: Moon,
-    midnight: Atom,
-    neon: Zap,
-    royal: Crown,
-    aurora: Waves,
-    cyberpunk: Flame,
-    galaxy: Star,
-    emerald: Gem
-  };
-
-  const themeColors = {
-    dark: 'from-slate-600 to-slate-800',
-    midnight: 'from-black to-purple-900',
-    neon: 'from-cyan-400 to-pink-500',
-    royal: 'from-purple-600 to-purple-900',
-    aurora: 'from-green-400 to-blue-600',
-    cyberpunk: 'from-yellow-400 to-pink-600',
-    galaxy: 'from-purple-900 to-pink-600',
-    emerald: 'from-emerald-600 to-green-800'
-  };
-
   const devicePreviews = [
     { name: "Desktop", icon: Monitor, size: "w-full h-64" },
     { name: "Tablet", icon: Tablet, size: "w-3/4 h-48" },
@@ -178,7 +153,7 @@ export default function ThemeShowcase() {
           </p>
           <div className="flex items-center justify-center gap-4">
             <ThemeSelector />
-            <Badge className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white border-0 px-4 py-2">
+            <Badge className="bg-gradient-to-r from-yellow-700 to-orange-700 text-white border-0 px-4 py-2">
               <Crown className="h-4 w-4 mr-2" />
               8 Premium Tema
             </Badge>
@@ -198,23 +173,23 @@ export default function ThemeShowcase() {
             <Card className="premium-card">
               <CardHeader>
                 <CardTitle className="flex items-center gap-3 text-2xl">
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${themeColors[theme as keyof typeof themeColors]} flex items-center justify-center shadow-lg`}>
-                    {React.createElement(themeIcons[theme as keyof typeof themeIcons], { className: "w-6 h-6 text-white" })}
+                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${themeChipClasses[theme as Theme]} flex items-center justify-center shadow-lg`}>
+                    {React.createElement(themeIcons[theme as Theme], { className: "w-6 h-6 text-foreground" })}
                   </div>
-                  Aktif Tema: {currentTheme.name}
+                  Aktif Tema: {t(`theme.names.${theme}`)}
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="grid gap-6 md:grid-cols-2">
                   <div className="space-y-4">
-                    <p className="text-lg text-muted-foreground">{currentTheme.description}</p>
+                    <p className="text-lg text-muted-foreground">{t(`theme.descriptions.${theme}`)}</p>
                     <div className="space-y-3">
                       <h4 className="font-semibold">Renk Paleti</h4>
                       <div className="grid grid-cols-4 gap-2">
                         {Object.entries(currentTheme.colors).slice(0, 8).map(([key, value]) => (
                           <div key={key} className="space-y-1">
                             <div 
-                              className="w-full h-8 rounded-lg border-2 border-white/20 shadow-lg"
+                              className="w-full h-8 rounded-lg border-2 border-border shadow-lg"
                               style={{ backgroundColor: `hsl(${value})` }}
                             />
                             <span className="text-xs font-medium capitalize text-center block">
@@ -232,7 +207,7 @@ export default function ThemeShowcase() {
                         <div key={index} className="p-4 rounded-xl bg-background/50 backdrop-blur-sm border border-border/50 hover:bg-background/70 transition-all duration-300">
                           <div className="flex items-start gap-3">
                             <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${feature.color} flex items-center justify-center shadow-lg`}>
-                              <feature.icon className="w-5 h-5 text-white" />
+                              <feature.icon className="w-5 h-5 text-foreground" />
                             </div>
                             <div className="flex-1">
                               <h5 className="font-medium mb-1">{feature.title}</h5>
@@ -284,7 +259,7 @@ export default function ThemeShowcase() {
             {/* All Themes Grid */}
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
               {Object.entries(themes).map(([themeKey, themeConfig]) => {
-                const Icon = themeIcons[themeKey as keyof typeof themeIcons];
+                const Icon = themeIcons[themeKey as Theme];
                 const isActive = theme === themeKey;
                 
                 return (
@@ -293,22 +268,22 @@ export default function ThemeShowcase() {
                     className={`premium-card cursor-pointer group transition-all duration-300 hover:scale-105 ${
                       isActive ? 'ring-2 ring-primary shadow-xl' : ''
                     }`}
-                    onClick={() => setTheme(themeKey as any)}
+                    onClick={() => setTheme(themeKey as Theme)}
                   >
                     {/* Theme Preview Background */}
                     <div 
                       className="h-32 rounded-t-lg relative overflow-hidden"
                       style={{ background: themeConfig.gradient }}
                     >
-                      <div className="absolute inset-0 bg-black/20" />
+                      <div className="absolute inset-0 bg-foreground/20" />
                       <div className="absolute top-4 left-4">
-                        <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${themeColors[themeKey as keyof typeof themeColors]} flex items-center justify-center shadow-lg`}>
-                          <Icon className="w-5 h-5 text-white" />
+                        <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${themeChipClasses[themeKey as Theme]} flex items-center justify-center shadow-lg`}>
+                          <Icon className="w-5 h-5 text-foreground" />
                         </div>
                       </div>
                       <div className="absolute top-4 right-4">
                         {isActive && (
-                          <Badge variant="default" className="text-xs bg-white text-black">
+                          <Badge variant="default" className="text-xs bg-card text-black">
                             <Check className="h-3 w-3 mr-1" />
                             Aktif
                           </Badge>
@@ -317,15 +292,15 @@ export default function ThemeShowcase() {
                       <div className="absolute bottom-4 left-4 right-4">
                         <div className="flex gap-1">
                           <div 
-                            className="w-3 h-3 rounded-full border border-white/30"
+                            className="w-3 h-3 rounded-full border border-border"
                             style={{ backgroundColor: `hsl(${themeConfig.colors.primary})` }}
                           />
                           <div 
-                            className="w-3 h-3 rounded-full border border-white/30"
+                            className="w-3 h-3 rounded-full border border-border"
                             style={{ backgroundColor: `hsl(${themeConfig.colors.secondary})` }}
                           />
                           <div 
-                            className="w-3 h-3 rounded-full border border-white/30"
+                            className="w-3 h-3 rounded-full border border-border"
                             style={{ backgroundColor: `hsl(${themeConfig.colors.accent})` }}
                           />
                         </div>
@@ -334,10 +309,10 @@ export default function ThemeShowcase() {
                     
                     <CardHeader className="pb-4">
                       <CardTitle className="text-lg group-hover:text-primary transition-colors">
-                        {themeConfig.name}
+                        {t(`theme.names.${themeKey}`)}
                       </CardTitle>
                       <p className="text-sm text-muted-foreground">
-                        {themeConfig.description}
+                        {t(`theme.descriptions.${themeKey}`)}
                       </p>
                     </CardHeader>
                     
@@ -361,7 +336,7 @@ export default function ThemeShowcase() {
                       <div className="flex items-center justify-between pt-2">
                         <Badge 
                           variant="secondary" 
-                          className="text-xs bg-gradient-to-r from-yellow-500/20 to-orange-500/20 text-yellow-600 border-yellow-500/30"
+                          className="text-xs bg-gradient-to-r from-yellow-500/20 to-orange-500/20 text-yellow-800 dark:text-yellow-400 border-yellow-500/30"
                         >
                           <Crown className="h-3 w-3 mr-1" />
                           Premium
@@ -373,7 +348,7 @@ export default function ThemeShowcase() {
                           className="opacity-0 group-hover:opacity-100 transition-opacity"
                           onClick={(e) => {
                             e.stopPropagation();
-                            setTheme(themeKey as any);
+                            setTheme(themeKey as Theme);
                           }}
                         >
                           {isActive ? "Aktif" : "Uygula"}
@@ -431,21 +406,21 @@ export default function ThemeShowcase() {
               <CardContent>
                 <div className="grid gap-4 md:grid-cols-4 lg:grid-cols-8">
                   {Object.entries(themes).map(([themeKey, themeConfig]) => {
-                    const Icon = themeIcons[themeKey as keyof typeof themeIcons];
+                    const Icon = themeIcons[themeKey as Theme];
                     return (
                       <button
                         key={themeKey}
-                        onClick={() => setTheme(themeKey as any)}
+                        onClick={() => setTheme(themeKey as Theme)}
                         className={`p-4 rounded-xl border-2 transition-all duration-300 hover:scale-105 ${
                           theme === themeKey 
                             ? 'border-primary bg-primary/10' 
                             : 'border-border/50 hover:border-primary/50'
                         }`}
                       >
-                        <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${themeColors[themeKey as keyof typeof themeColors]} flex items-center justify-center mx-auto mb-2 shadow-lg`}>
-                          <Icon className="w-4 h-4 text-white" />
+                        <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${themeChipClasses[themeKey as Theme]} flex items-center justify-center mx-auto mb-2 shadow-lg`}>
+                          <Icon className="w-4 h-4 text-foreground" />
                         </div>
-                        <p className="text-xs font-medium">{themeConfig.name}</p>
+                        <p className="text-xs font-medium">{t(`theme.names.${themeKey}`)}</p>
                       </button>
                     );
                   })}
@@ -469,7 +444,7 @@ export default function ThemeShowcase() {
                         <th className="text-center py-3 px-4">Temel</th>
                         <th className="text-center py-3 px-4">
                           <div className="flex items-center justify-center gap-2">
-                            <Crown className="h-4 w-4 text-yellow-500" />
+                            <Crown className="h-4 w-4 text-yellow-600 dark:text-yellow-400" />
                             Premium
                           </div>
                         </th>
@@ -495,9 +470,9 @@ export default function ThemeShowcase() {
 
             {/* Premium Benefits */}
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-              <Card className="text-center p-6 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-950/50 dark:to-indigo-950/50 border-blue-200 dark:border-blue-800">
+              <Card className="text-center p-6 bg-gradient-to-br from-blue-500/10 to-indigo-500/15 dark:from-blue-950/50 dark:to-indigo-950/50 border-blue-200 dark:border-blue-800">
                 <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center mx-auto mb-4 shadow-lg">
-                  <Palette className="h-8 w-8 text-white" />
+                  <Palette className="h-8 w-8 text-foreground" />
                 </div>
                 <h3 className="font-semibold mb-2">8 Benzersiz Tema</h3>
                 <p className="text-sm text-muted-foreground">
@@ -505,9 +480,9 @@ export default function ThemeShowcase() {
                 </p>
               </Card>
               
-              <Card className="text-center p-6 bg-gradient-to-br from-green-50 to-emerald-100 dark:from-green-950/50 dark:to-emerald-950/50 border-green-200 dark:border-green-800">
+              <Card className="text-center p-6 bg-gradient-to-br from-green-500/10 to-emerald-500/15 dark:from-green-950/50 dark:to-emerald-950/50 border-green-200 dark:border-green-800">
                 <div className="w-16 h-16 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center mx-auto mb-4 shadow-lg">
-                  <Sparkles className="h-8 w-8 text-white" />
+                  <Sparkles className="h-8 w-8 text-foreground" />
                 </div>
                 <h3 className="font-semibold mb-2">Özel Efektler</h3>
                 <p className="text-sm text-muted-foreground">
@@ -515,9 +490,9 @@ export default function ThemeShowcase() {
                 </p>
               </Card>
               
-              <Card className="text-center p-6 bg-gradient-to-br from-purple-50 to-pink-100 dark:from-purple-950/50 dark:to-pink-950/50 border-purple-200 dark:border-purple-800">
+              <Card className="text-center p-6 bg-gradient-to-br from-purple-500/10 to-pink-500/15 dark:from-purple-950/50 dark:to-pink-950/50 border-purple-200 dark:border-purple-800">
                 <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center mx-auto mb-4 shadow-lg">
-                  <Zap className="h-8 w-8 text-white" />
+                  <Zap className="h-8 w-8 text-foreground" />
                 </div>
                 <h3 className="font-semibold mb-2">Yüksek Performans</h3>
                 <p className="text-sm text-muted-foreground">
@@ -525,9 +500,9 @@ export default function ThemeShowcase() {
                 </p>
               </Card>
               
-              <Card className="text-center p-6 bg-gradient-to-br from-orange-50 to-red-100 dark:from-orange-950/50 dark:to-red-950/50 border-orange-200 dark:border-orange-800">
+              <Card className="text-center p-6 bg-gradient-to-br from-orange-500/10 to-red-500/15 dark:from-orange-950/50 dark:to-red-950/50 border-orange-200 dark:border-orange-800">
                 <div className="w-16 h-16 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center mx-auto mb-4 shadow-lg">
-                  <Crown className="h-8 w-8 text-white" />
+                  <Crown className="h-8 w-8 text-foreground" />
                 </div>
                 <h3 className="font-semibold mb-2">Premium Destek</h3>
                 <p className="text-sm text-muted-foreground">

@@ -84,7 +84,7 @@ export default function InteractiveForms() {
             type="button"
             onClick={() => onChange(star)}
             className={`p-1 rounded-full transition-colors ${
-              star <= value ? 'text-yellow-500' : 'text-muted-foreground hover:text-yellow-300'
+              star <= value ? 'text-yellow-800 dark:text-yellow-400' : 'text-muted-foreground hover:text-yellow-700 dark:hover:text-yellow-300'
             }`}
           >
             <Star className={`h-6 w-6 ${star <= value ? 'fill-current' : ''}`} />
@@ -326,7 +326,7 @@ export default function InteractiveForms() {
         return (
           <div className="space-y-6">
             <div className="text-center space-y-2">
-              <CheckCircle className="h-12 w-12 mx-auto text-green-500" />
+              <CheckCircle className="h-12 w-12 mx-auto text-green-600 dark:text-green-400" />
               <h3 className="text-2xl font-semibold">{t('showcase.forms.steps.rating.title')}</h3>
               <p className="text-muted-foreground">{t('showcase.forms.steps.rating.description')}</p>
             </div>
@@ -539,23 +539,23 @@ export default function InteractiveForms() {
                 <div className="space-y-2">
                   <Label>{t('showcase.forms.validation.email')}</Label>
                   <Input type="email" placeholder={t('showcase.forms.validation.emailPlaceholder')} />
-                  <p className="text-xs text-green-600">{t('showcase.forms.validation.emailValid')}</p>
+                  <p className="text-xs text-green-800 dark:text-green-400">{t('showcase.forms.validation.emailValid')}</p>
                 </div>
                 
                 <div className="space-y-2">
                   <Label>{t('showcase.forms.validation.strongPassword')}</Label>
                   <Input type="password" placeholder={t('showcase.forms.validation.strongPasswordPlaceholder')} />
                   <div className="space-y-1">
-                    <p className="text-xs text-green-600">{t('showcase.forms.validation.strongPasswordLength')}</p>
-                    <p className="text-xs text-green-600">{t('showcase.forms.validation.strongPasswordUppercase')}</p>
-                    <p className="text-xs text-red-600">{t('showcase.forms.validation.strongPasswordSpecialCharacter')}</p>
+                    <p className="text-xs text-green-800 dark:text-green-400">{t('showcase.forms.validation.strongPasswordLength')}</p>
+                    <p className="text-xs text-green-800 dark:text-green-400">{t('showcase.forms.validation.strongPasswordUppercase')}</p>
+                    <p className="text-xs text-red-600 dark:text-red-400">{t('showcase.forms.validation.strongPasswordSpecialCharacter')}</p>
                   </div>
                 </div>
                 
                 <div className="space-y-2">
                   <Label>{t('showcase.forms.validation.username')}</Label>
                   <Input placeholder={t('showcase.forms.validation.usernamePlaceholder')} />
-                  <p className="text-xs text-green-600">{t('showcase.forms.validation.usernameAvailable')}</p>
+                  <p className="text-xs text-green-800 dark:text-green-400">{t('showcase.forms.validation.usernameAvailable')}</p>
                 </div>
               </CardContent>
             </Card>

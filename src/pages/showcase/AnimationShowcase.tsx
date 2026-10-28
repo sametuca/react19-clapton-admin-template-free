@@ -324,7 +324,7 @@ export default function AnimationShowcase() {
                 <Card className="group">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                      <Heart className="h-5 w-5 group-hover:text-red-500 group-hover:scale-125 transition-all duration-300" />
+                      <Heart className="h-5 w-5 group-hover:text-red-600 dark:group-hover:text-red-400 group-hover:scale-125 transition-all duration-300" />
                       {t('showcase.animation.hover.icon')}
                     </CardTitle>
                   </CardHeader>
@@ -566,7 +566,7 @@ export default function AnimationShowcase() {
                     {/* Güneş */}
                     <div className="absolute inset-0 bg-yellow-400 rounded-full animate-spin-slow" />
                     <div className="absolute inset-2 bg-yellow-300 rounded-full" />
-                    <div className="absolute inset-4 bg-yellow-200 rounded-full animate-pulse" />
+                    <div className="absolute inset-4 bg-yellow-200 dark:bg-yellow-500/20 rounded-full animate-pulse" />
                   </div>
                 </CardContent>
               </Card>
@@ -577,7 +577,7 @@ export default function AnimationShowcase() {
                 </CardHeader>
                 <CardContent className="h-32 overflow-hidden relative bg-gradient-to-b from-blue-400 to-blue-600 rounded-lg">
                   <div className="absolute bottom-0 w-full h-8 bg-green-400 animate-[slideLeft_10s_linear_infinite]" />
-                  <div className="absolute bottom-4 w-full h-4 bg-green-500 animate-[slideRight_8s_linear_infinite]" />
+                  <div className="absolute bottom-4 w-full h-4 bg-green-700 animate-[slideRight_8s_linear_infinite] text-white" />
                   <div className="absolute top-4 left-4 w-8 h-8 bg-yellow-300 rounded-full animate-[float_3s_ease-in-out_infinite]" />
                 </CardContent>
               </Card>
@@ -591,7 +591,7 @@ export default function AnimationShowcase() {
                     {[...Array(10)].map((_, i) => (
                       <div
                         key={i}
-                        className="absolute text-green-400 text-xs font-mono animate-[fall_2s_linear_infinite]"
+                        className="absolute text-green-800 dark:text-green-400 text-xs font-mono animate-[fall_2s_linear_infinite]"
                         style={{
                           left: `${i * 10}%`,
                           animationDelay: `${i * 0.2}s`

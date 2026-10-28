@@ -88,7 +88,7 @@ export default function FormComponents() {
           type="button"
           onClick={() => onChange(star)}
           className={`p-1 rounded-full transition-colors ${
-            star <= value ? 'text-yellow-500' : 'text-muted-foreground hover:text-yellow-300'
+            star <= value ? 'text-yellow-800 dark:text-yellow-400' : 'text-muted-foreground hover:text-yellow-700 dark:hover:text-yellow-300'
           }`}
         >
           <Star className={`h-5 w-5 ${star <= value ? 'fill-current' : ''}`} />
@@ -549,8 +549,8 @@ export default function FormComponents() {
                   <Label htmlFor="username">Kullanıcı Adı</Label>
                   <Input id="username" placeholder="kullanici_adi" />
                   <div className="flex items-center gap-2 text-sm">
-                    <Check className="h-4 w-4 text-green-500" />
-                    <span className="text-green-600">Kullanılabilir</span>
+                    <Check className="h-4 w-4 text-green-600 dark:text-green-400" />
+                    <span className="text-green-800 dark:text-green-400">Kullanılabilir</span>
                   </div>
                 </div>
                 
@@ -558,8 +558,8 @@ export default function FormComponents() {
                   <Label htmlFor="email-validation">E-posta</Label>
                   <Input id="email-validation" type="email" placeholder="email@domain.com" />
                   <div className="flex items-center gap-2 text-sm">
-                    <X className="h-4 w-4 text-red-500" />
-                    <span className="text-red-600">Geçerli bir e-posta adresi girin</span>
+                    <X className="h-4 w-4 text-red-600 dark:text-red-400" />
+                    <span className="text-red-600 dark:text-red-400">Geçerli bir e-posta adresi girin</span>
                   </div>
                 </div>
                 
@@ -570,8 +570,8 @@ export default function FormComponents() {
                     <Input id="phone-validation" placeholder="+90 (5XX) XXX XX XX" className="pl-10" />
                   </div>
                   <div className="flex items-center gap-2 text-sm">
-                    <Check className="h-4 w-4 text-green-500" />
-                    <span className="text-green-600">Geçerli format</span>
+                    <Check className="h-4 w-4 text-green-600 dark:text-green-400" />
+                    <span className="text-green-800 dark:text-green-400">Geçerli format</span>
                   </div>
                 </div>
               </CardContent>
@@ -597,20 +597,20 @@ export default function FormComponents() {
                 
                 <div className="space-y-1 text-sm">
                   <div className="flex items-center gap-2">
-                    <Check className="h-3 w-3 text-green-500" />
-                    <span className="text-green-600">En az 8 karakter</span>
+                    <Check className="h-3 w-3 text-green-600 dark:text-green-400" />
+                    <span className="text-green-800 dark:text-green-400">En az 8 karakter</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Check className="h-3 w-3 text-green-500" />
-                    <span className="text-green-600">Büyük harf içeriyor</span>
+                    <Check className="h-3 w-3 text-green-600 dark:text-green-400" />
+                    <span className="text-green-800 dark:text-green-400">Büyük harf içeriyor</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <X className="h-3 w-3 text-red-500" />
-                    <span className="text-red-600">Özel karakter gerekli</span>
+                    <X className="h-3 w-3 text-red-600 dark:text-red-400" />
+                    <span className="text-red-600 dark:text-red-400">Özel karakter gerekli</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <X className="h-3 w-3 text-red-500" />
-                    <span className="text-red-600">Rakam gerekli</span>
+                    <X className="h-3 w-3 text-red-600 dark:text-red-400" />
+                    <span className="text-red-600 dark:text-red-400">Rakam gerekli</span>
                   </div>
                 </div>
               </CardContent>
@@ -843,7 +843,7 @@ export default function FormComponents() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Check className="h-5 w-5 text-green-500" />
+                  <Check className="h-5 w-5 text-green-600 dark:text-green-400" />
                   Doğrulama
                 </CardTitle>
               </CardHeader>
@@ -857,7 +857,7 @@ export default function FormComponents() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Zap className="h-5 w-5 text-blue-500" />
+                  <Zap className="h-5 w-5 text-blue-700 dark:text-blue-400" />
                   Otomatik Kaydet
                 </CardTitle>
               </CardHeader>
@@ -871,7 +871,7 @@ export default function FormComponents() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Globe className="h-5 w-5 text-purple-500" />
+                  <Globe className="h-5 w-5 text-purple-700 dark:text-purple-400" />
                   Çoklu Dil
                 </CardTitle>
               </CardHeader>
@@ -885,7 +885,7 @@ export default function FormComponents() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Shield className="h-5 w-5 text-orange-500" />
+                  <Shield className="h-5 w-5 text-orange-600 dark:text-orange-400" />
                   Güvenlik
                 </CardTitle>
               </CardHeader>

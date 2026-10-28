@@ -124,7 +124,7 @@ export default function CrmDashboard() {
       action: "Telefon görüşmesi yapıldı",
       time: "10 dakika önce",
       icon: Phone,
-      color: "text-blue-500"
+      color: "text-blue-700 dark:text-blue-400"
     },
     {
       id: 2,
@@ -133,7 +133,7 @@ export default function CrmDashboard() {
       action: "Teklif e-postası gönderildi",
       time: "1 saat önce",
       icon: Mail,
-      color: "text-green-500"
+      color: "text-green-800 dark:text-green-400"
     },
     {
       id: 3,
@@ -142,7 +142,7 @@ export default function CrmDashboard() {
       action: "Toplantı planlandı",
       time: "2 saat önce",
       icon: Calendar,
-      color: "text-purple-500"
+      color: "text-purple-700 dark:text-purple-400"
     },
     {
       id: 4,
@@ -151,7 +151,7 @@ export default function CrmDashboard() {
       action: "Anlaşma kapatıldı",
       time: "3 saat önce",
       icon: CheckCircle,
-      color: "text-orange-500"
+      color: "text-orange-700 dark:text-orange-400"
     }
   ];
 
@@ -190,9 +190,9 @@ export default function CrmDashboard() {
 
   const getStatusBadge = (status: string) => {
     const statusConfig = {
-      hot: { label: "Sıcak", variant: "destructive" as const, color: "bg-red-100 text-red-800" },
-      warm: { label: "Ilık", variant: "secondary" as const, color: "bg-orange-100 text-orange-800" },
-      cold: { label: "Soğuk", variant: "outline" as const, color: "bg-blue-100 text-blue-800" }
+      hot: { label: "Sıcak", variant: "destructive" as const, color: "bg-red-500/15 dark:bg-red-500/20 text-red-800 dark:text-red-300" },
+      warm: { label: "Ilık", variant: "secondary" as const, color: "bg-orange-500/15 dark:bg-orange-500/20 text-orange-800 dark:text-orange-300" },
+      cold: { label: "Soğuk", variant: "outline" as const, color: "bg-blue-500/15 dark:bg-blue-500/20 text-blue-800 dark:text-blue-300" }
     };
     
     const config = statusConfig[status as keyof typeof statusConfig];
@@ -234,7 +234,7 @@ export default function CrmDashboard() {
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-4">
                   <div className="space-y-3">
-                    <p className="text-sm font-medium text-foreground/60 uppercase tracking-wide">
+                    <p className="text-sm font-medium text-muted-foreground uppercase tracking-wide">
                       {stat.title}
                     </p>
                     <p className="text-3xl font-bold text-foreground">
@@ -242,15 +242,15 @@ export default function CrmDashboard() {
                     </p>
                   </div>
                   <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${stat.color} flex items-center justify-center shadow-lg`}>
-                    <stat.icon className="w-7 h-7 text-white" />
+                    <stat.icon className="w-7 h-7 text-foreground" />
                   </div>
                 </div>
                 <div className="flex items-center gap-2 pt-3 border-t border-border/30">
-                  <ArrowUpRight className="w-4 h-4 text-green-400" />
-                  <span className="text-sm font-semibold text-green-400">
+                  <ArrowUpRight className="w-4 h-4 text-green-600 dark:text-green-400" />
+                  <span className="text-sm font-semibold text-green-800 dark:text-green-400">
                     {stat.change}
                   </span>
-                  <span className="text-sm text-foreground/60">
+                  <span className="text-sm text-muted-foreground">
                     son 30 gün
                   </span>
                 </div>
@@ -265,11 +265,11 @@ export default function CrmDashboard() {
               <CardHeader className="pb-6">
                 <CardTitle className="flex items-center gap-3 text-foreground text-xl">
                   <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
-                    <Users className="w-4 h-4 text-white" />
+                    <Users className="w-4 h-4 text-foreground" />
                   </div>
                   Aktif Lead'ler
                 </CardTitle>
-                <CardDescription className="text-foreground/60 text-base">
+                <CardDescription className="text-muted-foreground text-base">
                   En önemli müşteri adaylarınız ve durumları
                 </CardDescription>
               </CardHeader>
@@ -289,7 +289,7 @@ export default function CrmDashboard() {
                           <div className="flex items-start justify-between mb-3">
                             <div>
                               <h3 className="font-semibold text-foreground">{lead.name}</h3>
-                              <div className="flex items-center gap-2 text-sm text-foreground/60">
+                              <div className="flex items-center gap-2 text-sm text-muted-foreground">
                                 <Building className="w-4 h-4" />
                                 {lead.company}
                               </div>
@@ -301,19 +301,19 @@ export default function CrmDashboard() {
                           </div>
                           
                           <div className="grid grid-cols-2 gap-4 text-sm mb-3">
-                            <div className="flex items-center gap-2 text-foreground/60">
+                            <div className="flex items-center gap-2 text-muted-foreground">
                               <Mail className="w-4 h-4" />
                               <span className="truncate">{lead.email}</span>
                             </div>
-                            <div className="flex items-center gap-2 text-foreground/60">
+                            <div className="flex items-center gap-2 text-muted-foreground">
                               <Phone className="w-4 h-4" />
                               <span>{lead.phone}</span>
                             </div>
-                            <div className="flex items-center gap-2 text-foreground/60">
+                            <div className="flex items-center gap-2 text-muted-foreground">
                               <MapPin className="w-4 h-4" />
                               <span>{lead.location}</span>
                             </div>
-                            <div className="flex items-center gap-2 text-foreground/60">
+                            <div className="flex items-center gap-2 text-muted-foreground">
                               <Clock className="w-4 h-4" />
                               <span>{lead.lastContact}</span>
                             </div>
@@ -349,11 +349,11 @@ export default function CrmDashboard() {
               <CardHeader className="pb-6">
                 <CardTitle className="flex items-center gap-3 text-foreground text-xl">
                   <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center">
-                    <Clock className="w-4 h-4 text-white" />
+                    <Clock className="w-4 h-4 text-foreground" />
                   </div>
                   Son Aktiviteler
                 </CardTitle>
-                <CardDescription className="text-foreground/60 text-base">
+                <CardDescription className="text-muted-foreground text-base">
                   Müşteri etkileşimleri ve işlemler
                 </CardDescription>
               </CardHeader>
@@ -373,7 +373,7 @@ export default function CrmDashboard() {
                           <p className="text-sm text-foreground/70 mt-1">
                             {activity.action}
                           </p>
-                          <p className="text-xs text-foreground/50 mt-2">
+                          <p className="text-xs text-muted-foreground mt-2">
                             {activity.time}
                           </p>
                         </div>
@@ -390,11 +390,11 @@ export default function CrmDashboard() {
           <CardHeader className="pb-6">
             <CardTitle className="flex items-center gap-3 text-foreground text-xl">
               <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
-                <Target className="w-4 h-4 text-white" />
+                <Target className="w-4 h-4 text-foreground" />
               </div>
               Satış Pipeline
             </CardTitle>
-            <CardDescription className="text-foreground/60 text-base">
+            <CardDescription className="text-muted-foreground text-base">
               Satış sürecinizdeki fırsatların dağılımı
             </CardDescription>
           </CardHeader>
@@ -409,7 +409,7 @@ export default function CrmDashboard() {
                   
                   <div className="p-4 rounded-xl border border-border/30 bg-gradient-to-br from-background/80 to-foreground/5 text-center">
                     <p className="text-2xl font-bold text-foreground mb-1">{stage.count}</p>
-                    <p className="text-sm text-foreground/60 mb-2">fırsat</p>
+                    <p className="text-sm text-muted-foreground mb-2">fırsat</p>
                     <p className="text-lg font-semibold text-foreground">{stage.value}</p>
                   </div>
                 </div>
@@ -419,15 +419,15 @@ export default function CrmDashboard() {
             <div className="mt-8 p-6 rounded-xl border border-border/30 bg-gradient-to-r from-primary/5 to-primary/10">
               <div className="grid gap-6 md:grid-cols-3 text-center">
                 <div>
-                  <p className="text-sm text-foreground/60 mb-1">Toplam Pipeline</p>
+                  <p className="text-sm text-muted-foreground mb-1">Toplam Pipeline</p>
                   <p className="text-2xl font-bold text-foreground">₺2,394,070</p>
                 </div>
                 <div>
-                  <p className="text-sm text-foreground/60 mb-1">Ortalama Anlaşma</p>
+                  <p className="text-sm text-muted-foreground mb-1">Ortalama Anlaşma</p>
                   <p className="text-2xl font-bold text-foreground">₺20,818</p>
                 </div>
                 <div>
-                  <p className="text-sm text-foreground/60 mb-1">Kapanma Süresi</p>
+                  <p className="text-sm text-muted-foreground mb-1">Kapanma Süresi</p>
                   <p className="text-2xl font-bold text-foreground">18 gün</p>
                 </div>
               </div>

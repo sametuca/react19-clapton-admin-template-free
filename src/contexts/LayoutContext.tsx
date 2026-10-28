@@ -41,7 +41,9 @@ export function LayoutProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     try {
       localStorage.setItem(LS_KEY, JSON.stringify(settings));
-    } catch {}
+    } catch {
+      // storage unavailable (private mode / quota) - ignore
+    }
   }, [settings]);
 
   const setSettings = (update: Partial<LayoutSettings>) => {

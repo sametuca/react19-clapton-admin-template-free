@@ -25,29 +25,29 @@ interface NotificationToastProps {
 const typeConfig = {
   success: {
     icon: CheckCircle,
-    color: 'text-green-600',
-    bgColor: 'bg-green-50 dark:bg-green-950',
+    color: 'text-green-800 dark:text-green-400',
+    bgColor: 'bg-green-500/10 dark:bg-green-950',
     borderColor: 'border-green-200 dark:border-green-800',
     accentColor: 'bg-green-500'
   },
   error: {
     icon: XCircle,
-    color: 'text-red-600',
-    bgColor: 'bg-red-50 dark:bg-red-950',
+    color: 'text-red-600 dark:text-red-400',
+    bgColor: 'bg-red-500/10 dark:bg-red-950',
     borderColor: 'border-red-200 dark:border-red-800',
     accentColor: 'bg-red-500'
   },
   warning: {
     icon: AlertTriangle,
-    color: 'text-yellow-600',
-    bgColor: 'bg-yellow-50 dark:bg-yellow-950',
+    color: 'text-yellow-800 dark:text-yellow-400',
+    bgColor: 'bg-yellow-500/10 dark:bg-yellow-950',
     borderColor: 'border-yellow-200 dark:border-yellow-800',
     accentColor: 'bg-yellow-500'
   },
   info: {
     icon: Info,
-    color: 'text-blue-600',
-    bgColor: 'bg-blue-50 dark:bg-blue-950',
+    color: 'text-blue-700 dark:text-blue-400',
+    bgColor: 'bg-blue-500/10 dark:bg-blue-950',
     borderColor: 'border-blue-200 dark:border-blue-800',
     accentColor: 'bg-blue-500'
   }

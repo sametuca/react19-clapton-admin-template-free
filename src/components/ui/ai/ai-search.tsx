@@ -276,13 +276,13 @@ export function AISearch() {
                   className="flex w-full items-start space-x-3 rounded-xl p-3 text-left transition-all hover:bg-accent hover:scale-[1.02] group"
                 >
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-r from-purple-600/20 to-blue-600/20 border border-purple-500/30">
-                    {result.type === 'page' && <Command className="h-5 w-5 text-purple-400" />}
-                    {result.type === 'user' && <div className="h-5 w-5 rounded-full bg-blue-500" />}
-                    {result.type === 'document' && <div className="h-5 w-5 rounded bg-green-500" />}
-                    {result.type === 'action' && <div className="h-5 w-5 rounded bg-yellow-500" />}
+                    {result.type === 'page' && <Command className="h-5 w-5 text-purple-700 dark:text-purple-400" />}
+                    {result.type === 'user' && <div className="h-5 w-5 rounded-full bg-blue-600 text-white" />}
+                    {result.type === 'document' && <div className="h-5 w-5 rounded bg-green-700 text-white" />}
+                    {result.type === 'action' && <div className="h-5 w-5 rounded bg-yellow-700 text-white" />}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="text-sm font-medium text-foreground group-hover:text-purple-300 transition-colors">
+                    <div className="text-sm font-medium text-foreground group-hover:text-purple-600 dark:group-hover:text-purple-300 transition-colors">
                       {result.title}
                     </div>
                     <div className="mt-1 text-xs text-muted-foreground">

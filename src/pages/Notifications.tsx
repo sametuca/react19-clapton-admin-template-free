@@ -35,9 +35,9 @@ const notifications = [
     time: "2 dakika önce",
     read: false,
     icon: CheckCircle,
-    color: "text-green-500",
-    bgColor: "bg-green-50",
-    borderColor: "border-green-200"
+    color: "text-green-800 dark:text-green-400",
+    bgColor: "bg-green-500/10 dark:bg-green-500/20",
+    borderColor: "border-green-200 dark:border-green-500/30"
   },
   {
     id: 2,
@@ -47,9 +47,9 @@ const notifications = [
     time: "1 saat önce",
     read: false,
     icon: Info,
-    color: "text-blue-500",
-    bgColor: "bg-blue-50",
-    borderColor: "border-blue-200"
+    color: "text-blue-700 dark:text-blue-400",
+    bgColor: "bg-blue-500/10 dark:bg-blue-500/20",
+    borderColor: "border-blue-200 dark:border-blue-500/30"
   },
   {
     id: 3,
@@ -59,9 +59,9 @@ const notifications = [
     time: "3 saat önce",
     read: true,
     icon: AlertTriangle,
-    color: "text-yellow-500",
-    bgColor: "bg-yellow-50",
-    borderColor: "border-yellow-200"
+    color: "text-yellow-800 dark:text-yellow-400",
+    bgColor: "bg-yellow-500/10 dark:bg-yellow-500/20",
+    borderColor: "border-yellow-200 dark:border-yellow-500/30"
   },
   {
     id: 4,
@@ -71,9 +71,9 @@ const notifications = [
     time: "5 saat önce",
     read: true,
     icon: AlertTriangle,
-    color: "text-red-500",
-    bgColor: "bg-red-50",
-    borderColor: "border-red-200"
+    color: "text-red-600 dark:text-red-400",
+    bgColor: "bg-red-500/10 dark:bg-red-500/20",
+    borderColor: "border-red-200 dark:border-red-500/30"
   },
   {
     id: 5,
@@ -83,9 +83,9 @@ const notifications = [
     time: "1 gün önce",
     read: true,
     icon: FileText,
-    color: "text-green-500",
-    bgColor: "bg-green-50",
-    borderColor: "border-green-200"
+    color: "text-green-800 dark:text-green-400",
+    bgColor: "bg-green-500/10 dark:bg-green-500/20",
+    borderColor: "border-green-200 dark:border-green-500/30"
   },
   {
     id: 6,
@@ -95,9 +95,9 @@ const notifications = [
     time: "2 gün önce",
     read: true,
     icon: User,
-    color: "text-blue-500",
-    bgColor: "bg-blue-50",
-    borderColor: "border-blue-200"
+    color: "text-blue-700 dark:text-blue-400",
+    bgColor: "bg-blue-500/10 dark:bg-blue-500/20",
+    borderColor: "border-blue-200 dark:border-blue-500/30"
   }
 ];
 
@@ -270,26 +270,26 @@ export default function Notifications() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
               <div>
                 <div className="flex items-center justify-center mb-2">
-                  <Bell className="h-8 w-8 text-blue-500" />
+                  <Bell className="h-8 w-8 text-blue-700 dark:text-blue-400" />
                 </div>
                 <h3 className="font-semibold mb-1">Toplam Bildirim</h3>
-                <p className="text-2xl font-bold text-blue-500">6</p>
+                <p className="text-2xl font-bold text-blue-700 dark:text-blue-400">6</p>
               </div>
               
               <div>
                 <div className="flex items-center justify-center mb-2">
-                  <Mail className="h-8 w-8 text-green-500" />
+                  <Mail className="h-8 w-8 text-green-600 dark:text-green-400" />
                 </div>
                 <h3 className="font-semibold mb-1">Okunmamış</h3>
-                <p className="text-2xl font-bold text-green-500">2</p>
+                <p className="text-2xl font-bold text-green-800 dark:text-green-400">2</p>
               </div>
               
               <div>
                 <div className="flex items-center justify-center mb-2">
-                  <Clock className="h-8 w-8 text-orange-500" />
+                  <Clock className="h-8 w-8 text-orange-600 dark:text-orange-400" />
                 </div>
                 <h3 className="font-semibold mb-1">Son 24 Saat</h3>
-                <p className="text-2xl font-bold text-orange-500">3</p>
+                <p className="text-2xl font-bold text-orange-700 dark:text-orange-400">3</p>
               </div>
             </div>
           </CardContent>

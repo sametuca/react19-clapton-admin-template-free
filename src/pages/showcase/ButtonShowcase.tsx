@@ -151,52 +151,52 @@ export default function ButtonShowcase() {
   ];
 
   const actionButtons = [
-    { icon: Play, label: t('showcase.buttons.actions.play'), variant: "default", color: "from-green-500 to-emerald-500" },
+    { icon: Play, label: t('showcase.buttons.actions.play'), variant: "default", color: "from-green-700 to-emerald-500" },
     { icon: Pause, label: t('showcase.buttons.actions.pause'), variant: "secondary", color: "from-gray-500 to-slate-500" },
-    { icon: Download, label: t('showcase.buttons.actions.download'), variant: "outline", color: "from-blue-500 to-cyan-500" },
-    { icon: Upload, label: t('showcase.buttons.actions.upload'), variant: "outline", color: "from-purple-500 to-violet-500" },
-    { icon: Save, label: t('showcase.buttons.actions.save'), variant: "default", color: "from-green-500 to-teal-500" },
-    { icon: Edit, label: t('showcase.buttons.actions.edit'), variant: "ghost", color: "from-orange-500 to-amber-500" },
-    { icon: Trash2, label: t('showcase.buttons.actions.delete'), variant: "destructive", color: "from-red-500 to-rose-500" },
-    { icon: Plus, label: t('showcase.buttons.actions.add'), variant: "default", color: "from-indigo-500 to-blue-500" }
+    { icon: Download, label: t('showcase.buttons.actions.download'), variant: "outline", color: "from-blue-600 to-cyan-700" },
+    { icon: Upload, label: t('showcase.buttons.actions.upload'), variant: "outline", color: "from-purple-600 to-violet-500" },
+    { icon: Save, label: t('showcase.buttons.actions.save'), variant: "default", color: "from-green-700 to-teal-700" },
+    { icon: Edit, label: t('showcase.buttons.actions.edit'), variant: "ghost", color: "from-orange-700 to-amber-500" },
+    { icon: Trash2, label: t('showcase.buttons.actions.delete'), variant: "destructive", color: "from-red-600 to-rose-600" },
+    { icon: Plus, label: t('showcase.buttons.actions.add'), variant: "default", color: "from-indigo-600 to-blue-600" }
   ];
 
   const socialButtons = [
-    { icon: Heart, label: t('showcase.buttons.socials.like'), variant: "ghost", color: "from-pink-500 to-rose-500" },
+    { icon: Heart, label: t('showcase.buttons.socials.like'), variant: "ghost", color: "from-pink-600 to-rose-600" },
     { icon: Star, label: t('showcase.buttons.socials.favorite'), variant: "ghost", color: "from-yellow-500 to-amber-500" },
-    { icon: Share, label: t('showcase.buttons.socials.share'), variant: "outline", color: "from-blue-500 to-indigo-500" },
+    { icon: Share, label: t('showcase.buttons.socials.share'), variant: "outline", color: "from-blue-600 to-indigo-600" },
     { icon: Copy, label: t('showcase.buttons.socials.copy'), variant: "secondary", color: "from-gray-500 to-zinc-500" },
-    { icon: Send, label: t('showcase.buttons.socials.send'), variant: "default", color: "from-blue-500 to-cyan-500" },
-    { icon: Mail, label: t('showcase.buttons.socials.email'), variant: "outline", color: "from-red-500 to-orange-500" },
-    { icon: Phone, label: t('showcase.buttons.socials.call'), variant: "default", color: "from-green-500 to-emerald-500" },
-    { icon: MessageCircle, label: t('showcase.buttons.socials.message'), variant: "ghost", color: "from-purple-500 to-pink-500" }
+    { icon: Send, label: t('showcase.buttons.socials.send'), variant: "default", color: "from-blue-600 to-cyan-700" },
+    { icon: Mail, label: t('showcase.buttons.socials.email'), variant: "outline", color: "from-red-600 to-orange-700" },
+    { icon: Phone, label: t('showcase.buttons.socials.call'), variant: "default", color: "from-green-700 to-emerald-500" },
+    { icon: MessageCircle, label: t('showcase.buttons.socials.message'), variant: "ghost", color: "from-purple-600 to-pink-600" }
   ];
 
   const utilityButtons = [
-    { icon: Search, label: t('showcase.buttons.utilities.search'), variant: "outline", color: "from-blue-500 to-cyan-500" },
+    { icon: Search, label: t('showcase.buttons.utilities.search'), variant: "outline", color: "from-blue-600 to-cyan-700" },
     { icon: Filter, label: t('showcase.buttons.utilities.filter'), variant: "secondary", color: "from-gray-500 to-slate-500" },
     { icon: Settings, label: t('showcase.buttons.utilities.settings'), variant: "ghost", color: "from-gray-600 to-zinc-600" },
-    { icon: Bell, label: t('showcase.buttons.utilities.notifications'), variant: "outline", color: "from-yellow-500 to-orange-500" },
-    { icon: User, label: t('showcase.buttons.utilities.profile'), variant: "ghost", color: "from-indigo-500 to-purple-500" },
-    { icon: Lock, label: t('showcase.buttons.utilities.lock'), variant: "secondary", color: "from-red-500 to-pink-500" },
-    { icon: Eye, label: t('showcase.buttons.utilities.view'), variant: "ghost", color: "from-green-500 to-teal-500" },
-    { icon: Calendar, label: t('showcase.buttons.utilities.calendar'), variant: "outline", color: "from-blue-500 to-indigo-500" }
+    { icon: Bell, label: t('showcase.buttons.utilities.notifications'), variant: "outline", color: "from-yellow-500 to-orange-700" },
+    { icon: User, label: t('showcase.buttons.utilities.profile'), variant: "ghost", color: "from-indigo-600 to-purple-600" },
+    { icon: Lock, label: t('showcase.buttons.utilities.lock'), variant: "secondary", color: "from-red-600 to-pink-600" },
+    { icon: Eye, label: t('showcase.buttons.utilities.view'), variant: "ghost", color: "from-green-700 to-teal-700" },
+    { icon: Calendar, label: t('showcase.buttons.utilities.calendar'), variant: "outline", color: "from-blue-600 to-indigo-600" }
   ];
 
   const gradientButtons = [
-    { label: t('showcase.buttons.gradients.gradient1'), gradient: "bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600" },
-    { label: t('showcase.buttons.gradients.gradient2'), gradient: "bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600" },
-    { label: t('showcase.buttons.gradients.gradient3'), gradient: "bg-gradient-to-r from-green-500 to-teal-500 hover:from-green-600 hover:to-teal-600" },
-    { label: t('showcase.buttons.gradients.gradient4'), gradient: "bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600" },
-    { label: t('showcase.buttons.gradients.gradient5'), gradient: "bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600" },
-    { label: t('showcase.buttons.gradients.gradient6'), gradient: "bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600" }
+    { label: t('showcase.buttons.gradients.gradient1'), gradient: "bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700" },
+    { label: t('showcase.buttons.gradients.gradient2'), gradient: "bg-gradient-to-r from-blue-600 to-cyan-700 hover:from-blue-700 hover:to-cyan-800" },
+    { label: t('showcase.buttons.gradients.gradient3'), gradient: "bg-gradient-to-r from-green-700 to-teal-700 hover:from-green-800 hover:to-teal-800" },
+    { label: t('showcase.buttons.gradients.gradient4'), gradient: "bg-gradient-to-r from-orange-700 to-red-600 hover:from-orange-800 hover:to-red-700" },
+    { label: t('showcase.buttons.gradients.gradient5'), gradient: "bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700" },
+    { label: t('showcase.buttons.gradients.gradient6'), gradient: "bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-700 hover:to-rose-700" }
   ];
 
   const glassmorphismButtons = [
-    { label: t('showcase.buttons.glassmorphisms.glassBlue'), style: "bg-blue-500/20 backdrop-blur-md border border-blue-500/30 hover:bg-blue-500/30 text-blue-100" },
-    { label: t('showcase.buttons.glassmorphisms.glassPurple'), style: "bg-purple-500/20 backdrop-blur-md border border-purple-500/30 hover:bg-purple-500/30 text-purple-100" },
-    { label: t('showcase.buttons.glassmorphisms.glassGreen'), style: "bg-green-500/20 backdrop-blur-md border border-green-500/30 hover:bg-green-500/30 text-green-100" },
-    { label: t('showcase.buttons.glassmorphisms.glassPink'), style: "bg-pink-500/20 backdrop-blur-md border border-pink-500/30 hover:bg-pink-500/30 text-pink-100" }
+    { label: t('showcase.buttons.glassmorphisms.glassBlue'), style: "bg-blue-500/20 backdrop-blur-md border border-blue-500/30 hover:bg-blue-500/30 text-blue-700 dark:text-blue-300" },
+    { label: t('showcase.buttons.glassmorphisms.glassPurple'), style: "bg-purple-500/20 backdrop-blur-md border border-purple-500/30 hover:bg-purple-500/30 text-purple-700 dark:text-purple-300" },
+    { label: t('showcase.buttons.glassmorphisms.glassGreen'), style: "bg-green-500/20 backdrop-blur-md border border-green-500/30 hover:bg-green-500/30 text-green-800 dark:text-green-300" },
+    { label: t('showcase.buttons.glassmorphisms.glassPink'), style: "bg-pink-500/20 backdrop-blur-md border border-pink-500/30 hover:bg-pink-500/30 text-pink-700 dark:text-pink-300" }
   ];
 
   const animatedButtons = [
@@ -207,17 +207,17 @@ export default function ButtonShowcase() {
   ];
 
   const iconOnlyButtons = [
-    { icon: Home, color: "from-blue-500 to-cyan-500" },
-    { icon: Search, color: "from-green-500 to-teal-500" },
+    { icon: Home, color: "from-blue-600 to-cyan-700" },
+    { icon: Search, color: "from-green-700 to-teal-700" },
     { icon: Settings, color: "from-gray-500 to-zinc-500" },
-    { icon: Bell, color: "from-yellow-500 to-orange-500" },
-    { icon: User, color: "from-purple-500 to-pink-500" },
-    { icon: Heart, color: "from-red-500 to-rose-500" },
+    { icon: Bell, color: "from-yellow-500 to-orange-700" },
+    { icon: User, color: "from-purple-600 to-pink-600" },
+    { icon: Heart, color: "from-red-600 to-rose-600" },
     { icon: Star, color: "from-amber-500 to-yellow-500" },
-    { icon: Share, color: "from-indigo-500 to-blue-500" },
-    { icon: Download, color: "from-emerald-500 to-green-500" },
-    { icon: Upload, color: "from-violet-500 to-purple-500" },
-    { icon: Edit, color: "from-orange-500 to-amber-500" },
+    { icon: Share, color: "from-indigo-600 to-blue-600" },
+    { icon: Download, color: "from-emerald-500 to-green-700" },
+    { icon: Upload, color: "from-violet-500 to-purple-600" },
+    { icon: Edit, color: "from-orange-700 to-amber-500" },
     { icon: Trash2, color: "from-red-600 to-pink-600" }
   ];
 
@@ -300,12 +300,12 @@ export default function ButtonShowcase() {
         <Card className="glassmorphism-card border-0 shadow-xl">
           <CardHeader>
             <CardTitle className="flex items-center gap-3 text-foreground text-xl">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-pink-500 to-rose-500 flex items-center justify-center">
-                <Heart className="w-4 h-4 text-white" />
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-pink-600 to-rose-600 flex items-center justify-center">
+                <Heart className="w-4 h-4 text-foreground" />
               </div>
               {t('showcase.buttons.sections.socials')}
             </CardTitle>
-            <CardDescription className="text-foreground/60 text-base">
+            <CardDescription className="text-muted-foreground text-base">
               {t('showcase.buttons.sections.socialsDescription')}
             </CardDescription>
           </CardHeader>
@@ -325,12 +325,12 @@ export default function ButtonShowcase() {
         <Card className="glassmorphism-card border-0 shadow-xl">
           <CardHeader>
             <CardTitle className="flex items-center gap-3 text-foreground text-xl">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-indigo-500 flex items-center justify-center">
-                <Search className="w-4 h-4 text-white" />
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-600 to-indigo-600 flex items-center justify-center">
+                <Search className="w-4 h-4 text-foreground" />
               </div>
               {t('showcase.buttons.sections.utilities')}
             </CardTitle>
-            <CardDescription className="text-foreground/60 text-base">
+            <CardDescription className="text-muted-foreground text-base">
               {t('showcase.buttons.sections.utilitiesDescription')}
             </CardDescription>
           </CardHeader>
@@ -350,12 +350,12 @@ export default function ButtonShowcase() {
         <Card className="glassmorphism-card border-0 shadow-xl">
           <CardHeader>
             <CardTitle className="flex items-center gap-3 text-foreground text-xl">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-pink-500 flex items-center justify-center">
-                <Palette className="w-4 h-4 text-white" />
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-700 to-pink-600 flex items-center justify-center">
+                <Palette className="w-4 h-4 text-foreground" />
               </div>
               {t('showcase.buttons.sections.gradients')}
             </CardTitle>
-            <CardDescription className="text-foreground/60 text-base">
+            <CardDescription className="text-muted-foreground text-base">
               {t('showcase.buttons.sections.gradientsDescription')}
             </CardDescription>
           </CardHeader>
@@ -377,12 +377,12 @@ export default function ButtonShowcase() {
         <Card className="glassmorphism-card border-0 shadow-xl">
           <CardHeader>
             <CardTitle className="flex items-center gap-3 text-foreground text-xl">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center">
-                <Droplets className="w-4 h-4 text-white" />
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-700 to-blue-600 flex items-center justify-center">
+                <Droplets className="w-4 h-4 text-foreground" />
               </div>
               {t('showcase.buttons.sections.glassmorphisms')}
             </CardTitle>
-            <CardDescription className="text-foreground/60 text-base">
+            <CardDescription className="text-muted-foreground text-base">
               {t('showcase.buttons.sections.glassmorphismsDescription')}
             </CardDescription>
           </CardHeader>
@@ -404,12 +404,12 @@ export default function ButtonShowcase() {
         <Card className="glassmorphism-card border-0 shadow-xl">
           <CardHeader>
             <CardTitle className="flex items-center gap-3 text-foreground text-xl">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-purple-500 flex items-center justify-center">
-                <Zap className="w-4 h-4 text-white" />
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center">
+                <Zap className="w-4 h-4 text-foreground" />
               </div>
               {t('showcase.buttons.sections.animations')}
             </CardTitle>
-            <CardDescription className="text-foreground/60 text-base">
+            <CardDescription className="text-muted-foreground text-base">
               {t('showcase.buttons.sections.animationsDescription')}
             </CardDescription>
           </CardHeader>
@@ -432,12 +432,12 @@ export default function ButtonShowcase() {
         <Card className="glassmorphism-card border-0 shadow-xl">
           <CardHeader>
             <CardTitle className="flex items-center gap-3 text-foreground text-xl">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center">
-                <Star className="w-4 h-4 text-white" />
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-700 flex items-center justify-center">
+                <Star className="w-4 h-4 text-foreground" />
               </div>
               {t('showcase.buttons.sections.icons')}
             </CardTitle>
-            <CardDescription className="text-foreground/60 text-base">
+            <CardDescription className="text-muted-foreground text-base">
               {t('showcase.buttons.sections.iconsDescription')}
             </CardDescription>
           </CardHeader>
@@ -448,7 +448,7 @@ export default function ButtonShowcase() {
                   key={index}
                   className={`w-12 h-12 rounded-xl bg-gradient-to-br ${button.color} flex items-center justify-center shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300`}
                 >
-                  <button.icon className="w-5 h-5 text-white" />
+                  <button.icon className="w-5 h-5 text-foreground" />
                 </button>
               ))}
             </div>
@@ -459,46 +459,46 @@ export default function ButtonShowcase() {
         <Card className="glassmorphism-card border-0 shadow-xl">
           <CardHeader>
             <CardTitle className="flex items-center gap-3 text-foreground text-xl">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-yellow-500 to-orange-500 flex items-center justify-center">
-                <Sparkles className="w-4 h-4 text-white" />
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-yellow-500 to-orange-700 flex items-center justify-center">
+                <Sparkles className="w-4 h-4 text-foreground" />
               </div>
               {t('showcase.buttons.sections.specialEffects')}
             </CardTitle>
-            <CardDescription className="text-foreground/60 text-base">
+            <CardDescription className="text-muted-foreground text-base">
               {t('showcase.buttons.sections.specialEffectsDescription')}
             </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {/* Neon Button */}
-              <button className="px-8 py-4 bg-transparent border-2 border-cyan-400 text-cyan-400 rounded-lg font-semibold hover:bg-cyan-400 hover:text-black transition-all duration-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.6)] hover:animate-pulse">
+              <button className="px-8 py-4 bg-transparent border-2 border-cyan-400 text-cyan-700 dark:text-cyan-400 rounded-lg font-semibold hover:bg-cyan-400 hover:text-black transition-all duration-300 hover:shadow-[0_0_20px_rgba(34,211,238,0.6)] hover:animate-pulse">
                 {t('showcase.buttons.specialEffects.neon')}
               </button>
 
               {/* 3D Button */}
-              <button className="px-8 py-4 bg-gradient-to-b from-blue-500 to-blue-600 text-white rounded-lg font-semibold shadow-lg hover:shadow-xl transform hover:translate-y-[-2px] active:translate-y-[1px] transition-all duration-200 border-b-4 border-blue-700 hover:border-blue-800">
+              <button className="px-8 py-4 bg-gradient-to-b from-blue-600 to-blue-600 text-white rounded-lg font-semibold shadow-lg hover:shadow-xl transform hover:translate-y-[-2px] active:translate-y-[1px] transition-all duration-200 border-b-4 border-blue-700 hover:border-blue-800">
                 {t('showcase.buttons.specialEffects.threeD')}
               </button>
 
               {/* Ripple Button */}
-              <button className="px-8 py-4 bg-purple-500 text-white rounded-lg font-semibold relative overflow-hidden hover:bg-purple-600 transition-colors duration-300 group">
+              <button className="px-8 py-4 bg-purple-600 text-white rounded-lg font-semibold relative overflow-hidden hover:bg-purple-600 transition-colors duration-300 group">
                 <span className="relative z-10">{t('showcase.buttons.specialEffects.ripple')}</span>
-                <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300 rounded-lg"></div>
+                <div className="absolute inset-0 bg-card opacity-0 group-hover:opacity-20 transition-opacity duration-300 rounded-lg"></div>
               </button>
 
               {/* Slide Button */}
-              <button className="px-8 py-4 bg-green-500 text-white rounded-lg font-semibold relative overflow-hidden hover:text-green-500 transition-colors duration-300 group">
+              <button className="px-8 py-4 bg-green-700 text-white rounded-lg font-semibold relative overflow-hidden hover:text-green-500 transition-colors duration-300 group">
                 <span className="relative z-10">{t('showcase.buttons.specialEffects.slide')}</span>
-                <div className="absolute inset-0 bg-white transform translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300"></div>
+                <div className="absolute inset-0 bg-card transform translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300"></div>
               </button>
 
               {/* Glow Button */}
-              <button className="px-8 py-4 bg-pink-500 text-white rounded-lg font-semibold hover:shadow-[0_0_30px_rgba(236,72,153,0.6)] transition-all duration-300 hover:bg-pink-600">
+              <button className="px-8 py-4 bg-pink-600 text-white rounded-lg font-semibold hover:shadow-[0_0_30px_rgba(236,72,153,0.6)] transition-all duration-300 hover:bg-pink-600">
                 {t('showcase.buttons.specialEffects.glow')}
               </button>
 
               {/* Border Animation */}
-              <button className="px-8 py-4 bg-transparent border-2 border-orange-400 text-orange-400 rounded-lg font-semibold relative overflow-hidden hover:text-white transition-colors duration-300 group">
+              <button className="px-8 py-4 bg-transparent border-2 border-orange-400 text-orange-700 dark:text-orange-400 rounded-lg font-semibold relative overflow-hidden hover:text-foreground transition-colors duration-300 group">
                 <span className="relative z-10">{t('showcase.buttons.specialEffects.borderAnimation')}</span>
                 <div className="absolute inset-0 bg-orange-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
               </button>
@@ -510,12 +510,12 @@ export default function ButtonShowcase() {
         <Card className="glassmorphism-card border-0 shadow-xl">
           <CardHeader>
             <CardTitle className="flex items-center gap-3 text-foreground text-xl">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center">
-                <Clock className="w-4 h-4 text-white" />
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center">
+                <Clock className="w-4 h-4 text-foreground" />
               </div>
               {t('showcase.buttons.sections.loadingStates')}
             </CardTitle>
-            <CardDescription className="text-foreground/60 text-base">
+            <CardDescription className="text-muted-foreground text-base">
               {t('showcase.buttons.sections.loadingStatesDescription')}
             </CardDescription>
           </CardHeader>

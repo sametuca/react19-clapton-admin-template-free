@@ -95,7 +95,7 @@ export function MorphingButton({
       disabled={state === 'loading'}
       className={cn(
         "transition-all duration-300 overflow-hidden relative",
-        state === 'success' && "bg-green-600 hover:bg-green-700 text-white",
+        state === 'success' && "bg-green-700 hover:bg-green-700 text-white",
         state === 'loading' && "cursor-not-allowed",
         className
       )}

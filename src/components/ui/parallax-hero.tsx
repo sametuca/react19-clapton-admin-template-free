@@ -75,7 +75,7 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
             style={{ backgroundImage: `url(${backgroundImage})` }}
           />
         ) : (
-          <div className="w-full h-full bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900" />
+          <div className="w-full h-full bg-gradient-to-br from-card via-primary/30 to-card" />
         )}
         
         {/* Animated Background Pattern */}
@@ -119,7 +119,7 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
         className="relative z-10 flex items-center justify-center h-full"
         style={{ opacity: springOpacity }}
       >
-        <div className="text-center text-white px-4 max-w-4xl mx-auto">
+        <div className="text-center text-foreground px-4 max-w-4xl mx-auto">
           {/* Subtitle */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -127,7 +127,7 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mb-6"
           >
-            <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm font-medium text-purple-200 border border-white/20">
+            <span className="inline-block px-4 py-2 bg-foreground/10 backdrop-blur-sm rounded-full text-sm font-medium text-purple-200 border border-border">
               {subtitle}
             </span>
           </motion.div>
@@ -139,7 +139,7 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight"
           >
-            <span className="bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-foreground via-purple-200 to-blue-200 bg-clip-text text-transparent">
               {title}
             </span>
           </motion.h1>
@@ -150,7 +150,7 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed"
+              className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed"
             >
               {description}
             </motion.p>
@@ -178,7 +178,7 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
                 onClick={secondaryCtaAction}
                 variant="outline"
                 size="lg"
-                className="border-white/30 text-white hover:bg-white/10 px-8 py-4 text-lg font-semibold backdrop-blur-sm"
+                className="border-border text-foreground hover:bg-foreground/10 px-8 py-4 text-lg font-semibold backdrop-blur-sm"
               >
                 {secondaryCtaText}
               </Button>
@@ -209,12 +209,12 @@ export const ParallaxHero: React.FC<ParallaxHeroProps> = ({
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center"
+          className="w-6 h-10 border-2 border-border rounded-full flex justify-center"
         >
           <motion.div
             animate={{ y: [0, 12, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="w-1 h-3 bg-white/60 rounded-full mt-2"
+            className="w-1 h-3 bg-foreground/60 rounded-full mt-2"
           />
         </motion.div>
       </motion.div>
@@ -245,11 +245,11 @@ export const ParallaxHeroWithStats: React.FC<ParallaxHeroWithStatsProps> = ({
       >
         {stats.map((stat, index) => (
           <div key={index} className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-white mb-2">
+            <div className="text-3xl md:text-4xl font-bold text-foreground mb-2">
               {stat.icon && <span className="mr-2">{stat.icon}</span>}
               {stat.number}
             </div>
-            <div className="text-sm text-gray-300">{stat.label}</div>
+            <div className="text-sm text-muted-foreground">{stat.label}</div>
           </div>
         ))}
       </motion.div>

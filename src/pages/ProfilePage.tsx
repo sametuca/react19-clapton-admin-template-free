@@ -197,28 +197,28 @@ export default function ProfilePage() {
       title: "Proje Lideri",
       description: "5+ büyük projeyi başarıyla tamamladı",
       icon: Trophy,
-      color: "text-yellow-500",
+      color: "text-yellow-800 dark:text-yellow-400",
       date: "2024-03-15"
     },
     {
       title: "Kod Kalitesi Uzmanı",
       description: "Code review'larda %98 onay oranı",
       icon: Award,
-      color: "text-blue-500",
+      color: "text-blue-700 dark:text-blue-400",
       date: "2024-02-20"
     },
     {
       title: "Mentor",
       description: "10+ junior developer'ı mentorladı",
       icon: Users,
-      color: "text-green-500",
+      color: "text-green-800 dark:text-green-400",
       date: "2024-01-10"
     },
     {
       title: "İnovasyon Ödülü",
       description: "Yenilikçi çözümler için ödül aldı",
       icon: Rocket,
-      color: "text-purple-500",
+      color: "text-purple-700 dark:text-purple-400",
       date: "2023-12-05"
     }
   ];
@@ -229,28 +229,28 @@ export default function ProfilePage() {
       target: "E-commerce Dashboard",
       time: "2 saat önce",
       icon: Plus,
-      color: "text-blue-500"
+      color: "text-blue-700 dark:text-blue-400"
     },
     {
       action: "Code review tamamladı",
       target: "Authentication Module",
       time: "4 saat önce",
       icon: CheckCircle,
-      color: "text-green-500"
+      color: "text-green-800 dark:text-green-400"
     },
     {
       action: "Dokümantasyon güncelledi",
       target: "API Documentation",
       time: "1 gün önce",
       icon: FileText,
-      color: "text-purple-500"
+      color: "text-purple-700 dark:text-purple-400"
     },
     {
       action: "Bug fix yaptı",
       target: "User Management",
       time: "2 gün önce",
       icon: Settings,
-      color: "text-orange-500"
+      color: "text-orange-700 dark:text-orange-400"
     }
   ];
 
@@ -377,19 +377,19 @@ export default function ProfilePage() {
                 {/* Quick Stats */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-blue-600">{profile.stats.projectsCompleted}</div>
+                    <div className="text-2xl font-bold text-blue-700 dark:text-blue-400">{profile.stats.projectsCompleted}</div>
                     <div className="text-sm text-muted-foreground">Proje</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-green-600">{profile.stats.tasksCompleted}</div>
+                    <div className="text-2xl font-bold text-green-800 dark:text-green-400">{profile.stats.tasksCompleted}</div>
                     <div className="text-sm text-muted-foreground">Görev</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-purple-600">{profile.stats.totalLogins}</div>
+                    <div className="text-2xl font-bold text-purple-700 dark:text-purple-400">{profile.stats.totalLogins}</div>
                     <div className="text-sm text-muted-foreground">Giriş</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-orange-600">{profile.stats.reputation}</div>
+                    <div className="text-2xl font-bold text-orange-700 dark:text-orange-400">{profile.stats.reputation}</div>
                     <div className="text-sm text-muted-foreground">Puan</div>
                   </div>
                 </div>
@@ -507,33 +507,33 @@ export default function ProfilePage() {
                     <div className="space-y-4">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                          <Activity className="h-4 w-4 text-blue-500" />
+                          <Activity className="h-4 w-4 text-blue-700 dark:text-blue-400" />
                           <span className="text-sm">Toplam Giriş</span>
                         </div>
                         <span className="font-semibold">{profile.stats.totalLogins}</span>
                       </div>
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                          <Clock className="h-4 w-4 text-green-500" />
+                          <Clock className="h-4 w-4 text-green-600 dark:text-green-400" />
                           <span className="text-sm">Son Giriş</span>
                         </div>
                         <span className="font-semibold">{profile.stats.lastLogin}</span>
                       </div>
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                          <Target className="h-4 w-4 text-purple-500" />
+                          <Target className="h-4 w-4 text-purple-700 dark:text-purple-400" />
                           <span className="text-sm">Tamamlanan Görev</span>
                         </div>
                         <span className="font-semibold">{profile.stats.tasksCompleted}</span>
                       </div>
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                          <Star className="h-4 w-4 text-yellow-500" />
+                          <Star className="h-4 w-4 text-yellow-600 dark:text-yellow-400" />
                           <span className="text-sm">Reputasyon</span>
                         </div>
                         <div className="flex items-center gap-1">
                           <span className="font-semibold">{profile.stats.reputation}</span>
-                          <Star className="h-3 w-3 text-yellow-500 fill-current" />
+                          <Star className="h-3 w-3 text-yellow-800 dark:text-yellow-400 fill-current" />
                         </div>
                       </div>
                     </div>
@@ -960,24 +960,24 @@ export default function ProfilePage() {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
-                    <div className="flex items-center gap-3 p-3 rounded-lg bg-green-50 dark:bg-green-950 border border-green-200 dark:border-green-800">
-                      <CheckCircle className="h-4 w-4 text-green-600" />
+                    <div className="flex items-center gap-3 p-3 rounded-lg bg-green-500/10 dark:bg-green-950 border border-green-200 dark:border-green-800">
+                      <CheckCircle className="h-4 w-4 text-green-600 dark:text-green-400" />
                       <div className="flex-1">
                         <p className="text-sm font-medium">Başarılı giriş</p>
                         <p className="text-xs text-muted-foreground">2 saat önce - Chrome, Windows</p>
                       </div>
                     </div>
                     
-                    <div className="flex items-center gap-3 p-3 rounded-lg bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800">
-                      <Info className="h-4 w-4 text-blue-600" />
+                    <div className="flex items-center gap-3 p-3 rounded-lg bg-blue-500/10 dark:bg-blue-950 border border-blue-200 dark:border-blue-800">
+                      <Info className="h-4 w-4 text-blue-700 dark:text-blue-400" />
                       <div className="flex-1">
                         <p className="text-sm font-medium">Şifre değiştirildi</p>
                         <p className="text-xs text-muted-foreground">45 gün önce</p>
                       </div>
                     </div>
                     
-                    <div className="flex items-center gap-3 p-3 rounded-lg bg-yellow-50 dark:bg-yellow-950 border border-yellow-200 dark:border-yellow-800">
-                      <AlertTriangle className="h-4 w-4 text-yellow-600" />
+                    <div className="flex items-center gap-3 p-3 rounded-lg bg-yellow-500/10 dark:bg-yellow-950 border border-yellow-200 dark:border-yellow-800">
+                      <AlertTriangle className="h-4 w-4 text-yellow-600 dark:text-yellow-400" />
                       <div className="flex-1">
                         <p className="text-sm font-medium">Şüpheli giriş denemesi</p>
                         <p className="text-xs text-muted-foreground">1 hafta önce - Engellendi</p>

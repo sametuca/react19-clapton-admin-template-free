@@ -262,7 +262,7 @@ export default function StatsCards() {
               description={t('showcase.stats.cards.trafficIncrease')}
               icon={BarChart3}
               spotlightColor="blue"
-              className="p-6 bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-950/50 dark:to-indigo-950/50 border-blue-200 dark:border-blue-800"
+              className="p-6 bg-gradient-to-br from-blue-500/10 to-indigo-500/15 dark:from-blue-950/50 dark:to-indigo-950/50 border-blue-200 dark:border-blue-800"
             >
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
@@ -271,17 +271,17 @@ export default function StatsCards() {
                 <div className="space-y-2">
                   <div className="flex justify-between text-sm">
                     <span className="text-muted-foreground">{t('showcase.stats.cards.trafficIncrease')}</span>
-                    <span className="font-medium text-green-600">+24.5%</span>
+                    <span className="font-medium text-green-800 dark:text-green-400">+24.5%</span>
                   </div>
                   <Progress value={75} className="h-2" />
                 </div>
                 <div className="grid grid-cols-2 gap-4 text-center">
                   <div>
-                    <div className="text-2xl font-bold text-blue-600">89.2K</div>
+                    <div className="text-2xl font-bold text-blue-700 dark:text-blue-400">89.2K</div>
                     <div className="text-xs text-muted-foreground">{t('showcase.stats.cards.visitors')}</div>
                   </div>
                   <div>
-                    <div className="text-2xl font-bold text-purple-600">4.8</div>
+                    <div className="text-2xl font-bold text-purple-700 dark:text-purple-400">4.8</div>
                     <div className="text-xs text-muted-foreground">{t('showcase.stats.cards.average')}</div>
                   </div>
                 </div>
@@ -294,7 +294,7 @@ export default function StatsCards() {
               description={t('showcase.stats.cards.tasksCompleted')}
               icon={Users}
               spotlightColor="green"
-              className="p-6 bg-gradient-to-br from-green-50 to-emerald-100 dark:from-green-950/50 dark:to-emerald-950/50 border-green-200 dark:border-green-800"
+              className="p-6 bg-gradient-to-br from-green-500/10 to-emerald-500/15 dark:from-green-950/50 dark:to-emerald-950/50 border-green-200 dark:border-green-800"
             >
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
@@ -319,7 +319,7 @@ export default function StatsCards() {
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="text-center">
-                    <div className="text-xl font-bold text-green-600">85%</div>
+                    <div className="text-xl font-bold text-green-800 dark:text-green-400">85%</div>
                     <div className="text-xs text-muted-foreground">{t('showcase.stats.cards.productivity')}</div>
                   </div>
                   <Button size="sm" variant="outline" className="h-8">
@@ -336,17 +336,17 @@ export default function StatsCards() {
               description={t('showcase.stats.cards.thisMonth')}
               icon={TrendingUp}
               spotlightColor="purple"
-              className="p-6 bg-gradient-to-br from-purple-50 to-pink-100 dark:from-purple-950/50 dark:to-pink-950/50 border-purple-200 dark:border-purple-800"
+              className="p-6 bg-gradient-to-br from-purple-500/10 to-pink-500/15 dark:from-purple-950/50 dark:to-pink-950/50 border-purple-200 dark:border-purple-800"
             >
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <Badge variant="default" className="bg-purple-500">
+                  <Badge variant="default" className="bg-purple-600 text-white">
                     <ArrowUpRight className="h-3 w-3 mr-1" />
                     +18%
                   </Badge>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-purple-600">₺245.8K</div>
+                  <div className="text-3xl font-bold text-purple-700 dark:text-purple-400">₺245.8K</div>
                   <div className="text-sm text-muted-foreground">{t('showcase.stats.cards.thisMonth')}</div>
                 </div>
                 <div className="space-y-2">
@@ -356,7 +356,7 @@ export default function StatsCards() {
                   </div>
                   <Progress value={88} className="h-2" />
                 </div>
-                <div className="flex items-center gap-2 text-sm text-green-600">
+                <div className="flex items-center gap-2 text-sm text-green-800 dark:text-green-400">
                   <TrendingUp className="h-4 w-4" />
                   <span>{t('showcase.stats.cards.revenueIncrease')}</span>
                 </div>

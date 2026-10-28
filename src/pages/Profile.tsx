@@ -35,7 +35,7 @@ const activities = [
     description: "Sisteme giriş yapıldı",
     time: "2 dakika önce",
     icon: Activity,
-    color: "text-green-500"
+    color: "text-green-800 dark:text-green-400"
   },
   {
     id: 2,
@@ -43,7 +43,7 @@ const activities = [
     description: "Profil bilgileri güncellendi",
     time: "1 saat önce",
     icon: Edit,
-    color: "text-blue-500"
+    color: "text-blue-700 dark:text-blue-400"
   },
   {
     id: 3,
@@ -51,7 +51,7 @@ const activities = [
     description: "Yeni rapor yüklendi",
     time: "3 saat önce",
     icon: FileText,
-    color: "text-purple-500"
+    color: "text-purple-700 dark:text-purple-400"
   },
   {
     id: 4,
@@ -59,15 +59,15 @@ const activities = [
     description: "Yeni kullanıcı eklendi",
     time: "1 gün önce",
     icon: Users,
-    color: "text-orange-500"
+    color: "text-orange-700 dark:text-orange-400"
   }
 ];
 
 const stats = [
-  { label: "Toplam Giriş", value: "1,247", icon: Activity, color: "text-blue-500" },
-  { label: "Son Giriş", value: "2 dk önce", icon: Clock, color: "text-green-500" },
-  { label: "Aktif Oturum", value: "1", icon: Users, color: "text-purple-500" },
-  { label: "Toplam İşlem", value: "89", icon: FileText, color: "text-orange-500" }
+  { label: "Toplam Giriş", value: "1,247", icon: Activity, color: "text-blue-700 dark:text-blue-400" },
+  { label: "Son Giriş", value: "2 dk önce", icon: Clock, color: "text-green-800 dark:text-green-400" },
+  { label: "Aktif Oturum", value: "1", icon: Users, color: "text-purple-700 dark:text-purple-400" },
+  { label: "Toplam İşlem", value: "89", icon: FileText, color: "text-orange-700 dark:text-orange-400" }
 ];
 
 const skills = [
@@ -151,7 +151,7 @@ export default function Profile() {
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-muted-foreground">Müşteri Memnuniyeti</span>
                     <div className="flex items-center gap-1">
-                      <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                      <Star className="h-4 w-4 fill-yellow-400 text-yellow-800 dark:text-yellow-400" />
                       <span className="font-semibold">4.9</span>
                     </div>
                   </div>
@@ -296,7 +296,7 @@ export default function Profile() {
                   <div className="space-y-4">
                     <div className="flex items-center justify-between p-3 border rounded-lg">
                       <div className="flex items-center gap-3">
-                        <Award className="h-8 w-8 text-yellow-500" />
+                        <Award className="h-8 w-8 text-yellow-600 dark:text-yellow-400" />
                         <div>
                           <p className="font-medium">AWS Certified Developer</p>
                           <p className="text-sm text-muted-foreground">Amazon Web Services • 2023</p>
@@ -307,7 +307,7 @@ export default function Profile() {
                     
                     <div className="flex items-center justify-between p-3 border rounded-lg">
                       <div className="flex items-center gap-3">
-                        <Award className="h-8 w-8 text-blue-500" />
+                        <Award className="h-8 w-8 text-blue-700 dark:text-blue-400" />
                         <div>
                           <p className="font-medium">React Developer Certification</p>
                           <p className="text-sm text-muted-foreground">Meta • 2022</p>

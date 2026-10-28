@@ -31,7 +31,7 @@ export function FeatureCard({
   return (
     <Card className={cn(
       "relative overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-[1.02] group",
-      gradient && "bg-gradient-to-br from-white to-gray-50/50 dark:from-gray-900 dark:to-gray-800/50",
+      gradient && "bg-card",
       className
     )}>
       <CardHeader className="pb-4">

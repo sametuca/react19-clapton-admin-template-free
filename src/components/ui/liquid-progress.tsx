@@ -124,7 +124,7 @@ export function LiquidProgress({
           "absolute inset-0 flex items-center justify-center font-bold",
           textSizes[size]
         )}>
-          <span className="text-white mix-blend-difference">
+          <span className="text-foreground mix-blend-difference">
             {Math.round(animatedValue)}%
           </span>
         </div>

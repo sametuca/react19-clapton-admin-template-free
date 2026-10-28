@@ -43,7 +43,7 @@ export function PricingCard({
   const variantClasses = {
     default: 'bg-card border-border',
     gradient: 'bg-gradient-to-br from-primary/5 via-background to-secondary/5 border-primary/20',
-    glass: 'bg-background/50 backdrop-blur-lg border-white/20',
+    glass: 'bg-background/50 backdrop-blur-lg border-border',
     neon: 'bg-background border-primary/50 hover:shadow-[0_0_20px_rgba(59,130,246,0.3)]'
   };
 
@@ -68,7 +68,7 @@ export function PricingCard({
       {/* Premium Badge */}
       {premium && (
         <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
-          <Badge className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white px-4 py-1 shadow-lg border-0">
+          <Badge className="bg-gradient-to-r from-yellow-700 to-orange-700 text-white px-4 py-1 shadow-lg border-0">
             <Crown className="h-3 w-3 mr-1" />
             Premium
           </Badge>
@@ -113,7 +113,7 @@ export function PricingCard({
               <div className={cn(
                 "flex h-5 w-5 items-center justify-center rounded-full mt-0.5",
                 feature.included 
-                  ? "bg-green-100 text-green-600 dark:bg-green-900 dark:text-green-400" 
+                  ? "bg-green-500/15 text-green-600 dark:bg-green-900 dark:text-green-400" 
                   : "bg-muted text-muted-foreground"
               )}>
                 <Check className="h-3 w-3" />
@@ -135,7 +135,7 @@ export function PricingCard({
           className={cn(
             "w-full h-12 text-base font-semibold transition-all duration-300",
             popular && "bg-primary hover:bg-primary/90 shadow-lg hover:shadow-xl",
-            premium && "bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white border-0 shadow-lg hover:shadow-xl"
+            premium && "bg-gradient-to-r from-yellow-700 to-orange-700 hover:from-yellow-600 hover:to-orange-600 text-white border-0 shadow-lg hover:shadow-xl"
           )}
           variant={popular || premium ? "default" : "outline"}
         >

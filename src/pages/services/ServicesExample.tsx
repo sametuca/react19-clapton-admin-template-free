@@ -675,7 +675,7 @@ export default function ServicesExample() {
           <h2 className="text-2xl font-semibold">{t('services.bestPractices.title')}</h2>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             <Card className="text-center p-6">
-              <Shield className="h-8 w-8 mx-auto mb-3 text-blue-500" />
+              <Shield className="h-8 w-8 mx-auto mb-3 text-blue-700 dark:text-blue-400" />
               <h3 className="font-semibold mb-2">{t('services.bestPractices.items.errorHandling.title')}</h3>
               <p className="text-sm text-muted-foreground">
                 {t('services.bestPractices.items.errorHandling.description')}
@@ -683,7 +683,7 @@ export default function ServicesExample() {
             </Card>
             
             <Card className="text-center p-6">
-              <Zap className="h-8 w-8 mx-auto mb-3 text-green-500" />
+              <Zap className="h-8 w-8 mx-auto mb-3 text-green-600 dark:text-green-400" />
               <h3 className="font-semibold mb-2">{t('services.bestPractices.items.loadingStates.title')}</h3>
               <p className="text-sm text-muted-foreground">
                 {t('services.bestPractices.items.loadingStates.description')}
@@ -691,7 +691,7 @@ export default function ServicesExample() {
             </Card>
             
             <Card className="text-center p-6">
-              <Database className="h-8 w-8 mx-auto mb-3 text-purple-500" />
+              <Database className="h-8 w-8 mx-auto mb-3 text-purple-700 dark:text-purple-400" />
               <h3 className="font-semibold mb-2">{t('services.bestPractices.items.dataManagement.title')}</h3>
               <p className="text-sm text-muted-foreground">
                 {t('services.bestPractices.items.dataManagement.description')}
@@ -699,7 +699,7 @@ export default function ServicesExample() {
             </Card>
 
             <Card className="text-center p-6">
-              <Award className="h-8 w-8 mx-auto mb-3 text-orange-500" />
+              <Award className="h-8 w-8 mx-auto mb-3 text-orange-600 dark:text-orange-400" />
               <h3 className="font-semibold mb-2">{t('services.bestPractices.items.typeSafety.title')}</h3>
               <p className="text-sm text-muted-foreground">
                 {t('services.bestPractices.items.typeSafety.description')}

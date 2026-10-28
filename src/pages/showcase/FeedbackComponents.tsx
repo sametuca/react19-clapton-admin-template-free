@@ -103,7 +103,6 @@ import {
   RefreshCw,
   Play,
   Pause,
-  Stop,
   SkipForward,
   SkipBack,
   Volume2,
@@ -168,7 +167,7 @@ export default function FeedbackComponents() {
         </AlertDescription>
       </Alert>
 
-      <Alert className="border-green-200 bg-green-50 text-green-800 dark:border-green-800 dark:bg-green-950 dark:text-green-200">
+      <Alert className="border-green-200 bg-green-500/10 text-green-800 dark:border-green-800 dark:bg-green-950 dark:text-green-200">
         <CheckCircle className="h-4 w-4" />
         <AlertTitle>Başarılı</AlertTitle>
         <AlertDescription>
@@ -176,7 +175,7 @@ export default function FeedbackComponents() {
         </AlertDescription>
       </Alert>
 
-      <Alert className="border-yellow-200 bg-yellow-50 text-yellow-800 dark:border-yellow-800 dark:bg-yellow-950 dark:text-yellow-200">
+      <Alert className="border-yellow-200 bg-yellow-500/10 text-yellow-800 dark:border-yellow-800 dark:bg-yellow-950 dark:text-yellow-200">
         <AlertTriangle className="h-4 w-4" />
         <AlertTitle>Uyarı</AlertTitle>
         <AlertDescription>
@@ -278,7 +277,7 @@ export default function FeedbackComponents() {
           )}
           
           {uploadProgress === 100 && (
-            <div className="flex items-center gap-2 text-sm text-green-600">
+            <div className="flex items-center gap-2 text-sm text-green-800 dark:text-green-400">
               <CheckCircle className="h-4 w-4" />
               Yükleme tamamlandı!
             </div>
@@ -321,7 +320,7 @@ export default function FeedbackComponents() {
         <DialogContent>
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
-              <Info className="h-5 w-5 text-blue-500" />
+              <Info className="h-5 w-5 text-blue-700 dark:text-blue-400" />
               Bilgi
             </DialogTitle>
             <DialogDescription>
@@ -350,7 +349,7 @@ export default function FeedbackComponents() {
         <AlertDialogContent>
           <AlertDialogHeader>
             <AlertDialogTitle className="flex items-center gap-2">
-              <AlertTriangle className="h-5 w-5 text-red-500" />
+              <AlertTriangle className="h-5 w-5 text-red-600 dark:text-red-400" />
               Emin misiniz?
             </AlertDialogTitle>
             <AlertDialogDescription>
@@ -526,8 +525,8 @@ export default function FeedbackComponents() {
                     onClick={() => setUserRating(star)}
                     className={`p-1 transition-colors ${
                       star <= (hoveredRating || userRating) 
-                        ? 'text-yellow-500' 
-                        : 'text-muted-foreground hover:text-yellow-300'
+                        ? 'text-yellow-800 dark:text-yellow-400' 
+                        : 'text-muted-foreground hover:text-yellow-700 dark:hover:text-yellow-300'
                     }`}
                   >
                     <Star className={`h-8 w-8 ${star <= (hoveredRating || userRating) ? 'fill-current' : ''}`} />
@@ -557,7 +556,7 @@ export default function FeedbackComponents() {
                           <Star 
                             key={i} 
                             className={`h-3 w-3 ${
-                              i < review.rating ? 'text-yellow-500 fill-current' : 'text-muted-foreground'
+                              i < review.rating ? 'text-yellow-800 dark:text-yellow-400 fill-current' : 'text-muted-foreground'
                             }`} 
                           />
                         ))}
@@ -678,7 +677,7 @@ export default function FeedbackComponents() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Zap className="h-5 w-5 text-blue-500" />
+                  <Zap className="h-5 w-5 text-blue-700 dark:text-blue-400" />
                   Gerçek Zamanlı
                 </CardTitle>
               </CardHeader>
@@ -692,7 +691,7 @@ export default function FeedbackComponents() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Target className="h-5 w-5 text-green-500" />
+                  <Target className="h-5 w-5 text-green-600 dark:text-green-400" />
                   Hedefli
                 </CardTitle>
               </CardHeader>
@@ -706,7 +705,7 @@ export default function FeedbackComponents() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Globe className="h-5 w-5 text-purple-500" />
+                  <Globe className="h-5 w-5 text-purple-700 dark:text-purple-400" />
                   Çok Dilli
                 </CardTitle>
               </CardHeader>
@@ -720,7 +719,7 @@ export default function FeedbackComponents() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Shield className="h-5 w-5 text-orange-500" />
+                  <Shield className="h-5 w-5 text-orange-600 dark:text-orange-400" />
                   Güvenli
                 </CardTitle>
               </CardHeader>

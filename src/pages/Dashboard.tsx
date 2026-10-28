@@ -295,7 +295,7 @@ export default function Dashboard() {
             <Card className="hover:shadow-lg transition-all duration-300 hover:scale-[1.02] cursor-pointer">
               <CardContent className="p-6 text-center">
                 <div className="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center mx-auto mb-4">
-                  <Users className="h-6 w-6 text-blue-500" />
+                  <Users className="h-6 w-6 text-blue-700 dark:text-blue-400" />
                 </div>
                 <h3 className="font-semibold mb-2">Kullanıcı Yönetimi</h3>
                 <p className="text-sm text-muted-foreground mb-4">
@@ -313,7 +313,7 @@ export default function Dashboard() {
             <Card className="hover:shadow-lg transition-all duration-300 hover:scale-[1.02] cursor-pointer">
               <CardContent className="p-6 text-center">
                 <div className="w-12 h-12 rounded-lg bg-green-500/10 flex items-center justify-center mx-auto mb-4">
-                  <BarChart3 className="h-6 w-6 text-green-500" />
+                  <BarChart3 className="h-6 w-6 text-green-600 dark:text-green-400" />
                 </div>
                 <h3 className="font-semibold mb-2">Analitik</h3>
                 <p className="text-sm text-muted-foreground mb-4">
@@ -331,7 +331,7 @@ export default function Dashboard() {
             <Card className="hover:shadow-lg transition-all duration-300 hover:scale-[1.02] cursor-pointer">
               <CardContent className="p-6 text-center">
                 <div className="w-12 h-12 rounded-lg bg-purple-500/10 flex items-center justify-center mx-auto mb-4">
-                  <Star className="h-6 w-6 text-purple-500" />
+                  <Star className="h-6 w-6 text-purple-700 dark:text-purple-400" />
                 </div>
                 <h3 className="font-semibold mb-2">Komponentler</h3>
                 <p className="text-sm text-muted-foreground mb-4">
@@ -349,7 +349,7 @@ export default function Dashboard() {
             <Card className="hover:shadow-lg transition-all duration-300 hover:scale-[1.02] cursor-pointer">
               <CardContent className="p-6 text-center">
                 <div className="w-12 h-12 rounded-lg bg-orange-500/10 flex items-center justify-center mx-auto mb-4">
-                  <Rocket className="h-6 w-6 text-orange-500" />
+                  <Rocket className="h-6 w-6 text-orange-600 dark:text-orange-400" />
                 </div>
                 <h3 className="font-semibold mb-2">Servisler</h3>
                 <p className="text-sm text-muted-foreground mb-4">

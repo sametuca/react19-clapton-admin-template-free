@@ -128,7 +128,7 @@ export default function SocialMediaExample() {
       sortable: true,
       render: (value: number) => (
         <div className="flex items-center gap-1">
-          <Heart className="h-4 w-4 text-red-500" />
+          <Heart className="h-4 w-4 text-red-600 dark:text-red-400" />
           <span className="font-medium">{value.toLocaleString()}</span>
         </div>
       )
@@ -139,7 +139,7 @@ export default function SocialMediaExample() {
       sortable: true,
       render: (value: number) => (
         <div className="flex items-center gap-1">
-          <MessageSquare className="h-4 w-4 text-blue-500" />
+          <MessageSquare className="h-4 w-4 text-blue-700 dark:text-blue-400" />
           <span>{value}</span>
         </div>
       )
@@ -150,7 +150,7 @@ export default function SocialMediaExample() {
       sortable: true,
       render: (value: number) => (
         <div className="flex items-center gap-1">
-          <Share2 className="h-4 w-4 text-green-500" />
+          <Share2 className="h-4 w-4 text-green-600 dark:text-green-400" />
           <span>{value}</span>
         </div>
       )
@@ -161,7 +161,7 @@ export default function SocialMediaExample() {
       sortable: true,
       render: (value: number) => (
         <div className="flex items-center gap-1">
-          <Eye className="h-4 w-4 text-purple-500" />
+          <Eye className="h-4 w-4 text-purple-700 dark:text-purple-400" />
           <span>{value.toLocaleString()}</span>
         </div>
       )
@@ -398,7 +398,7 @@ export default function SocialMediaExample() {
                         <div className="font-medium text-sm">{topic.tag}</div>
                         <div className="text-xs text-muted-foreground">{topic.posts} gönderi</div>
                       </div>
-                      <TrendingUp className="h-4 w-4 text-green-500" />
+                      <TrendingUp className="h-4 w-4 text-green-600 dark:text-green-400" />
                     </div>
                   ))}
                 </div>

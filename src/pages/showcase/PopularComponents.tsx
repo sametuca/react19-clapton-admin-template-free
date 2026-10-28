@@ -751,7 +751,7 @@ export default function PopularComponents() {
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <Zap className="h-5 w-5 text-blue-500" />
+                    <Zap className="h-5 w-5 text-blue-700 dark:text-blue-400" />
                     Performans
                   </CardTitle>
                 </CardHeader>
@@ -765,7 +765,7 @@ export default function PopularComponents() {
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <Smartphone className="h-5 w-5 text-green-500" />
+                    <Smartphone className="h-5 w-5 text-green-600 dark:text-green-400" />
                     Responsive
                   </CardTitle>
                 </CardHeader>
@@ -779,7 +779,7 @@ export default function PopularComponents() {
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <Palette className="h-5 w-5 text-purple-500" />
+                    <Palette className="h-5 w-5 text-purple-700 dark:text-purple-400" />
                     Özelleştirilebilir
                   </CardTitle>
                 </CardHeader>
@@ -793,7 +793,7 @@ export default function PopularComponents() {
               <Card>
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
-                    <Shield className="h-5 w-5 text-orange-500" />
+                    <Shield className="h-5 w-5 text-orange-600 dark:text-orange-400" />
                     Erişilebilir
                   </CardTitle>
                 </CardHeader>

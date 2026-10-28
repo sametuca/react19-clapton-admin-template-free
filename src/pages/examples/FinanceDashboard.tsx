@@ -225,7 +225,7 @@ export default function FinanceDashboard() {
   };
 
   const getTransactionColor = (type: string) => {
-    return type === "income" ? "text-green-600" : "text-red-600";
+    return type === "income" ? "text-green-800 dark:text-green-400" : "text-red-600 dark:text-red-400";
   };
 
   const getStatusBadge = (status: string) => {
@@ -278,7 +278,7 @@ export default function FinanceDashboard() {
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-4">
                   <div className="space-y-3">
-                    <p className="text-sm font-medium text-foreground/60 uppercase tracking-wide">
+                    <p className="text-sm font-medium text-muted-foreground uppercase tracking-wide">
                       {stat.title}
                     </p>
                     <p className="text-3xl font-bold text-foreground">
@@ -286,21 +286,21 @@ export default function FinanceDashboard() {
                     </p>
                   </div>
                   <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${stat.color} flex items-center justify-center shadow-lg`}>
-                    <stat.icon className="w-7 h-7 text-white" />
+                    <stat.icon className="w-7 h-7 text-foreground" />
                   </div>
                 </div>
                 <div className="flex items-center gap-2 pt-3 border-t border-border/30">
                   {stat.changeType === "positive" ? (
-                    <ArrowUpRight className="w-4 h-4 text-green-400" />
+                    <ArrowUpRight className="w-4 h-4 text-green-600 dark:text-green-400" />
                   ) : (
-                    <ArrowDownRight className="w-4 h-4 text-red-400" />
+                    <ArrowDownRight className="w-4 h-4 text-red-600 dark:text-red-400" />
                   )}
                   <span className={`text-sm font-semibold ${
-                    stat.changeType === "positive" ? "text-green-400" : "text-red-400"
+                    stat.changeType === "positive" ? "text-green-800 dark:text-green-400" : "text-red-600 dark:text-red-400"
                   }`}>
                     {stat.change}
                   </span>
-                  <span className="text-sm text-foreground/60">
+                  <span className="text-sm text-muted-foreground">
                     son 30 gün
                   </span>
                 </div>
@@ -315,11 +315,11 @@ export default function FinanceDashboard() {
               <CardHeader className="pb-6">
                 <CardTitle className="flex items-center gap-3 text-foreground text-xl">
                   <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
-                    <CreditCard className="w-4 h-4 text-white" />
+                    <CreditCard className="w-4 h-4 text-foreground" />
                   </div>
                   Hesaplarım
                 </CardTitle>
-                <CardDescription className="text-foreground/60 text-base">
+                <CardDescription className="text-muted-foreground text-base">
                   Tüm banka hesaplarınız ve bakiyeleriniz
                 </CardDescription>
               </CardHeader>
@@ -332,7 +332,7 @@ export default function FinanceDashboard() {
                           <div className={`w-4 h-4 rounded-full ${account.color}`}></div>
                           <div>
                             <h3 className="font-semibold text-foreground">{account.name}</h3>
-                            <p className="text-sm text-foreground/60">{account.type}</p>
+                            <p className="text-sm text-muted-foreground">{account.type}</p>
                           </div>
                         </div>
                         <Badge variant="outline" className="text-xs">
@@ -342,16 +342,16 @@ export default function FinanceDashboard() {
                       
                       <div className="space-y-3">
                         <div className="flex items-center justify-between">
-                          <span className="text-sm text-foreground/60">Bakiye</span>
+                          <span className="text-sm text-muted-foreground">Bakiye</span>
                           <span className={`text-lg font-bold ${
-                            account.balance.startsWith('-') ? 'text-red-600' : 'text-foreground'
+                            account.balance.startsWith('-') ? 'text-red-600 dark:text-red-400' : 'text-foreground'
                           }`}>
                             {account.balance}
                           </span>
                         </div>
                         
                         <div className="flex items-center justify-between pt-3 border-t border-border/20">
-                          <div className="flex items-center gap-2 text-sm text-foreground/60">
+                          <div className="flex items-center gap-2 text-sm text-muted-foreground">
                             <Building className="w-4 h-4" />
                             {account.bank}
                           </div>
@@ -372,11 +372,11 @@ export default function FinanceDashboard() {
               <CardHeader className="pb-6">
                 <CardTitle className="flex items-center gap-3 text-foreground text-xl">
                   <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center">
-                    <TrendingUp className="w-4 h-4 text-white" />
+                    <TrendingUp className="w-4 h-4 text-foreground" />
                   </div>
                   Son İşlemler
                 </CardTitle>
-                <CardDescription className="text-foreground/60 text-base">
+                <CardDescription className="text-muted-foreground text-base">
                   En son finansal hareketleriniz
                 </CardDescription>
               </CardHeader>
@@ -403,8 +403,8 @@ export default function FinanceDashboard() {
                             
                             <div className="flex items-center justify-between">
                               <div>
-                                <p className="text-xs text-foreground/60">{transaction.category}</p>
-                                <p className="text-xs text-foreground/50">{transaction.date}</p>
+                                <p className="text-xs text-muted-foreground">{transaction.category}</p>
+                                <p className="text-xs text-muted-foreground">{transaction.date}</p>
                               </div>
                               {getStatusBadge(transaction.status)}
                             </div>
@@ -424,11 +424,11 @@ export default function FinanceDashboard() {
             <CardHeader className="pb-6">
               <CardTitle className="flex items-center gap-3 text-foreground text-xl">
                 <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
-                  <PiggyBank className="w-4 h-4 text-white" />
+                  <PiggyBank className="w-4 h-4 text-foreground" />
                 </div>
                 Yatırım Portföyü
               </CardTitle>
-              <CardDescription className="text-foreground/60 text-base">
+              <CardDescription className="text-muted-foreground text-base">
                 Yatırımlarınızın performansı ve dağılımı
               </CardDescription>
             </CardHeader>
@@ -439,18 +439,18 @@ export default function FinanceDashboard() {
                     <div className="flex items-center justify-between">
                       <div>
                         <h3 className="font-semibold text-foreground">{investment.symbol}</h3>
-                        <p className="text-sm text-foreground/60">{investment.name}</p>
+                        <p className="text-sm text-muted-foreground">{investment.name}</p>
                       </div>
                       <div className="text-right">
                         <p className="font-bold text-foreground">{investment.value}</p>
                         <div className="flex items-center gap-1">
                           {investment.changeType === "positive" ? (
-                            <ArrowUpRight className="w-3 h-3 text-green-400" />
+                            <ArrowUpRight className="w-3 h-3 text-green-600 dark:text-green-400" />
                           ) : (
-                            <ArrowDownRight className="w-3 h-3 text-red-400" />
+                            <ArrowDownRight className="w-3 h-3 text-red-600 dark:text-red-400" />
                           )}
                           <span className={`text-xs font-medium ${
-                            investment.changeType === "positive" ? "text-green-400" : "text-red-400"
+                            investment.changeType === "positive" ? "text-green-800 dark:text-green-400" : "text-red-600 dark:text-red-400"
                           }`}>
                             {investment.change}
                           </span>
@@ -459,7 +459,7 @@ export default function FinanceDashboard() {
                     </div>
                     <div className="space-y-2">
                       <div className="flex justify-between text-sm">
-                        <span className="text-foreground/60">Portföy Oranı</span>
+                        <span className="text-muted-foreground">Portföy Oranı</span>
                         <span className="text-foreground">{investment.allocation}%</span>
                       </div>
                       <Progress value={investment.allocation} className="h-2" />
@@ -470,11 +470,11 @@ export default function FinanceDashboard() {
               
               <div className="mt-6 p-4 rounded-lg border border-border/30 bg-gradient-to-r from-primary/5 to-primary/10">
                 <div className="text-center">
-                  <p className="text-sm text-foreground/60 mb-1">Toplam Portföy Değeri</p>
+                  <p className="text-sm text-muted-foreground mb-1">Toplam Portföy Değeri</p>
                   <p className="text-2xl font-bold text-foreground">₺1,234,890</p>
                   <div className="flex items-center justify-center gap-1 mt-1">
-                    <ArrowUpRight className="w-4 h-4 text-green-400" />
-                    <span className="text-sm font-semibold text-green-400">+15.8%</span>
+                    <ArrowUpRight className="w-4 h-4 text-green-600 dark:text-green-400" />
+                    <span className="text-sm font-semibold text-green-800 dark:text-green-400">+15.8%</span>
                   </div>
                 </div>
               </div>
@@ -485,11 +485,11 @@ export default function FinanceDashboard() {
             <CardHeader className="pb-6">
               <CardTitle className="flex items-center gap-3 text-foreground text-xl">
                 <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center">
-                  <Target className="w-4 h-4 text-white" />
+                  <Target className="w-4 h-4 text-foreground" />
                 </div>
                 Bütçe Takibi
               </CardTitle>
-              <CardDescription className="text-foreground/60 text-base">
+              <CardDescription className="text-muted-foreground text-base">
                 Aylık harcama kategorileriniz ve limitleriniz
               </CardDescription>
             </CardHeader>
@@ -510,10 +510,10 @@ export default function FinanceDashboard() {
                     </div>
                     <div className="space-y-2">
                       <div className="flex justify-between text-sm">
-                        <span className="text-foreground/60">Kullanım Oranı</span>
+                        <span className="text-muted-foreground">Kullanım Oranı</span>
                         <span className={`font-medium ${
-                          budget.percentage > 90 ? 'text-red-600' : 
-                          budget.percentage > 75 ? 'text-orange-600' : 'text-green-600'
+                          budget.percentage > 90 ? 'text-red-600 dark:text-red-400' : 
+                          budget.percentage > 75 ? 'text-orange-700 dark:text-orange-400' : 'text-green-800 dark:text-green-400'
                         }`}>
                           {budget.percentage.toFixed(1)}%
                         </span>
@@ -526,9 +526,9 @@ export default function FinanceDashboard() {
               
               <div className="mt-6 p-4 rounded-lg border border-border/30 bg-gradient-to-r from-background/80 to-foreground/5">
                 <div className="text-center">
-                  <p className="text-sm text-foreground/60 mb-1">Toplam Aylık Bütçe</p>
+                  <p className="text-sm text-muted-foreground mb-1">Toplam Aylık Bütçe</p>
                   <p className="text-2xl font-bold text-foreground">₺8,000</p>
-                  <p className="text-sm text-foreground/60">₺6,790 kullanıldı</p>
+                  <p className="text-sm text-muted-foreground">₺6,790 kullanıldı</p>
                 </div>
               </div>
             </CardContent>

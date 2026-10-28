@@ -47,7 +47,7 @@ export default function CryptoFinance() {
       {!isPremiumUser && (
         <div className="absolute inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center rounded-lg">
           <div className="text-center space-y-2">
-            <Crown className="h-8 w-8 text-yellow-500 mx-auto" />
+            <Crown className="h-8 w-8 text-yellow-600 dark:text-yellow-400 mx-auto" />
             <p className="text-sm font-medium">{t('showcase.crypto.premiumFeature')}</p>
             <Button size="sm" className="gap-2">
               <Lock className="h-4 w-4" />
@@ -87,10 +87,10 @@ export default function CryptoFinance() {
                     <p className="text-sm text-muted-foreground">{t('showcase.crypto.portfolio.totalBalance')}</p>
                     <p className="text-2xl font-bold">$53,016</p>
                   </div>
-                  <Wallet className="h-8 w-8 text-green-500" />
+                  <Wallet className="h-8 w-8 text-green-600 dark:text-green-400" />
                 </div>
                 <div className="mt-4">
-                  <div className="flex items-center gap-1 text-green-500">
+                  <div className="flex items-center gap-1 text-green-800 dark:text-green-400">
                     <ArrowUpRight className="h-4 w-4" />
                     <span className="text-sm font-medium">+12.5%</span>
                   </div>
@@ -104,12 +104,12 @@ export default function CryptoFinance() {
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-sm text-muted-foreground">{t('showcase.crypto.portfolio.todaysPL')}</p>
-                      <p className="text-2xl font-bold text-green-500">+$1,245</p>
+                      <p className="text-2xl font-bold text-green-800 dark:text-green-400">+$1,245</p>
                     </div>
-                    <TrendingUp className="h-8 w-8 text-green-500" />
+                    <TrendingUp className="h-8 w-8 text-green-600 dark:text-green-400" />
                   </div>
                   <div className="mt-4">
-                    <div className="flex items-center gap-1 text-green-500">
+                    <div className="flex items-center gap-1 text-green-800 dark:text-green-400">
                       <ArrowUpRight className="h-4 w-4" />
                       <span className="text-sm font-medium">+2.4%</span>
                     </div>
@@ -126,7 +126,7 @@ export default function CryptoFinance() {
                       <p className="text-sm text-muted-foreground">{t('showcase.crypto.portfolio.totalInvested')}</p>
                       <p className="text-2xl font-bold">$48,500</p>
                     </div>
-                    <CreditCard className="h-8 w-8 text-blue-500" />
+                    <CreditCard className="h-8 w-8 text-blue-700 dark:text-blue-400" />
                   </div>
                   <div className="mt-4">
                     <Progress value={92} className="h-2" />
@@ -144,7 +144,7 @@ export default function CryptoFinance() {
                       <p className="text-sm text-muted-foreground">{t('showcase.crypto.portfolio.availableCash')}</p>
                       <p className="text-2xl font-bold">$4,516</p>
                     </div>
-                    <Banknote className="h-8 w-8 text-purple-500" />
+                    <Banknote className="h-8 w-8 text-purple-700 dark:text-purple-400" />
                   </div>
                   <div className="mt-4">
                     <div className="flex items-center gap-1 text-muted-foreground">
@@ -163,7 +163,7 @@ export default function CryptoFinance() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Bitcoin className="h-5 w-5 text-orange-500" />
+                <Bitcoin className="h-5 w-5 text-orange-600 dark:text-orange-400" />
                 {t('showcase.crypto.market.title')}
               </CardTitle>
             </CardHeader>
@@ -284,15 +284,15 @@ export default function CryptoFinance() {
                           <div className="space-y-2 text-sm">
                             <div className="flex justify-between">
                               <span>{t('showcase.crypto.trading.years.1')}</span>
-                              <span className="font-medium text-green-500">$18,240</span>
+                              <span className="font-medium text-green-800 dark:text-green-400">$18,240</span>
                             </div>
                             <div className="flex justify-between">
                               <span>{t('showcase.crypto.trading.years.5')}</span>
-                              <span className="font-medium text-green-500">$94,680</span>
+                              <span className="font-medium text-green-800 dark:text-green-400">$94,680</span>
                             </div>
                             <div className="flex justify-between">
                               <span>{t('showcase.crypto.trading.years.10')}</span>
-                              <span className="font-medium text-green-500">$228,950</span>
+                              <span className="font-medium text-green-800 dark:text-green-400">$228,950</span>
                             </div>
                           </div>
                         </div>
@@ -309,7 +309,7 @@ export default function CryptoFinance() {
         {!isPremiumUser && (
           <Card className="bg-gradient-to-r from-yellow-500/10 to-orange-500/10 border-yellow-500/20">
             <CardContent className="p-8 text-center">
-              <Crown className="h-12 w-12 text-yellow-500 mx-auto mb-4" />
+              <Crown className="h-12 w-12 text-yellow-600 dark:text-yellow-400 mx-auto mb-4" />
               <h3 className="text-2xl font-bold mb-2">{t('showcase.crypto.premiumFeatures')}</h3>
               <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
                 {t('showcase.crypto.premiumFeaturesDescription')}
@@ -331,8 +331,8 @@ function CryptoRow({ crypto }: { crypto: any }) {
   return (
     <div className="flex items-center justify-between p-4 border rounded-lg">
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center">
-          <span className="text-white font-bold text-sm">{crypto.symbol}</span>
+        <div className="w-10 h-10 bg-orange-700 rounded-full flex items-center justify-center text-white">
+          <span className="text-foreground font-bold text-sm">{crypto.symbol}</span>
         </div>
         <div>
           <p className="font-medium">{crypto.name}</p>
@@ -341,7 +341,7 @@ function CryptoRow({ crypto }: { crypto: any }) {
       </div>
       <div className="text-right">
         <p className="font-semibold">${crypto.price.toLocaleString()}</p>
-        <div className={`flex items-center gap-1 ${crypto.change >= 0 ? 'text-green-500' : 'text-red-500'}`}>
+        <div className={`flex items-center gap-1 ${crypto.change >= 0 ? 'text-green-800 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
           {crypto.change >= 0 ? (
             <ArrowUpRight className="h-4 w-4" />
           ) : (

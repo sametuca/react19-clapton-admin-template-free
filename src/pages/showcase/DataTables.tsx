@@ -216,7 +216,7 @@ export default function DataTables() {
       sortable: true,
       render: (value: number) => (
         <div className="flex items-center gap-1 font-medium">
-          <DollarSign className="h-4 w-4 text-green-600" />
+          <DollarSign className="h-4 w-4 text-green-600 dark:text-green-400" />
           ₺{value.toLocaleString()}
         </div>
       )
@@ -236,7 +236,7 @@ export default function DataTables() {
       title: t('showcase.datatables.ecommerceProductRating'),
       render: (value: number) => (
         <div className="flex items-center gap-1">
-          <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+          <Star className="h-4 w-4 fill-yellow-400 text-yellow-800 dark:text-yellow-400" />
           <span className="font-medium">{value}</span>
         </div>
       )
@@ -247,7 +247,7 @@ export default function DataTables() {
       sortable: true,
       render: (value: number) => (
         <div className="flex items-center gap-1">
-          <ShoppingCart className="h-4 w-4 text-blue-600" />
+          <ShoppingCart className="h-4 w-4 text-blue-700 dark:text-blue-400" />
           <span>{value}</span>
         </div>
       )
@@ -309,7 +309,7 @@ export default function DataTables() {
       sortable: true,
       render: (value: number) => (
         <div className="flex items-center gap-1">
-          <Eye className="h-4 w-4 text-blue-600" />
+          <Eye className="h-4 w-4 text-blue-700 dark:text-blue-400" />
           <span className="font-medium">{value.toLocaleString()}</span>
         </div>
       )
@@ -343,9 +343,9 @@ export default function DataTables() {
       render: (value: string) => (
         <div className="flex items-center gap-1">
           {value === 'up' ? (
-            <TrendingUp className="h-4 w-4 text-green-600" />
+            <TrendingUp className="h-4 w-4 text-green-600 dark:text-green-400" />
           ) : (
-            <TrendingDown className="h-4 w-4 text-red-600" />
+            <TrendingDown className="h-4 w-4 text-red-600 dark:text-red-400" />
           )}
           <Badge variant={value === 'up' ? 'default' : 'destructive'}>
             {value === 'up' ? t('showcase.datatables.analyticsTrendUp') : t('showcase.datatables.analyticsTrendDown')}
@@ -575,42 +575,42 @@ export default function DataTables() {
               description={t('showcase.datatables.realtimeSearch')}
               icon={Search}
               spotlightColor="#3b82f6"
-              className="bg-background/50 backdrop-blur-lg border-white/20"
+              className="bg-background/50 backdrop-blur-lg border-border"
             />
             <SpotlightCard
               title={t('showcase.datatables.sorting')}
               description={t('showcase.datatables.biDirectionalSorting')}
               icon={ChevronUp}
               spotlightColor="#10b981"
-              className="bg-background/50 backdrop-blur-lg border-white/20"
+              className="bg-background/50 backdrop-blur-lg border-border"
             />
             <SpotlightCard
               title={t('showcase.datatables.pagination')}
               description={t('showcase.datatables.pageSizeAdjustable')}
               icon={ChevronRight}
               spotlightColor="#f59e0b"
-              className="bg-background/50 backdrop-blur-lg border-white/20"
+              className="bg-background/50 backdrop-blur-lg border-border"
             />
             <SpotlightCard
               title={t('showcase.datatables.export')}
               description={t('showcase.datatables.csvAndExcelExport')}
               icon={Download}
               spotlightColor="#ef4444"
-              className="bg-background/50 backdrop-blur-lg border-white/20"
+              className="bg-background/50 backdrop-blur-lg border-border"
             />
             <SpotlightCard
               title={t('showcase.datatables.customRender')}
               description={t('showcase.datatables.customColumnRender')}
               icon={Settings}
               spotlightColor="#8b5cf6"
-              className="bg-background/50 backdrop-blur-lg border-white/20"
+              className="bg-background/50 backdrop-blur-lg border-border"
             />
             <SpotlightCard
               title={t('showcase.datatables.responsive')}
               description={t('showcase.datatables.mobileFriendly')}
               icon={Smartphone}
               spotlightColor="#06b6d4"
-              className="bg-background/50 backdrop-blur-lg border-white/20"
+              className="bg-background/50 backdrop-blur-lg border-border"
             />
           </div>
         </section>

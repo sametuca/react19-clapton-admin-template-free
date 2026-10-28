@@ -60,11 +60,11 @@ export function FileUpload({
   };
 
   const getFileTypeColor = (type: string) => {
-    if (type.startsWith('image/')) return 'text-blue-500';
-    if (type.startsWith('video/')) return 'text-red-500';
-    if (type.startsWith('audio/')) return 'text-green-500';
-    if (type.includes('text') || type.includes('document')) return 'text-purple-500';
-    return 'text-gray-500';
+    if (type.startsWith('image/')) return 'text-blue-700 dark:text-blue-400';
+    if (type.startsWith('video/')) return 'text-red-600 dark:text-red-400';
+    if (type.startsWith('audio/')) return 'text-green-800 dark:text-green-400';
+    if (type.includes('text') || type.includes('document')) return 'text-purple-700 dark:text-purple-400';
+    return 'text-muted-foreground';
   };
 
   const handleFiles = (files: FileList | null) => {
@@ -194,7 +194,7 @@ export function FileUpload({
                     <h4 className="font-medium text-sm truncate">{file.name}</h4>
                     <div className="flex items-center gap-2">
                       {file.status === 'completed' && (
-                        <Badge variant="default" className="h-5 px-2 text-xs bg-green-100 text-green-800">
+                        <Badge variant="default" className="h-5 px-2 text-xs bg-green-500/15 dark:bg-green-500/20 text-green-800 dark:text-green-300">
                           <Check className="h-3 w-3 mr-1" />
                           Tamamlandı
                         </Badge>

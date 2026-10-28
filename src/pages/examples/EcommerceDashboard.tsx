@@ -143,10 +143,10 @@ export default function EcommerceDashboard() {
 
   const getStatusBadge = (status: string) => {
     const statusConfig = {
-      delivered: { label: "Teslim Edildi", variant: "default" as const, color: "text-green-600" },
-      processing: { label: "İşleniyor", variant: "secondary" as const, color: "text-blue-600" },
-      shipped: { label: "Kargoda", variant: "outline" as const, color: "text-orange-600" },
-      pending: { label: "Bekliyor", variant: "destructive" as const, color: "text-red-600" }
+      delivered: { label: "Teslim Edildi", variant: "default" as const, color: "text-green-800 dark:text-green-400" },
+      processing: { label: "İşleniyor", variant: "secondary" as const, color: "text-blue-700 dark:text-blue-400" },
+      shipped: { label: "Kargoda", variant: "outline" as const, color: "text-orange-700 dark:text-orange-400" },
+      pending: { label: "Bekliyor", variant: "destructive" as const, color: "text-red-600 dark:text-red-400" }
     };
     
     const config = statusConfig[status as keyof typeof statusConfig];
@@ -154,9 +154,9 @@ export default function EcommerceDashboard() {
   };
 
   const getStockStatus = (stock: number) => {
-    if (stock > 20) return { color: "text-green-600", icon: CheckCircle };
-    if (stock > 5) return { color: "text-orange-600", icon: Clock };
-    return { color: "text-red-600", icon: AlertTriangle };
+    if (stock > 20) return { color: "text-green-800 dark:text-green-400", icon: CheckCircle };
+    if (stock > 5) return { color: "text-orange-700 dark:text-orange-400", icon: Clock };
+    return { color: "text-red-600 dark:text-red-400", icon: AlertTriangle };
   };
 
   return (
@@ -194,7 +194,7 @@ export default function EcommerceDashboard() {
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-4">
                   <div className="space-y-3">
-                    <p className="text-sm font-medium text-foreground/60 uppercase tracking-wide">
+                    <p className="text-sm font-medium text-muted-foreground uppercase tracking-wide">
                       {stat.title}
                     </p>
                     <p className="text-3xl font-bold text-foreground">
@@ -202,15 +202,15 @@ export default function EcommerceDashboard() {
                     </p>
                   </div>
                   <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${stat.color} flex items-center justify-center shadow-lg`}>
-                    <stat.icon className="w-7 h-7 text-white" />
+                    <stat.icon className="w-7 h-7 text-foreground" />
                   </div>
                 </div>
                 <div className="flex items-center gap-2 pt-3 border-t border-border/30">
-                  <ArrowUpRight className="w-4 h-4 text-green-400" />
-                  <span className="text-sm font-semibold text-green-400">
+                  <ArrowUpRight className="w-4 h-4 text-green-600 dark:text-green-400" />
+                  <span className="text-sm font-semibold text-green-800 dark:text-green-400">
                     {stat.change}
                   </span>
-                  <span className="text-sm text-foreground/60">
+                  <span className="text-sm text-muted-foreground">
                     son 30 gün
                   </span>
                 </div>
@@ -225,11 +225,11 @@ export default function EcommerceDashboard() {
               <CardHeader className="pb-6">
                 <CardTitle className="flex items-center gap-3 text-foreground text-xl">
                   <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
-                    <Package className="w-4 h-4 text-white" />
+                    <Package className="w-4 h-4 text-foreground" />
                   </div>
                   En Çok Satan Ürünler
                 </CardTitle>
-                <CardDescription className="text-foreground/60 text-base">
+                <CardDescription className="text-muted-foreground text-base">
                   Mağazanızın en popüler ürünleri ve satış performansları
                 </CardDescription>
               </CardHeader>
@@ -247,7 +247,7 @@ export default function EcommerceDashboard() {
                                 {product.name.charAt(0)}
                               </AvatarFallback>
                             </Avatar>
-                            <div className="absolute -top-1 -right-1 w-5 h-5 bg-primary rounded-full flex items-center justify-center text-xs text-white font-bold">
+                            <div className="absolute -top-1 -right-1 w-5 h-5 bg-primary rounded-full flex items-center justify-center text-xs text-primary-foreground font-bold">
                               {index + 1}
                             </div>
                           </div>
@@ -256,18 +256,18 @@ export default function EcommerceDashboard() {
                             <div className="flex items-start justify-between mb-2">
                               <div>
                                 <h3 className="font-semibold text-foreground">{product.name}</h3>
-                                <p className="text-sm text-foreground/60">{product.category}</p>
+                                <p className="text-sm text-muted-foreground">{product.category}</p>
                               </div>
                               <div className="text-right">
                                 <p className="font-bold text-foreground">{product.revenue}</p>
-                                <p className="text-sm text-foreground/60">{product.sales} satış</p>
+                                <p className="text-sm text-muted-foreground">{product.sales} satış</p>
                               </div>
                             </div>
                             
                             <div className="flex items-center justify-between">
                               <div className="flex items-center gap-4">
                                 <div className="flex items-center gap-1">
-                                  <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                                  <Star className="w-4 h-4 text-yellow-800 dark:text-yellow-400 fill-current" />
                                   <span className="text-sm font-medium">{product.rating}</span>
                                 </div>
                                 <div className={`flex items-center gap-1 ${getStockStatus(product.stock).color}`}>
@@ -299,11 +299,11 @@ export default function EcommerceDashboard() {
               <CardHeader className="pb-6">
                 <CardTitle className="flex items-center gap-3 text-foreground text-xl">
                   <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center">
-                    <ShoppingBag className="w-4 h-4 text-white" />
+                    <ShoppingBag className="w-4 h-4 text-foreground" />
                   </div>
                   Son Siparişler
                 </CardTitle>
-                <CardDescription className="text-foreground/60 text-base">
+                <CardDescription className="text-muted-foreground text-base">
                   En son gelen siparişler ve durumları
                 </CardDescription>
               </CardHeader>
@@ -325,7 +325,7 @@ export default function EcommerceDashboard() {
                               <p className="text-sm font-semibold text-foreground truncate">
                                 {order.customer}
                               </p>
-                              <p className="text-xs text-foreground/60">
+                              <p className="text-xs text-muted-foreground">
                                 {order.id}
                               </p>
                             </div>
@@ -337,8 +337,8 @@ export default function EcommerceDashboard() {
                           <div className="flex items-center justify-between">
                             {getStatusBadge(order.status)}
                             <div className="text-right">
-                              <p className="text-xs text-foreground/50">{order.date}</p>
-                              <p className="text-xs text-foreground/60">{order.items} ürün</p>
+                              <p className="text-xs text-muted-foreground">{order.date}</p>
+                              <p className="text-xs text-muted-foreground">{order.items} ürün</p>
                             </div>
                           </div>
                         </div>
@@ -355,28 +355,28 @@ export default function EcommerceDashboard() {
           <Card className="glassmorphism-card border-0 shadow-xl">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Truck className="w-5 h-5 text-blue-500" />
+                <Truck className="w-5 h-5 text-blue-700 dark:text-blue-400" />
                 Kargo Durumu
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-foreground/60">Hazırlanıyor</span>
+                  <span className="text-sm text-muted-foreground">Hazırlanıyor</span>
                   <span className="font-semibold">23</span>
                 </div>
                 <Progress value={65} className="h-2" />
               </div>
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-foreground/60">Kargoda</span>
+                  <span className="text-sm text-muted-foreground">Kargoda</span>
                   <span className="font-semibold">45</span>
                 </div>
                 <Progress value={80} className="h-2" />
               </div>
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-foreground/60">Teslim Edildi</span>
+                  <span className="text-sm text-muted-foreground">Teslim Edildi</span>
                   <span className="font-semibold">156</span>
                 </div>
                 <Progress value={95} className="h-2" />
@@ -387,19 +387,19 @@ export default function EcommerceDashboard() {
           <Card className="glassmorphism-card border-0 shadow-xl">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <TrendingUp className="w-5 h-5 text-green-500" />
+                <TrendingUp className="w-5 h-5 text-green-600 dark:text-green-400" />
                 Satış Trendi
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="text-center">
                 <p className="text-3xl font-bold text-foreground">₺124,580</p>
-                <p className="text-sm text-foreground/60">Bu hafta</p>
+                <p className="text-sm text-muted-foreground">Bu hafta</p>
               </div>
               <div className="flex items-center justify-center gap-2">
-                <ArrowUpRight className="w-4 h-4 text-green-400" />
-                <span className="text-sm font-semibold text-green-400">+18.2%</span>
-                <span className="text-sm text-foreground/60">geçen haftaya göre</span>
+                <ArrowUpRight className="w-4 h-4 text-green-600 dark:text-green-400" />
+                <span className="text-sm font-semibold text-green-800 dark:text-green-400">+18.2%</span>
+                <span className="text-sm text-muted-foreground">geçen haftaya göre</span>
               </div>
             </CardContent>
           </Card>
@@ -407,7 +407,7 @@ export default function EcommerceDashboard() {
           <Card className="glassmorphism-card border-0 shadow-xl">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Users className="w-5 h-5 text-purple-500" />
+                <Users className="w-5 h-5 text-purple-700 dark:text-purple-400" />
                 Müşteri Memnuniyeti
               </CardTitle>
             </CardHeader>
@@ -416,11 +416,11 @@ export default function EcommerceDashboard() {
                 <p className="text-3xl font-bold text-foreground">4.8</p>
                 <div className="flex items-center justify-center gap-1 mt-1">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
+                    <Star key={i} className="w-4 h-4 text-yellow-800 dark:text-yellow-400 fill-current" />
                   ))}
                 </div>
               </div>
-              <p className="text-sm text-foreground/60 text-center">
+              <p className="text-sm text-muted-foreground text-center">
                 2,847 değerlendirme
               </p>
             </CardContent>

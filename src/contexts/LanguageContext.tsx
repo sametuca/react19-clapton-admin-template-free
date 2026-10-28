@@ -1,4 +1,9 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { mergeDictionaries, type Dictionary } from './translations/merge';
+import { pagesTr } from './translations/pages.tr';
+import { pagesEn } from './translations/pages.en';
+import { showcaseTr } from './translations/showcase.tr';
+import { showcaseEn } from './translations/showcase.en';
 
 export type Language = 'tr' | 'en';
 
@@ -10,7 +15,7 @@ interface LanguageContextType {
 
 export const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-const translations = {
+const baseTranslations = {
   tr: {
     // Navigation
     nav: {
@@ -2757,6 +2762,11 @@ function MyComponent() {
   }
 };
 
+const translations = {
+  tr: mergeDictionaries(baseTranslations.tr as Dictionary, pagesTr, showcaseTr),
+  en: mergeDictionaries(baseTranslations.en as Dictionary, pagesEn, showcaseEn),
+} as unknown as typeof baseTranslations;
+
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguage] = useState<Language>('tr');
 
@@ -2769,6 +2779,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     localStorage.setItem('language', language);
+    document.documentElement.lang = language;
   }, [language]);
 
   const t = (key: string, params?: Record<string, any>): string => {

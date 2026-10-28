@@ -111,11 +111,11 @@ const users = [
 const getStatusBadge = (status: string) => {
   switch (status) {
     case "active":
-      return <Badge variant="default" className="bg-green-100 text-green-800 hover:bg-green-200">Aktif</Badge>;
+      return <Badge variant="default" className="bg-green-500/15 dark:bg-green-500/20 text-green-800 dark:text-green-300 hover:bg-green-200 dark:hover:bg-green-500/20">Aktif</Badge>;
     case "inactive":
-      return <Badge variant="secondary" className="bg-gray-100 text-gray-800">İnaktif</Badge>;
+      return <Badge variant="secondary" className="bg-muted text-foreground">İnaktif</Badge>;
     case "pending":
-      return <Badge variant="outline" className="bg-yellow-100 text-yellow-800 border-yellow-300">Bekliyor</Badge>;
+      return <Badge variant="outline" className="bg-yellow-500/15 dark:bg-yellow-500/20 text-yellow-800 dark:text-yellow-300 border-yellow-300 dark:border-yellow-500/30">Bekliyor</Badge>;
     default:
       return <Badge variant="outline">{status}</Badge>;
   }
@@ -124,13 +124,13 @@ const getStatusBadge = (status: string) => {
 const getRoleBadge = (role: string) => {
   switch (role) {
     case "Admin":
-      return <Badge variant="destructive" className="bg-red-100 text-red-800 hover:bg-red-200"><Shield className="w-3 h-3 mr-1" />Admin</Badge>;
+      return <Badge variant="destructive" className="bg-red-500/15 dark:bg-red-500/20 text-red-800 dark:text-red-300 hover:bg-red-200 dark:hover:bg-red-500/20"><Shield className="w-3 h-3 mr-1" />Admin</Badge>;
     case "Editör":
-      return <Badge variant="default" className="bg-blue-100 text-blue-800 hover:bg-blue-200"><Edit className="w-3 h-3 mr-1" />Editör</Badge>;
+      return <Badge variant="default" className="bg-blue-500/15 dark:bg-blue-500/20 text-blue-800 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-500/20"><Edit className="w-3 h-3 mr-1" />Editör</Badge>;
     case "Moderatör":
-      return <Badge variant="secondary" className="bg-purple-100 text-purple-800"><Users className="w-3 h-3 mr-1" />Moderatör</Badge>;
+      return <Badge variant="secondary" className="bg-purple-500/15 dark:bg-purple-500/20 text-purple-800 dark:text-purple-300"><Users className="w-3 h-3 mr-1" />Moderatör</Badge>;
     case "Üye":
-      return <Badge variant="outline" className="bg-gray-50 text-gray-700">Üye</Badge>;
+      return <Badge variant="outline" className="bg-muted text-muted-foreground">Üye</Badge>;
     default:
       return <Badge variant="outline">{role}</Badge>;
   }
@@ -141,10 +141,10 @@ export default function UsersPage() {
   const canonical = typeof window !== "undefined" ? window.location.href : "";
 
   const stats = [
-    { label: "Toplam Kullanıcı", value: users.length, icon: Users, color: "text-blue-600" },
-    { label: "Aktif Kullanıcı", value: users.filter(u => u.status === "active").length, icon: Shield, color: "text-green-600" },
-    { label: "Bekleyen", value: users.filter(u => u.status === "pending").length, icon: Calendar, color: "text-yellow-600" },
-    { label: "İnaktif", value: users.filter(u => u.status === "inactive").length, icon: Users, color: "text-gray-600" },
+    { label: "Toplam Kullanıcı", value: users.length, icon: Users, color: "text-blue-700 dark:text-blue-400" },
+    { label: "Aktif Kullanıcı", value: users.filter(u => u.status === "active").length, icon: Shield, color: "text-green-800 dark:text-green-400" },
+    { label: "Bekleyen", value: users.filter(u => u.status === "pending").length, icon: Calendar, color: "text-yellow-800 dark:text-yellow-400" },
+    { label: "İnaktif", value: users.filter(u => u.status === "inactive").length, icon: Users, color: "text-muted-foreground" },
   ];
 
   return (
@@ -157,7 +157,7 @@ export default function UsersPage() {
 
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
+          <h1 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-primary to-brand-2 bg-clip-text text-transparent">
             {t('users.title')}
           </h1>
           <p className="text-muted-foreground mt-1">{t('users.subtitle')}</p>
@@ -180,7 +180,7 @@ export default function UsersPage() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {stats.map((stat, index) => (
-          <Card key={index} className="bg-gradient-to-br from-white to-gray-50 hover:shadow-md transition-shadow">
+          <Card key={index} className="bg-card hover:shadow-md transition-shadow">
             <CardContent className="flex items-center p-6">
               <div className={`p-2 rounded-lg bg-opacity-10 ${stat.color.replace('text-', 'bg-').replace('-600', '-100')}`}>
                 <stat.icon className={`h-6 w-6 ${stat.color}`} />
@@ -197,7 +197,7 @@ export default function UsersPage() {
       <Card>
         <CardContent className="p-4">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
             <Input 
               placeholder="Kullanıcı ara..." 
               className="pl-10"
@@ -208,18 +208,18 @@ export default function UsersPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
         {users.map((user) => (
-          <Card key={user.id} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-gray-50/50">
+          <Card key={user.id} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-card">
             <CardHeader className="pb-4">
               <div className="flex items-start justify-between">
                 <div className="flex items-center space-x-3">
                   <Avatar className="h-12 w-12 ring-2 ring-offset-2 ring-blue-500/20">
                     <AvatarImage src={user.avatar} alt={user.name} />
-                    <AvatarFallback className="bg-gradient-to-br from-blue-400 to-purple-500 text-white font-semibold">
+                    <AvatarFallback className="bg-gradient-to-br from-blue-600 to-purple-600 text-white font-semibold">
                       {user.name.split(' ').map(n => n[0]).join('')}
                     </AvatarFallback>
                   </Avatar>
                   <div>
-                    <CardTitle className="text-lg group-hover:text-blue-600 transition-colors">{user.name}</CardTitle>
+                    <CardTitle className="text-lg group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{user.name}</CardTitle>
                     <p className="text-sm text-muted-foreground">{user.department}</p>
                   </div>
                 </div>
@@ -239,7 +239,7 @@ export default function UsersPage() {
                       E-posta Gönder
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem className="text-red-600">
+                    <DropdownMenuItem className="text-red-600 dark:text-red-400">
                       Kullanıcıyı Sil
                     </DropdownMenuItem>
                   </DropdownMenuContent>
@@ -254,19 +254,19 @@ export default function UsersPage() {
 
               <div className="space-y-2">
                 <div className="flex items-center text-sm text-muted-foreground">
-                  <Mail className="h-4 w-4 mr-2 text-blue-500" />
+                  <Mail className="h-4 w-4 mr-2 text-blue-700 dark:text-blue-400" />
                   <span className="truncate">{user.email}</span>
                 </div>
                 <div className="flex items-center text-sm text-muted-foreground">
-                  <Phone className="h-4 w-4 mr-2 text-green-500" />
+                  <Phone className="h-4 w-4 mr-2 text-green-600 dark:text-green-400" />
                   <span>{user.phone}</span>
                 </div>
                 <div className="flex items-center text-sm text-muted-foreground">
-                  <MapPin className="h-4 w-4 mr-2 text-red-500" />
+                  <MapPin className="h-4 w-4 mr-2 text-red-600 dark:text-red-400" />
                   <span>{user.location}</span>
                 </div>
                 <div className="flex items-center text-sm text-muted-foreground">
-                  <Calendar className="h-4 w-4 mr-2 text-purple-500" />
+                  <Calendar className="h-4 w-4 mr-2 text-purple-700 dark:text-purple-400" />
                   <span>Katılım: {user.joinDate}</span>
                 </div>
               </div>

@@ -57,8 +57,8 @@ export function HolographicCard({
         onMouseLeave={handleMouseLeave}
         className={cn(
           "relative overflow-hidden transition-all duration-300 ease-out cursor-pointer",
-          "bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900",
-          "border border-slate-700/50 shadow-2xl",
+          "bg-gradient-to-br from-card via-card to-card",
+          "border border-border shadow-2xl",
           className
         )}
         style={{ transform }}
@@ -78,7 +78,7 @@ export function HolographicCard({
         {/* Animated border gradient */}
         <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-75 animate-pulse" 
              style={{ padding: '1px' }}>
-          <div className="w-full h-full bg-slate-900 rounded-lg" />
+          <div className="w-full h-full bg-card rounded-lg" />
         </div>
 
         {/* Content */}
@@ -87,20 +87,20 @@ export function HolographicCard({
             <div className="flex items-center gap-3">
               {Icon && (
                 <div className="p-2 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 backdrop-blur-sm">
-                  <Icon className="h-5 w-5 text-blue-400" />
+                  <Icon className="h-5 w-5 text-blue-700 dark:text-blue-400" />
                 </div>
               )}
               <div>
-                <CardTitle className="text-white">{title}</CardTitle>
+                <CardTitle className="text-foreground">{title}</CardTitle>
                 {description && (
-                  <p className="text-slate-300 text-sm mt-1">{description}</p>
+                  <p className="text-muted-foreground text-sm mt-1">{description}</p>
                 )}
               </div>
             </div>
           </CardHeader>
           
           {children && (
-            <CardContent className="text-slate-200">
+            <CardContent className="text-foreground">
               {children}
             </CardContent>
           )}

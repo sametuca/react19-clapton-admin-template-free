@@ -47,7 +47,7 @@ export default function TablesPage() {
         description=""
         icon={null}
         spotlightColor="#3b82f6"
-        className="bg-background/50 backdrop-blur-lg border-white/20"
+        className="bg-background/50 backdrop-blur-lg border-border"
       >
         <div className="space-y-4">
           <Input placeholder={t('tables.searchPlaceholder')} value={q} onChange={(e) => setQ(e.target.value)} />

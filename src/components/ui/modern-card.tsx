@@ -42,7 +42,7 @@ export function ModernCard({
   const variantClasses = {
     default: 'bg-card border-border hover:shadow-lg',
     gradient: 'bg-gradient-to-br from-primary/5 via-background to-secondary/5 border-primary/20 hover:shadow-xl hover:shadow-primary/25',
-    glass: 'bg-background/50 backdrop-blur-lg border-white/20 hover:bg-background/70',
+    glass: 'bg-background/50 backdrop-blur-lg border-border hover:bg-background/70',
     neon: 'bg-background border-primary/50 hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:border-primary',
     minimal: 'bg-transparent border-transparent hover:bg-muted/50'
   };
@@ -69,18 +69,18 @@ export function ModernCard({
               <Button
                 size="icon"
                 variant="secondary"
-                className="h-8 w-8 bg-white/20 backdrop-blur-sm hover:bg-white/30"
+                className="h-8 w-8 bg-foreground/20 backdrop-blur-sm hover:bg-foreground/30"
                 onClick={() => setIsLiked(!isLiked)}
               >
-                <Heart className={cn("h-4 w-4", isLiked && "fill-red-500 text-red-500")} />
+                <Heart className={cn("h-4 w-4", isLiked && "fill-red-500 text-red-700 dark:text-red-400")} />
               </Button>
               <Button
                 size="icon"
                 variant="secondary"
-                className="h-8 w-8 bg-white/20 backdrop-blur-sm hover:bg-white/30"
+                className="h-8 w-8 bg-foreground/20 backdrop-blur-sm hover:bg-foreground/30"
                 onClick={() => setIsBookmarked(!isBookmarked)}
               >
-                <Bookmark className={cn("h-4 w-4", isBookmarked && "fill-blue-500 text-blue-500")} />
+                <Bookmark className={cn("h-4 w-4", isBookmarked && "fill-blue-500 text-blue-700 dark:text-blue-400")} />
               </Button>
             </div>
           )}
@@ -141,7 +141,7 @@ export function ModernCard({
             <div className="flex items-center justify-between pt-4 border-t border-border/50">
               <div className="flex items-center gap-2">
                 <Button variant="ghost" size="sm" onClick={() => setIsLiked(!isLiked)}>
-                  <Heart className={cn("h-4 w-4", isLiked && "fill-red-500 text-red-500")} />
+                  <Heart className={cn("h-4 w-4", isLiked && "fill-red-500 text-red-700 dark:text-red-400")} />
                 </Button>
                 <Button variant="ghost" size="sm">
                   <Share2 className="h-4 w-4" />

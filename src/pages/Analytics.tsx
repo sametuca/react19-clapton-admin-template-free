@@ -112,9 +112,9 @@ export default function Analytics() {
               <div className="text-2xl font-bold">{kpi.value}</div>
               <div className="flex items-center mt-1">
                 {kpi.trend === "up" ? (
-                  <TrendingUp className="h-3 w-3 text-green-500 mr-1" />
+                  <TrendingUp className="h-3 w-3 text-green-600 dark:text-green-400 mr-1" />
                 ) : (
-                  <TrendingDown className="h-3 w-3 text-red-500 mr-1" />
+                  <TrendingDown className="h-3 w-3 text-red-600 dark:text-red-400 mr-1" />
                 )}
                 <Badge variant={kpi.trend === "up" ? "default" : "secondary"} className="text-xs">
                   {kpi.delta}

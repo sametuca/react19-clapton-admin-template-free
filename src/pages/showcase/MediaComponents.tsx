@@ -138,10 +138,10 @@ export default function MediaComponents() {
 
   const getTypeColor = (type: string) => {
     switch (type) {
-      case 'image': return 'text-blue-500';
-      case 'video': return 'text-red-500';
-      case 'audio': return 'text-green-500';
-      default: return 'text-gray-500';
+      case 'image': return 'text-blue-700 dark:text-blue-400';
+      case 'video': return 'text-red-600 dark:text-red-400';
+      case 'audio': return 'text-green-800 dark:text-green-400';
+      default: return 'text-muted-foreground';
     }
   };
 
@@ -167,7 +167,7 @@ export default function MediaComponents() {
             {/* Video Controls Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
               <div className="absolute bottom-4 left-4 right-4 space-y-3">
-                <div className="flex items-center gap-2 text-white">
+                <div className="flex items-center gap-2 text-foreground">
                   <span className="text-sm">{formatTime(currentTime)}</span>
                   <Progress value={(currentTime / duration) * 100} className="flex-1 h-1" />
                   <span className="text-sm">{formatTime(duration)}</span>
@@ -179,20 +179,20 @@ export default function MediaComponents() {
                       variant="ghost"
                       size="icon"
                       onClick={() => setIsPlaying(!isPlaying)}
-                      className="text-white hover:bg-white/20"
+                      className="text-foreground hover:bg-foreground/20"
                     >
                       {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5" />}
                     </Button>
-                    <Button variant="ghost" size="icon" className="text-white hover:bg-white/20">
+                    <Button variant="ghost" size="icon" className="text-foreground hover:bg-foreground/20">
                       <SkipBack className="h-4 w-4" />
                     </Button>
-                    <Button variant="ghost" size="icon" className="text-white hover:bg-white/20">
+                    <Button variant="ghost" size="icon" className="text-foreground hover:bg-foreground/20">
                       <SkipForward className="h-4 w-4" />
                     </Button>
                   </div>
                   
                   <div className="flex items-center gap-2">
-                    <Button variant="ghost" size="icon" className="text-white hover:bg-white/20">
+                    <Button variant="ghost" size="icon" className="text-foreground hover:bg-foreground/20">
                       {volume[0] > 0 ? <Volume2 className="h-4 w-4" /> : <VolumeX className="h-4 w-4" />}
                     </Button>
                     <div className="w-20">
@@ -205,7 +205,7 @@ export default function MediaComponents() {
                         className="w-full"
                       />
                     </div>
-                    <Button variant="ghost" size="icon" className="text-white hover:bg-white/20">
+                    <Button variant="ghost" size="icon" className="text-foreground hover:bg-foreground/20">
                       <Maximize className="h-4 w-4" />
                     </Button>
                   </div>
@@ -269,17 +269,17 @@ export default function MediaComponents() {
                         </div>
                         
                         <div className="absolute top-2 right-2 flex gap-1">
-                          <Button variant="ghost" size="icon" className="h-8 w-8 text-white hover:bg-white/20">
+                          <Button variant="ghost" size="icon" className="h-8 w-8 text-foreground hover:bg-foreground/20">
                             <Heart className="h-4 w-4" />
                           </Button>
-                          <Button variant="ghost" size="icon" className="h-8 w-8 text-white hover:bg-white/20">
+                          <Button variant="ghost" size="icon" className="h-8 w-8 text-foreground hover:bg-foreground/20">
                             <Share2 className="h-4 w-4" />
                           </Button>
                         </div>
                         
                         <div className="absolute bottom-2 left-2 right-2">
-                          <h3 className="text-white font-medium text-sm mb-1">{item.title}</h3>
-                          <div className="flex items-center justify-between text-white/80 text-xs">
+                          <h3 className="text-foreground font-medium text-sm mb-1">{item.title}</h3>
+                          <div className="flex items-center justify-between text-muted-foreground text-xs">
                             <span>{item.author}</span>
                             <div className="flex items-center gap-2">
                               <div className="flex items-center gap-1">
@@ -299,7 +299,7 @@ export default function MediaComponents() {
                             <Button
                               variant="ghost"
                               size="icon"
-                              className="h-16 w-16 rounded-full bg-white/20 backdrop-blur-sm text-white hover:bg-white/30"
+                              className="h-16 w-16 rounded-full bg-foreground/20 backdrop-blur-sm text-foreground hover:bg-foreground/30"
                               onClick={() => setSelectedImage(item.url)}
                             >
                               <Play className="h-8 w-8" />
@@ -507,7 +507,7 @@ export default function MediaComponents() {
               <h4 className="font-medium">Yüklenen Dosyalar</h4>
               {uploadedFiles.map((file, index) => (
                 <div key={index} className="flex items-center gap-3 p-3 bg-muted/50 rounded-lg">
-                  <FileText className="h-8 w-8 text-blue-500" />
+                  <FileText className="h-8 w-8 text-blue-700 dark:text-blue-400" />
                   <div className="flex-1">
                     <div className="flex items-center justify-between mb-1">
                       <span className="font-medium text-sm">{file.name}</span>
@@ -518,7 +518,7 @@ export default function MediaComponents() {
                       <div className="flex items-center justify-between text-xs">
                         <span className="text-muted-foreground">{file.progress}% tamamlandı</span>
                         {file.progress === 100 && (
-                          <div className="flex items-center gap-1 text-green-600">
+                          <div className="flex items-center gap-1 text-green-800 dark:text-green-400">
                             <CheckCircle className="h-3 w-3" />
                             Tamamlandı
                           </div>
@@ -673,7 +673,7 @@ export default function MediaComponents() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Play className="h-5 w-5 text-blue-500" />
+                  <Play className="h-5 w-5 text-blue-700 dark:text-blue-400" />
                   Oynatma
                 </CardTitle>
               </CardHeader>
@@ -687,7 +687,7 @@ export default function MediaComponents() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Upload className="h-5 w-5 text-green-500" />
+                  <Upload className="h-5 w-5 text-green-600 dark:text-green-400" />
                   Yükleme
                 </CardTitle>
               </CardHeader>
@@ -701,7 +701,7 @@ export default function MediaComponents() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Edit className="h-5 w-5 text-purple-500" />
+                  <Edit className="h-5 w-5 text-purple-700 dark:text-purple-400" />
                   Düzenleme
                 </CardTitle>
               </CardHeader>
@@ -715,7 +715,7 @@ export default function MediaComponents() {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <Globe className="h-5 w-5 text-orange-500" />
+                  <Globe className="h-5 w-5 text-orange-600 dark:text-orange-400" />
                   Paylaşım
                 </CardTitle>
               </CardHeader>

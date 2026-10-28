@@ -124,11 +124,11 @@ export function SearchBar({
 
   const getTypeColor = (type: string) => {
     switch (type) {
-      case 'page': return 'bg-blue-100 text-blue-800';
-      case 'user': return 'bg-green-100 text-green-800';
-      case 'document': return 'bg-purple-100 text-purple-800';
-      case 'action': return 'bg-orange-100 text-orange-800';
-      default: return 'bg-gray-100 text-gray-800';
+      case 'page': return 'bg-blue-500/15 dark:bg-blue-500/20 text-blue-800 dark:text-blue-300';
+      case 'user': return 'bg-green-500/15 dark:bg-green-500/20 text-green-800 dark:text-green-300';
+      case 'document': return 'bg-purple-500/15 dark:bg-purple-500/20 text-purple-800 dark:text-purple-300';
+      case 'action': return 'bg-orange-500/15 dark:bg-orange-500/20 text-orange-800 dark:text-orange-300';
+      default: return 'bg-muted text-foreground';
     }
   };
 

@@ -1,301 +1,351 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
 
-type Theme = 'dark' | 'midnight' | 'neon' | 'royal' | 'aurora' | 'cyberpunk' | 'galaxy' | 'emerald' | 'pureblack';
+export type Theme =
+  | 'light'
+  | 'dark'
+  | 'midnight'
+  | 'neon'
+  | 'royal'
+  | 'aurora'
+  | 'cyberpunk'
+  | 'galaxy'
+  | 'emerald'
+  | 'pureblack';
+
+export type ThemeMode = 'light' | 'dark';
 
 interface ThemeContextType {
   theme: Theme;
   setTheme: (theme: Theme) => void;
   resolvedTheme: Theme;
+  mode: ThemeMode;
 }
 
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+interface ThemeColors {
+  background: string;
+  foreground: string;
+  card: string;
+  'card-foreground': string;
+  popover: string;
+  'popover-foreground': string;
+  primary: string;
+  'primary-foreground': string;
+  secondary: string;
+  'secondary-foreground': string;
+  muted: string;
+  'muted-foreground': string;
+  accent: string;
+  'accent-foreground': string;
+  destructive: string;
+  'destructive-foreground': string;
+  success: string;
+  'success-foreground': string;
+  warning: string;
+  'warning-foreground': string;
+  info: string;
+  'info-foreground': string;
+  'brand-2': string;
+  border: string;
+  input: string;
+  ring: string;
+  'sidebar-background': string;
+  'sidebar-foreground': string;
+  'sidebar-primary': string;
+  'sidebar-primary-foreground': string;
+  'sidebar-accent': string;
+  'sidebar-accent-foreground': string;
+  'sidebar-border': string;
+  'sidebar-ring': string;
+}
 
-const themes = {
-  dark: {
-    name: 'Dark Premium',
-    description: 'Gelişmiş koyu tema',
+interface ThemeConfig {
+  name: string;
+  mode: ThemeMode;
+  colors: ThemeColors;
+  /** Preview gradient used by theme pickers only. */
+  gradient: string;
+}
+
+/**
+ * Builds a complete token set for a dark theme from a handful of hue values.
+ * Every pair (foreground / background) is tuned to stay above WCAG AA (4.5:1).
+ */
+const buildDarkColors = ({
+  hue,
+  saturation = 28,
+  primary,
+  primaryForeground,
+  brand2,
+  background = 8,
+  card = 11.5,
+  surface = 16,
+  borderLightness = 21,
+}: {
+  hue: number;
+  saturation?: number;
+  primary: string;
+  primaryForeground: string;
+  brand2: string;
+  background?: number;
+  card?: number;
+  surface?: number;
+  borderLightness?: number;
+}): ThemeColors => ({
+  background: `${hue} ${saturation}% ${background}%`,
+  foreground: `${hue} 30% 96%`,
+  card: `${hue} ${saturation - 2}% ${card}%`,
+  'card-foreground': `${hue} 30% 96%`,
+  popover: `${hue} ${saturation - 2}% ${card}%`,
+  'popover-foreground': `${hue} 30% 96%`,
+  primary,
+  'primary-foreground': primaryForeground,
+  secondary: `${hue} ${saturation - 4}% ${surface}%`,
+  'secondary-foreground': `${hue} 30% 96%`,
+  muted: `${hue} ${saturation - 4}% ${surface}%`,
+  'muted-foreground': `${hue} 16% 70%`,
+  accent: `${hue} ${saturation - 2}% ${surface + 2}%`,
+  'accent-foreground': `${hue} 30% 96%`,
+  destructive: '0 68% 48%',
+  'destructive-foreground': '0 0% 100%',
+  success: '152 62% 40%',
+  'success-foreground': '0 0% 100%',
+  warning: '38 92% 52%',
+  'warning-foreground': '30 60% 10%',
+  info: '205 88% 56%',
+  'info-foreground': '210 60% 8%',
+  'brand-2': brand2,
+  border: `${hue} ${saturation - 8}% ${borderLightness}%`,
+  input: `${hue} ${saturation - 8}% ${borderLightness + 2}%`,
+  ring: primary,
+  'sidebar-background': `${hue} ${saturation}% ${Math.max(background - 1, 0)}%`,
+  'sidebar-foreground': `${hue} 30% 94%`,
+  'sidebar-primary': primary,
+  'sidebar-primary-foreground': primaryForeground,
+  'sidebar-accent': `${hue} ${saturation - 2}% ${surface}%`,
+  'sidebar-accent-foreground': `${hue} 30% 98%`,
+  'sidebar-border': `${hue} ${saturation - 8}% ${borderLightness - 3}%`,
+  'sidebar-ring': primary,
+});
+
+const themes: Record<Theme, ThemeConfig> = {
+  light: {
+    name: 'Light',
+    mode: 'light',
     colors: {
-      background: '222.2 84% 4.9%',
-      foreground: '210 40% 98%',
-      card: '222.2 84% 4.9%',
-      'card-foreground': '210 40% 98%',
-      popover: '222.2 84% 4.9%',
-      'popover-foreground': '210 40% 98%',
-      primary: '217.2 91.2% 59.8%',
-      'primary-foreground': '222.2 84% 4.9%',
-      secondary: '217.2 32.6% 17.5%',
-      'secondary-foreground': '210 40% 98%',
-      muted: '217.2 32.6% 17.5%',
-      'muted-foreground': '215 20.2% 65.1%',
-      accent: '217.2 32.6% 17.5%',
-      'accent-foreground': '210 40% 98%',
-      destructive: '0 62.8% 30.6%',
-      'destructive-foreground': '210 40% 98%',
-      border: '217.2 32.6% 17.5%',
-      input: '217.2 32.6% 17.5%',
-      ring: '224.3 76.3% 94.1%'
+      background: '220 25% 97%',
+      foreground: '224 40% 12%',
+      card: '0 0% 100%',
+      'card-foreground': '224 40% 12%',
+      popover: '0 0% 100%',
+      'popover-foreground': '224 40% 12%',
+      primary: '243 75% 55%',
+      'primary-foreground': '0 0% 100%',
+      secondary: '220 22% 93%',
+      'secondary-foreground': '224 40% 16%',
+      muted: '220 22% 94%',
+      'muted-foreground': '218 17% 38%',
+      accent: '230 80% 96%',
+      'accent-foreground': '236 55% 28%',
+      destructive: '0 72% 46%',
+      'destructive-foreground': '0 0% 100%',
+      success: '152 68% 28%',
+      'success-foreground': '0 0% 100%',
+      warning: '38 95% 48%',
+      'warning-foreground': '30 70% 10%',
+      info: '208 90% 38%',
+      'info-foreground': '0 0% 100%',
+      'brand-2': '268 80% 50%',
+      border: '220 20% 88%',
+      input: '220 20% 84%',
+      ring: '243 75% 55%',
+      'sidebar-background': '0 0% 100%',
+      'sidebar-foreground': '224 30% 20%',
+      'sidebar-primary': '243 75% 55%',
+      'sidebar-primary-foreground': '0 0% 100%',
+      'sidebar-accent': '230 80% 96%',
+      'sidebar-accent-foreground': '236 55% 28%',
+      'sidebar-border': '220 20% 90%',
+      'sidebar-ring': '243 75% 55%',
     },
-    gradient: 'linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%)'
+    gradient: 'linear-gradient(135deg, #f8fafc 0%, #e0e7ff 55%, #6366f1 100%)',
+  },
+  dark: {
+    name: 'Dark',
+    mode: 'dark',
+    colors: buildDarkColors({
+      hue: 224,
+      primary: '234 89% 74%',
+      primaryForeground: '226 45% 10%',
+      brand2: '283 85% 76%',
+    }),
+    gradient: 'linear-gradient(135deg, #0f1320 0%, #1c2340 55%, #818cf8 100%)',
   },
   midnight: {
-    name: 'Midnight Black',
-    description: 'Derin siyah premium tema',
-    colors: {
-      background: '0 0% 3%',
-      foreground: '0 0% 98%',
-      card: '0 0% 6%',
-      'card-foreground': '0 0% 98%',
-      popover: '0 0% 6%',
-      'popover-foreground': '0 0% 98%',
-      primary: '270 100% 70%',
-      'primary-foreground': '0 0% 3%',
-      secondary: '0 0% 12%',
-      'secondary-foreground': '0 0% 98%',
-      muted: '0 0% 12%',
-      'muted-foreground': '0 0% 65%',
-      accent: '0 0% 15%',
-      'accent-foreground': '0 0% 98%',
-      destructive: '0 84% 60%',
-      'destructive-foreground': '0 0% 98%',
-      border: '0 0% 15%',
-      input: '0 0% 15%',
-      ring: '270 100% 70%'
-    },
-    gradient: 'linear-gradient(135deg, #000000 0%, #0a0a0a 25%, #1a1a1a 50%, #2d1b69 75%, #8b5cf6 100%)'
+    name: 'Midnight',
+    mode: 'dark',
+    colors: buildDarkColors({
+      hue: 262,
+      saturation: 30,
+      primary: '263 90% 76%',
+      primaryForeground: '262 50% 10%',
+      brand2: '222 90% 72%',
+      background: 7,
+      card: 10.5,
+    }),
+    gradient: 'linear-gradient(135deg, #0d0a18 0%, #251a4a 55%, #a78bfa 100%)',
   },
   neon: {
     name: 'Neon Cyber',
-    description: 'Neon ışıklı siber tema',
-    colors: {
-      background: '200 50% 3%',
-      foreground: '180 100% 90%',
-      card: '200 50% 6%',
-      'card-foreground': '180 100% 90%',
-      popover: '200 50% 6%',
-      'popover-foreground': '180 100% 90%',
-      primary: '180 100% 50%',
-      'primary-foreground': '200 50% 3%',
-      secondary: '200 50% 12%',
-      'secondary-foreground': '180 100% 90%',
-      muted: '200 50% 12%',
-      'muted-foreground': '180 50% 65%',
-      accent: '300 100% 50%',
-      'accent-foreground': '200 50% 3%',
-      destructive: '0 100% 50%',
-      'destructive-foreground': '0 0% 98%',
-      border: '180 100% 25%',
-      input: '200 50% 15%',
-      ring: '180 100% 50%'
-    },
-    gradient: 'linear-gradient(135deg, #001122 0%, #003344 25%, #00ffff 50%, #ff00ff 75%, #ffff00 100%)'
+    mode: 'dark',
+    colors: buildDarkColors({
+      hue: 200,
+      saturation: 40,
+      primary: '187 88% 52%',
+      primaryForeground: '200 60% 8%',
+      brand2: '262 85% 76%',
+      background: 6.5,
+      card: 10,
+    }),
+    gradient: 'linear-gradient(135deg, #07141b 0%, #0c3a4a 55%, #22d3ee 100%)',
   },
   royal: {
     name: 'Royal Purple',
-    description: 'Kraliyet moru premium tema',
-    colors: {
-      background: '270 50% 8%',
-      foreground: '270 20% 95%',
-      card: '270 50% 12%',
-      'card-foreground': '270 20% 95%',
-      popover: '270 50% 12%',
-      'popover-foreground': '270 20% 95%',
-      primary: '270 95% 65%',
-      'primary-foreground': '270 50% 8%',
-      secondary: '270 30% 18%',
-      'secondary-foreground': '270 20% 95%',
-      muted: '270 30% 18%',
-      'muted-foreground': '270 20% 70%',
-      accent: '280 100% 70%',
-      'accent-foreground': '270 50% 8%',
-      destructive: '0 84% 60%',
-      'destructive-foreground': '0 0% 98%',
-      border: '270 30% 25%',
-      input: '270 30% 20%',
-      ring: '270 95% 65%'
-    },
-    gradient: 'linear-gradient(135deg, #1a0d2e 0%, #2d1b69 25%, #6b46c1 50%, #a855f7 75%, #d946ef 100%)'
+    mode: 'dark',
+    colors: buildDarkColors({
+      hue: 280,
+      saturation: 32,
+      primary: '281 85% 72%',
+      primaryForeground: '280 55% 10%',
+      brand2: '330 85% 72%',
+      background: 8,
+      card: 11.5,
+    }),
+    gradient: 'linear-gradient(135deg, #150b1d 0%, #3b1a55 55%, #d27af0 100%)',
   },
   aurora: {
-    name: 'Aurora Borealis',
-    description: 'Kutup ışıkları teması',
-    colors: {
-      background: '220 50% 6%',
-      foreground: '180 100% 95%',
-      card: '220 50% 10%',
-      'card-foreground': '180 100% 95%',
-      popover: '220 50% 10%',
-      'popover-foreground': '180 100% 95%',
-      primary: '160 100% 50%',
-      'primary-foreground': '220 50% 6%',
-      secondary: '220 30% 15%',
-      'secondary-foreground': '180 100% 95%',
-      muted: '220 30% 15%',
-      'muted-foreground': '180 50% 70%',
-      accent: '200 100% 60%',
-      'accent-foreground': '220 50% 6%',
-      destructive: '340 100% 60%',
-      'destructive-foreground': '0 0% 98%',
-      border: '160 50% 25%',
-      input: '220 30% 18%',
-      ring: '160 100% 50%'
-    },
-    gradient: 'linear-gradient(135deg, #0c1445 0%, #1e3a8a 25%, #10b981 50%, #06b6d4 75%, #8b5cf6 100%)'
+    name: 'Aurora',
+    mode: 'dark',
+    colors: buildDarkColors({
+      hue: 206,
+      saturation: 40,
+      primary: '166 72% 50%',
+      primaryForeground: '170 60% 7%',
+      brand2: '210 90% 68%',
+      background: 7,
+      card: 10.5,
+    }),
+    gradient: 'linear-gradient(135deg, #08131f 0%, #0d3b4d 55%, #2dd4bf 100%)',
   },
   cyberpunk: {
-    name: 'Cyberpunk 2077',
-    description: 'Futuristik siber tema',
-    colors: {
-      background: '60 100% 2%',
-      foreground: '60 100% 95%',
-      card: '60 100% 5%',
-      'card-foreground': '60 100% 95%',
-      popover: '60 100% 5%',
-      'popover-foreground': '60 100% 95%',
-      primary: '60 100% 50%',
-      'primary-foreground': '60 100% 2%',
-      secondary: '60 50% 12%',
-      'secondary-foreground': '60 100% 95%',
-      muted: '60 50% 12%',
-      'muted-foreground': '60 50% 70%',
-      accent: '300 100% 60%',
-      'accent-foreground': '60 100% 2%',
-      destructive: '0 100% 60%',
-      'destructive-foreground': '0 0% 98%',
-      border: '60 100% 20%',
-      input: '60 50% 15%',
-      ring: '60 100% 50%'
-    },
-    gradient: 'linear-gradient(135deg, #ffff00 0%, #ff6600 25%, #ff0066 50%, #6600ff 75%, #0066ff 100%)'
+    name: 'Cyberpunk',
+    mode: 'dark',
+    colors: buildDarkColors({
+      hue: 42,
+      saturation: 22,
+      primary: '48 96% 56%',
+      primaryForeground: '40 70% 8%',
+      brand2: '330 85% 70%',
+      background: 6,
+      card: 9.5,
+    }),
+    gradient: 'linear-gradient(135deg, #14110a 0%, #3d2a0a 55%, #facc15 100%)',
   },
   galaxy: {
-    name: 'Galaxy Deep',
-    description: 'Derin uzay galaksi teması',
-    colors: {
-      background: '240 100% 4%',
-      foreground: '240 50% 95%',
-      card: '240 100% 8%',
-      'card-foreground': '240 50% 95%',
-      popover: '240 100% 8%',
-      'popover-foreground': '240 50% 95%',
-      primary: '280 100% 70%',
-      'primary-foreground': '240 100% 4%',
-      secondary: '240 50% 15%',
-      'secondary-foreground': '240 50% 95%',
-      muted: '240 50% 15%',
-      'muted-foreground': '240 30% 70%',
-      accent: '320 100% 70%',
-      'accent-foreground': '240 100% 4%',
-      destructive: '0 100% 65%',
-      'destructive-foreground': '0 0% 98%',
-      border: '240 50% 20%',
-      input: '240 50% 18%',
-      ring: '280 100% 70%'
-    },
-    gradient: 'linear-gradient(135deg, #0f0f23 0%, #1a0033 25%, #330066 50%, #6600cc 75%, #cc00ff 100%)'
+    name: 'Galaxy',
+    mode: 'dark',
+    colors: buildDarkColors({
+      hue: 250,
+      saturation: 38,
+      primary: '312 82% 72%',
+      primaryForeground: '300 55% 10%',
+      brand2: '210 90% 72%',
+      background: 6.5,
+      card: 10,
+    }),
+    gradient: 'linear-gradient(135deg, #0c0a1f 0%, #2c1659 55%, #f080d4 100%)',
   },
   emerald: {
-    name: 'Emerald Luxury',
-    description: 'Lüks zümrüt yeşili tema',
-    colors: {
-      background: '160 100% 6%',
-      foreground: '160 50% 95%',
-      card: '160 100% 10%',
-      'card-foreground': '160 50% 95%',
-      popover: '160 100% 10%',
-      'popover-foreground': '160 50% 95%',
-      primary: '160 100% 50%',
-      'primary-foreground': '160 100% 6%',
-      secondary: '160 50% 15%',
-      'secondary-foreground': '160 50% 95%',
-      muted: '160 50% 15%',
-      'muted-foreground': '160 30% 70%',
-      accent: '180 100% 60%',
-      'accent-foreground': '160 100% 6%',
-      destructive: '0 100% 60%',
-      'destructive-foreground': '0 0% 98%',
-      border: '160 50% 25%',
-      input: '160 50% 18%',
-      ring: '160 100% 50%'
-    },
-    gradient: 'linear-gradient(135deg, #064e3b 0%, #065f46 25%, #059669 50%, #10b981 75%, #34d399 100%)'
+    name: 'Emerald',
+    mode: 'dark',
+    colors: buildDarkColors({
+      hue: 160,
+      saturation: 30,
+      primary: '152 66% 52%',
+      primaryForeground: '160 60% 7%',
+      brand2: '182 70% 54%',
+      background: 6.5,
+      card: 10,
+    }),
+    gradient: 'linear-gradient(135deg, #07140f 0%, #0b3a2a 55%, #34d399 100%)',
   },
   pureblack: {
     name: 'Pure Black',
-    description: 'Gerçekten siyah premium tema',
+    mode: 'dark',
     colors: {
-      background: '0 0% 0%',
-      foreground: '0 0% 100%',
-      card: '0 0% 2%',
-      'card-foreground': '0 0% 100%',
-      popover: '0 0% 2%',
-      'popover-foreground': '0 0% 100%',
-      primary: '0 0% 100%',
-      'primary-foreground': '0 0% 0%',
-      secondary: '0 0% 5%',
-      'secondary-foreground': '0 0% 100%',
-      muted: '0 0% 8%',
-      'muted-foreground': '0 0% 70%',
-      accent: '0 0% 10%',
-      'accent-foreground': '0 0% 100%',
-      destructive: '0 100% 60%',
-      'destructive-foreground': '0 0% 100%',
-      border: '0 0% 15%',
-      input: '0 0% 10%',
-      ring: '0 0% 100%'
+      ...buildDarkColors({
+        hue: 0,
+        saturation: 0,
+        primary: '0 0% 98%',
+        primaryForeground: '0 0% 6%',
+      brand2: '0 0% 72%',
+        background: 0,
+        card: 4,
+        surface: 10,
+        borderLightness: 18,
+      }),
+      'muted-foreground': '0 0% 72%',
     },
-    gradient: 'linear-gradient(135deg, #000000 0%, #111111 25%, #222222 50%, #111111 75%, #000000 100%)'
-  }
+    gradient: 'linear-gradient(135deg, #000000 0%, #1a1a1a 55%, #f5f5f5 100%)',
+  },
 };
 
-export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>('dark');
-  const [resolvedTheme, setResolvedTheme] = useState<Theme>('dark');
+const THEME_STORAGE_KEY = 'theme';
 
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') as Theme;
-    if (savedTheme && themes[savedTheme]) {
-      setTheme(savedTheme);
-      setResolvedTheme(savedTheme);
-    }
-  }, []);
+const isTheme = (value: string | null): value is Theme =>
+  value !== null && Object.prototype.hasOwnProperty.call(themes, value);
+
+const getInitialTheme = (): Theme => {
+  if (typeof window === 'undefined') return 'light';
+  const saved = window.localStorage.getItem(THEME_STORAGE_KEY);
+  if (isTheme(saved)) return saved;
+  return window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+};
+
+const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+
+export function ThemeProvider({ children }: { children: React.ReactNode }) {
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
 
   useEffect(() => {
     const root = window.document.documentElement;
-    
-    // Remove all theme classes
-    Object.keys(themes).forEach(themeName => {
-      root.classList.remove(`theme-${themeName}`);
+    const config = themes[theme];
+
+    (Object.keys(themes) as Theme[]).forEach((name) => {
+      root.classList.remove(`theme-${name}`);
     });
-    
-    // Add current theme class
     root.classList.add(`theme-${theme}`);
-    root.classList.add('dark'); // Always keep dark class for compatibility
-    
-    // Apply CSS variables
-    const themeConfig = themes[theme];
-    Object.entries(themeConfig.colors).forEach(([key, value]) => {
+    root.classList.toggle('dark', config.mode === 'dark');
+    root.classList.toggle('light', config.mode === 'light');
+    root.style.colorScheme = config.mode;
+
+    (Object.entries(config.colors) as [string, string][]).forEach(([key, value]) => {
       root.style.setProperty(`--${key}`, value);
     });
-    
-    // Apply background gradient
-    document.body.style.background = themeConfig.gradient;
-    document.body.style.backgroundAttachment = 'fixed';
-    
-    localStorage.setItem('theme', theme);
-    setResolvedTheme(theme);
+
+    window.localStorage.setItem(THEME_STORAGE_KEY, theme);
   }, [theme]);
 
-  const value = {
-    theme,
-    setTheme,
-    resolvedTheme,
-  };
-
-  return (
-    <ThemeContext.Provider value={value}>
-      {children}
-    </ThemeContext.Provider>
+  const value = useMemo<ThemeContextType>(
+    () => ({
+      theme,
+      setTheme,
+      resolvedTheme: theme,
+      mode: themes[theme].mode,
+    }),
+    [theme],
   );
+
+  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 }
 
 export function useTheme() {
@@ -307,3 +357,4 @@ export function useTheme() {
 }
 
 export { themes };
+

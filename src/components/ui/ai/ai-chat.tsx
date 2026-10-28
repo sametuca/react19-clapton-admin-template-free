@@ -55,6 +55,9 @@ export function AIChat() {
     }
   }, [conversations]);
 
+  // Active conversation
+  const currentConversation = conversations.find(c => c.id === currentConversationId) || null;
+
   // Auto-scroll to bottom when messages change
   useEffect(() => {
     if (messagesEndRef.current && isOpen && !isMinimized) {
@@ -68,8 +71,6 @@ export function AIChat() {
       setTimeout(() => inputRef.current?.focus(), 100);
     }
   }, [isOpen, isMinimized, currentConversationId]);
-
-  const currentConversation = conversations.find(c => c.id === currentConversationId) || null;
 
   // Mock AI response - replace with actual API call
   const getAIResponse = async (userMessage: string): Promise<string> => {
@@ -252,7 +253,7 @@ export function AIChat() {
           {/* Header */}
           <div className="flex items-center justify-between border-b border-border/50 bg-background/80 dark:bg-gradient-to-r dark:from-gray-800/80 dark:to-gray-900/80 p-3">
             <div className="flex items-center space-x-3">
-              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-lg">
+              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-lg">
                 <Bot className="h-5 w-5" />
               </div>
               <h3 className="text-sm font-semibold text-foreground">
@@ -367,7 +368,7 @@ export function AIChat() {
                     ) : (
                       <div className="flex h-full flex-col items-center justify-center text-center text-muted-foreground">
                         <div className="mb-4 p-4 rounded-full bg-gradient-to-r from-purple-600/20 to-blue-600/20 border border-border/40">
-                          <Bot className="h-12 w-12 text-purple-400" />
+                          <Bot className="h-12 w-12 text-purple-700 dark:text-purple-400" />
                         </div>
                         <h3 className="mb-2 text-lg font-semibold text-foreground">How can I help you today?</h3>
                         <p className="text-sm text-muted-foreground">Ask me anything about your application or data.</p>

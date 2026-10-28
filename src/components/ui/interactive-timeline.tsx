@@ -86,7 +86,7 @@ export const InteractiveTimeline: React.FC<InteractiveTimelineProps> = ({
       <div className={cn("relative", className)} ref={containerRef}>
         {showProgress && (
           <div className="sticky top-4 z-10 mb-8">
-            <div className="bg-gray-200 rounded-full h-2 overflow-hidden">
+            <div className="bg-muted rounded-full h-2 overflow-hidden">
               <motion.div
                 className="h-full bg-gradient-to-r from-purple-500 to-blue-500"
                 style={{ width: `${progress}%` }}
@@ -120,19 +120,19 @@ export const InteractiveTimeline: React.FC<InteractiveTimelineProps> = ({
                     <Badge variant="secondary" className={getStatusColor(item.status)}>
                       {getStatusText(item.status)}
                     </Badge>
-                    <span className="text-sm text-gray-500">{item.date}</span>
+                    <span className="text-sm text-muted-foreground">{item.date}</span>
                   </div>
                   
                   <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                  <p className="text-gray-600 mb-4">{item.description}</p>
+                  <p className="text-muted-foreground mb-4">{item.description}</p>
                   
-                  <div className="flex items-center text-sm text-gray-500 mb-4">
+                  <div className="flex items-center text-sm text-muted-foreground mb-4">
                     <MapPin className="w-4 h-4 mr-2" />
                     <span>{item.location || 'Remote'}</span>
                   </div>
                   
                   {item.participants && (
-                    <div className="flex items-center text-sm text-gray-500 mb-4">
+                    <div className="flex items-center text-sm text-muted-foreground mb-4">
                       <Users className="w-4 h-4 mr-2" />
                       <span>{item.participants} participants</span>
                     </div>
@@ -140,7 +140,7 @@ export const InteractiveTimeline: React.FC<InteractiveTimelineProps> = ({
                   
                   {item.achievements && item.achievements.length > 0 && (
                     <div className="space-y-2">
-                      <h4 className="font-medium text-gray-700">Achievements:</h4>
+                      <h4 className="font-medium text-muted-foreground">Achievements:</h4>
                       <div className="flex flex-wrap gap-2">
                         {item.achievements.map((achievement, idx) => (
                           <Badge key={idx} variant="outline" className="text-xs">
@@ -198,20 +198,20 @@ export const InteractiveTimeline: React.FC<InteractiveTimelineProps> = ({
               
               <div className="p-6">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-sm text-gray-500 flex items-center">
+                  <span className="text-sm text-muted-foreground flex items-center">
                     <Calendar className="w-4 h-4 mr-2" />
                     {item.date}
                   </span>
                   <Badge variant="outline">{item.category}</Badge>
                 </div>
                 
-                <h3 className="text-xl font-semibold mb-2 group-hover:text-purple-600 transition-colors">
+                <h3 className="text-xl font-semibold mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
                   {item.title}
                 </h3>
-                <p className="text-gray-600 mb-4 line-clamp-3">{item.description}</p>
+                <p className="text-muted-foreground mb-4 line-clamp-3">{item.description}</p>
                 
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center text-sm text-gray-500">
+                  <div className="flex items-center text-sm text-muted-foreground">
                     <MapPin className="w-4 h-4 mr-2" />
                     <span>{item.location || 'Remote'}</span>
                   </div>
@@ -238,7 +238,7 @@ export const InteractiveTimeline: React.FC<InteractiveTimelineProps> = ({
     <div className={cn("relative", className)} ref={containerRef}>
       {showProgress && (
         <div className="sticky top-4 z-10 mb-8">
-          <div className="bg-gray-200 rounded-full h-2 overflow-hidden">
+          <div className="bg-muted rounded-full h-2 overflow-hidden">
             <motion.div
               className="h-full bg-gradient-to-r from-purple-500 to-blue-500"
               style={{ width: `${progress}%` }}
@@ -249,11 +249,9 @@ export const InteractiveTimeline: React.FC<InteractiveTimelineProps> = ({
       
       <div className="relative">
         {/* Timeline Line */}
-        <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gray-200" />
+        <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-muted" />
         
         {items.map((item, index) => {
-          const isInView = useInView(containerRef, { once: true });
-          
           return (
             <motion.div
               key={item.id}
@@ -264,7 +262,7 @@ export const InteractiveTimeline: React.FC<InteractiveTimelineProps> = ({
               className="relative mb-8 last:mb-0"
             >
               {/* Timeline Dot */}
-              <div className="absolute left-6 w-4 h-4 bg-white border-4 border-purple-500 rounded-full -translate-x-1/2 z-10" />
+              <div className="absolute left-6 w-4 h-4 bg-card border-4 border-purple-500 rounded-full -translate-x-1/2 z-10" />
               
               {/* Content */}
               <div className="ml-16">
@@ -283,19 +281,19 @@ export const InteractiveTimeline: React.FC<InteractiveTimelineProps> = ({
                       <Badge variant="secondary" className={getStatusColor(item.status)}>
                         {getStatusText(item.status)}
                       </Badge>
-                      <span className="text-sm text-gray-500">{item.date}</span>
+                      <span className="text-sm text-muted-foreground">{item.date}</span>
                     </div>
                     
                     <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                    <p className="text-gray-600 mb-4">{item.description}</p>
+                    <p className="text-muted-foreground mb-4">{item.description}</p>
                     
-                    <div className="flex items-center text-sm text-gray-500 mb-4">
+                    <div className="flex items-center text-sm text-muted-foreground mb-4">
                       <MapPin className="w-4 h-4 mr-2" />
                       <span>{item.location || 'Remote'}</span>
                     </div>
                     
                     {item.participants && (
-                      <div className="flex items-center text-sm text-gray-500 mb-4">
+                      <div className="flex items-center text-sm text-muted-foreground mb-4">
                         <Users className="w-4 h-4 mr-2" />
                         <span>{item.participants} participants</span>
                       </div>
@@ -303,7 +301,7 @@ export const InteractiveTimeline: React.FC<InteractiveTimelineProps> = ({
                     
                     {item.achievements && item.achievements.length > 0 && (
                       <div className="space-y-2">
-                        <h4 className="font-medium text-gray-700">Achievements:</h4>
+                        <h4 className="font-medium text-muted-foreground">Achievements:</h4>
                         <div className="flex flex-wrap gap-2">
                           {item.achievements.map((achievement, idx) => (
                             <Badge key={idx} variant="outline" className="text-xs">

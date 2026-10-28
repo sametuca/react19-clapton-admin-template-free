@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+﻿import { Helmet } from "react-helmet-async";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
@@ -23,17 +23,11 @@ import {
   Clock,
   Save
 } from "lucide-react";
-import { useTheme } from "@/contexts/ThemeContext";
 import { useLanguage } from "@/hooks/useLanguage";
 import { ThemeSelector } from "@/components/ThemeSelector";
 
 export default function Settings() {
-  const { theme, setTheme } = useTheme();
   const { language, setLanguage, t } = useLanguage();
-
-  const handleThemeChange = (newTheme: 'light' | 'dark' | 'system') => {
-    setTheme(newTheme);
-  };
 
   const handleLanguageChange = (newLanguage: 'tr' | 'en') => {
     setLanguage(newLanguage);

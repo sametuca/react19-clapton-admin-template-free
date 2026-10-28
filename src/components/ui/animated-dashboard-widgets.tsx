@@ -88,7 +88,7 @@ export const AnimatedMetricCard: React.FC<AnimatedMetricCardProps> = ({
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }}
-                className="text-gray-400 hover:text-gray-600"
+                className="text-muted-foreground hover:text-muted-foreground"
               >
                 <MoreHorizontal className="w-5 h-5" />
               </motion.div>
@@ -97,8 +97,8 @@ export const AnimatedMetricCard: React.FC<AnimatedMetricCardProps> = ({
         </div>
 
         <div className="mb-2">
-          <h3 className="text-sm font-medium text-gray-600 mb-1">{title}</h3>
-          <div className="text-2xl font-bold text-gray-900">
+          <h3 className="text-sm font-medium text-muted-foreground mb-1">{title}</h3>
+          <div className="text-2xl font-bold text-foreground">
             {typeof value === 'number' ? displayValue.toLocaleString() : value}
           </div>
         </div>
@@ -108,7 +108,7 @@ export const AnimatedMetricCard: React.FC<AnimatedMetricCardProps> = ({
             variant="secondary" 
             className={cn(
               "text-xs",
-              changeType === 'increase' ? 'text-green-600 bg-green-100' : 'text-red-600 bg-red-100'
+              changeType === 'increase' ? 'text-green-800 dark:text-green-300 bg-green-500/15 dark:bg-green-500/20' : 'text-red-600 dark:text-red-300 bg-red-500/15 dark:bg-red-500/20'
             )}
           >
             {changeType === 'increase' ? (
@@ -118,7 +118,7 @@ export const AnimatedMetricCard: React.FC<AnimatedMetricCardProps> = ({
             )}
             {change}%
           </Badge>
-          <span className="text-xs text-gray-500 ml-2">vs last month</span>
+          <span className="text-xs text-muted-foreground ml-2">vs last month</span>
         </div>
       </Card>
     </motion.div>
@@ -146,7 +146,7 @@ export const AnimatedChartWidget: React.FC<AnimatedChartWidgetProps> = ({
 
   return (
     <Card className={cn("p-6", className)}>
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">{title}</h3>
+      <h3 className="text-lg font-semibold text-foreground mb-4">{title}</h3>
       
       <div className="space-y-4">
         {data.map((item, index) => {
@@ -155,13 +155,13 @@ export const AnimatedChartWidget: React.FC<AnimatedChartWidgetProps> = ({
           return (
             <div key={index} className="space-y-2">
               <div className="flex items-center justify-between text-sm">
-                <span className="text-gray-600">{item.label}</span>
-                <span className="font-medium text-gray-900">
+                <span className="text-muted-foreground">{item.label}</span>
+                <span className="font-medium text-foreground">
                   {item.value.toLocaleString()}
                 </span>
               </div>
               
-              <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+              <div className="w-full bg-muted rounded-full h-2 overflow-hidden">
                 <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: isVisible ? `${percentage}%` : 0 }}
@@ -202,11 +202,11 @@ export const AnimatedActivityFeed: React.FC<AnimatedActivityFeedProps> = ({
 
   const getTypeColor = (type: ActivityItem['type']) => {
     switch (type) {
-      case 'success': return 'text-green-600 bg-green-100';
-      case 'warning': return 'text-yellow-600 bg-yellow-100';
-      case 'info': return 'text-blue-600 bg-blue-100';
-      case 'error': return 'text-red-600 bg-red-100';
-      default: return 'text-gray-600 bg-gray-100';
+      case 'success': return 'text-green-800 dark:text-green-300 bg-green-500/15 dark:bg-green-500/20';
+      case 'warning': return 'text-yellow-800 dark:text-yellow-300 bg-yellow-500/15 dark:bg-yellow-500/20';
+      case 'info': return 'text-blue-700 dark:text-blue-300 bg-blue-500/15 dark:bg-blue-500/20';
+      case 'error': return 'text-red-600 dark:text-red-300 bg-red-500/15 dark:bg-red-500/20';
+      default: return 'text-muted-foreground bg-muted';
     }
   };
 
@@ -223,7 +223,7 @@ export const AnimatedActivityFeed: React.FC<AnimatedActivityFeedProps> = ({
   return (
     <Card className={cn("p-6", className)}>
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold text-gray-900">Recent Activity</h3>
+        <h3 className="text-lg font-semibold text-foreground">Recent Activity</h3>
         <Button
           variant="ghost"
           size="sm"
@@ -250,12 +250,12 @@ export const AnimatedActivityFeed: React.FC<AnimatedActivityFeedProps> = ({
             </div>
             
             <div className="flex-1 min-w-0">
-              <p className="text-sm text-gray-900">
+              <p className="text-sm text-foreground">
                 <span className="font-medium">{activity.user}</span>
                 {' '}{activity.action}{' '}
                 <span className="font-medium">{activity.target}</span>
               </p>
-              <p className="text-xs text-gray-500">{activity.time}</p>
+              <p className="text-xs text-muted-foreground">{activity.time}</p>
             </div>
           </motion.div>
         ))}
@@ -316,8 +316,8 @@ export const AnimatedProgressRing: React.FC<AnimatedProgressRingProps> = ({
       {/* Center Text */}
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="text-center">
-          <div className="text-2xl font-bold text-gray-900">{progress}%</div>
-          <div className="text-sm text-gray-500">Complete</div>
+          <div className="text-2xl font-bold text-foreground">{progress}%</div>
+          <div className="text-sm text-muted-foreground">Complete</div>
         </div>
       </div>
     </div>
@@ -375,7 +375,7 @@ export const AnimatedGoalTracker: React.FC<AnimatedGoalTrackerProps> = ({
 }) => {
   return (
     <Card className={cn("p-6", className)}>
-      <h3 className="text-lg font-semibold text-gray-900 mb-6">Goal Tracker</h3>
+      <h3 className="text-lg font-semibold text-foreground mb-6">Goal Tracker</h3>
       
       <div className="space-y-6">
         {goals.map((goal, index) => {
@@ -390,18 +390,18 @@ export const AnimatedGoalTracker: React.FC<AnimatedGoalTrackerProps> = ({
               className="space-y-3"
             >
               <div className="flex items-center justify-between">
-                <h4 className="font-medium text-gray-900">{goal.title}</h4>
-                <span className="text-sm text-gray-500">{goal.deadline}</span>
+                <h4 className="font-medium text-foreground">{goal.title}</h4>
+                <span className="text-sm text-muted-foreground">{goal.deadline}</span>
               </div>
               
               <div className="flex items-center justify-between text-sm">
-                <span className="text-gray-600">
+                <span className="text-muted-foreground">
                   {goal.current.toLocaleString()} / {goal.target.toLocaleString()} {goal.unit}
                 </span>
-                <span className="font-medium text-gray-900">{progress.toFixed(1)}%</span>
+                <span className="font-medium text-foreground">{progress.toFixed(1)}%</span>
               </div>
               
-              <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+              <div className="w-full bg-muted rounded-full h-3 overflow-hidden">
                 <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: `${progress}%` }}
